@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LegalPage from "../components/LegalPage.astro";
+import { getBrandEmail } from "../lib/site";
+
+const brandEmail = getBrandEmail();
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="Privacy policy for Tactas AI covering data handling, inquiries, and security practices for business workflow automation services."
+  canonical="/privacy"
+>
+  <LegalPage title="Privacy Policy" updatedAt="May 6, 2026">
+    <section>
+      <h2 class="text-lg font-semibold text-[#f8fafc]">What we collect</h2>
+      <p class="mt-2">
+        We may collect contact details, project information, and workflow context you provide through email, meetings,
+        and inquiry channels. We only request information necessary to evaluate and deliver services.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-[#f8fafc]">How we use information</h2>
+      <p class="mt-2">
+        Information is used to respond to inquiries, scope projects, deliver automation services, improve service
+        quality, and maintain operational security.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-[#f8fafc]">Data handling and retention</h2>
+      <p class="mt-2">
+        We retain data only as long as needed for service delivery, legal requirements, or agreed project support.
+        Sensitive data is handled using least-privilege access and controlled environments.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-[#f8fafc]">Third-party systems</h2>
+      <p class="mt-2">
+        Projects may involve third-party tools (for example CRMs, helpdesks, cloud providers, and analytics
+        platforms). Their data processing is governed by their own terms and privacy policies.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-[#f8fafc]">Your rights</h2>
+      <p class="mt-2">
+        You can request access, correction, or deletion of personal information related to your inquiry by contacting
+        <a class="text-[#06B6D4] hover:text-[#22D3EE]" href={`mailto:${brandEmail}`}> {brandEmail}</a>.
+      </p>
+    </section>
+  </LegalPage>
+</BaseLayout>

@@ -1,0 +1,669 @@
+---
+import {
+  ArrowRight,
+  Bot,
+  Check,
+  Clock3,
+  CreditCard,
+  Headphones,
+  Mail,
+  PackageCheck,
+  RefreshCcw,
+  Search,
+  Send,
+  ShieldCheck,
+  ShoppingBag,
+  Sparkles,
+  TrendingUp,
+  Truck,
+} from "@lucide/astro";
+import Navbar from "./Navbar.astro";
+import { getBrandEmail } from "../lib/site";
+
+interface Props {
+  siteUrl: string;
+  currentPath?: string;
+}
+
+const { siteUrl, currentPath = "/industries/ecommerce" } = Astro.props;
+const brandEmail = getBrandEmail();
+const CONTAINER = "mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10";
+
+const proof = [
+  ["AI product support", "Answer sizing, compatibility, availability, bundles, and policy questions before shoppers leave."],
+  ["Order status automation", "Check shipping, payment, and fulfillment context across the systems your support team already uses."],
+  ["AI returns automation", "Apply store policy, collect required details, and prepare labels or escalation packets."],
+  ["Revenue recovery", "Qualify intent, recommend next actions, and route high-value shoppers to humans with context."],
+];
+
+const painPoints = [
+  {
+    title: "High-intent shoppers wait too long",
+    body: "Questions about fit, delivery, warranty, compatibility, and stock often arrive outside support hours or during campaign spikes.",
+  },
+  {
+    title: "Support has to check too many places",
+    body: "One order issue can touch Shopify, Stripe, fulfillment, helpdesk, inventory, and a spreadsheet before anyone can act.",
+  },
+  {
+    title: "Returns and exceptions consume the team",
+    body: "Agents need policy, order history, item conditions, fraud signals, and approval rules before they can resolve the case.",
+  },
+];
+
+const workflows = [
+  {
+    title: "Ecommerce AI chatbot",
+    body: "Answer product questions, compare options, recommend bundles, and collect buyer intent before checkout.",
+    icon: ShoppingBag,
+  },
+  {
+    title: "AI order status automation",
+    body: "Read order, payment, fulfillment, and shipping data to resolve common customer service questions fast.",
+    icon: Truck,
+  },
+  {
+    title: "AI returns automation",
+    body: "Check eligibility, gather photos or details, apply policy, and escalate edge cases with the right context.",
+    icon: RefreshCcw,
+  },
+  {
+    title: "Ecommerce support triage",
+    body: "Classify tickets, enrich cases, draft responses, and route priority issues to the right owner.",
+    icon: Headphones,
+  },
+  {
+    title: "Revenue recovery",
+    body: "Capture abandoned high-intent conversations, suggest follow-up, and sync qualified opportunities to CRM or email.",
+    icon: TrendingUp,
+  },
+  {
+    title: "Exception control",
+    body: "Send refunds, discounts, fraud risk, VIP accounts, and unusual requests through human approval paths.",
+    icon: ShieldCheck,
+  },
+];
+
+const searchIntents = [
+  {
+    title: "AI customer support for ecommerce",
+    body: "Deflect repetitive pre-sale and post-purchase questions while keeping refunds, discounts, and exceptions behind human approval.",
+  },
+  {
+    title: "Shopify AI chatbot workflows",
+    body: "Connect product, order, customer, payment, and fulfillment context so the agent can answer with store-specific facts.",
+  },
+  {
+    title: "AI chatbot for online stores",
+    body: "Move beyond generic FAQ replies with controlled workflows for product Q&A, order status, returns, and sales recovery.",
+  },
+  {
+    title: "Automate ecommerce customer service",
+    body: "Reduce manual ticket handling across helpdesk, storefront, email, spreadsheets, inventory, and internal tools.",
+  },
+];
+
+const integrations = [
+  "Shopify",
+  "WooCommerce",
+  "Stripe",
+  "Gorgias",
+  "Zendesk",
+  "Klaviyo",
+  "Meta Ads",
+  "Google Sheets",
+  "Inventory systems",
+  "Fulfillment APIs",
+  "CRMs",
+  "Internal tools",
+];
+
+const beforeAfter = [
+  ["Visitors ask questions and wait for support.", "AI customer support agents answer product, policy, and delivery questions with guardrails."],
+  ["Support checks orders manually across several tools.", "AI order status automation retrieves order, payment, shipment, and customer context in one flow."],
+  ["Returns rely on repetitive back-and-forth.", "AI returns automation collects required data, applies policy, and prepares approval-ready cases."],
+  ["Campaign spikes create ticket queues.", "Agents absorb routine volume and escalate only the cases that need judgment."],
+  ["Managers review scattered support quality.", "Every action, decision, escalation, and handoff is logged for review."],
+];
+
+const rollout = [
+  {
+    step: "01",
+    title: "Choose the revenue workflow",
+    body: "Start with one high-volume workflow: product Q&A, order support, returns, or campaign support.",
+  },
+  {
+    step: "02",
+    title: "Map policies and tools",
+    body: "Model your store policies, approval rules, product data, order data, and support channels.",
+  },
+  {
+    step: "03",
+    title: "Connect and test",
+    body: "Run real scenarios with refunds, delayed shipments, out-of-stock items, discounts, and VIP customers.",
+  },
+  {
+    step: "04",
+    title: "Launch supervised",
+    body: "Go live with logs, human approval paths, escalation rules, and weekly tuning from real conversations.",
+  },
+];
+
+const faq = [
+  {
+    q: "Is this just an ecommerce AI chatbot?",
+    a: "No. The system can act like an AI chatbot for online stores, but it is designed as supervised ecommerce support automation that reads store data, applies policy, prepares actions, and escalates risky cases.",
+  },
+  {
+    q: "Can this work as a Shopify AI chatbot or WooCommerce support agent?",
+    a: "Yes. Tactas AI designs around your stack first. Common systems include Shopify, WooCommerce, Stripe, helpdesks, email tools, sheets, and fulfillment APIs.",
+  },
+  {
+    q: "What ecommerce customer service workflow should we automate first?",
+    a: "The best first workflow is usually product Q&A, order status automation, returns automation, or support triage because the pain is frequent and measurable.",
+  },
+  {
+    q: "Can it automate ecommerce customer service without losing control?",
+    a: "Yes. Routine answers and data lookups can run automatically, while refunds, discounts, policy overrides, fraud risk, and VIP cases can require human approval.",
+  },
+];
+---
+
+<div class="min-h-screen overflow-x-hidden bg-[#07090f] text-[#f5f7fb] selection:bg-[#67e8f9]/20">
+  <div class="pointer-events-none fixed inset-0 -z-20 grid-faint opacity-[0.35] [mask-image:radial-gradient(ellipse_70%_55%_at_50%_15%,black_0%,transparent_75%)]"></div>
+  <div class="pointer-events-none fixed inset-x-0 top-0 -z-20 h-[700px] bg-[radial-gradient(ellipse_75%_55%_at_50%_0%,rgba(34,211,238,0.10),transparent_60%)]"></div>
+
+  <Navbar currentPath={currentPath} ctaLabel="Book ecommerce demo" />
+
+  <main>
+    <section class="relative pb-20 pt-12 lg:pb-28 lg:pt-20">
+      <div class={`${CONTAINER} relative grid items-center gap-14 lg:grid-cols-[1.02fr_1fr] lg:gap-14`}>
+        <div>
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-[#1c2333] bg-[#0c111c]/80 px-3 py-1.5 backdrop-blur">
+            <Sparkles class="h-3.5 w-3.5 text-[#67e8f9]" stroke-width={1.7} />
+            <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#c8d0de]">
+              AI customer support for ecommerce
+            </span>
+          </div>
+          <h1 class="text-[clamp(2.45rem,6vw,5rem)] font-bold leading-[0.96] tracking-[-0.045em] text-[#f5f7fb]">
+            AI customer support agents for ecommerce stores.
+          </h1>
+          <p class="mt-7 max-w-[39ch] text-[16px] leading-relaxed text-[#8a93a6] sm:text-[17px]">
+            Tactas AI builds supervised ecommerce AI agents that answer product questions, automate order status,
+            process returns intake, and support Shopify or WooCommerce workflows with full context.
+          </p>
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a
+              href="#contact"
+              class="group inline-flex h-12 items-center justify-center rounded-md bg-[#22d3ee] px-6 text-[13px] font-semibold tracking-tight text-[#07090f] transition hover:bg-[#67e8f9]"
+            >
+              Discuss ecommerce workflow
+              <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-0.5" />
+            </a>
+            <a
+              href="#workflows"
+              class="group inline-flex h-12 items-center justify-center rounded-md px-2 text-[13px] font-semibold tracking-tight text-[#c8d0de] transition hover:text-[#f5f7fb]"
+            >
+              See workflows
+              <ArrowRight class="ml-2 h-3.5 w-3.5 transition group-hover:translate-x-0.5" />
+            </a>
+          </div>
+          <p class="mt-10 max-w-[42ch] text-[13px] leading-relaxed text-[#5e6678]">
+            Built for online stores where customer service speed, conversion, returns, and operational control directly
+            affect revenue.
+          </p>
+        </div>
+
+        <div class="relative">
+          <div class="pointer-events-none absolute -inset-10 -z-10 bg-[radial-gradient(60%_60%_at_50%_40%,rgba(34,211,238,0.18),transparent_72%)] blur-3xl"></div>
+          <div class="overflow-hidden rounded-2xl border border-[#1c2333] bg-gradient-to-b from-[#0c111c] to-[#070a12] shadow-[0_50px_120px_-60px_rgba(0,0,0,0.9),inset_0_1px_0_rgba(255,255,255,0.03)]">
+            <div class="flex items-center justify-between border-b border-[#1c2333] px-5 py-4">
+              <div class="flex items-center gap-2.5">
+                <span class="flex h-2 w-2 rounded-full bg-[#34d399] pulse-dot" aria-hidden="true"></span>
+                <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#c8d0de]">
+                  commerce runtime
+                </span>
+              </div>
+              <span class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#5e6678]">live workflow</span>
+            </div>
+
+            <div class="grid gap-0 lg:grid-cols-[1fr_230px]">
+              <div class="px-5 py-5 sm:px-6">
+                <div class="grid gap-3 sm:grid-cols-3">
+                  {[
+                    ["intent", "product fit"],
+                    ["cart", "$184"],
+                    ["risk", "low"],
+                  ].map(([label, value]) => (
+                    <div class="rounded-md border border-[#1c2333] bg-[#0a0e17] px-4 py-3">
+                      <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#5e6678]">{label}</p>
+                      <p class="mt-2 text-[15px] font-semibold text-[#f5f7fb]">{value}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div class="mt-5 rounded-xl border border-[#1c2333] bg-[#07090f] p-4">
+                  <div class="mb-4 flex items-center gap-2 text-[12px] text-[#8a93a6]">
+                    <Bot class="h-4 w-4 text-[#67e8f9]" stroke-width={1.7} />
+                    agent trace
+                  </div>
+                  <div class="grid gap-3 font-mono text-[12px] leading-relaxed">
+                    {[
+                      ["intake", "shopper asks: waterproof running shoe under $120"],
+                      ["search", "catalog.match(category=footwear, use=running)"],
+                      ["policy", "shipping_eta=2 days · return_window=30 days"],
+                      ["action", "recommend 3 products + size guidance"],
+                      ["handoff", "VIP cart value detected · notify sales owner"],
+                    ].map(([tag, line], index) => (
+                      <div class="grid grid-cols-[28px_72px_1fr] gap-3 text-[#c8d0de]">
+                        <span class="text-[#5e6678]">{String(index + 1).padStart(2, "0")}</span>
+                        <span class={tag === "handoff" ? "text-[#fbbf24]" : "text-[#67e8f9]"}>{tag}</span>
+                        <span>{line}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div class="mt-5 grid gap-3 sm:grid-cols-2">
+                  <div class="rounded-md border border-[#1c2333] bg-[#0a0e17] p-4">
+                    <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#5e6678]">next action</p>
+                    <p class="mt-2 text-[14px] leading-relaxed text-[#f5f7fb]">
+                      Draft product answer, attach size notes, and create human handoff if shopper asks for discount.
+                    </p>
+                  </div>
+                  <div class="rounded-md border border-[#1c2333] bg-[#0a0e17] p-4">
+                    <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#5e6678]">guardrail</p>
+                    <p class="mt-2 text-[14px] leading-relaxed text-[#f5f7fb]">
+                      Refunds, exceptions, and policy overrides require approval before action.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <aside class="border-t border-[#1c2333] px-5 py-5 lg:border-l lg:border-t-0">
+                <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#5e6678]">connected tools</p>
+                <div class="mt-4 grid gap-2.5">
+                  {["Storefront", "Orders", "Payments", "Helpdesk", "Inventory", "Email"].map((tool) => (
+                    <div class="flex items-center justify-between rounded-md border border-[#1c2333] bg-[#0a0e17] px-3 py-2.5">
+                      <span class="text-[12.5px] text-[#c8d0de]">{tool}</span>
+                      <Check class="h-3.5 w-3.5 text-[#34d399]" stroke-width={2.5} />
+                    </div>
+                  ))}
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class={`${CONTAINER} mt-20 lg:mt-28`}>
+        <div class="grid divide-y divide-[#1c2333] border-y border-[#1c2333] sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
+          {proof.map(([title, body], idx) => (
+            <div class="px-5 py-7 lg:px-7">
+              <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#5e6678]">
+                {String(idx + 1).padStart(2, "0")}
+              </span>
+              <p class="mt-3 text-[14px] font-medium text-[#f5f7fb]">{title}</p>
+              <p class="mt-2 text-[13.5px] leading-relaxed text-[#8a93a6]">{body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class={`${CONTAINER} mt-16`}>
+        <div class="grid items-center gap-8 border-y border-[#1c2333] py-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
+          <div>
+            <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">Execution blueprint</span>
+            <h2 class="mt-4 text-[clamp(1.6rem,2.7vw,2.15rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-[#f5f7fb]">
+              The ecommerce AI chatbot runs as a controlled workflow, not an open-ended chat box.
+            </h2>
+            <p class="mt-4 max-w-md text-[14.5px] leading-relaxed text-[#8a93a6]">
+              Product data, order history, store policies, actions, approvals, and escalation paths are designed as one
+              execution layer.
+            </p>
+          </div>
+          <div class="overflow-hidden rounded-2xl border border-[#1c2333] bg-[#0c111c] shadow-[0_40px_100px_-70px_rgba(0,0,0,0.95)]">
+            <img
+              src="/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"
+              alt="Tactas AI workflow execution system blueprint"
+              width="1536"
+              height="1024"
+              class="h-auto w-full"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="problems" class="border-y border-[#1c2333] bg-[#0a0e17] py-24 lg:py-32">
+      <div class={`${CONTAINER} grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20`}>
+        <div>
+          <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">Why ecommerce</span>
+          <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-[#f5f7fb]">
+            Ecommerce customer service loses margin when routine work blocks fast answers.
+          </h2>
+          <p class="mt-5 max-w-md text-[15px] leading-relaxed text-[#8a93a6]">
+            The highest-value ecommerce AI automation use cases are daily moments where shoppers need an answer and
+            support needs clean execution.
+          </p>
+        </div>
+
+        <div>
+          <div class="hairline mb-8"></div>
+          <ul class="grid gap-0">
+            {painPoints.map((item, idx) => (
+              <li class="grid gap-3 border-b border-[#1c2333] py-7 last:border-b-0 sm:grid-cols-[120px_1fr] sm:gap-8">
+                <span class="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-[#5e6678]">
+                  Case {String(idx + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h3 class="text-[16px] font-medium tracking-tight text-[#f5f7fb]">{item.title}</h3>
+                  <p class="mt-2 text-[14.5px] leading-relaxed text-[#8a93a6]">{item.body}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 lg:py-32">
+      <div class={CONTAINER}>
+        <div class="max-w-3xl">
+          <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">Buyer workflows</span>
+          <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-[#f5f7fb]">
+            Built around the ecommerce support workflows buyers ask for.
+          </h2>
+          <p class="mt-5 max-w-xl text-[15px] leading-relaxed text-[#8a93a6]">
+            Tactas focuses on AI customer support, ecommerce AI chat, Shopify support automation, order status, and
+            returns workflows that connect directly to store operations.
+          </p>
+        </div>
+
+        <div class="mt-12 grid border-y border-[#1c2333] sm:grid-cols-2 lg:grid-cols-4">
+          {searchIntents.map((item, idx) => (
+            <article class="group flex flex-col gap-3 border-t border-[#1c2333] px-0 py-7 transition duration-300 hover:bg-[#0c111c]/45 sm:border-t-0 sm:border-l sm:px-6 lg:first:border-l-0">
+              <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#5e6678]">
+                {String(idx + 1).padStart(2, "0")}
+              </span>
+              <h3 class="text-[16px] font-medium tracking-tight text-[#f5f7fb]">{item.title}</h3>
+              <p class="text-[14px] leading-relaxed text-[#8a93a6]">{item.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="workflows" class="py-24 lg:py-32">
+      <div class={CONTAINER}>
+        <div class="max-w-3xl">
+          <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">Workflows</span>
+          <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-[#f5f7fb]">
+            Start with ecommerce support automation closest to revenue and support cost.
+          </h2>
+          <p class="mt-5 max-w-xl text-[15px] leading-relaxed text-[#8a93a6]">
+            Each AI support agent is designed around your catalog, policies, approval rules, and existing operating stack.
+          </p>
+        </div>
+
+        <div class="mt-12 grid border-y border-[#1c2333] sm:grid-cols-2 lg:grid-cols-3">
+          {workflows.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <article class="group flex flex-col gap-4 border-t border-[#1c2333] px-0 py-8 transition duration-300 hover:-translate-y-0.5 hover:bg-[#0c111c]/45 sm:border-t-0 sm:border-l sm:px-7 sm:py-9 sm:[&:nth-child(odd)]:border-l-0 lg:[&:nth-child(odd)]:border-l lg:[&:nth-child(3n+1)]:border-l-0">
+                <div class="flex items-center justify-between">
+                  <span class="flex h-10 w-10 items-center justify-center rounded-md border border-[#1c2333] bg-[#0c111c] text-[#67e8f9] transition group-hover:border-[#67e8f9]/40">
+                    <Icon class="h-4 w-4" stroke-width={1.6} />
+                  </span>
+                  <span class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#5e6678]">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <h3 class="text-[16px] font-medium tracking-tight text-[#f5f7fb]">{item.title}</h3>
+                <p class="text-[14px] leading-relaxed text-[#8a93a6]">{item.body}</p>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <section id="integrations" class="border-y border-[#1c2333] bg-[#0a0e17] py-24 lg:py-32">
+      <div class={`${CONTAINER} grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20`}>
+        <div>
+          <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">Integrations</span>
+          <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-[#f5f7fb]">
+            Connected to Shopify, WooCommerce, helpdesks, and the tools that run your store.
+          </h2>
+          <p class="mt-5 max-w-md text-[15px] leading-relaxed text-[#8a93a6]">
+            Tactas AI is built around your systems, not a generic front-end widget. Agents can read ecommerce context,
+            prepare actions, and log every step.
+          </p>
+        </div>
+        <div>
+          <div class="grid grid-cols-2 gap-x-10 gap-y-0 sm:grid-cols-3">
+            {integrations.map((item) => (
+              <div class="group flex items-baseline gap-3 border-b border-[#1c2333] py-5 text-[14.5px] text-[#c8d0de] transition-colors duration-300 hover:border-[#2a3346] hover:text-[#f5f7fb]">
+                <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#34d399] transition-transform duration-300 group-hover:scale-125" aria-hidden="true"></span>
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 lg:py-32">
+      <div class={CONTAINER}>
+        <div class="max-w-3xl">
+          <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">Before / after</span>
+          <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-[#f5f7fb]">
+            From delayed ecommerce support to controlled customer service automation.
+          </h2>
+        </div>
+
+        <div class="mt-12 overflow-hidden rounded-2xl border border-[#1c2333]">
+          <div class="grid bg-[#0c111c] font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#5e6678] sm:grid-cols-2">
+            <div class="border-b border-[#1c2333] px-6 py-4 sm:border-b-0 sm:border-r">Before Tactas</div>
+            <div class="px-6 py-4 text-[#67e8f9]/85">After Tactas</div>
+          </div>
+          {beforeAfter.map(([before, after]) => (
+            <div class="grid border-t border-[#1c2333] transition-colors duration-300 hover:bg-[#0f1420] sm:grid-cols-2">
+              <div class="border-b border-[#1c2333] px-6 py-5 text-[14.5px] leading-relaxed text-[#8a93a6] sm:border-b-0 sm:border-r">{before}</div>
+              <div class="flex items-baseline gap-3 px-6 py-5 text-[14.5px] leading-relaxed text-[#f5f7fb]">
+                <Check class="mt-1 h-3.5 w-3.5 shrink-0 text-[#34d399]" stroke-width={2.5} />
+                <span>{after}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="rollout" class="border-y border-[#1c2333] bg-[#0a0e17] py-24 lg:py-32">
+      <div class={CONTAINER}>
+        <div class="max-w-3xl">
+          <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">Rollout</span>
+          <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-[#f5f7fb]">
+            Launch one measurable ecommerce AI workflow first.
+          </h2>
+          <p class="mt-5 max-w-xl text-[15px] leading-relaxed text-[#8a93a6]">
+            Keep the first deployment narrow enough to ship, but important enough to prove value in support cost,
+            response speed, or conversion.
+          </p>
+        </div>
+
+        <ol class="mt-12 grid gap-0 border-t border-[#1c2333] lg:grid-cols-4 lg:border-t-0">
+          {rollout.map((item, idx) => (
+            <li class="relative border-b border-[#1c2333] py-7 transition duration-300 hover:bg-[#0c111c]/45 lg:border-b-0 lg:border-l lg:px-6 lg:py-0 lg:first:border-l-0">
+              <div class="hidden h-px w-full bg-gradient-to-r from-transparent via-[#1c2333] to-transparent lg:block"></div>
+              <div class="lg:pt-7">
+                <div class="flex items-baseline gap-3">
+                  <span class="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-[#67e8f9]/85">{item.step}</span>
+                  {idx < rollout.length - 1 ? <span class="hidden h-px flex-1 bg-[#1c2333] lg:block" aria-hidden="true"></span> : null}
+                </div>
+                <h3 class="mt-3 text-[16px] font-medium tracking-tight text-[#f5f7fb]">{item.title}</h3>
+                <p class="mt-2 text-[13.5px] leading-relaxed text-[#8a93a6]">{item.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="py-24 lg:py-32">
+      <div class={`${CONTAINER} grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20`}>
+        <div>
+          <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">FAQ</span>
+          <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-[#f5f7fb]">
+            Practical questions before the first ecommerce AI support agent.
+          </h2>
+        </div>
+        <div class="border-t border-[#1c2333]">
+          {faq.map((item) => (
+            <section class="border-b border-[#1c2333] py-6">
+              <h3 class="text-[16px] font-medium tracking-tight text-[#f5f7fb]">{item.q}</h3>
+              <p class="mt-2 text-[14.5px] leading-relaxed text-[#8a93a6]">{item.a}</p>
+            </section>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="border-t border-[#1c2333] bg-[#0a0e17] py-24 lg:py-32">
+      <div class={`${CONTAINER} grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20`}>
+        <div>
+          <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">Contact</span>
+          <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-[#f5f7fb]">
+            Tell us where your ecommerce customer service team is losing time or revenue.
+          </h2>
+          <p class="mt-5 max-w-md text-[15px] leading-relaxed text-[#8a93a6]">
+            Share your store platform, support volume, and the ecommerce AI automation workflow you want to improve first.
+          </p>
+          <div class="mt-8 grid gap-4 text-[14px] text-[#c8d0de]">
+            {[
+              [PackageCheck, "Best first fit: product Q&A, order support, returns intake, or support triage."],
+              [Clock3, "Designed for campaign spikes, after-hours questions, and repetitive ticket load."],
+              [CreditCard, "Refunds, discounts, and payment exceptions stay behind approval gates."],
+              [Search, "Agents use your product, order, policy, and customer context before acting."],
+            ].map(([Icon, text]) => (
+              <div class="flex items-start gap-3">
+                <Icon class="mt-0.5 h-4 w-4 shrink-0 text-[#67e8f9]" stroke-width={1.6} />
+                <span>{text}</span>
+              </div>
+            ))}
+          </div>
+          <div class="mt-8 flex items-center gap-3 text-[14px] text-[#c8d0de]">
+            <Mail class="h-4 w-4 text-[#67e8f9]" stroke-width={1.6} />
+            <a href={`mailto:${brandEmail}`} class="border-b border-[#1c2333] pb-0.5 transition hover:border-[#67e8f9]/60 hover:text-[#f5f7fb]">
+              {brandEmail}
+            </a>
+          </div>
+        </div>
+        <form
+          id="ecommerce-inquiry-form"
+          class="rounded-2xl border border-[#1c2333] bg-gradient-to-b from-[#0c111c] to-[#0a0e17] p-6 shadow-[0_30px_90px_-60px_rgba(0,0,0,0.9)] sm:p-7"
+        >
+          <div class="mb-6 flex items-center gap-2.5">
+            <span class="flex h-1.5 w-1.5 rounded-full bg-[#34d399] pulse-dot" aria-hidden="true"></span>
+            <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#c8d0de]">
+              ecommerce workflow inquiry
+            </span>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <label class="grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#8a93a6]">
+              Name
+              <input required name="name" class="h-11 w-full rounded-md border border-[#1c2333] bg-[#0c111c] px-3.5 text-[14px] text-[#f5f7fb] outline-none transition placeholder:text-[#5e6678] focus:border-[#67e8f9]/60 focus:ring-2 focus:ring-[#67e8f9]/15" placeholder="Your name" />
+            </label>
+            <label class="grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#8a93a6]">
+              Work email
+              <input required type="email" name="email" class="h-11 w-full rounded-md border border-[#1c2333] bg-[#0c111c] px-3.5 text-[14px] text-[#f5f7fb] outline-none transition placeholder:text-[#5e6678] focus:border-[#67e8f9]/60 focus:ring-2 focus:ring-[#67e8f9]/15" placeholder="you@store.com" />
+            </label>
+          </div>
+
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <label class="grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#8a93a6]">
+              Company / store
+              <input required name="company" class="h-11 w-full rounded-md border border-[#1c2333] bg-[#0c111c] px-3.5 text-[14px] text-[#f5f7fb] outline-none transition placeholder:text-[#5e6678] focus:border-[#67e8f9]/60 focus:ring-2 focus:ring-[#67e8f9]/15" placeholder="Store name" />
+            </label>
+            <label class="grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#8a93a6]">
+              Platform
+              <input name="platform" class="h-11 w-full rounded-md border border-[#1c2333] bg-[#0c111c] px-3.5 text-[14px] text-[#f5f7fb] outline-none transition placeholder:text-[#5e6678] focus:border-[#67e8f9]/60 focus:ring-2 focus:ring-[#67e8f9]/15" placeholder="Shopify, WooCommerce..." />
+            </label>
+          </div>
+
+          <label class="mt-4 grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#8a93a6]">
+            Workflow to improve
+            <textarea required name="workflow" class="min-h-28 w-full rounded-md border border-[#1c2333] bg-[#0c111c] px-3.5 py-3 text-[14px] text-[#f5f7fb] outline-none transition placeholder:text-[#5e6678] focus:border-[#67e8f9]/60 focus:ring-2 focus:ring-[#67e8f9]/15" placeholder="Product questions, order status, returns, support triage, campaign spike..."></textarea>
+          </label>
+
+          <label class="mt-4 grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#8a93a6]">
+            Monthly tickets / orders / conversations
+            <input name="volume" class="h-11 w-full rounded-md border border-[#1c2333] bg-[#0c111c] px-3.5 text-[14px] text-[#f5f7fb] outline-none transition placeholder:text-[#5e6678] focus:border-[#67e8f9]/60 focus:ring-2 focus:ring-[#67e8f9]/15" placeholder="e.g. 2,000 tickets / month" />
+          </label>
+
+          <button type="submit" class="group mt-6 inline-flex h-12 w-full items-center justify-center rounded-md bg-[#22d3ee] px-7 text-[13px] font-semibold tracking-tight text-[#07090f] transition hover:bg-[#67e8f9]">
+            Send ecommerce workflow
+            <Send class="ml-2 h-4 w-4 transition group-hover:translate-x-0.5" />
+          </button>
+          <p id="ecommerce-form-status" class="mt-3 text-center text-[12px] text-[#5e6678]">
+            Prefer email? {brandEmail}
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-[#1c2333] bg-[#07090f] py-14">
+    <div class={`${CONTAINER} flex flex-col justify-between gap-6 sm:flex-row sm:items-center`}>
+      <div>
+        <div class="flex items-center gap-2.5">
+          <img src="/favicon-96x96.png" alt="" width="30" height="30" class="rounded-md" aria-hidden="true" loading="lazy" decoding="async" />
+          <span class="text-sm font-semibold">Tactas AI</span>
+        </div>
+        <p class="mt-3 max-w-sm text-[13px] leading-relaxed text-[#8a93a6]">
+          Custom AI systems that run ecommerce support, sales, and operations workflows.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-5 text-[12px] text-[#5e6678]">
+        <a href="/" class="transition hover:text-[#c8d0de]">Home</a>
+        <a href="/about" class="transition hover:text-[#c8d0de]">About</a>
+        <a href="/privacy" class="transition hover:text-[#c8d0de]">Privacy</a>
+        <a href="/terms" class="transition hover:text-[#c8d0de]">Terms</a>
+        <a href={siteUrl} class="transition hover:text-[#c8d0de]">{siteUrl.replace(/^https?:\/\//, "")}</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script define:vars={{ brandEmail }} is:inline>
+  const ecommerceForm = document.getElementById("ecommerce-inquiry-form");
+  const ecommerceStatus = document.getElementById("ecommerce-form-status");
+  ecommerceForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const form = new FormData(ecommerceForm);
+    const company = String(form.get("company") || "").trim() || "Tactas AI";
+    const subject = encodeURIComponent(`Ecommerce workflow inquiry - ${company}`);
+    const body = encodeURIComponent(
+      [
+        `Name: ${String(form.get("name") || "")}`,
+        `Work email: ${String(form.get("email") || "")}`,
+        `Company / store: ${String(form.get("company") || "")}`,
+        `Store platform: ${String(form.get("platform") || "")}`,
+        "",
+        "Workflow to improve:",
+        String(form.get("workflow") || ""),
+        "",
+        "Monthly tickets / orders / conversations:",
+        String(form.get("volume") || ""),
+      ].join("\n"),
+    );
+    if (ecommerceStatus) {
+      ecommerceStatus.textContent = "Opening your email client with the workflow details.";
+    }
+    window.location.href = `mailto:${brandEmail}?subject=${subject}&body=${body}`;
+  });
+</script>

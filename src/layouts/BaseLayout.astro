@@ -1,0 +1,125 @@
+---
+import "../styles/global.css";
+import { getSiteUrl } from "../lib/site";
+
+interface ImageMeta {
+  url: string;
+  width?: number;
+  height?: number;
+  alt?: string;
+}
+
+interface OpenGraphMeta {
+  title?: string;
+  description?: string;
+  type?: string;
+  url?: string;
+  locale?: string;
+  images?: ImageMeta[];
+}
+
+interface TwitterMeta {
+  card?: string;
+  title?: string;
+  description?: string;
+  images?: string[];
+}
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  keywords?: string[];
+  openGraph?: OpenGraphMeta;
+  twitter?: TwitterMeta;
+  jsonLd?: unknown | unknown[];
+  currentPath?: string;
+}
+
+const {
+  title = "Tactas AI - Multi-Agent Systems for Business Workflow Execution",
+  description = "Tactas AI designs, sets up, and deploys company-specific multi-agent systems that execute business workflows across internal tools, SOPs, approval rules, and risk boundaries.",
+  canonical,
+  keywords = [],
+  openGraph,
+  twitter,
+  jsonLd,
+} = Astro.props;
+
+const siteUrl = getSiteUrl();
+const absoluteCanonical = canonical ? new URL(canonical, siteUrl).toString() : undefined;
+const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
+const defaultOgImage = "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {keywords.length > 0 ? <meta name="keywords" content={keywords.join(", ")} /> : null}
+    {absoluteCanonical ? <link rel="canonical" href={absoluteCanonical} /> : null}
+    <meta name="theme-color" content="#0b1220" />
+    <meta name="robots" content="index, follow" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" />
+    <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/favicon-96x96.png" sizes="96x96" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-icon-180x180.png" sizes="180x180" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-icon.png" sizes="180x180" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-icon-precomposed.png" sizes="180x180" type="image/png" />
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+    <meta name="msapplication-TileColor" content="#0b1220" />
+
+    <meta property="og:title" content={openGraph?.title || title} />
+    <meta property="og:description" content={openGraph?.description || description} />
+    <meta property="og:type" content={openGraph?.type || "website"} />
+    <meta property="og:locale" content={openGraph?.locale || "en_US"} />
+    <meta property="og:url" content={openGraph?.url || absoluteCanonical || siteUrl} />
+    {(openGraph?.images || [{ url: defaultOgImage, width: 1200, height: 630, alt: title }]).map((image) => (
+      <>
+        <meta property="og:image" content={new URL(image.url, siteUrl).toString()} />
+        {image.width ? <meta property="og:image:width" content={String(image.width)} /> : null}
+        {image.height ? <meta property="og:image:height" content={String(image.height)} /> : null}
+        {image.alt ? <meta property="og:image:alt" content={image.alt} /> : null}
+      </>
+    ))}
+
+    <meta name="twitter:card" content={twitter?.card || "summary_large_image"} />
+    <meta name="twitter:title" content={twitter?.title || title} />
+    <meta name="twitter:description" content={twitter?.description || description} />
+    {(twitter?.images || [defaultOgImage]).map((image) => (
+      <meta name="twitter:image" content={new URL(image, siteUrl).toString()} />
+    ))}
+
+    {jsonLdItems.map((entry, index) => (
+      <script type="application/ld+json" set:html={JSON.stringify(entry)} data-ld={String(index)} />
+    ))}
+  </head>
+  <body>
+    <slot />
+    <script is:inline>
+      const revealElements = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window) || revealElements.length === 0) {
+        revealElements.forEach((element) => element.classList.add("is-visible"));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+        );
+        revealElements.forEach((element) => observer.observe(element));
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LegalPage from "../components/LegalPage.astro";
+import { getBrandEmail } from "../lib/site";
+
+const brandEmail = getBrandEmail();
+---
+
+<BaseLayout
+  title="Terms of Service"
+  description="Basic terms for using Tactas AI services, including scope, responsibilities, and liability boundaries."
+  canonical="/terms"
+>
+  <LegalPage title="Terms of Service" updatedAt="May 6, 2026">
+    <section>
+      <h2 class="text-lg font-semibold text-[#f8fafc]">Service scope</h2>
+      <p class="mt-2">
+        Tactas AI provides consulting and implementation services for AI agents and workflow automation systems. Scope,
+        deliverables, and timelines are defined in project agreements.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-[#f8fafc]">Client responsibilities</h2>
+      <p class="mt-2">
+        Clients are responsible for providing required access, accurate operational requirements, and lawful use of
+        systems where automation is deployed.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-[#f8fafc]">Fees and payment</h2>
+      <p class="mt-2">
+        Commercial terms, billing cycles, and payment conditions are specified in signed proposals, statements of work,
+        or service agreements.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-[#f8fafc]">Liability limits</h2>
+      <p class="mt-2">
+        Services are provided on a best-effort basis within the agreed scope. Tactas AI is not responsible for damages
+        resulting from misuse, unauthorized access, or third-party platform outages beyond our control.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-[#f8fafc]">Contact</h2>
+      <p class="mt-2">
+        Questions about these terms can be sent to <a class="text-[#06B6D4] hover:text-[#22D3EE]" href={`mailto:${brandEmail}`}>{brandEmail}</a>.
+      </p>
+    </section>
+  </LegalPage>
+</BaseLayout>

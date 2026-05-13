@@ -1,17 +1,86 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HomePage from "../components/HomePage.astro";
+import { getOrganization, getSiteUrl } from "../lib/site";
 
+const siteUrl = getSiteUrl();
+const title = "Tactas AI - Multi-Agent Systems for Business Workflow Execution";
+const description =
+  "Tactas AI designs, sets up, and deploys company-specific multi-agent systems that execute business workflows across internal tools, SOPs, approval rules, and risk boundaries.";
+const organization = getOrganization();
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      name: "Tactas AI",
+      url: siteUrl,
+      description:
+        "Company-specific multi-agent systems that execute business workflows across internal tools, SOPs, approval rules, and risk boundaries.",
+      publisher: { "@id": `${siteUrl}/#organization` },
+      inLanguage: "en-US",
+    },
+    organization,
+    {
+      "@type": "ProfessionalService",
+      "@id": `${siteUrl}/#service`,
+      name: "Tactas AI",
+      url: siteUrl,
+      description:
+        "Design and implementation of supervised multi-agent systems, workflow execution systems, API integrations, data workflows, and operational intelligence for business teams.",
+      serviceType: [
+        "Supervised multi-agent systems",
+        "Workflow execution systems",
+        "API integration",
+        "Business process automation",
+        "Operational AI system design",
+      ],
+      areaServed: "Worldwide",
+      provider: { "@id": `${siteUrl}/#organization` },
+    },
+  ],
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/"
+  keywords={[
+    "multi-agent systems",
+    "business workflow execution",
+    "AI workflow automation",
+    "supervised AI agents",
+    "business operations automation",
+    "operational AI systems",
+    "custom AI agents",
+    "AI execution systems",
+    "approval-aware automation",
+    "workflow automation for businesses",
+  ]}
+  openGraph={{
+    title,
+    description,
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png",
+        width: 1200,
+        height: 630,
+        alt: "Tactas AI - Multi-agent systems for business workflow execution",
+      },
+    ],
+  }}
+  twitter={{
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"],
+  }}
+  jsonLd={jsonLd}
+>
+  <HomePage siteUrl={siteUrl} currentPath="/" />
+</BaseLayout>

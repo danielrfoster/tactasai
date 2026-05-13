@@ -1,0 +1,35 @@
+import type { APIRoute } from "astro";
+import { getSiteUrl } from "../lib/site";
+
+export const GET = (() => {
+  const siteUrl = getSiteUrl();
+  const lastModified = new Date().toISOString();
+  const entries = [
+    { path: "/", changefreq: "weekly", priority: "1.0" },
+    { path: "/about", changefreq: "monthly", priority: "0.8" },
+    { path: "/industries", changefreq: "weekly", priority: "0.75" },
+    { path: "/industries/ecommerce", changefreq: "weekly", priority: "0.85" },
+    { path: "/privacy", changefreq: "yearly", priority: "0.4" },
+    { path: "/terms", changefreq: "yearly", priority: "0.4" },
+  ];
+
+  const body = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${entries
+  .map(
+    (entry) => `  <url>
+    <loc>${siteUrl}${entry.path}</loc>
+    <lastmod>${lastModified}</lastmod>
+    <changefreq>${entry.changefreq}</changefreq>
+    <priority>${entry.priority}</priority>
+  </url>`,
+  )
+  .join("\n")}
+</urlset>`;
+
+  return new Response(body, {
+    headers: {
+      "Content-Type": "application/xml; charset=utf-8",
+    },
+  });
+}) satisfies APIRoute;
