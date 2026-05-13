@@ -4,9 +4,9 @@ import HomePage from "../components/HomePage.astro";
 import { getOrganization, getSiteUrl } from "../lib/site";
 
 const siteUrl = getSiteUrl();
-const title = "Tactas AI - Multi-Agent Systems for Business Workflow Execution";
+const title = "Tactas AI - AI Workflow Automation with Operational Control";
 const description =
-  "Tactas AI designs, sets up, and deploys company-specific multi-agent systems that execute business workflows across internal tools, SOPs, approval rules, and risk boundaries.";
+  "Tactas AI helps businesses build, monitor, and manage AI agents that run internal workflows, connect with business systems, track actions, explain decisions, and fit real operations.";
 const organization = getOrganization();
 
 const jsonLd = {
@@ -18,7 +18,7 @@ const jsonLd = {
       name: "Tactas AI",
       url: siteUrl,
       description:
-        "Company-specific multi-agent systems that execute business workflows across internal tools, SOPs, approval rules, and risk boundaries.",
+        "AI workflow automation with full operational control for internal business processes, system integration, agent monitoring, and implementation support.",
       publisher: { "@id": `${siteUrl}/#organization` },
       inLanguage: "en-US",
     },
@@ -29,13 +29,13 @@ const jsonLd = {
       name: "Tactas AI",
       url: siteUrl,
       description:
-        "Design and implementation of supervised multi-agent systems, workflow execution systems, API integrations, data workflows, and operational intelligence for business teams.",
+        "AI workflow automation, agent setup, workflow configuration, system integration, data preparation, monitoring, and operational support for business teams.",
       serviceType: [
-        "Supervised multi-agent systems",
-        "Workflow execution systems",
-        "API integration",
-        "Business process automation",
-        "Operational AI system design",
+        "AI workflow automation",
+        "AI agent implementation",
+        "Business system integration",
+        "Workflow monitoring",
+        "Operational AI support",
       ],
       areaServed: "Worldwide",
       provider: { "@id": `${siteUrl}/#organization` },
@@ -49,15 +49,14 @@ const jsonLd = {
   description={description}
   canonical="/"
   keywords={[
-    "multi-agent systems",
-    "business workflow execution",
     "AI workflow automation",
-    "supervised AI agents",
+    "AI agents for business operations",
     "business operations automation",
-    "operational AI systems",
+    "AI agent monitoring",
     "custom AI agents",
-    "AI execution systems",
-    "approval-aware automation",
+    "workflow automation support",
+    "AI system integration",
+    "operational control layer",
     "workflow automation for businesses",
   ]}
   openGraph={{
@@ -70,7 +69,7 @@ const jsonLd = {
         url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png",
         width: 1200,
         height: 630,
-        alt: "Tactas AI - Multi-agent systems for business workflow execution",
+        alt: "Tactas AI - AI workflow automation with operational control",
       },
     ],
   }}

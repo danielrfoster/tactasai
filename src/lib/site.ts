@@ -46,17 +46,17 @@ export function getOrganization() {
     name: "Tactas AI",
     url: siteUrl,
     description:
-      "Tactas AI designs, sets up, and deploys supervised multi-agent systems that help businesses execute repetitive operational workflows.",
+      "Tactas AI helps businesses automate operational workflows with AI agents, system integration, monitoring, management, and hands-on implementation support.",
     email: brandEmail,
     areaServed: "Worldwide",
     logo: `${siteUrl}/android-icon-192x192.png`,
     knowsAbout: [
-      "multi-agent systems",
-      "business workflow execution",
-      "supervised AI agents",
-      "approval-aware automation",
+      "AI workflow automation",
+      "AI agents for business operations",
+      "business system integration",
+      "workflow monitoring",
+      "agent decision explainability",
       "operations automation",
-      "workflow orchestration",
       "business process automation",
     ],
     contactPoint: [
