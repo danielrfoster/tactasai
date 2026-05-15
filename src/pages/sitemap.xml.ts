@@ -9,6 +9,8 @@ export const GET = (() => {
     { path: "/about", changefreq: "monthly", priority: "0.8" },
     { path: "/industries", changefreq: "weekly", priority: "0.75" },
     { path: "/industries/ecommerce", changefreq: "weekly", priority: "0.85" },
+    { path: "/industries/healthcare", changefreq: "weekly", priority: "0.85" },
+    { path: "/industries/professional-services", changefreq: "weekly", priority: "0.85" },
     { path: "/privacy", changefreq: "yearly", priority: "0.4" },
     { path: "/terms", changefreq: "yearly", priority: "0.4" },
   ];

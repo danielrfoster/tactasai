@@ -4,9 +4,9 @@ import HomePage from "../components/HomePage.astro";
 import { getOrganization, getSiteUrl } from "../lib/site";
 
 const siteUrl = getSiteUrl();
-const title = "Tactas AI - AI Workflow Automation with Operational Control";
+const title = "Tactas AI - AI Workflow Automation for Business Operations";
 const description =
-  "Tactas AI helps businesses build, monitor, and manage AI agents that run internal workflows, connect with business systems, track actions, explain decisions, and fit real operations.";
+  "Tactas AI helps operations teams deploy AI agents that automate support, admin, finance, and back-office workflows across existing tools, SOPs, and approvals with human control and action logs.";
 const organization = getOrganization();
 
 const jsonLd = {
@@ -18,7 +18,7 @@ const jsonLd = {
       name: "Tactas AI",
       url: siteUrl,
       description:
-        "AI workflow automation with full operational control for internal business processes, system integration, agent monitoring, and implementation support.",
+        "AI workflow automation with operational control for support, admin, finance, and back-office processes, system integration, agent monitoring, decision visibility, and implementation support.",
       publisher: { "@id": `${siteUrl}/#organization` },
       inLanguage: "en-US",
     },
@@ -29,16 +29,57 @@ const jsonLd = {
       name: "Tactas AI",
       url: siteUrl,
       description:
-        "AI workflow automation, agent setup, workflow configuration, system integration, data preparation, monitoring, and operational support for business teams.",
+        "AI agent workflow automation, agent setup, workflow configuration, system integration, data preparation, action logging, decision explanation, monitoring, and operational support for business operations teams.",
       serviceType: [
         "AI workflow automation",
         "AI agent implementation",
+        "AI customer support automation",
+        "AI back-office automation",
         "Business system integration",
-        "Workflow monitoring",
+        "AI agent monitoring",
+        "Decision visibility",
         "Operational AI support",
       ],
       areaServed: "Worldwide",
       provider: { "@id": `${siteUrl}/#organization` },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${siteUrl}/#faq`,
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What is AI workflow automation?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "AI workflow automation uses AI agents to handle repeatable business processes such as support triage, invoice review, CRM updates, document checks, routing, and approvals across existing tools.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can AI agents work with our existing tools?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. Tactas AI designs workflows around the tools, documents, databases, APIs, SOPs, and approval rules a team already uses.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Do humans approve agent actions?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Tactas AI workflows can include approval gates, risk checks, escalation paths, and human handoff for sensitive decisions or high-impact actions.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Which workflow should we automate first?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The best first workflow usually has clear business value, repeatable decisions, available data, manageable risk, and a measurable outcome such as faster response time or reduced manual review.",
+          },
+        },
+      ],
     },
   ],
 };
@@ -50,10 +91,18 @@ const jsonLd = {
   canonical="/"
   keywords={[
     "AI workflow automation",
+    "agentic workflow automation",
     "AI agents for business operations",
+    "AI agents that complete workflows",
     "business operations automation",
+    "AI operations automation",
+    "AI customer support automation",
+    "AI back-office automation",
+    "AI admin workflow automation",
     "AI agent monitoring",
+    "AI agent control layer",
     "custom AI agents",
+    "AI workflow implementation",
     "workflow automation support",
     "AI system integration",
     "operational control layer",
@@ -69,7 +118,7 @@ const jsonLd = {
         url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png",
         width: 1200,
         height: 630,
-        alt: "Tactas AI - AI workflow automation with operational control",
+        alt: "Tactas AI - AI workflow automation for business operations",
       },
     ],
   }}

@@ -3,18 +3,16 @@ import {
   ArrowRight,
   Bot,
   Check,
+  Clock3,
   CreditCard,
+  FileText,
   Headphones,
   Mail,
   PackageCheck,
-  RefreshCcw,
   Search,
   Send,
   ShieldCheck,
-  ShoppingBag,
   Sparkles,
-  TrendingUp,
-  Truck,
 } from "@lucide/astro";
 import Navbar from "./Navbar.astro";
 import { getBrandEmail } from "../lib/site";
@@ -24,168 +22,168 @@ interface Props {
   currentPath?: string;
 }
 
-const { siteUrl, currentPath = "/industries/ecommerce" } = Astro.props;
+const { siteUrl, currentPath = "/industries/healthcare" } = Astro.props;
 const brandEmail = getBrandEmail();
 const CONTAINER = "mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10";
 
 const proof = [
-  ["Product answers", "Answer sizing, compatibility, availability, bundles, and policy questions before shoppers leave."],
-  ["Order status", "Check shipping, payment, and fulfillment context across the systems your support team already uses."],
-  ["Returns intake", "Apply store policy, collect required details, and prepare labels or escalation packets."],
-  ["Campaign spikes", "Absorb repetitive questions during launches, promos, and after-hours demand without losing control."],
+  ["Patient intake", "Collect appointment details, contact information, insurance context, and required forms before staff review."],
+  ["Scheduling support", "Answer administrative scheduling questions, prepare appointment requests, and route changes or cancellations."],
+  ["Forms and documents", "Gather consents, referral notes, images, IDs, and pre-visit details without endless back-and-forth."],
+  ["Clinical handoff", "Clinical questions, urgent symptoms, medication changes, and care decisions route to licensed staff."],
 ];
 
 const painPoints = [
   {
-    title: "High-intent shoppers wait too long",
-    body: "Questions about fit, delivery, warranty, compatibility, and stock often arrive outside support hours or during campaign spikes.",
+    title: "Front-desk teams handle repetitive intake",
+    body: "Patients ask about availability, preparation, forms, referrals, insurance details, and next steps across phone, email, portal, and chat.",
   },
   {
-    title: "Support has to check too many places",
-    body: "One order issue can touch Shopify, Stripe, fulfillment, helpdesk, inventory, and a spreadsheet before anyone can act.",
+    title: "Context is scattered across systems",
+    body: "One request can require scheduling rules, patient records, forms, eligibility tools, billing notes, and staff judgment before action.",
   },
   {
-    title: "Returns and exceptions consume the team",
-    body: "Agents need policy, order history, item conditions, fraud signals, and approval rules before they can resolve the case.",
+    title: "Healthcare workflows need strict boundaries",
+    body: "Administrative automation must separate routine answers from clinical risk, privacy constraints, and decisions that require licensed staff.",
   },
 ];
 
 const workflows = [
   {
-    title: "Ecommerce AI chatbot",
-    body: "Answer product questions, compare options, recommend bundles, and collect buyer intent before checkout.",
-    icon: ShoppingBag,
+    title: "AI patient intake automation",
+    body: "Collect visit reason, demographics, preferred times, referral details, and missing information before staff review.",
+    icon: FileText,
   },
   {
-    title: "AI order status automation",
-    body: "Read order, payment, fulfillment, and shipping data to resolve common customer service questions fast.",
-    icon: Truck,
+    title: "AI appointment scheduling support",
+    body: "Prepare appointment requests, answer administrative scheduling FAQs, send reminders, and route exceptions.",
+    icon: Clock3,
   },
   {
-    title: "AI returns automation",
-    body: "Check eligibility, gather photos or details, apply policy, and escalate edge cases with the right context.",
-    icon: RefreshCcw,
+    title: "Healthcare document collection",
+    body: "Request forms, IDs, insurance cards, referrals, images, and pre-visit documents with clear status tracking.",
+    icon: PackageCheck,
   },
   {
-    title: "Ecommerce support triage",
-    body: "Classify tickets, enrich cases, draft responses, and route priority issues to the right owner.",
+    title: "Patient support triage",
+    body: "Classify administrative requests, enrich cases, draft staff-ready summaries, and escalate clinical questions.",
     icon: Headphones,
   },
   {
-    title: "Revenue recovery",
-    body: "Capture abandoned high-intent conversations, suggest follow-up, and sync qualified opportunities to CRM or email.",
-    icon: TrendingUp,
+    title: "Billing and insurance intake",
+    body: "Collect payer details, route eligibility questions, prepare billing follow-up, and keep sensitive decisions reviewed.",
+    icon: CreditCard,
   },
   {
-    title: "Exception control",
-    body: "Send refunds, discounts, fraud risk, VIP accounts, and unusual requests through human approval paths.",
+    title: "Healthcare AI control layer",
+    body: "Keep PHI access, approvals, escalations, audit notes, and human review boundaries visible to the operating team.",
     icon: ShieldCheck,
   },
 ];
 
 const searchIntents = [
   {
-    title: "AI customer support for ecommerce",
-    body: "Deflect repetitive pre-sale and post-purchase questions while keeping refunds, discounts, and exceptions behind human approval.",
+    title: "AI patient intake automation",
+    body: "Reduce repetitive front-desk intake while keeping clinical questions and urgent requests routed to qualified staff.",
   },
   {
-    title: "Shopify customer service automation",
-    body: "Connect product, order, customer, payment, and fulfillment context so the agent can answer with store-specific facts.",
+    title: "AI medical office assistant",
+    body: "Support administrative tasks such as appointment requests, document collection, reminders, and patient FAQs.",
   },
   {
-    title: "Automated order status support",
-    body: "Give shoppers fast answers about payment, fulfillment, shipment, delivery delays, and next steps without manual lookup.",
+    title: "AI appointment scheduling for clinics",
+    body: "Prepare scheduling requests, collect missing details, explain administrative next steps, and route exceptions.",
   },
   {
-    title: "AI returns management",
-    body: "Collect return reasons, photos, order details, policy checks, and approval packets before the team has to step in.",
+    title: "Healthcare administrative automation",
+    body: "Automate repeatable office workflows across forms, portal messages, patient support, billing prep, and staff handoff.",
   },
   {
-    title: "Gorgias and Zendesk workflows",
-    body: "Prepare enriched tickets, draft replies, route priority cases, and keep helpdesk actions tied to store policy.",
+    title: "AI healthcare chatbot with handoff",
+    body: "Answer non-clinical questions while escalating symptoms, medication, diagnosis, or treatment questions to humans.",
   },
   {
-    title: "AI chatbot for online stores",
-    body: "Move beyond generic FAQ replies with controlled workflows for product Q&A, order status, returns, and sales recovery.",
+    title: "Clinic workflow automation",
+    body: "Start with a measurable workflow such as intake, reminders, document collection, or billing question routing.",
   },
 ];
 
 const reviewTakeaways = [
-  "Find the highest-volume support workflow to automate first",
-  "Map Shopify, WooCommerce, helpdesk, order, payment, fulfillment, and policy context",
-  "Separate safe automation from refunds, discounts, fraud risk, and VIP approvals",
+  "Identify the highest-volume administrative workflow to automate first",
+  "Map scheduling, patient portal, forms, billing, insurance, and handoff requirements",
+  "Define which requests can be automated and which must route to licensed staff",
 ];
 
 const exampleWorkflow = [
-  ["01", "Customer asks", "Where is my order, and can I change the delivery address?"],
-  ["02", "Agent checks context", "Order, payment, fulfillment, shipment, customer history, and store policy."],
-  ["03", "Agent prepares answer", "Explains current status, delivery ETA, and whether address change is still allowed."],
-  ["04", "Guardrail decides", "Low-risk answer can send automatically; address changes or refunds require approval."],
-  ["05", "Team reviews", "Human gets the recommended action, source context, and approval-ready summary."],
+  ["01", "Patient request", "A patient asks for an appointment and mentions symptoms in a portal message."],
+  ["02", "Agent collects context", "Preferred times, contact details, existing patient status, insurance, and required forms."],
+  ["03", "Boundary check", "The agent does not diagnose or advise; clinical or urgent indicators trigger staff handoff."],
+  ["04", "Staff-ready summary", "The team receives a concise request with missing information, source context, and next steps."],
+  ["05", "Action logged", "Every intake step, handoff, note, and follow-up recommendation stays reviewable."],
 ];
 
 const integrations = [
-  "Shopify",
-  "WooCommerce",
-  "Stripe",
-  "Gorgias",
-  "Zendesk",
-  "Klaviyo",
-  "Meta Ads",
-  "Google Sheets",
-  "Inventory systems",
-  "Fulfillment APIs",
+  "EHR / EMR",
+  "Patient portals",
+  "Scheduling systems",
+  "Secure forms",
+  "Insurance tools",
+  "Billing systems",
+  "Telehealth platforms",
+  "Call center tools",
+  "Email and SMS",
   "CRMs",
+  "Spreadsheets",
   "Internal tools",
 ];
 
 const beforeAfter = [
-  ["Visitors ask questions and wait for support.", "AI customer support agents answer product, policy, and delivery questions with guardrails."],
-  ["Support checks orders manually across several tools.", "AI order status automation retrieves order, payment, shipment, and customer context in one flow."],
-  ["Returns rely on repetitive back-and-forth.", "AI returns automation collects required data, applies policy, and prepares approval-ready cases."],
-  ["Campaign spikes create ticket queues.", "Agents absorb routine volume and escalate only the cases that need judgment."],
-  ["Managers review scattered support quality.", "Every action, decision, escalation, and handoff is logged for review."],
+  ["Patients wait for basic scheduling answers.", "AI support collects administrative details and prepares staff-ready requests."],
+  ["Forms and documents arrive incomplete.", "Automation tracks missing files, sends reminders, and prepares complete intake packets."],
+  ["Staff manually sort portal messages.", "Requests are classified, summarized, and routed with clinical handoff rules."],
+  ["Billing questions interrupt front-desk flow.", "Agents collect payer context and prepare follow-up without making sensitive decisions."],
+  ["Leaders lack visibility into request handling.", "Every action, source, escalation, and handoff is logged for review."],
 ];
 
 const rollout = [
   {
     step: "01",
-    title: "Choose the revenue workflow",
-    body: "Start with one high-volume workflow: product Q&A, order support, returns, or campaign support.",
+    title: "Choose the admin workflow",
+    body: "Start with intake, scheduling support, reminders, document collection, or billing question routing.",
   },
   {
     step: "02",
-    title: "Map policies and tools",
-    body: "Model your store policies, approval rules, product data, order data, and support channels.",
+    title: "Map rules and boundaries",
+    body: "Define PHI access, escalation rules, clinical handoff triggers, approval paths, and staff review points.",
   },
   {
     step: "03",
     title: "Connect and test",
-    body: "Run real scenarios with refunds, delayed shipments, out-of-stock items, discounts, and VIP customers.",
+    body: "Run real scenarios for incomplete forms, appointment changes, urgent language, billing questions, and portal messages.",
   },
   {
     step: "04",
     title: "Launch supervised",
-    body: "Go live with logs, human approval paths, escalation rules, and weekly tuning from real conversations.",
+    body: "Go live with logs, monitoring, human review, exception alerts, and tuning from real operational feedback.",
   },
 ];
 
 const faq = [
   {
-    q: "Is this just an ecommerce AI chatbot?",
-    a: "No. The system can act like an AI chatbot for online stores, but it is designed as supervised ecommerce support automation that reads store data, applies policy, prepares actions, and escalates risky cases.",
+    q: "Does this provide medical diagnosis or treatment advice?",
+    a: "No. Tactas AI healthcare workflows are designed for administrative automation. Clinical questions, urgent symptoms, medication changes, diagnosis, and treatment decisions should route to qualified staff.",
   },
   {
-    q: "Can this work as a Shopify AI chatbot or WooCommerce support agent?",
-    a: "Yes. Tactas AI designs around your stack first. Common systems include Shopify, WooCommerce, Stripe, Gorgias, Zendesk, email tools, sheets, inventory systems, and fulfillment APIs.",
+    q: "Can this support healthcare privacy requirements?",
+    a: "Tactas AI designs around access control, logging, escalation boundaries, and your compliance review process. Final privacy and regulatory requirements depend on your systems, vendors, policies, and deployment model.",
   },
   {
-    q: "What ecommerce customer service workflow should we automate first?",
-    a: "The best first workflow is usually product Q&A, order status automation, returns intake, or support triage because the volume is frequent, measurable, and tied to support cost or conversion.",
+    q: "What healthcare workflow should we automate first?",
+    a: "The best first workflow is usually patient intake, appointment request preparation, reminders, document collection, billing question routing, or non-clinical FAQs because the volume is frequent and measurable.",
   },
   {
-    q: "Can it automate ecommerce customer service without losing control?",
-    a: "Yes. Routine answers and data lookups can run automatically, while refunds, discounts, policy overrides, fraud risk, and VIP cases can require human approval.",
+    q: "Can AI handle patient messages without losing control?",
+    a: "Yes, if the workflow is supervised. Routine administrative answers can be prepared or sent based on rules, while clinical risk, urgent language, PHI-sensitive actions, and exceptions can require human review.",
   },
 ];
 ---
@@ -203,22 +201,22 @@ const faq = [
           <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-[#1c2333] bg-[#0c111c]/80 px-3 py-1.5 backdrop-blur">
             <Sparkles class="h-3.5 w-3.5 text-[#67e8f9]" stroke-width={1.7} />
             <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#c8d0de]">
-              AI customer support for ecommerce
+              AI automation for healthcare operations
             </span>
           </div>
           <h1 class="text-[clamp(2.45rem,6vw,5rem)] font-bold leading-[0.96] tracking-[-0.045em] text-[#f5f7fb]">
-            AI support agents that answer shoppers, check orders, and prepare returns.
+            AI agents for patient intake, scheduling support, and clinic admin workflows.
           </h1>
-          <p class="mt-7 max-w-[39ch] text-[16px] leading-relaxed text-[#8a93a6] sm:text-[17px]">
-            Tactas AI helps ecommerce teams automate product questions, order status, returns intake, and support
-            triage across Shopify, WooCommerce, helpdesks, inventory, payment, and fulfillment tools.
+          <p class="mt-7 max-w-[41ch] text-[16px] leading-relaxed text-[#8a93a6] sm:text-[17px]">
+            Tactas AI helps healthcare and clinic teams automate administrative workflows across patient intake,
+            appointment requests, forms, billing questions, reminders, and staff handoff with clear clinical boundaries.
           </p>
           <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
               href="#contact"
               class="group inline-flex h-12 items-center justify-center rounded-md bg-[#22d3ee] px-6 text-[13px] font-semibold tracking-tight text-[#07090f] transition hover:bg-[#67e8f9]"
             >
-              Book ecommerce workflow review
+              Book healthcare workflow review
               <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-0.5" />
             </a>
             <a
@@ -230,8 +228,8 @@ const faq = [
             </a>
           </div>
           <p class="mt-5 max-w-[46ch] text-[13px] leading-relaxed text-[#5e6678]">
-            In a 30-minute review, we identify the support workflow with the clearest ROI, map the store systems and
-            policies required, and show which actions can run automatically or stay behind approval.
+            In a 30-minute review, we identify one high-volume administrative workflow, map system and privacy boundaries,
+            and define where AI can assist versus where staff must review.
           </p>
         </div>
 
@@ -242,19 +240,19 @@ const faq = [
               <div class="flex items-center gap-2.5">
                 <span class="flex h-2 w-2 rounded-full bg-[#34d399] pulse-dot" aria-hidden="true"></span>
                 <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#c8d0de]">
-                  commerce runtime
+                  clinic workflow
                 </span>
               </div>
-              <span class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#5e6678]">live workflow</span>
+              <span class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#5e6678]">supervised</span>
             </div>
 
             <div class="grid gap-0 lg:grid-cols-[1fr_230px]">
               <div class="px-5 py-5 sm:px-6">
                 <div class="grid gap-3 sm:grid-cols-3">
                   {[
-                    ["intent", "product fit"],
-                    ["cart", "$184"],
-                    ["risk", "low"],
+                    ["request", "new visit"],
+                    ["risk", "handoff"],
+                    ["status", "ready"],
                   ].map(([label, value]) => (
                     <div class="rounded-md border border-[#1c2333] bg-[#0a0e17] px-4 py-3">
                       <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#5e6678]">{label}</p>
@@ -266,19 +264,19 @@ const faq = [
                 <div class="mt-5 rounded-xl border border-[#1c2333] bg-[#07090f] p-4">
                   <div class="mb-4 flex items-center gap-2 text-[12px] text-[#8a93a6]">
                     <Bot class="h-4 w-4 text-[#67e8f9]" stroke-width={1.7} />
-                    agent trace
+                    intake trace
                   </div>
                   <div class="grid gap-3 font-mono text-[12px] leading-relaxed">
                     {[
-                      ["intake", "shopper asks: waterproof running shoe under $120"],
-                      ["search", "catalog.match(category=footwear, use=running)"],
-                      ["policy", "shipping_eta=2 days · return_window=30 days"],
-                      ["action", "recommend 3 products + size guidance"],
-                      ["handoff", "VIP cart value detected · notify sales owner"],
+                      ["intake", "patient requests appointment"],
+                      ["collect", "contact, availability, insurance, forms"],
+                      ["boundary", "clinical question detected"],
+                      ["handoff", "route summary to licensed staff"],
+                      ["log", "source, decision, and next step saved"],
                     ].map(([tag, line], index) => (
                       <div class="grid grid-cols-[28px_72px_1fr] gap-3 text-[#c8d0de]">
                         <span class="text-[#5e6678]">{String(index + 1).padStart(2, "0")}</span>
-                        <span class={tag === "handoff" ? "text-[#fbbf24]" : "text-[#67e8f9]"}>{tag}</span>
+                        <span class={tag === "boundary" || tag === "handoff" ? "text-[#fbbf24]" : "text-[#67e8f9]"}>{tag}</span>
                         <span>{line}</span>
                       </div>
                     ))}
@@ -289,13 +287,13 @@ const faq = [
                   <div class="rounded-md border border-[#1c2333] bg-[#0a0e17] p-4">
                     <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#5e6678]">next action</p>
                     <p class="mt-2 text-[14px] leading-relaxed text-[#f5f7fb]">
-                      Draft product answer, attach size notes, and create human handoff if shopper asks for discount.
+                      Prepare intake packet and route clinical language to staff before any response.
                     </p>
                   </div>
                   <div class="rounded-md border border-[#1c2333] bg-[#0a0e17] p-4">
                     <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#5e6678]">guardrail</p>
                     <p class="mt-2 text-[14px] leading-relaxed text-[#f5f7fb]">
-                      Refunds, exceptions, and policy overrides require approval before action.
+                      Diagnosis, treatment, medication, and urgent symptoms require human review.
                     </p>
                   </div>
                 </div>
@@ -304,7 +302,7 @@ const faq = [
               <aside class="border-t border-[#1c2333] px-5 py-5 lg:border-l lg:border-t-0">
                 <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#5e6678]">connected tools</p>
                 <div class="mt-4 grid gap-2.5">
-                  {["Storefront", "Orders", "Payments", "Helpdesk", "Inventory", "Email"].map((tool) => (
+                  {["EHR", "Portal", "Schedule", "Forms", "Billing", "SMS"].map((tool) => (
                     <div class="flex items-center justify-between rounded-md border border-[#1c2333] bg-[#0a0e17] px-3 py-2.5">
                       <span class="text-[12.5px] text-[#c8d0de]">{tool}</span>
                       <Check class="h-3.5 w-3.5 text-[#34d399]" stroke-width={2.5} />
@@ -336,17 +334,16 @@ const faq = [
           <div>
             <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">Execution blueprint</span>
             <h2 class="mt-4 text-[clamp(1.6rem,2.7vw,2.15rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-[#f5f7fb]">
-              The ecommerce AI chatbot runs as a controlled workflow, not an open-ended chat box.
+              Healthcare AI automation should run as a controlled administrative workflow.
             </h2>
             <p class="mt-4 max-w-md text-[14.5px] leading-relaxed text-[#8a93a6]">
-              Product data, order history, store policies, actions, approvals, and escalation paths are designed as one
-              execution layer.
+              Patient context, forms, routing rules, approval gates, logs, and escalation paths are designed before agents act.
             </p>
           </div>
           <div class="overflow-hidden rounded-2xl border border-[#1c2333] bg-[#0c111c] shadow-[0_40px_100px_-70px_rgba(0,0,0,0.95)]">
             <img
               src="/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"
-              alt="Tactas AI workflow execution system blueprint"
+              alt="Tactas AI healthcare workflow execution blueprint"
               width="1536"
               height="1024"
               class="h-auto w-full"
@@ -361,13 +358,13 @@ const faq = [
     <section id="problems" class="border-y border-[#1c2333] bg-[#0a0e17] py-24 lg:py-32">
       <div class={`${CONTAINER} grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20`}>
         <div>
-          <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">Why ecommerce</span>
+          <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">Why healthcare</span>
           <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-[#f5f7fb]">
-            Ecommerce customer service loses margin when routine work blocks fast answers.
+            Healthcare teams lose time when routine admin work blocks patient response.
           </h2>
           <p class="mt-5 max-w-md text-[15px] leading-relaxed text-[#8a93a6]">
-            The highest-value ecommerce AI automation use cases are daily moments where shoppers need an answer and
-            support needs clean execution.
+            The highest-value healthcare AI automation use cases are administrative workflows with high volume,
+            clear rules, and safe handoff points.
           </p>
         </div>
 
@@ -395,11 +392,11 @@ const faq = [
         <div class="max-w-3xl">
           <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">Buyer workflows</span>
           <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-[#f5f7fb]">
-            Built around the ecommerce support workflows buyers ask for.
+            Built around healthcare administrative workflows teams ask for.
           </h2>
           <p class="mt-5 max-w-xl text-[15px] leading-relaxed text-[#8a93a6]">
-            Tactas focuses on AI customer support, ecommerce AI chat, Shopify support automation, order status, and
-            returns workflows that connect directly to store operations.
+            Tactas focuses on clinic workflow automation, AI patient intake, appointment scheduling support,
+            document collection, billing prep, and supervised handoff.
           </p>
         </div>
 
@@ -422,10 +419,10 @@ const faq = [
         <div class="max-w-3xl">
           <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">Workflows</span>
           <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-[#f5f7fb]">
-            Start with ecommerce support automation closest to revenue and support cost.
+            Start with healthcare automation closest to front-desk load and patient access.
           </h2>
           <p class="mt-5 max-w-xl text-[15px] leading-relaxed text-[#8a93a6]">
-            Each AI support agent is designed around your catalog, policies, approval rules, and existing operating stack.
+            Each AI support agent is designed around your intake process, scheduling rules, forms, privacy boundaries, and existing operating stack.
           </p>
         </div>
 
@@ -456,11 +453,11 @@ const faq = [
         <div>
           <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">Integrations</span>
           <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-[#f5f7fb]">
-            Connected to Shopify, WooCommerce, helpdesks, and the tools that run your store.
+            Connected to the systems that run patient access and clinic operations.
           </h2>
           <p class="mt-5 max-w-md text-[15px] leading-relaxed text-[#8a93a6]">
-            Tactas AI is built around your systems, not a generic front-end widget. Agents can read ecommerce context,
-            prepare actions, and log every step.
+            Tactas AI is built around your existing tools, not a generic chat widget. Agents can gather administrative
+            context, prepare actions, and log every step.
           </p>
         </div>
         <div>
@@ -481,11 +478,11 @@ const faq = [
         <div>
           <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">Example workflow</span>
           <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-[#f5f7fb]">
-            Order status automation that answers fast without giving up control.
+            Patient intake automation that prepares work without making clinical decisions.
           </h2>
           <p class="mt-5 max-w-md text-[15px] leading-relaxed text-[#8a93a6]">
-            The first ecommerce AI workflow should be easy to measure. Order status is often a strong starting point because
-            the volume is high, the data is available, and risky actions can stay behind approval.
+            The first healthcare AI workflow should be measurable and bounded. Intake is often a strong starting point because
+            the volume is high, the required details are known, and clinical questions can route to staff.
           </p>
         </div>
 
@@ -506,7 +503,7 @@ const faq = [
         <div class="max-w-3xl">
           <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">Before / after</span>
           <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-[#f5f7fb]">
-            From delayed ecommerce support to controlled customer service automation.
+            From overloaded front desk to controlled healthcare admin automation.
           </h2>
         </div>
 
@@ -533,11 +530,11 @@ const faq = [
         <div class="max-w-3xl">
           <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">Rollout</span>
           <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-[#f5f7fb]">
-            Launch one measurable ecommerce AI workflow first.
+            Launch one measurable healthcare admin workflow first.
           </h2>
           <p class="mt-5 max-w-xl text-[15px] leading-relaxed text-[#8a93a6]">
-            Keep the first deployment narrow enough to ship, but important enough to prove value in support cost,
-            response speed, or conversion.
+            Keep the first deployment narrow enough to control, but important enough to prove value in front-desk load,
+            response speed, or intake completion.
           </p>
         </div>
 
@@ -564,7 +561,7 @@ const faq = [
         <div>
           <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">FAQ</span>
           <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-[#f5f7fb]">
-            Practical questions before the first ecommerce AI support agent.
+            Practical questions before the first healthcare AI workflow.
           </h2>
         </div>
         <div class="border-t border-[#1c2333]">
@@ -583,20 +580,20 @@ const faq = [
         <div>
           <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#67e8f9]/85">Contact</span>
           <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-[#f5f7fb]">
-            Book an ecommerce workflow review.
+            Book a healthcare workflow review.
           </h2>
           <p class="mt-5 max-w-md text-[15px] leading-relaxed text-[#8a93a6]">
-            Share your store platform, support volume, and the ecommerce AI automation workflow you want to improve first.
-            We will help identify the fastest path to a supervised workflow with clear ROI and approval rules.
+            Share your care setting, current systems, request volume, and the administrative workflow you want to improve first.
+            We will help define a supervised workflow with clear handoff and review rules.
           </p>
           <div class="mt-8 grid gap-4 text-[14px] text-[#c8d0de]">
             {reviewTakeaways.map((text, index) => {
-              const Icon = index === 0 ? PackageCheck : index === 1 ? Search : CreditCard;
+              const Icon = index === 0 ? PackageCheck : index === 1 ? Search : ShieldCheck;
               return (
-              <div class="flex items-start gap-3">
-                <Icon class="mt-0.5 h-4 w-4 shrink-0 text-[#67e8f9]" stroke-width={1.6} />
-                <span>{text}</span>
-              </div>
+                <div class="flex items-start gap-3">
+                  <Icon class="mt-0.5 h-4 w-4 shrink-0 text-[#67e8f9]" stroke-width={1.6} />
+                  <span>{text}</span>
+                </div>
               );
             })}
           </div>
@@ -608,13 +605,13 @@ const faq = [
           </div>
         </div>
         <form
-          id="ecommerce-inquiry-form"
+          id="healthcare-inquiry-form"
           class="rounded-2xl border border-[#1c2333] bg-gradient-to-b from-[#0c111c] to-[#0a0e17] p-6 shadow-[0_30px_90px_-60px_rgba(0,0,0,0.9)] sm:p-7"
         >
           <div class="mb-6 flex items-center gap-2.5">
             <span class="flex h-1.5 w-1.5 rounded-full bg-[#34d399] pulse-dot" aria-hidden="true"></span>
             <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#c8d0de]">
-              ecommerce workflow review
+              healthcare workflow review
             </span>
           </div>
 
@@ -625,36 +622,36 @@ const faq = [
             </label>
             <label class="grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#8a93a6]">
               Work email
-              <input required type="email" name="email" class="h-11 w-full rounded-md border border-[#1c2333] bg-[#0c111c] px-3.5 text-[14px] text-[#f5f7fb] outline-none transition placeholder:text-[#5e6678] focus:border-[#67e8f9]/60 focus:ring-2 focus:ring-[#67e8f9]/15" placeholder="you@store.com" />
+              <input required type="email" name="email" class="h-11 w-full rounded-md border border-[#1c2333] bg-[#0c111c] px-3.5 text-[14px] text-[#f5f7fb] outline-none transition placeholder:text-[#5e6678] focus:border-[#67e8f9]/60 focus:ring-2 focus:ring-[#67e8f9]/15" placeholder="you@clinic.com" />
             </label>
           </div>
 
           <div class="mt-4 grid gap-4 sm:grid-cols-2">
             <label class="grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#8a93a6]">
-              Company / store
-              <input required name="company" class="h-11 w-full rounded-md border border-[#1c2333] bg-[#0c111c] px-3.5 text-[14px] text-[#f5f7fb] outline-none transition placeholder:text-[#5e6678] focus:border-[#67e8f9]/60 focus:ring-2 focus:ring-[#67e8f9]/15" placeholder="Store name" />
+              Organization
+              <input required name="organization" class="h-11 w-full rounded-md border border-[#1c2333] bg-[#0c111c] px-3.5 text-[14px] text-[#f5f7fb] outline-none transition placeholder:text-[#5e6678] focus:border-[#67e8f9]/60 focus:ring-2 focus:ring-[#67e8f9]/15" placeholder="Clinic or practice name" />
             </label>
             <label class="grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#8a93a6]">
-              Platform
-              <input name="platform" class="h-11 w-full rounded-md border border-[#1c2333] bg-[#0c111c] px-3.5 text-[14px] text-[#f5f7fb] outline-none transition placeholder:text-[#5e6678] focus:border-[#67e8f9]/60 focus:ring-2 focus:ring-[#67e8f9]/15" placeholder="Shopify, WooCommerce..." />
+              Care setting
+              <input name="setting" class="h-11 w-full rounded-md border border-[#1c2333] bg-[#0c111c] px-3.5 text-[14px] text-[#f5f7fb] outline-none transition placeholder:text-[#5e6678] focus:border-[#67e8f9]/60 focus:ring-2 focus:ring-[#67e8f9]/15" placeholder="Clinic, dental, therapy, specialty..." />
             </label>
           </div>
 
           <label class="mt-4 grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#8a93a6]">
             Workflow to improve
-            <textarea required name="workflow" class="min-h-28 w-full rounded-md border border-[#1c2333] bg-[#0c111c] px-3.5 py-3 text-[14px] text-[#f5f7fb] outline-none transition placeholder:text-[#5e6678] focus:border-[#67e8f9]/60 focus:ring-2 focus:ring-[#67e8f9]/15" placeholder="Product questions, order status, returns, support triage, campaign spike..."></textarea>
+            <textarea required name="workflow" class="min-h-28 w-full rounded-md border border-[#1c2333] bg-[#0c111c] px-3.5 py-3 text-[14px] text-[#f5f7fb] outline-none transition placeholder:text-[#5e6678] focus:border-[#67e8f9]/60 focus:ring-2 focus:ring-[#67e8f9]/15" placeholder="Patient intake, scheduling requests, reminders, forms, billing questions, portal messages..."></textarea>
           </label>
 
           <label class="mt-4 grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#8a93a6]">
-            Monthly tickets / orders / conversations
-            <input name="volume" class="h-11 w-full rounded-md border border-[#1c2333] bg-[#0c111c] px-3.5 text-[14px] text-[#f5f7fb] outline-none transition placeholder:text-[#5e6678] focus:border-[#67e8f9]/60 focus:ring-2 focus:ring-[#67e8f9]/15" placeholder="e.g. 2,000 tickets / month" />
+            Monthly requests / appointments / messages
+            <input name="volume" class="h-11 w-full rounded-md border border-[#1c2333] bg-[#0c111c] px-3.5 text-[14px] text-[#f5f7fb] outline-none transition placeholder:text-[#5e6678] focus:border-[#67e8f9]/60 focus:ring-2 focus:ring-[#67e8f9]/15" placeholder="e.g. 1,500 portal messages / month" />
           </label>
 
           <button type="submit" class="group mt-6 inline-flex h-12 w-full items-center justify-center rounded-md bg-[#22d3ee] px-7 text-[13px] font-semibold tracking-tight text-[#07090f] transition hover:bg-[#67e8f9]">
-            Send ecommerce workflow
+            Send healthcare workflow
             <Send class="ml-2 h-4 w-4 transition group-hover:translate-x-0.5" />
           </button>
-          <p id="ecommerce-form-status" class="mt-3 text-center text-[12px] text-[#5e6678]">
+          <p id="healthcare-form-status" class="mt-3 text-center text-[12px] text-[#5e6678]">
             Prefer email? {brandEmail}
           </p>
         </form>
@@ -670,7 +667,7 @@ const faq = [
           <span class="text-sm font-semibold">Tactas AI</span>
         </div>
         <p class="mt-3 max-w-sm text-[13px] leading-relaxed text-[#8a93a6]">
-          Custom AI systems that run ecommerce support, sales, and operations workflows.
+          Custom AI systems that support healthcare intake, scheduling, admin, and operations workflows.
         </p>
       </div>
       <div class="flex flex-wrap gap-5 text-[12px] text-[#5e6678]">
@@ -685,29 +682,29 @@ const faq = [
 </div>
 
 <script define:vars={{ brandEmail }} is:inline>
-  const ecommerceForm = document.getElementById("ecommerce-inquiry-form");
-  const ecommerceStatus = document.getElementById("ecommerce-form-status");
-  ecommerceForm?.addEventListener("submit", (event) => {
+  const healthcareForm = document.getElementById("healthcare-inquiry-form");
+  const healthcareStatus = document.getElementById("healthcare-form-status");
+  healthcareForm?.addEventListener("submit", (event) => {
     event.preventDefault();
-    const form = new FormData(ecommerceForm);
-    const company = String(form.get("company") || "").trim() || "Tactas AI";
-    const subject = encodeURIComponent(`Ecommerce workflow inquiry - ${company}`);
+    const form = new FormData(healthcareForm);
+    const organization = String(form.get("organization") || "").trim() || "Healthcare organization";
+    const subject = encodeURIComponent(`Healthcare workflow inquiry - ${organization}`);
     const body = encodeURIComponent(
       [
         `Name: ${String(form.get("name") || "")}`,
         `Work email: ${String(form.get("email") || "")}`,
-        `Company / store: ${String(form.get("company") || "")}`,
-        `Store platform: ${String(form.get("platform") || "")}`,
+        `Organization: ${String(form.get("organization") || "")}`,
+        `Care setting: ${String(form.get("setting") || "")}`,
         "",
         "Workflow to improve:",
         String(form.get("workflow") || ""),
         "",
-        "Monthly tickets / orders / conversations:",
+        "Monthly requests / appointments / messages:",
         String(form.get("volume") || ""),
       ].join("\n"),
     );
-    if (ecommerceStatus) {
-      ecommerceStatus.textContent = "Opening your email client with the workflow details.";
+    if (healthcareStatus) {
+      healthcareStatus.textContent = "Opening your email client with the workflow details.";
     }
     window.location.href = `mailto:${brandEmail}?subject=${subject}&body=${body}`;
   });

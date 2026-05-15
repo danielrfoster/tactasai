@@ -26,148 +26,230 @@ const currentYear = new Date().getFullYear();
 const CONTAINER = "mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10";
 
 const stats = [
-  ["8+", "agent roles configured around real business workflows"],
-  ["24/7", "operational monitoring and support coverage"],
-  ["100%", "traceable actions, decisions, and system updates"],
-  ["1", "control layer across data, tools, workflows, and agents"],
+  ["30 min", "workflow review to identify a practical first automation"],
+  ["1", "high-value workflow mapped before expanding AI across teams"],
+  ["100%", "agent actions logged with context and decision notes"],
+  ["24/7", "workflow monitoring and operational support coverage"],
+];
+
+const whyPlans = [
+  {
+    name: "Launch",
+    subtitle: "for the first high-value workflow",
+    price: "1",
+    unit: "workflow pilot",
+    features: ["Workflow mapping", "Agent configuration", "System connections"],
+  },
+  {
+    name: "Control",
+    subtitle: "for teams that need trust",
+    price: "100%",
+    unit: "logged agent actions",
+    features: ["Decision explanations", "Approval rules", "Audit-ready activity"],
+  },
+  {
+    name: "Operate",
+    subtitle: "for daily business execution",
+    price: "24/7",
+    unit: "workflow visibility",
+    features: ["Exception alerts", "Performance tracking", "Support coverage"],
+  },
+  {
+    name: "Scale",
+    subtitle: "for company-wide automation",
+    price: "Custom",
+    unit: "agent operating model",
+    features: ["Multi-agent roles", "Resource governance", "Continuous improvement"],
+  },
+];
+
+const whyRuntimeMetrics = [
+  ["1", "control layer for workflows, tools, and agents"],
+  ["100%", "action logs and decision traces"],
+  ["24/7", "monitoring and operational support"],
+  ["8+", "specialized agent roles for business processes"],
+];
+
+const whyComparison = [
+  {
+    pain: "Workflow execution depends on disconnected tools, manual handoffs, and undocumented judgment.",
+    outcome: "Tactas AI creates a managed execution layer where agents retrieve context, follow SOPs, and advance the workflow with clear ownership.",
+  },
+  {
+    pain: "Approval rules, edge cases, and operational exceptions are difficult to standardize across teams.",
+    outcome: "Each workflow includes approval gates, exception routing, monitoring, and human handoff as part of the operating model.",
+  },
+  {
+    pain: "Leaders need evidence of what happened before AI can own meaningful operational work.",
+    outcome: "Every action keeps its context, decision rationale, system update history, and audit trail attached.",
+  },
 ];
 
 const platformColumns = [
   {
     title: "connect",
-    heading: "Connect your business systems",
-    body: "Link agents with the tools, data sources, documents, APIs, and internal systems your teams already use to run daily operations.",
-    points: ["CRM, helpdesk, docs, and API context", "Workflow-specific data setup", "Integration-ready operating model"],
+    heading: "Connect the systems work depends on",
+    body: "Give agents governed access to the CRM, helpdesk, documents, databases, APIs, and internal tools they need to complete real work.",
+    points: ["CRM, helpdesk, docs, and API context", "Workflow-specific data preparation", "Secure tool and resource access"],
     icon: Network,
   },
   {
-    title: "protect",
-    heading: "Monitor and explain agent work",
-    body: "Track what agents do, why they made decisions, which data was used, and where each workflow needs review or escalation.",
-    points: ["Action and decision logs", "Behavior explanation", "Performance and exception monitoring"],
+    title: "govern",
+    heading: "Control what agents can decide and do",
+    body: "Keep AI inside your operating rules with approvals, risk checks, escalation paths, action limits, and complete decision visibility.",
+    points: ["Approval gates and risk checks", "Action and decision logs", "Human handoff for exceptions"],
     icon: ShieldCheck,
   },
   {
-    title: "build",
-    heading: "Build around your operating process",
-    body: "Design agents around your SOPs, resources, approval rules, data, and goals so automation fits the way the company actually works.",
-    points: ["Agent training and workflow setup", "Resource and access management", "Hands-on implementation support"],
+    title: "operate",
+    heading: "Improve workflows after launch",
+    body: "Monitor performance, review edge cases, adjust agent behavior, and keep workflows aligned as your process, data, and team change.",
+    points: ["Agent training and workflow setup", "Performance and exception monitoring", "Hands-on implementation support"],
     icon: Zap,
   },
 ];
 
 const productSections = [
   {
-    eyebrow: "Operations platform",
-    heading: "One platform to automate and control internal workflows.",
-    body: "Tactas combines AI agents, workflow configuration, system integration, monitoring, and support into one company-specific automation system.",
+    eyebrow: "Agentic workflow automation",
+    heading: "Turn repeatable operations into agent-run workflows.",
+    body: "Tactas AI maps the process, connects the required systems, configures specialist agents, and gives teams a managed workflow that can execute, log, and escalate work.",
     cta: "See the platform",
     href: "#platform",
-    imageLabel: "Workflow control",
-    imageTitle: "Designed for real business processes, not generic chat surfaces.",
-    imageBody: "Every workflow can move through intake, data lookup, policy review, action execution, logging, and human approval without losing context.",
+    imageLabel: "Workflow execution",
+    imageTitle: "Built for governed business execution.",
+    imageBody: "Move work through intake, context lookup, reasoning, approval, action, reporting, and human escalation without losing traceability.",
   },
   {
-    eyebrow: "Operational visibility",
-    heading: "See what every agent is doing and why.",
-    body: "Activity tracking, decision explanation, performance monitoring, and escalation paths help teams manage automation with confidence.",
-    cta: "Review control layer",
+    eyebrow: "Control and governance",
+    heading: "Know what every agent did, why, and what happens next.",
+    body: "Decision explanations, activity logs, approval queues, resource controls, and performance monitoring help teams trust automation in real operations.",
+    cta: "Review controls",
     href: "#control",
     imageLabel: "Control layer",
-    imageTitle: "Operators keep visibility and control.",
-    imageBody: "Use approval queues, action limits, risk scoring, decision notes, and exception alerts to keep automation aligned with the business.",
+    imageTitle: "Operators stay in control of AI execution.",
+    imageBody: "Use approval queues, action limits, risk scoring, decision notes, and exception alerts to keep agents aligned with policy and business judgment.",
   },
   {
-    eyebrow: "Implementation support",
-    heading: "Set up agents around your data, tools, and goals.",
-    body: "Start with one workflow, configure the required data and systems, train agents on real operations, then expand once the process is stable.",
+    eyebrow: "Implementation partnership",
+    heading: "Launch with your SOPs, tools, data, and edge cases handled.",
+    body: "Start with one high-impact workflow, configure the required context and integrations, validate behavior, then expand once the operating model is stable.",
     cta: "View solution patterns",
     href: "#solutions",
     imageLabel: "Deployment path",
-    imageTitle: "Start narrow, then expand with support.",
-    imageBody: "Tactas is strongest where teams have scattered tools, repeatable decisions, and a need for automation that can be monitored and improved.",
+    imageTitle: "Start focused, prove value, then scale.",
+    imageBody: "Tactas AI is strongest where teams have scattered systems, repeatable decisions, compliance needs, and work that must be monitored after launch.",
   },
 ];
 
 const solutionCards = [
   {
-    title: "Automate support workflows",
-    body: "Triage tickets, gather customer context, apply policies, draft responses, update records, and escalate exceptions from one controlled workflow.",
+    title: "AI customer support automation",
+    body: "Triage tickets, retrieve customer context, apply policies, draft replies, update CRM records, and escalate sensitive cases with a complete activity trail.",
   },
   {
-    title: "Manage AI agents with control",
-    body: "Track agent actions, explain decisions, monitor performance, manage resources, and keep important workflows inside clear operating boundaries.",
+    title: "AI back-office automation",
+    body: "Handle document checks, invoice preparation, record updates, routing, reconciliation tasks, and repetitive reviews with monitored AI agents.",
   },
   {
-    title: "Deploy AI into back-office operations",
-    body: "Move repetitive checks, routing, document handling, data preparation, and record updates from manual queues into monitored automation.",
+    title: "Finance and admin workflows",
+    body: "Review invoices, route approvals, reconcile records, prepare summaries, and keep every decision tied to the source data and policy used.",
   },
   {
-    title: "Scale with implementation support",
-    body: "Get help mapping workflows, configuring systems, training agents, monitoring operations, and improving automation after launch.",
+    title: "AI agent control center",
+    body: "Track agent actions, explain decisions, manage resources, monitor exceptions, and keep high-impact work inside clear operating boundaries.",
   },
 ];
 
 const resourceCards = [
   {
     type: "Guide",
-    title: "How to choose the first workflow for AI automation",
-    body: "A practical starting point for finding internal workflows with clear ROI, available data, and manageable operating risk.",
+    title: "How to choose your first AI workflow",
+    body: "A practical framework for finding workflows with clear value, available data, repeatable decisions, and manageable operating risk.",
   },
   {
     type: "Use case",
-    title: "What a controlled AI workflow looks like in production",
-    body: "See how intake, data lookup, decision explanation, action logging, and human handoff can live in one managed loop.",
+    title: "What controlled agent execution looks like",
+    body: "See how intake, context retrieval, reasoning, approval, action logging, and human handoff work together in one managed loop.",
   },
   {
     type: "Brief",
-    title: "Why generic chatbots stall in real operations",
-    body: "The gap between answering questions and completing internal work is where most teams feel the friction.",
+    title: "What operational-grade AI agents require",
+    body: "A practical look at context access, policy adherence, approval design, action logging, and performance monitoring for production workflows.",
   },
   {
     type: "Workshop",
-    title: "Map your data, tools, workflows, and agent boundaries with Tactas",
-    body: "A structured session for deciding what agents should do, what systems they need, and where support or approval is required.",
+    title: "Map your tools, SOPs, approvals, and agent boundaries",
+    body: "A structured session for defining what agents should do, which systems they need, and where humans must review or approve work.",
   },
 ];
 
 const getStartedCards = [
   {
-    title: "Start with one workflow",
-    body: "Pick the internal process where faster execution, better tracking, and reliable support matter most.",
-    cta: "Book workflow review",
+    title: "Start with one high-value workflow",
+    body: "Choose the process where response time, manual effort, accuracy, or approval visibility would create the clearest business impact.",
+    cta: "Book a workflow automation review",
   },
   {
-    title: "Need help choosing?",
-    body: "We can help identify which workflow has the cleanest path to measurable impact and practical setup.",
-    cta: "Find the right starting point",
+    title: "Not sure where to begin?",
+    body: "We can help score candidate workflows by data readiness, operating risk, manual effort, and measurable return.",
+    cta: "Identify the best starting point",
   },
   {
     title: "Talk to an implementation expert",
-    body: "Discuss your SOPs, data, tools, edge cases, agent training, and support needs with someone who builds for real operations.",
+    body: "Discuss your SOPs, tools, data, edge cases, approval rules, and support model with someone who builds operational AI systems.",
     cta: "Contact Tactas",
+  },
+];
+
+const workflowReviewPoints = [
+  "Identify one business process AI agents can automate safely",
+  "Map the tools, data, SOPs, approvals, and human handoffs required",
+  "Define the first launch plan with controls, logs, and measurable outcomes",
+];
+
+const faqItems = [
+  {
+    q: "What is AI workflow automation?",
+    a: "AI workflow automation uses agents to handle repeatable business processes across tools, data, SOPs, approvals, and human handoffs. Common examples include support triage, CRM updates, invoice review, document checks, and routing work to the right owner.",
+  },
+  {
+    q: "Can Tactas AI work with our existing tools?",
+    a: "Yes. Tactas AI designs around the systems your team already uses, including CRMs, helpdesks, documents, databases, spreadsheets, APIs, and internal tools.",
+  },
+  {
+    q: "Do humans approve agent actions?",
+    a: "They can. Workflows can include approval gates, risk checks, action limits, escalation paths, and human review for sensitive or high-impact decisions.",
+  },
+  {
+    q: "Which workflow should we automate first?",
+    a: "The best first workflow has clear business value, repeatable steps, available data, manageable risk, and a measurable outcome such as faster response time, fewer manual reviews, or better approval visibility.",
+  },
+  {
+    q: "How long does the first workflow take to launch?",
+    a: "Most teams should start with a narrow pilot rather than a broad transformation. The timeline depends on data access, system integrations, approval rules, and the amount of testing required before live use.",
   },
 ];
 
 const quotes = [
   {
-    company: "Support teams",
+    company: "Workflow visibility",
     quote:
-      "Tactas helps teams move from scattered tabs and tribal knowledge into one control layer where agent actions are visible, logged, and explainable.",
-    role: "Workflow design perspective",
+      "AI becomes useful in operations when every action has context, every decision can be explained, and every exception has a clear owner.",
+    role: "Control principle",
   },
   {
-    company: "Finance operations",
+    company: "Implementation model",
     quote:
-      "The value is not just speed. It is having a system that can apply policy, prepare actions, monitor resources, and surface the right exception at the right time.",
-    role: "Controlled automation perspective",
+      "The fastest path to value is one well-scoped workflow with connected data, trained agents, approval rules, and monitoring from day one.",
+    role: "Deployment principle",
   },
 ];
 
 ---
 
 <div class="min-h-screen bg-[#F8FAFC] text-[#0F172A]">
-  <Navbar currentPath={currentPath} ctaLabel="Book demo" ctaHref="#contact" theme="light" />
+  <Navbar currentPath={currentPath} ctaLabel="Workflow review" ctaHref="#contact" theme="light" />
 
   <main>
     <section class="relative overflow-hidden border-b border-[#D8E1EA] bg-[#F8FAFC]">
@@ -266,22 +348,26 @@ const quotes = [
       <div class={`${CONTAINER} relative z-10 py-12 sm:py-16 lg:pb-12 lg:pt-20`}>
         <div class="min-h-[460px] max-w-[1120px] pb-24 lg:min-h-[560px] lg:pb-40">
           <h1 class="max-w-[1040px] text-[clamp(3.45rem,8.7vw,7.05rem)] font-semibold leading-[0.91] tracking-[-0.055em] text-[#0F172A]">
-            AI workflow automation with full operational control.
+            AI agents that run business workflows with human control.
           </h1>
           <p class="mt-7 max-w-[61rem] text-[18px] leading-[1.65] text-[#475569] sm:text-[20px]">
-            Tactas helps businesses build, monitor, and manage AI agents that run internal workflows.
-            From system integration and data setup to agent training, activity tracking, decision explanation,
-            resource management, and 24/7 support, we help automation fit real operations.
+            Tactas AI helps operations teams automate support, admin, finance, and back-office workflows
+            across existing tools, SOPs, and approval rules. Start with one high-value process, keep every
+            action logged, and add human review wherever business judgment matters.
           </p>
 
           <div class="mt-8 flex flex-col gap-3 sm:flex-row">
             <a href="#contact" class="inline-flex h-12 items-center justify-center rounded-[4px] bg-[#06B6D4] px-6 text-[14px] font-semibold text-white transition hover:bg-[#0891B2]">
-              Book a demo
+              Book a workflow review
             </a>
             <a href="#platform" class="inline-flex h-12 items-center justify-center rounded-[4px] border border-[#94A3B8] bg-transparent px-6 text-[14px] font-semibold text-[#0F172A] transition hover:border-[#06B6D4] hover:text-[#0891B2]">
               Explore platform
             </a>
           </div>
+          <p class="mt-4 max-w-[45rem] text-[14px] leading-relaxed text-[#64748B]">
+            In a 30-minute review, we identify the first workflow to automate, map the systems and data
+            required, and show where approvals or handoffs should stay human.
+          </p>
         </div>
 
         <div class="mt-8 grid gap-5 lg:mt-10 lg:grid-cols-2">
@@ -302,9 +388,9 @@ const quotes = [
               </div>
             </div>
             <div class="p-6">
-              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#0E7490]">Join a workflow review</p>
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#0E7490]">Workflow automation review</p>
               <h2 class="mt-3 text-[22px] font-semibold leading-tight tracking-[-0.03em] text-[#0F172A]">
-                See how one internal process becomes a monitored AI workflow.
+                Identify the workflow with the clearest path to controlled automation.
               </h2>
               <span class="mt-5 inline-flex items-center gap-2 text-[14px] font-semibold text-[#0F172A] group-hover:text-[#06B6D4]">
                 Book a session
@@ -328,9 +414,9 @@ const quotes = [
               </div>
             </div>
             <div class="p-6">
-              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#0E7490]">New AI operations guide</p>
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#0E7490]">AI operations playbook</p>
               <h2 class="mt-3 text-[22px] font-semibold leading-tight tracking-[-0.03em] text-[#0F172A]">
-                Six principles for building AI agents that fit business operations.
+                A practical model for production-grade AI workflow execution.
               </h2>
               <span class="mt-5 inline-flex items-center gap-2 text-[14px] font-semibold text-[#0F172A] group-hover:text-[#06B6D4]">
                 Get the guide
@@ -344,7 +430,7 @@ const quotes = [
 
     <section class="border-b border-[#D8E1EA] bg-white">
       <div class={`${CONTAINER} py-7`}>
-        <div class="grid border-y border-[#D8E1EA] sm:grid-cols-2 lg:grid-cols-4">
+        <div class="grid border-y border-[#D8E1EA] sm:grid-cols-2 lg:grid-cols-3">
           {stats.map(([value, label], index) => (
             <div class:list={[
               "border-b border-[#D8E1EA] px-4 py-5 lg:border-b-0 lg:border-r",
@@ -359,18 +445,159 @@ const quotes = [
       </div>
     </section>
 
+    <section id="why-choose" class="border-b border-[#D8E1EA] bg-[#F8FAFC]">
+      <div class={`${CONTAINER} py-16 lg:py-20`}>
+        <div class="grid gap-10 lg:grid-cols-[0.84fr_1.16fr] lg:items-center">
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Why choose Tactas AI</p>
+            <h2 class="mt-4 max-w-[760px] text-4xl font-semibold leading-tight tracking-normal text-[#0F172A] sm:text-5xl lg:text-[58px]">
+              AI workflow automation built for teams that need control.
+            </h2>
+            <p class="mt-5 max-w-[42rem] text-[17px] leading-relaxed text-[#475569]">
+              Tactas AI turns repeatable support, finance, admin, and operations work into agent-run workflows with connected context, approval gates, action logs, and live monitoring.
+            </p>
+            <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+              <a href="#contact" class="inline-flex h-11 items-center justify-center rounded-[4px] bg-[#06B6D4] px-5 text-[14px] font-semibold text-white transition hover:bg-[#0891B2]">
+                Review your workflow
+              </a>
+              <a href="#platform" class="inline-flex h-11 items-center justify-center rounded-[4px] border border-[#94A3B8] px-5 text-[14px] font-semibold text-[#0F172A] transition hover:border-[#06B6D4] hover:text-[#0891B2]">
+                See control layer
+              </a>
+            </div>
+          </div>
+
+          <div class="overflow-hidden rounded-[8px] border border-[#CBD5E1] bg-white shadow-[0_28px_80px_-66px_rgba(15,23,42,0.34)]">
+            <div class="flex items-center justify-between border-b border-[#D8E1EA] bg-[#F1F5F9] px-4 py-3">
+              <div class="flex items-center gap-2">
+                <span class="h-2.5 w-2.5 rounded-full bg-[#06B6D4]"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-[#CBD5E1]"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-[#CBD5E1]"></span>
+              </div>
+              <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#0E7490]">Workflow live</p>
+            </div>
+
+            <div class="p-5 sm:p-6">
+              <div class="grid gap-3 sm:grid-cols-5">
+                {["Intake", "Context", "Reason", "Approve", "Execute"].map((step, index) => (
+                  <div class:list={[
+                    "relative min-h-24 rounded-[6px] border p-3",
+                    index === 2 ? "border-[#06B6D4] bg-[#E6FBFF]" : "border-[#D8E1EA] bg-[#F8FAFC]",
+                  ]}>
+                    <div class:list={[
+                      "flex h-8 w-8 items-center justify-center rounded-[4px]",
+                      index === 2 ? "bg-[#06B6D4] text-white" : "bg-white text-[#06B6D4]",
+                    ]}>
+                      {index === 0 ? <Mail class="h-4 w-4" stroke-width={1.8} /> : index === 1 ? <Network class="h-4 w-4" stroke-width={1.8} /> : index === 2 ? <Bot class="h-4 w-4" stroke-width={1.8} /> : index === 3 ? <ShieldCheck class="h-4 w-4" stroke-width={1.8} /> : <Send class="h-4 w-4" stroke-width={1.8} />}
+                    </div>
+                    <p class="mt-3 text-[13px] font-semibold text-[#0F172A]">{step}</p>
+                    <p class="mt-1 text-[11px] leading-relaxed text-[#64748B]">
+                      {index === 0 ? "Request captured" : index === 1 ? "Data retrieved" : index === 2 ? "Decision drafted" : index === 3 ? "Policy checked" : "Action logged"}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div class="mt-5 grid gap-3 sm:grid-cols-3">
+                {[
+                  ["Decision", "Refund allowed under policy"],
+                  ["Source", "CRM, ticket history, SOP"],
+                  ["Next step", "Human approval required"],
+                ].map(([label, value]) => (
+                  <div class="rounded-[6px] border border-[#D8E1EA] bg-white p-4">
+                    <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#64748B]">{label}</p>
+                    <p class="mt-2 text-[14px] font-semibold leading-snug text-[#0F172A]">{value}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 overflow-hidden rounded-[8px] border border-[#D8E1EA] bg-white">
+          <div class="grid border-b border-[#D8E1EA] lg:grid-cols-[0.92fr_1.08fr]">
+            <div class="border-b border-[#D8E1EA] p-6 lg:border-b-0 lg:border-r lg:p-7">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#64748B]">Without an operating layer</p>
+              <h3 class="mt-3 text-[28px] font-semibold leading-tight tracking-normal text-[#0F172A]">
+                Critical workflows depend on manual coordination and fragmented context.
+              </h3>
+            </div>
+            <div class="bg-[#0F172A] p-6 text-white lg:p-7">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#67E8F9]">Tactas AI operating layer</p>
+              <h3 class="mt-3 text-[28px] font-semibold leading-tight tracking-normal">
+                Agents execute defined processes with governance, visibility, and accountability.
+              </h3>
+            </div>
+          </div>
+
+          <div class="divide-y divide-[#D8E1EA]">
+            {whyComparison.map((item) => (
+              <div class="grid lg:grid-cols-[0.92fr_1.08fr]">
+                <div class="border-b border-[#D8E1EA] p-5 lg:border-b-0 lg:border-r lg:p-6">
+                  <div class="flex gap-3">
+                    <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#94A3B8]"></span>
+                    <p class="text-[15px] leading-relaxed text-[#475569]">{item.pain}</p>
+                  </div>
+                </div>
+                <div class="bg-[#F8FAFC] p-5 lg:p-6">
+                  <div class="flex gap-3">
+                    <Check class="mt-0.5 h-4.5 w-4.5 shrink-0 text-[#06B6D4]" stroke-width={2.4} />
+                    <p class="text-[15px] font-medium leading-relaxed text-[#334155]">{item.outcome}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {whyPlans.map((plan) => (
+            <article class="rounded-[8px] border border-[#D8E1EA] bg-white p-5 shadow-[0_18px_50px_-44px_rgba(15,23,42,0.26)]">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#0E7490]">Capability</p>
+              <h3 class="mt-3 text-[22px] font-semibold leading-tight tracking-normal text-[#0F172A]">{plan.name}</h3>
+              <p class="mt-2 text-[14px] leading-relaxed text-[#64748B]">{plan.subtitle}</p>
+              <div class="mt-5 flex items-end gap-2">
+                <p class="text-[38px] font-semibold leading-none tracking-normal text-[#0F172A]">{plan.price}</p>
+                <p class="pb-1 text-[13px] leading-tight text-[#64748B]">{plan.unit}</p>
+              </div>
+              <ul class="mt-5 grid gap-2.5 text-[13px] text-[#334155]">
+                {plan.features.map((feature) => (
+                  <li class="flex items-start gap-2">
+                    <Check class="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#06B6D4]" stroke-width={2.4} />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-6 grid overflow-hidden rounded-[8px] border border-[#D8E1EA] bg-white sm:grid-cols-2 lg:grid-cols-4">
+          {whyRuntimeMetrics.map(([value, label], index) => (
+            <div class:list={[
+              "border-b border-[#D8E1EA] p-5 sm:border-r lg:border-b-0",
+              index % 2 === 1 ? "sm:border-r-0 lg:border-r" : "",
+              index === whyRuntimeMetrics.length - 1 ? "lg:border-r-0" : "",
+            ]}>
+              <p class="text-[36px] font-semibold leading-none tracking-normal text-[#0F172A]">{value}</p>
+              <p class="mt-3 text-[14px] leading-relaxed text-[#475569]">{label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <section id="platform" class="border-b border-[#D8E1EA] bg-[#F8FAFC]">
       <div class={`${CONTAINER} py-16 lg:py-20`}>
         <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div>
             <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Tactas platform</p>
             <h2 class="mt-4 text-4xl font-semibold leading-tight tracking-normal text-[#0F172A] sm:text-5xl lg:text-[56px]">
-              The control layer for AI agents that touch real systems.
+              The operating layer for AI workflow automation.
             </h2>
           </div>
           <p class="max-w-[48rem] text-[17px] leading-relaxed text-[#475569] lg:justify-self-end">
-            Tactas combines workflow automation with hands-on implementation support, giving teams one place
-            to configure agents, connect systems, track work, explain behavior, monitor performance, and improve operations.
+            Tactas AI gives teams one place to configure agents, connect business systems, govern actions,
+            explain decisions, monitor performance, and improve workflows that run across real operations.
           </p>
         </div>
 
@@ -437,11 +664,11 @@ const quotes = [
 
               <div class="absolute left-[270px] top-[58px] w-[620px] text-center">
                 <p class="text-[15px] leading-relaxed text-[#334155]">
-                  TactasAI gives businesses one operating layer to connect data, train agents, execute workflows, explain decisions, monitor performance, and improve automation over time.
+                  Tactas AI connects business context, specialist agents, approval logic, action execution, monitoring, and support into one operational AI layer.
                 </p>
                 <div class="mt-3 inline-flex items-center gap-2 rounded-full border border-[#CBD5E1] bg-white px-3 py-1.5 text-[12px] text-[#64748B]">
                   <span class="h-2 w-2 rounded-full bg-[#06B6D4]"></span>
-                  AI workflow operating system
+                  Agentic workflow operating layer
                 </div>
               </div>
 
@@ -563,7 +790,7 @@ const quotes = [
               Built around your data, tools, and operating process.
             </h2>
             <p class="mt-5 text-[17px] leading-relaxed text-[#475569]">
-              Tactas turns SOPs, system connections, data requirements, agent behavior, monitoring, and support into one repeatable automation system.
+              Most AI projects stall between a useful demo and a reliable operating workflow. Tactas AI closes that gap with implementation, controls, monitoring, and support.
             </p>
           </div>
 
@@ -615,11 +842,11 @@ const quotes = [
           <div>
             <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#67E8F9]">Control and support</p>
             <h2 class="mt-4 text-4xl font-semibold leading-tight tracking-normal sm:text-5xl lg:text-[54px]">
-              AI automation your team can monitor and manage.
+              AI execution your team can inspect, approve, and improve.
             </h2>
             <p class="mt-5 max-w-[35rem] text-[17px] leading-relaxed text-[#CBD5E1]">
-              Keep AI actions inside your operating model with activity tracking, explanation, resource management,
-              approval paths, human escalation, and operational support.
+              Keep agent work inside your operating model with decision explanations, approval gates, resource controls,
+              exception alerts, human handoff, and support for live workflows.
             </p>
           </div>
 
@@ -650,7 +877,7 @@ const quotes = [
           <div class="max-w-3xl">
             <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Solutions</p>
             <h2 class="mt-4 text-4xl font-semibold leading-tight tracking-normal text-[#0F172A] sm:text-5xl lg:text-[52px]">
-              Start where workflow automation can create measurable control.
+              Start where AI automation creates measurable business impact.
             </h2>
           </div>
           <a href="#contact" class="inline-flex h-11 items-center justify-center rounded-[4px] border border-[#94A3B8] px-4 text-[14px] font-semibold text-[#0F172A] hover:border-[#06B6D4] hover:text-[#06B6D4]">
@@ -678,7 +905,7 @@ const quotes = [
           <div>
             <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Resources</p>
             <h2 class="mt-4 text-4xl font-semibold leading-tight tracking-normal text-[#0F172A] sm:text-5xl lg:text-[50px]">
-              Practical material for teams deploying AI workflow automation.
+              Practical material for teams moving AI agents into operations.
             </h2>
           </div>
 
@@ -700,17 +927,54 @@ const quotes = [
       </div>
     </section>
 
+    <section id="faq" class="border-b border-[#D8E1EA] bg-[#F8FAFC]">
+      <div class={`${CONTAINER} py-16 lg:py-20`}>
+        <div class="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">FAQ</p>
+            <h2 class="mt-4 text-4xl font-semibold leading-tight tracking-normal text-[#0F172A] sm:text-5xl lg:text-[50px]">
+              Questions business teams ask before launching AI workflow automation.
+            </h2>
+            <p class="mt-5 text-[17px] leading-relaxed text-[#475569]">
+              Start with the workflow, the data, the approval rules, and the operating risk. The agents come after the process is clear.
+            </p>
+          </div>
+
+          <div class="grid border border-[#D8E1EA] bg-white">
+            {faqItems.map((item, index) => (
+              <article class="grid gap-3 border-b border-[#D8E1EA] p-6 last:border-b-0 sm:grid-cols-[80px_1fr]">
+                <p class="font-mono text-[11px] text-[#0E7490]">{String(index + 1).padStart(2, "0")}</p>
+                <div>
+                  <h3 class="text-[20px] font-semibold tracking-normal text-[#0F172A]">{item.q}</h3>
+                  <p class="mt-3 text-[15px] leading-relaxed text-[#475569]">{item.a}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="contact" class="bg-white">
       <div class={`${CONTAINER} py-16 lg:py-20`}>
         <div class="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14">
           <div>
             <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Get started</p>
             <h2 class="mt-4 text-4xl font-semibold leading-tight tracking-normal text-[#0F172A] sm:text-5xl lg:text-[54px]">
-              Bring one workflow into a managed AI system first.
+              Turn one workflow into a managed AI operating system.
             </h2>
             <p class="mt-5 max-w-[34rem] text-[17px] leading-relaxed text-[#475569]">
-              Share the process, tools, data sources, support needs, approval constraints, and repetitive work your team wants AI agents to handle.
+              Share the process, tools, data sources, approval constraints, repetitive decisions, and support needs your team wants agents to handle.
             </p>
+
+            <div class="mt-6 grid gap-3">
+              {workflowReviewPoints.map((point) => (
+                <div class="flex items-start gap-3 border border-[#D8E1EA] bg-[#F8FAFC] px-4 py-3">
+                  <Check class="mt-0.5 h-4 w-4 shrink-0 text-[#06B6D4]" stroke-width={2.4} />
+                  <p class="text-[14px] leading-relaxed text-[#334155]">{point}</p>
+                </div>
+              ))}
+            </div>
 
             <div class="mt-8 border border-[#D8E1EA]">
               {getStartedCards.map((card) => (
@@ -734,7 +998,7 @@ const quotes = [
             <div class="flex items-center justify-between gap-4 border-b border-[#D8E1EA] pb-4">
               <div>
                 <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#0E7490]">Start simple</p>
-              <h3 class="mt-2 text-[24px] font-semibold tracking-normal text-[#0F172A]">What workflow should AI help with?</h3>
+              <h3 class="mt-2 text-[24px] font-semibold tracking-normal text-[#0F172A]">What workflow should your AI agents run?</h3>
               </div>
               <Send class="hidden h-5 w-5 text-[#06B6D4] sm:block" stroke-width={1.8} />
             </div>
@@ -781,7 +1045,7 @@ const quotes = [
             <span class="text-sm font-semibold text-[#0F172A]">Tactas AI</span>
           </div>
           <p class="mt-4 text-[14px] leading-relaxed text-[#475569]">
-            AI workflow automation for internal operations, system setup, agent monitoring, management, and support.
+            Agentic workflow automation for internal operations, system integration, decision visibility, monitoring, and support.
           </p>
         </div>
 

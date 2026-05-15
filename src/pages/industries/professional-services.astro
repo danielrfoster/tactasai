@@ -1,0 +1,146 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProfessionalServicesIndustryPage from "../../components/ProfessionalServicesIndustryPage.astro";
+import { getBrandEmail, getSiteUrl } from "../../lib/site";
+
+const siteUrl = getSiteUrl();
+const pageUrl = `${siteUrl}/industries/professional-services`;
+const brandEmail = getBrandEmail();
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      name: "AI Automation for Professional Services",
+      url: pageUrl,
+      description:
+        "Tactas AI builds supervised AI workflow automation for professional services firms, including client intake, lead qualification, document collection, proposal preparation, CRM updates, and follow-up.",
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      about: { "@id": `${siteUrl}/#organization` },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
+      name: "AI Automation for Professional Services",
+      serviceType: [
+        "AI automation for professional services",
+        "AI client intake automation",
+        "AI legal intake assistant",
+        "AI accounting workflow automation",
+        "AI consulting workflow automation",
+        "CRM workflow automation",
+        "Document collection automation",
+        "Client support automation",
+      ],
+      url: pageUrl,
+      description:
+        "Supervised AI agent systems for professional services client intake, lead qualification, document collection, proposal preparation, CRM updates, follow-up, and human approval workflows.",
+      provider: { "@id": `${siteUrl}/#organization` },
+      areaServed: "Worldwide",
+      audience: {
+        "@type": "BusinessAudience",
+        audienceType: "Professional services firms, law firms, accounting firms, agencies, consultancies, and B2B service teams",
+      },
+      offers: {
+        "@type": "Offer",
+        availability: "https://schema.org/InStock",
+        url: pageUrl,
+        category: "Professional services workflow automation",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Is this only for law firms or accounting firms?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. The same workflow patterns apply to agencies, consultancies, financial advisors, legal teams, accounting firms, implementation partners, and other B2B service teams.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can AI make legal, financial, or pricing decisions?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Tactas AI workflows should prepare context and recommendations, not replace licensed or accountable judgment. Advice, pricing, conflict checks, and sensitive commitments can require human approval.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What professional services workflow should we automate first?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The best first workflow is usually client intake, lead qualification, document collection, proposal preparation, CRM updates, or follow-up because the work is frequent and measurable.",
+          },
+        },
+      ],
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "Industries", item: `${siteUrl}/industries` },
+        { "@type": "ListItem", position: 3, name: "Professional Services", item: pageUrl },
+      ],
+    },
+    {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      email: brandEmail,
+      areaServed: "Worldwide",
+      availableLanguage: ["en", "vi"],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="AI Automation for Professional Services | Tactas AI"
+  description="Tactas AI builds supervised AI workflow automation for professional services firms, including client intake, lead qualification, document collection, proposal preparation, CRM updates, and follow-up."
+  canonical="/industries/professional-services"
+  keywords={[
+    "AI automation for professional services",
+    "AI client intake automation",
+    "AI legal intake assistant",
+    "AI accounting workflow automation",
+    "AI consulting workflow automation",
+    "CRM workflow automation",
+    "Document collection automation",
+    "Client support automation",
+    "AI lead qualification",
+    "Professional services workflow automation",
+    "AI proposal automation",
+    "AI client onboarding automation",
+  ]}
+  openGraph={{
+    title: "AI Automation for Professional Services | Tactas AI",
+    description:
+      "Supervised AI agents for client intake, lead qualification, document collection, proposal preparation, CRM updates, and follow-up workflows.",
+    url: pageUrl,
+    type: "website",
+    images: [
+      {
+        url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png",
+        width: 1536,
+        height: 1024,
+        alt: "Tactas AI professional services workflow automation",
+      },
+    ],
+  }}
+  twitter={{
+    card: "summary_large_image",
+    title: "AI Automation for Professional Services | Tactas AI",
+    description:
+      "Supervised AI agents for client intake, document collection, CRM updates, proposal preparation, and follow-up workflows.",
+    images: ["/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"],
+  }}
+  jsonLd={jsonLd}
+>
+  <ProfessionalServicesIndustryPage siteUrl={siteUrl} currentPath="/industries/professional-services" />
+</BaseLayout>

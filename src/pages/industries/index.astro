@@ -31,18 +31,18 @@ const industries = [
     status: "Planned",
   },
   {
-    title: "Clinics",
-    href: "/#contact",
-    body: "Front-desk support for appointment intake, reminders, FAQs, and human handoff.",
+    title: "Healthcare",
+    href: "/industries/healthcare",
+    body: "Patient intake, appointment support, forms, reminders, billing questions, and clinical handoff boundaries.",
     icon: HeartPulse,
-    status: "Planned",
+    status: "Live",
   },
   {
     title: "Professional services",
-    href: "/#contact",
-    body: "Client intake, qualification, document collection, appointment routing, and CRM updates.",
+    href: "/industries/professional-services",
+    body: "Client intake, lead qualification, document collection, proposal prep, CRM updates, and follow-up workflows.",
     icon: Briefcase,
-    status: "Planned",
+    status: "Live",
   },
 ];
 
@@ -55,7 +55,7 @@ const jsonLd = {
       name: "AI Automation by Industry",
       url: pageUrl,
       description:
-        "Tactas AI industry landing pages for ecommerce, real estate, education, clinics, and professional services workflow automation.",
+        "Tactas AI industry landing pages for ecommerce, healthcare, real estate, education, and professional services workflow automation.",
       isPartOf: { "@id": `${siteUrl}/#website` },
     },
     {
@@ -71,7 +71,7 @@ const jsonLd = {
 
 <BaseLayout
   title="AI Automation by Industry"
-  description="Explore Tactas AI industry landing pages for ecommerce, real estate, education, clinics, and professional services workflow automation."
+  description="Explore Tactas AI industry landing pages for ecommerce, healthcare, real estate, education, and professional services workflow automation."
   canonical="/industries"
   jsonLd={jsonLd}
 >

@@ -46,18 +46,22 @@ export function getOrganization() {
     name: "Tactas AI",
     url: siteUrl,
     description:
-      "Tactas AI helps businesses automate operational workflows with AI agents, system integration, monitoring, management, and hands-on implementation support.",
+      "Tactas AI helps businesses deploy AI agents that complete internal workflows across tools, data, SOPs, and approvals with action logs, decision explanations, monitoring, and implementation support.",
     email: brandEmail,
     areaServed: "Worldwide",
     logo: `${siteUrl}/android-icon-192x192.png`,
     knowsAbout: [
       "AI workflow automation",
+      "agentic workflow automation",
       "AI agents for business operations",
+      "AI agents that complete workflows",
       "business system integration",
-      "workflow monitoring",
-      "agent decision explainability",
+      "AI agent monitoring",
+      "AI agent control layer",
+      "agent decision explanations",
       "operations automation",
       "business process automation",
+      "AI workflow implementation",
     ],
     contactPoint: [
       {

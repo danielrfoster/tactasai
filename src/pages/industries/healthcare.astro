@@ -1,0 +1,146 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HealthcareIndustryPage from "../../components/HealthcareIndustryPage.astro";
+import { getBrandEmail, getSiteUrl } from "../../lib/site";
+
+const siteUrl = getSiteUrl();
+const pageUrl = `${siteUrl}/industries/healthcare`;
+const brandEmail = getBrandEmail();
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      name: "AI Automation for Healthcare Operations",
+      url: pageUrl,
+      description:
+        "Tactas AI builds supervised healthcare AI automation for patient intake, appointment scheduling support, document collection, billing question routing, patient FAQs, and staff handoff.",
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      about: { "@id": `${siteUrl}/#organization` },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
+      name: "AI Automation for Healthcare Operations",
+      serviceType: [
+        "Healthcare AI automation",
+        "AI patient intake automation",
+        "AI medical office assistant",
+        "AI appointment scheduling for clinics",
+        "Healthcare administrative automation",
+        "Clinic workflow automation",
+        "AI healthcare chatbot with handoff",
+        "Patient support automation",
+      ],
+      url: pageUrl,
+      description:
+        "Supervised AI agent systems for healthcare administrative workflows, patient intake, scheduling support, forms, billing intake, patient messages, and human escalation.",
+      provider: { "@id": `${siteUrl}/#organization` },
+      areaServed: "Worldwide",
+      audience: {
+        "@type": "BusinessAudience",
+        audienceType: "Healthcare operators, clinics, medical offices, dental practices, therapy practices, and patient access teams",
+      },
+      offers: {
+        "@type": "Offer",
+        availability: "https://schema.org/InStock",
+        url: pageUrl,
+        category: "Healthcare operations automation",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Does this provide medical diagnosis or treatment advice?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. Tactas AI healthcare workflows are designed for administrative automation. Clinical questions, urgent symptoms, medication changes, diagnosis, and treatment decisions should route to qualified staff.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can this support healthcare privacy requirements?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Tactas AI designs around access control, logging, escalation boundaries, and your compliance review process. Final privacy and regulatory requirements depend on your systems, vendors, policies, and deployment model.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What healthcare workflow should we automate first?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The best first workflow is usually patient intake, appointment request preparation, reminders, document collection, billing question routing, or non-clinical FAQs because the volume is frequent and measurable.",
+          },
+        },
+      ],
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "Industries", item: `${siteUrl}/industries` },
+        { "@type": "ListItem", position: 3, name: "Healthcare", item: pageUrl },
+      ],
+    },
+    {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      email: brandEmail,
+      areaServed: "Worldwide",
+      availableLanguage: ["en", "vi"],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="AI Automation for Healthcare Operations | Tactas AI"
+  description="Tactas AI builds supervised healthcare AI automation for patient intake, appointment scheduling support, document collection, billing question routing, patient FAQs, and staff handoff."
+  canonical="/industries/healthcare"
+  keywords={[
+    "Healthcare AI automation",
+    "AI patient intake automation",
+    "AI medical office assistant",
+    "AI appointment scheduling for clinics",
+    "Healthcare administrative automation",
+    "Clinic workflow automation",
+    "AI healthcare chatbot",
+    "Patient support automation",
+    "AI front desk automation",
+    "AI appointment reminders",
+    "Healthcare document collection automation",
+    "AI billing intake automation",
+  ]}
+  openGraph={{
+    title: "AI Automation for Healthcare Operations | Tactas AI",
+    description:
+      "Supervised healthcare AI agents for patient intake, appointment requests, forms, billing question routing, patient FAQs, and staff handoff.",
+    url: pageUrl,
+    type: "website",
+    images: [
+      {
+        url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png",
+        width: 1536,
+        height: 1024,
+        alt: "Tactas AI healthcare workflow execution system",
+      },
+    ],
+  }}
+  twitter={{
+    card: "summary_large_image",
+    title: "AI Automation for Healthcare Operations | Tactas AI",
+    description:
+      "Supervised healthcare AI agents for patient intake, appointment scheduling support, forms, billing intake, and staff handoff.",
+    images: ["/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"],
+  }}
+  jsonLd={jsonLd}
+>
+  <HealthcareIndustryPage siteUrl={siteUrl} currentPath="/industries/healthcare" />
+</BaseLayout>

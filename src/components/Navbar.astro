@@ -5,6 +5,7 @@ import {
   ChevronDown,
   FileText,
   Globe2,
+  HeartPulse,
   Headphones,
   Menu,
   Network,
@@ -75,8 +76,9 @@ const navGroups: NavGroup[] = [
         title: "Industries",
         links: [
           { label: "Ecommerce", href: "/industries/ecommerce" },
+          { label: "Healthcare", href: "/industries/healthcare" },
+          { label: "Professional services", href: "/industries/professional-services" },
           { label: "SaaS operations", href: "/#solutions" },
-          { label: "Back-office", href: "/#solutions" },
         ],
       },
       {
@@ -210,6 +212,8 @@ const navGroups: NavGroup[] = [
           { label: "About Tactas AI", href: "/about" },
           { label: "Industries", href: "/industries" },
           { label: "Ecommerce", href: "/industries/ecommerce" },
+          { label: "Healthcare", href: "/industries/healthcare" },
+          { label: "Professional services", href: "/industries/professional-services" },
         ],
       },
       {
@@ -376,6 +380,14 @@ const isActive = (href: string) => {
         <a href="/industries/ecommerce" class="inline-flex items-center gap-2" data-mobile-link>
           <ShoppingBag class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
           Ecommerce
+        </a>
+        <a href="/industries/healthcare" class="inline-flex items-center gap-2" data-mobile-link>
+          <HeartPulse class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
+          Healthcare
+        </a>
+        <a href="/industries/professional-services" class="inline-flex items-center gap-2" data-mobile-link>
+          <Briefcase class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
+          Professional services
         </a>
         <a href="/#solutions" class="inline-flex items-center gap-2" data-mobile-link>
           <Headphones class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />

@@ -13,10 +13,10 @@ const jsonLd = {
     {
       "@type": "WebPage",
       "@id": `${pageUrl}#webpage`,
-      name: "AI Customer Support for Ecommerce Stores",
+      name: "AI Customer Support Automation for Ecommerce Stores",
       url: pageUrl,
       description:
-        "Tactas AI builds supervised AI customer support agents for ecommerce stores, including product questions, order status, returns, Shopify support workflows, and revenue recovery.",
+        "Tactas AI builds supervised ecommerce AI support agents for product questions, order status automation, returns intake, Shopify customer service automation, Gorgias and Zendesk workflows, and revenue recovery.",
       isPartOf: { "@id": `${siteUrl}/#website` },
       about: { "@id": `${siteUrl}/#organization` },
       inLanguage: "en-US",
@@ -24,17 +24,22 @@ const jsonLd = {
     {
       "@type": "Service",
       "@id": `${pageUrl}#service`,
-      name: "AI Customer Support for Ecommerce Stores",
+      name: "AI Customer Support Automation for Ecommerce Stores",
       serviceType: [
         "AI customer support for ecommerce",
         "Ecommerce AI chatbot",
         "Ecommerce support automation",
+        "Shopify customer service automation",
         "AI order status automation",
+        "Automated order status support",
         "AI returns automation",
+        "AI returns management",
+        "Gorgias AI automation",
+        "Zendesk ecommerce automation",
       ],
       url: pageUrl,
       description:
-        "Supervised AI agent systems for ecommerce product Q&A, order status, returns intake, support triage, Shopify support workflows, and revenue recovery.",
+        "Supervised AI agent systems for ecommerce product Q&A, order status, returns intake, support triage, Shopify support workflows, helpdesk automation, and revenue recovery.",
       provider: { "@id": `${siteUrl}/#organization` },
       areaServed: "Worldwide",
       audience: {
@@ -57,7 +62,7 @@ const jsonLd = {
           name: "Is this just an ecommerce AI chatbot?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "No. Tactas AI designs supervised ecommerce support automation systems that can read store data, apply policies, prepare actions, and escalate risky cases.",
+            text: "No. Tactas AI designs supervised ecommerce support automation systems that can read store data, apply policies, prepare actions, and escalate risky cases such as refunds, discounts, fraud risk, or VIP requests.",
           },
         },
         {
@@ -65,7 +70,7 @@ const jsonLd = {
           name: "Can this work as a Shopify AI chatbot or WooCommerce support agent?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes. Tactas AI designs around your stack first. Common systems include Shopify, WooCommerce, Stripe, helpdesks, email tools, spreadsheets, and fulfillment APIs.",
+            text: "Yes. Tactas AI designs around your stack first. Common systems include Shopify, WooCommerce, Stripe, Gorgias, Zendesk, email tools, spreadsheets, inventory systems, and fulfillment APIs.",
           },
         },
         {
@@ -73,7 +78,7 @@ const jsonLd = {
           name: "What ecommerce customer service workflow should we automate first?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "The best first workflow is usually product Q&A, order status automation, returns automation, or support triage because the pain is frequent and measurable.",
+            text: "The best first workflow is usually product Q&A, order status automation, returns intake, or support triage because the volume is frequent, measurable, and tied to support cost or conversion.",
           },
         },
       ],
@@ -98,25 +103,30 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title="AI Customer Support for Ecommerce Stores | Tactas AI"
-  description="Tactas AI builds supervised AI customer support agents for ecommerce stores, including product questions, order status, returns, Shopify support workflows, and revenue recovery."
+  title="AI Customer Support Automation for Ecommerce | Tactas AI"
+  description="Tactas AI builds supervised ecommerce AI support agents for product questions, order status, returns intake, Shopify customer service automation, Gorgias and Zendesk workflows, and revenue recovery."
   canonical="/industries/ecommerce"
   keywords={[
     "AI customer support for ecommerce",
     "ecommerce AI chatbot",
     "AI agents for ecommerce",
     "ecommerce support automation",
+    "Shopify customer service automation",
     "Shopify AI chatbot",
     "AI chatbot for online stores",
     "AI order status automation",
+    "automated order status support",
     "AI returns automation",
+    "AI returns management",
+    "Gorgias AI automation",
+    "Zendesk ecommerce automation",
     "AI support agent for Shopify stores",
     "automate ecommerce customer service",
   ]}
   openGraph={{
-    title: "AI Customer Support for Ecommerce Stores | Tactas AI",
+    title: "AI Customer Support Automation for Ecommerce | Tactas AI",
     description:
-      "Supervised ecommerce AI agents for product questions, order status, returns, Shopify support workflows, and controlled support automation.",
+      "Supervised ecommerce AI agents for product questions, order status, returns intake, Shopify customer service automation, helpdesk workflows, and controlled support automation.",
     url: pageUrl,
     type: "website",
     images: [
@@ -130,9 +140,9 @@ const jsonLd = {
   }}
   twitter={{
     card: "summary_large_image",
-    title: "AI Customer Support for Ecommerce Stores | Tactas AI",
+    title: "AI Customer Support Automation for Ecommerce | Tactas AI",
     description:
-      "Supervised ecommerce AI agents for product questions, order status, returns, Shopify support workflows, and revenue recovery.",
+      "Supervised ecommerce AI agents for product questions, order status, returns intake, Shopify customer service automation, and revenue recovery.",
     images: ["/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"],
   }}
   jsonLd={jsonLd}
