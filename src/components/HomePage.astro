@@ -1,6 +1,5 @@
 ---
 import {
-  ArrowRight,
   ArrowUpRight,
   Bot,
   Check,
@@ -26,48 +25,26 @@ const currentYear = new Date().getFullYear();
 const CONTAINER = "mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10";
 
 const stats = [
-  ["30 min", "workflow review to identify a practical first automation"],
-  ["1", "high-value workflow mapped before expanding AI across teams"],
-  ["100%", "agent actions logged with context and decision notes"],
-  ["24/7", "workflow monitoring and operational support coverage"],
-];
-
-const whyPlans = [
   {
-    name: "Launch",
-    subtitle: "for the first high-value workflow",
-    price: "1",
-    unit: "workflow pilot",
-    features: ["Workflow mapping", "Agent configuration", "System connections"],
+    value: "30 min",
+    label: "workflow review to identify the first practical automation",
+    eyebrow: "Discovery",
   },
   {
-    name: "Control",
-    subtitle: "for teams that need trust",
-    price: "100%",
-    unit: "logged agent actions",
-    features: ["Decision explanations", "Approval rules", "Audit-ready activity"],
+    value: "1",
+    label: "high-value workflow mapped before expanding across teams",
+    eyebrow: "Pilot scope",
   },
   {
-    name: "Operate",
-    subtitle: "for daily business execution",
-    price: "24/7",
-    unit: "workflow visibility",
-    features: ["Exception alerts", "Performance tracking", "Support coverage"],
+    value: "100%",
+    label: "agent actions logged with context and decision notes",
+    eyebrow: "Traceability",
   },
   {
-    name: "Scale",
-    subtitle: "for company-wide automation",
-    price: "Custom",
-    unit: "agent operating model",
-    features: ["Multi-agent roles", "Resource governance", "Continuous improvement"],
+    value: "24/7",
+    label: "workflow monitoring and operational support coverage",
+    eyebrow: "Operations",
   },
-];
-
-const whyRuntimeMetrics = [
-  ["1", "control layer for workflows, tools, and agents"],
-  ["100%", "action logs and decision traces"],
-  ["24/7", "monitoring and operational support"],
-  ["8+", "specialized agent roles for business processes"],
 ];
 
 const whyComparison = [
@@ -109,39 +86,6 @@ const platformColumns = [
   },
 ];
 
-const productSections = [
-  {
-    eyebrow: "Agentic workflow automation",
-    heading: "Turn repeatable operations into agent-run workflows.",
-    body: "Tactas AI maps the process, connects the required systems, configures specialist agents, and gives teams a managed workflow that can execute, log, and escalate work.",
-    cta: "See the platform",
-    href: "#platform",
-    imageLabel: "Workflow execution",
-    imageTitle: "Built for governed business execution.",
-    imageBody: "Move work through intake, context lookup, reasoning, approval, action, reporting, and human escalation without losing traceability.",
-  },
-  {
-    eyebrow: "Control and governance",
-    heading: "Know what every agent did, why, and what happens next.",
-    body: "Decision explanations, activity logs, approval queues, resource controls, and performance monitoring help teams trust automation in real operations.",
-    cta: "Review controls",
-    href: "#control",
-    imageLabel: "Control layer",
-    imageTitle: "Operators stay in control of AI execution.",
-    imageBody: "Use approval queues, action limits, risk scoring, decision notes, and exception alerts to keep agents aligned with policy and business judgment.",
-  },
-  {
-    eyebrow: "Implementation partnership",
-    heading: "Launch with your SOPs, tools, data, and edge cases handled.",
-    body: "Start with one high-impact workflow, configure the required context and integrations, validate behavior, then expand once the operating model is stable.",
-    cta: "View solution patterns",
-    href: "#solutions",
-    imageLabel: "Deployment path",
-    imageTitle: "Start focused, prove value, then scale.",
-    imageBody: "Tactas AI is strongest where teams have scattered systems, repeatable decisions, compliance needs, and work that must be monitored after launch.",
-  },
-];
-
 const solutionCards = [
   {
     title: "AI customer support automation",
@@ -158,47 +102,6 @@ const solutionCards = [
   {
     title: "AI agent control center",
     body: "Track agent actions, explain decisions, manage resources, monitor exceptions, and keep high-impact work inside clear operating boundaries.",
-  },
-];
-
-const resourceCards = [
-  {
-    type: "Guide",
-    title: "How to choose your first AI workflow",
-    body: "A practical framework for finding workflows with clear value, available data, repeatable decisions, and manageable operating risk.",
-  },
-  {
-    type: "Use case",
-    title: "What controlled agent execution looks like",
-    body: "See how intake, context retrieval, reasoning, approval, action logging, and human handoff work together in one managed loop.",
-  },
-  {
-    type: "Brief",
-    title: "What operational-grade AI agents require",
-    body: "A practical look at context access, policy adherence, approval design, action logging, and performance monitoring for production workflows.",
-  },
-  {
-    type: "Workshop",
-    title: "Map your tools, SOPs, approvals, and agent boundaries",
-    body: "A structured session for defining what agents should do, which systems they need, and where humans must review or approve work.",
-  },
-];
-
-const getStartedCards = [
-  {
-    title: "Start with one high-value workflow",
-    body: "Choose the process where response time, manual effort, accuracy, or approval visibility would create the clearest business impact.",
-    cta: "Book a workflow automation review",
-  },
-  {
-    title: "Not sure where to begin?",
-    body: "We can help score candidate workflows by data readiness, operating risk, manual effort, and measurable return.",
-    cta: "Identify the best starting point",
-  },
-  {
-    title: "Talk to an implementation expert",
-    body: "Discuss your SOPs, tools, data, edge cases, approval rules, and support model with someone who builds operational AI systems.",
-    cta: "Contact Tactas",
   },
 ];
 
@@ -231,21 +134,6 @@ const faqItems = [
   },
 ];
 
-const quotes = [
-  {
-    company: "Workflow visibility",
-    quote:
-      "AI becomes useful in operations when every action has context, every decision can be explained, and every exception has a clear owner.",
-    role: "Control principle",
-  },
-  {
-    company: "Implementation model",
-    quote:
-      "The fastest path to value is one well-scoped workflow with connected data, trained agents, approval rules, and monitoring from day one.",
-    role: "Deployment principle",
-  },
-];
-
 ---
 
 <div class="min-h-screen bg-[#F8FAFC] text-[#0F172A]">
@@ -253,8 +141,10 @@ const quotes = [
 
   <main>
     <section class="relative overflow-hidden border-b border-[#D8E1EA] bg-[#F8FAFC]">
-      <div class="pointer-events-none absolute inset-x-0 top-0 h-[640px] bg-[linear-gradient(180deg,#F8FAFC_0%,#EEF6FB_62%,rgba(238,246,251,0)_100%)]"></div>
-      <div class="pointer-events-none absolute inset-0 opacity-[0.34] [background-image:linear-gradient(to_right,rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.05)_1px,transparent_1px)] [background-size:64px_64px]"></div>
+      <div id="hero-globe-background" class="absolute inset-0 z-0 h-full min-h-[720px] opacity-90" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(248,250,252,0.96)_0%,rgba(248,250,252,0.86)_42%,rgba(248,250,252,0.58)_72%,rgba(248,250,252,0.32)_100%)]"></div>
+      <div class="pointer-events-none absolute inset-x-0 top-0 z-[1] h-[640px] bg-[linear-gradient(180deg,rgba(248,250,252,0.76)_0%,rgba(238,246,251,0.42)_62%,rgba(238,246,251,0)_100%)]"></div>
+      <div class="pointer-events-none absolute inset-0 z-[2] opacity-[0.28] [background-image:linear-gradient(to_right,rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.05)_1px,transparent_1px)] [background-size:64px_64px]"></div>
 
       <div class="pointer-events-none absolute bottom-[-2rem] right-[-1.5rem] z-0 hidden w-[min(760px,58vw)] rotate-[-1.5deg] opacity-[0.72] lg:block" aria-hidden="true">
         <div class="overflow-hidden rounded-[8px] border border-[#CBD5E1] bg-white/82 shadow-[0_36px_90px_-66px_rgba(15,23,42,0.38)] backdrop-blur-sm">
@@ -370,77 +260,30 @@ const quotes = [
           </p>
         </div>
 
-        <div class="mt-8 grid gap-5 lg:mt-10 lg:grid-cols-2">
-          <a href="#contact" class="group grid overflow-hidden rounded-[3px] border border-[#D8E1EA] bg-white shadow-[0_22px_60px_-52px_rgba(15,23,42,0.22)] transition hover:border-[#06B6D4] lg:grid-cols-[0.72fr_1fr]">
-            <div class="min-h-[170px] bg-[#0F172A] p-5 text-white">
-              <div class="h-full rounded-[2px] border border-white/10 bg-[radial-gradient(circle_at_76%_24%,rgba(6,182,212,0.62),transparent_28%),linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0))] p-4">
-                <div class="flex h-full flex-col justify-between">
-                  <div class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#67E8F9]">
-                    <span class="h-2 w-2 rounded-full bg-[#06B6D4]"></span>
-                    Live workshop
-                  </div>
-                  <div class="grid grid-cols-3 gap-2">
-                    <span class="h-10 rounded bg-white/12"></span>
-                    <span class="h-10 rounded bg-white/20"></span>
-                    <span class="h-10 rounded bg-[#06B6D4]"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="p-6">
-              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#0E7490]">Workflow automation review</p>
-              <h2 class="mt-3 text-[22px] font-semibold leading-tight tracking-[-0.03em] text-[#0F172A]">
-                Identify the workflow with the clearest path to controlled automation.
-              </h2>
-              <span class="mt-5 inline-flex items-center gap-2 text-[14px] font-semibold text-[#0F172A] group-hover:text-[#06B6D4]">
-                Book a session
-                <ArrowRight class="h-4 w-4" stroke-width={2} />
-              </span>
-            </div>
-          </a>
-
-          <a href="#resources" class="group grid overflow-hidden rounded-[3px] border border-[#D8E1EA] bg-white shadow-[0_22px_60px_-52px_rgba(15,23,42,0.22)] transition hover:border-[#06B6D4] lg:grid-cols-[0.72fr_1fr]">
-            <div class="min-h-[170px] bg-[#EEF6FB] p-5">
-              <div class="h-full rounded-[2px] border border-[#CBD5E1] bg-[#F8FAFC] p-4">
-                <div class="grid h-full grid-cols-[1fr_0.8fr] gap-3">
-                  <div class="space-y-2">
-                    <span class="block h-3 w-16 rounded bg-[#06B6D4]"></span>
-                    <span class="block h-3 w-full rounded bg-[#CBD5E1]"></span>
-                    <span class="block h-3 w-4/5 rounded bg-[#CBD5E1]"></span>
-                    <span class="block h-3 w-3/5 rounded bg-[#CBD5E1]"></span>
-                  </div>
-                  <div class="rounded bg-[linear-gradient(160deg,#06B6D4,#67E8F9_46%,#0F172A_47%,#0F172A)]"></div>
-                </div>
-              </div>
-            </div>
-            <div class="p-6">
-              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#0E7490]">AI operations playbook</p>
-              <h2 class="mt-3 text-[22px] font-semibold leading-tight tracking-[-0.03em] text-[#0F172A]">
-                A practical model for production-grade AI workflow execution.
-              </h2>
-              <span class="mt-5 inline-flex items-center gap-2 text-[14px] font-semibold text-[#0F172A] group-hover:text-[#06B6D4]">
-                Get the guide
-                <ArrowRight class="h-4 w-4" stroke-width={2} />
-              </span>
-            </div>
-          </a>
-        </div>
       </div>
     </section>
 
     <section class="border-b border-[#D8E1EA] bg-white">
-      <div class={`${CONTAINER} py-7`}>
-        <div class="grid border-y border-[#D8E1EA] sm:grid-cols-2 lg:grid-cols-3">
-          {stats.map(([value, label], index) => (
-            <div class:list={[
-              "border-b border-[#D8E1EA] px-4 py-5 lg:border-b-0 lg:border-r",
-              index >= 2 ? "sm:border-b-0" : "",
-              index === stats.length - 1 ? "lg:border-r-0" : "",
-            ]}>
-              <div class="text-4xl font-semibold leading-none tracking-normal text-[#0F172A] lg:text-[42px]">{value}</div>
-              <p class="mt-2 max-w-[24ch] text-[14px] leading-relaxed text-[#475569]">{label}</p>
-            </div>
-          ))}
+      <div class={`${CONTAINER} py-8`}>
+        <div class="grid gap-6 border-y border-[#D8E1EA] py-6 lg:grid-cols-[260px_1fr] lg:items-stretch">
+          <div class="flex flex-col justify-between border-b border-[#D8E1EA] pb-5 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-8">
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Operating baseline</p>
+            <p class="mt-3 max-w-[28rem] text-[15px] leading-relaxed text-[#475569] lg:mt-auto">
+              Start small, keep the control layer visible, and scale only after the workflow is measurable.
+            </p>
+          </div>
+
+          <div class="grid gap-px overflow-hidden bg-[#D8E1EA] sm:grid-cols-2 xl:grid-cols-4">
+            {stats.map((stat) => (
+              <div class="bg-white px-5 py-5">
+                <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#0E7490]">{stat.eyebrow}</p>
+                <div class="mt-3 text-[clamp(2.15rem,4.3vw,3rem)] font-semibold leading-none tracking-normal text-[#0F172A]">
+                  {stat.value}
+                </div>
+                <p class="mt-3 max-w-[25ch] text-[14px] leading-relaxed text-[#475569]">{stat.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -549,40 +392,6 @@ const quotes = [
           </div>
         </div>
 
-        <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {whyPlans.map((plan) => (
-            <article class="rounded-[8px] border border-[#D8E1EA] bg-white p-5 shadow-[0_18px_50px_-44px_rgba(15,23,42,0.26)]">
-              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#0E7490]">Capability</p>
-              <h3 class="mt-3 text-[22px] font-semibold leading-tight tracking-normal text-[#0F172A]">{plan.name}</h3>
-              <p class="mt-2 text-[14px] leading-relaxed text-[#64748B]">{plan.subtitle}</p>
-              <div class="mt-5 flex items-end gap-2">
-                <p class="text-[38px] font-semibold leading-none tracking-normal text-[#0F172A]">{plan.price}</p>
-                <p class="pb-1 text-[13px] leading-tight text-[#64748B]">{plan.unit}</p>
-              </div>
-              <ul class="mt-5 grid gap-2.5 text-[13px] text-[#334155]">
-                {plan.features.map((feature) => (
-                  <li class="flex items-start gap-2">
-                    <Check class="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#06B6D4]" stroke-width={2.4} />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-
-        <div class="mt-6 grid overflow-hidden rounded-[8px] border border-[#D8E1EA] bg-white sm:grid-cols-2 lg:grid-cols-4">
-          {whyRuntimeMetrics.map(([value, label], index) => (
-            <div class:list={[
-              "border-b border-[#D8E1EA] p-5 sm:border-r lg:border-b-0",
-              index % 2 === 1 ? "sm:border-r-0 lg:border-r" : "",
-              index === whyRuntimeMetrics.length - 1 ? "lg:border-r-0" : "",
-            ]}>
-              <p class="text-[36px] font-semibold leading-none tracking-normal text-[#0F172A]">{value}</p>
-              <p class="mt-3 text-[14px] leading-relaxed text-[#475569]">{label}</p>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
 
@@ -781,96 +590,6 @@ const quotes = [
       </div>
     </section>
 
-    <section class="border-b border-[#D8E1EA] bg-white">
-      <div class={`${CONTAINER} py-16 lg:py-20`}>
-        <div class="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
-          <div class="lg:sticky lg:top-24 lg:self-start">
-            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Implementation layer</p>
-            <h2 class="mt-4 text-4xl font-semibold leading-tight tracking-normal text-[#0F172A] sm:text-5xl lg:text-[52px]">
-              Built around your data, tools, and operating process.
-            </h2>
-            <p class="mt-5 text-[17px] leading-relaxed text-[#475569]">
-              Most AI projects stall between a useful demo and a reliable operating workflow. Tactas AI closes that gap with implementation, controls, monitoring, and support.
-            </p>
-          </div>
-
-          <div class="grid border border-[#D8E1EA]">
-            {productSections.map((section, index) => (
-              <article class="grid gap-0 border-b border-[#D8E1EA] last:border-b-0 lg:grid-cols-[0.9fr_1.1fr]">
-                <div class="p-6 lg:p-7">
-                  <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#0E7490]">{section.eyebrow}</p>
-                  <h3 class="mt-3 text-[26px] font-semibold leading-tight tracking-normal text-[#0F172A]">
-                    {section.heading}
-                  </h3>
-                  <p class="mt-4 text-[15px] leading-relaxed text-[#475569]">{section.body}</p>
-                  <a href={section.href} class="mt-6 inline-flex items-center gap-2 text-[14px] font-semibold text-[#0F172A] hover:text-[#06B6D4]">
-                    {section.cta}
-                    <ArrowRight class="h-4 w-4" stroke-width={2} />
-                  </a>
-                </div>
-
-                <div class="border-t border-[#D8E1EA] bg-[#F1F5F9] p-6 lg:border-l lg:border-t-0 lg:p-7">
-                  <div class="flex items-start justify-between gap-4">
-                    <div>
-                      <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#64748B]">{section.imageLabel}</p>
-                      <h4 class="mt-2 text-[18px] font-semibold text-[#0F172A]">{section.imageTitle}</h4>
-                    </div>
-                    <ArrowUpRight class="h-4.5 w-4.5 shrink-0 text-[#06B6D4]" stroke-width={1.9} />
-                  </div>
-                  <p class="mt-4 text-[14px] leading-relaxed text-[#475569]">{section.imageBody}</p>
-                  <div class="mt-6 grid grid-cols-3 gap-2">
-                    {["Intake", "Policy", "Execute"].map((label, labelIndex) => (
-                      <div class:list={[
-                        "border px-3 py-3 text-[12px] font-semibold",
-                        labelIndex === index ? "border-[#06B6D4] bg-[#06B6D4] text-white" : "border-[#CBD5E1] bg-white text-[#334155]",
-                      ]}>
-                        {label}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="control" class="border-b border-[#D8E1EA] bg-[#0F172A] text-white">
-      <div class={`${CONTAINER} py-16 lg:py-20`}>
-        <div class="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
-          <div>
-            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#67E8F9]">Control and support</p>
-            <h2 class="mt-4 text-4xl font-semibold leading-tight tracking-normal sm:text-5xl lg:text-[54px]">
-              AI execution your team can inspect, approve, and improve.
-            </h2>
-            <p class="mt-5 max-w-[35rem] text-[17px] leading-relaxed text-[#CBD5E1]">
-              Keep agent work inside your operating model with decision explanations, approval gates, resource controls,
-              exception alerts, human handoff, and support for live workflows.
-            </p>
-          </div>
-
-          <div class="border border-white/12 bg-white/[0.04]">
-            {quotes.map((quote, index) => (
-              <article class="grid gap-4 border-b border-white/12 p-6 last:border-b-0 sm:grid-cols-[140px_1fr]">
-                <div>
-                  <p class="text-[15px] font-semibold">{quote.company}</p>
-                  <p class="mt-2 text-[12px] text-[#94A3B8]">{quote.role}</p>
-                </div>
-                <div>
-                  <div class="mb-4 flex items-center gap-2 text-[#67E8F9]">
-                    {index === 0 ? <ShieldCheck class="h-4.5 w-4.5" stroke-width={1.8} /> : <Globe class="h-4.5 w-4.5" stroke-width={1.8} />}
-                    <span class="font-mono text-[10px] uppercase tracking-[0.22em]">Operational proof</span>
-                  </div>
-                  <p class="text-[17px] leading-relaxed text-[#F8FAFC]">"{quote.quote}"</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="solutions" class="border-b border-[#D8E1EA] bg-white">
       <div class={`${CONTAINER} py-16 lg:py-20`}>
         <div class="flex flex-col gap-6 border-b border-[#D8E1EA] pb-8 lg:flex-row lg:items-end lg:justify-between">
@@ -895,34 +614,6 @@ const quotes = [
               <p class="mt-3 text-[15px] leading-relaxed text-[#475569]">{card.body}</p>
             </article>
           ))}
-        </div>
-      </div>
-    </section>
-
-    <section id="resources" class="border-b border-[#D8E1EA] bg-[#F8FAFC]">
-      <div class={`${CONTAINER} py-16 lg:py-20`}>
-        <div class="grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
-          <div>
-            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Resources</p>
-            <h2 class="mt-4 text-4xl font-semibold leading-tight tracking-normal text-[#0F172A] sm:text-5xl lg:text-[50px]">
-              Practical material for teams moving AI agents into operations.
-            </h2>
-          </div>
-
-          <div class="grid border border-[#D8E1EA] bg-white">
-            {resourceCards.map((card) => (
-              <article class="group grid gap-4 border-b border-[#D8E1EA] p-5 last:border-b-0 sm:grid-cols-[120px_1fr_auto] sm:items-center">
-                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#0E7490]">{card.type}</p>
-                <div>
-                  <h3 class="text-[18px] font-semibold tracking-normal text-[#0F172A]">{card.title}</h3>
-                  <p class="mt-2 text-[14px] leading-relaxed text-[#475569]">{card.body}</p>
-                </div>
-                <a href="#contact" class="inline-flex h-10 w-10 items-center justify-center rounded-[4px] border border-[#CBD5E1] text-[#0F172A] group-hover:border-[#06B6D4] group-hover:text-[#06B6D4]" aria-label={`Read ${card.title}`}>
-                  <ArrowUpRight class="h-4 w-4" />
-                </a>
-              </article>
-            ))}
-          </div>
         </div>
       </div>
     </section>
@@ -972,16 +663,6 @@ const quotes = [
                 <div class="flex items-start gap-3 border border-[#D8E1EA] bg-[#F8FAFC] px-4 py-3">
                   <Check class="mt-0.5 h-4 w-4 shrink-0 text-[#06B6D4]" stroke-width={2.4} />
                   <p class="text-[14px] leading-relaxed text-[#334155]">{point}</p>
-                </div>
-              ))}
-            </div>
-
-            <div class="mt-8 border border-[#D8E1EA]">
-              {getStartedCards.map((card) => (
-                <div class="border-b border-[#D8E1EA] p-5 last:border-b-0">
-                  <h3 class="text-[18px] font-semibold text-[#0F172A]">{card.title}</h3>
-                  <p class="mt-2 text-[15px] leading-relaxed text-[#475569]">{card.body}</p>
-                  <p class="mt-3 text-[13px] font-semibold text-[#06B6D4]">{card.cta}</p>
                 </div>
               ))}
             </div>
@@ -1054,7 +735,7 @@ const quotes = [
             <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#0E7490]">Platform</p>
             <div class="mt-4 grid gap-2.5 text-[14px] text-[#475569]">
               <a href="#platform" class="hover:text-[#06B6D4]">Workflow runtime</a>
-              <a href="#control" class="hover:text-[#06B6D4]">Control layer</a>
+              <a href="#why-choose" class="hover:text-[#06B6D4]">Control layer</a>
               <a href="#solutions" class="hover:text-[#06B6D4]">Solution patterns</a>
             </div>
           </div>
@@ -1083,6 +764,43 @@ const quotes = [
     </div>
   </footer>
 </div>
+
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.globe.min.js"></script>
+<script is:inline>
+  (() => {
+    const initHeroGlobe = () => {
+      const globeElement = document.getElementById("hero-globe-background");
+      if (!globeElement || !window.VANTA?.GLOBE) {
+        return;
+      }
+
+      window.__tactasHeroGlobe?.destroy?.();
+      window.__tactasHeroGlobe = window.VANTA.GLOBE({
+        el: "#hero-globe-background",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        color: 0x06b6d4,
+        color2: 0x0f172a,
+        backgroundColor: 0xf8fafc,
+        size: 0.95,
+      });
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initHeroGlobe, { once: true });
+    } else {
+      initHeroGlobe();
+    }
+
+    document.addEventListener("astro:page-load", initHeroGlobe);
+  })();
+</script>
 
 <script define:vars={{ brandEmail }} is:inline>
   const workflowForm = document.getElementById("workflow-inquiry-form");

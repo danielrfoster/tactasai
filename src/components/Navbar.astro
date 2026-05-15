@@ -61,15 +61,15 @@ const navGroups: NavGroup[] = [
         links: [
           { label: "Modernize operations", href: "/#solutions" },
           { label: "Automate workflows", href: "/#platform" },
-          { label: "Monitor AI agents", href: "/#control" },
+          { label: "Monitor AI agents", href: "/#why-choose" },
         ],
       },
       {
         title: "CxO topics",
         links: [
           { label: "Adopt AI", href: "/#platform", description: "Bring agents into daily workflows" },
-          { label: "AI control", href: "/#control", description: "Track actions and decisions" },
-          { label: "Data setup", href: "/#resources", description: "Prepare systems for automation" },
+          { label: "AI control", href: "/#why-choose", description: "Track actions and decisions" },
+          { label: "Data setup", href: "/#platform", description: "Prepare systems for automation" },
         ],
       },
       {
@@ -84,8 +84,8 @@ const navGroups: NavGroup[] = [
       {
         title: "Engage",
         links: [
-          { label: "Automation guides", href: "/#resources" },
-          { label: "Reference architectures", href: "/#resources" },
+          { label: "Automation guides", href: "/#faq" },
+          { label: "Reference architectures", href: "/#platform" },
           { label: "Request a demo", href: "#contact" },
         ],
       },
@@ -106,9 +106,9 @@ const navGroups: NavGroup[] = [
       {
       title: "Governance",
       links: [
-          { label: "Agent monitoring", href: "/#control" },
-          { label: "Action tracking", href: "/#control" },
-          { label: "Human handoff", href: "/#control" },
+          { label: "Agent monitoring", href: "/#why-choose" },
+          { label: "Action tracking", href: "/#why-choose" },
+          { label: "Human handoff", href: "/#why-choose" },
         ],
       },
       {
@@ -123,21 +123,21 @@ const navGroups: NavGroup[] = [
   },
   {
     label: "Developers",
-    href: "/#resources",
+    href: "/#platform",
     columns: [
       {
         title: "Documentation",
         links: [
-          { label: "Developer library", href: "/#resources", description: "Implementation guides" },
-          { label: "Application demos", href: "/#resources", description: "Workflow examples" },
-          { label: "Tutorials", href: "/#resources", description: "Step-by-step build notes" },
+          { label: "Developer library", href: "/#platform", description: "Implementation guides" },
+          { label: "Application demos", href: "/#solutions", description: "Workflow examples" },
+          { label: "Tutorials", href: "/#faq", description: "Step-by-step build notes" },
         ],
       },
       {
         title: "Products",
         links: [
           { label: "Artificial intelligence", href: "/#platform" },
-          { label: "Agent observability", href: "/#control" },
+          { label: "Agent observability", href: "/#why-choose" },
           { label: "Internal tools", href: "/#solutions" },
         ],
       },
@@ -164,8 +164,8 @@ const navGroups: NavGroup[] = [
       {
         title: "Resources",
         links: [
-          { label: "Partner brief", href: "/#resources" },
-          { label: "Solution guide", href: "/#resources" },
+          { label: "Partner brief", href: "#contact" },
+          { label: "Solution guide", href: "/#solutions" },
           { label: "Contact partnerships", href: "#contact" },
         ],
       },
@@ -173,31 +173,31 @@ const navGroups: NavGroup[] = [
   },
   {
     label: "Resources",
-    href: "/#resources",
+    href: "/#faq",
     columns: [
       {
         title: "Engage",
         links: [
           { label: "Demos + product tours", href: "#contact" },
-          { label: "Case studies", href: "/#resources" },
-          { label: "Webinars", href: "/#resources" },
+          { label: "Case studies", href: "/#solutions" },
+          { label: "Webinars", href: "#contact" },
           { label: "Workshops", href: "#contact" },
         ],
       },
       {
         title: "Build",
         links: [
-          { label: "Reference architecture", href: "/#resources" },
-          { label: "Solution + product guides", href: "/#resources" },
-          { label: "Developer documentation", href: "/#resources" },
+          { label: "Reference architecture", href: "/#platform" },
+          { label: "Solution + product guides", href: "/#solutions" },
+          { label: "Developer documentation", href: "/#platform" },
         ],
       },
       {
         title: "Explore",
         links: [
-          { label: "Operational AI brief", href: "/#resources" },
-          { label: "Security reports", href: "/#resources" },
-          { label: "Learning center", href: "/#resources" },
+          { label: "Operational AI brief", href: "/#faq" },
+          { label: "Security reports", href: "/#why-choose" },
+          { label: "Learning center", href: "/#faq" },
         ],
       },
     ],
@@ -373,7 +373,7 @@ const isActive = (href: string) => {
           <FileText class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
           Support
         </a>
-        <a href="/#resources" class="inline-flex items-center gap-2" data-mobile-link>
+        <a href="/#faq" class="inline-flex items-center gap-2" data-mobile-link>
           <Server class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
           Resources
         </a>
@@ -393,7 +393,7 @@ const isActive = (href: string) => {
           <Headphones class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
           Solutions
         </a>
-        <a href="/#control" class="inline-flex items-center gap-2" data-mobile-link>
+        <a href="/#why-choose" class="inline-flex items-center gap-2" data-mobile-link>
           <ShieldCheck class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
           Control
         </a>

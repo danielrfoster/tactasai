@@ -1,20 +1,61 @@
 ---
+import Navbar from "./Navbar.astro";
+
 interface Props {
   eyebrow?: string;
   title: string;
   updatedAt: string;
+  currentPath?: string;
 }
 
-const { eyebrow = "Legal", title, updatedAt } = Astro.props;
+const { eyebrow = "Legal", title, updatedAt, currentPath = Astro.url.pathname } = Astro.props;
+const CONTAINER = "mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10";
 ---
 
-<main class="min-h-screen bg-[#0b1220] py-20 text-[#f8fafc]">
-  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-    <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#06B6D4]">{eyebrow}</p>
-    <h1 class="mt-3 text-3xl font-bold tracking-tight text-[#f8fafc] sm:text-4xl">{title}</h1>
-    <p class="mt-3 text-sm text-[#94a3b8]">Last updated: {updatedAt}</p>
-    <div class="mt-10 space-y-8 text-sm leading-relaxed text-[#94a3b8]">
-      <slot />
-    </div>
-  </div>
-</main>
+<div class="min-h-screen bg-[#F8FAFC] text-[#0F172A]">
+  <Navbar currentPath={currentPath} ctaLabel="Workflow review" ctaHref="/#contact" theme="light" />
+
+  <main>
+    <section class="relative overflow-hidden border-b border-[#D8E1EA] bg-[#F8FAFC]">
+      <div class="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[linear-gradient(180deg,#EEF6FB_0%,rgba(238,246,251,0)_100%)]"></div>
+      <div class="pointer-events-none absolute inset-0 opacity-[0.26] [background-image:linear-gradient(to_right,rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.05)_1px,transparent_1px)] [background-size:64px_64px]"></div>
+
+      <div class={`${CONTAINER} relative py-16 lg:py-20`}>
+        <div class="max-w-3xl">
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">{eyebrow}</p>
+          <h1 class="mt-4 text-[clamp(2.6rem,6vw,4.7rem)] font-semibold leading-[0.96] tracking-normal text-[#0F172A]">
+            {title}
+          </h1>
+          <p class="mt-5 text-[15px] leading-relaxed text-[#64748B]">Last updated: {updatedAt}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-[#D8E1EA] bg-white">
+      <div class={`${CONTAINER} py-12 lg:py-16`}>
+        <div class="max-w-3xl space-y-8 text-[15px] leading-relaxed text-[#475569]">
+          <slot />
+        </div>
+
+        <div class="mt-12 border-t border-[#D8E1EA] pt-6 text-[13px] font-semibold text-[#64748B]">
+          <a href="/" class="transition hover:text-[#06B6D4]">Back to home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<style>
+  :global(.legal-section-title) {
+    color: #0f172a;
+  }
+
+  :global(.legal-link) {
+    color: #0891b2;
+    font-weight: 600;
+  }
+
+  :global(.legal-link:hover) {
+    color: #06b6d4;
+  }
+</style>
