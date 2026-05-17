@@ -1,0 +1,167 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AIWorkflowAutomationPage from "../../components/AIWorkflowAutomationPage.astro";
+import { getBrandEmail, getSiteUrl } from "../../lib/site";
+
+const siteUrl = getSiteUrl();
+const pageUrl = `${siteUrl}/services/ai-workflow-automation`;
+const brandEmail = getBrandEmail();
+
+const title = "AI Workflow Automation Service for Business Operations | Tactas AI";
+const description =
+  "Managed AI workflow automation for business processes, AI agents, integrations, approval gates, human review, audit logs, and support.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      name: "AI Workflow Automation Service",
+      url: pageUrl,
+      description,
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      about: { "@id": `${siteUrl}/#organization` },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
+      name: "AI Workflow Automation Service",
+      serviceType: [
+        "AI workflow automation",
+        "Agentic workflow automation",
+        "AI business process automation",
+        "AI operations automation",
+        "AI agent implementation",
+        "AI agent workflow integration",
+        "Customer support automation",
+        "Back-office automation",
+        "CRM workflow automation",
+        "AI approval workflow",
+        "AI agent monitoring",
+        "Human-in-the-loop automation",
+      ],
+      url: pageUrl,
+      description:
+        "Managed AI workflow automation service for business teams, including workflow mapping, AI agent setup, system integration, SOP implementation, approval gates, action logs, exception monitoring, and ongoing workflow tuning.",
+      provider: { "@id": `${siteUrl}/#organization` },
+      areaServed: "Worldwide",
+      audience: {
+        "@type": "BusinessAudience",
+        audienceType: "Operations, support, finance, admin, sales, SaaS, ecommerce, healthcare, and professional services teams",
+      },
+      offers: {
+        "@type": "Offer",
+        availability: "https://schema.org/InStock",
+        url: pageUrl,
+        category: "Managed AI Workflow Automation",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What is AI workflow automation?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "AI workflow automation uses AI agents to complete repeatable business processes across tools, data, SOPs, approvals, and human handoffs.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can agents take actions in our systems?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. AI agent actions can be limited by permissions, approval gates, risk checks, and human review depending on the workflow.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Which workflow should we automate first?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The best first workflow is frequent, has clear rules, available data, measurable outcomes, and manageable operational risk.",
+          },
+        },
+      ],
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "AI Workflow Automation", item: pageUrl },
+      ],
+    },
+    {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      email: brandEmail,
+      areaServed: "Worldwide",
+      availableLanguage: ["en", "vi"],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/services/ai-workflow-automation"
+  keywords={[
+    "AI workflow automation",
+    "AI workflow automation service",
+    "AI workflow automation agency",
+    "agentic workflow automation",
+    "AI business process automation",
+    "AI process automation",
+    "business process automation with AI",
+    "AI operations automation",
+    "AI automation consulting",
+    "AI automation implementation service",
+    "AI agent implementation",
+    "AI agents for business operations",
+    "AI agents for operations teams",
+    "AI agent workflow integration",
+    "AI workflow orchestration",
+    "managed AI automation service",
+    "custom AI workflow automation",
+    "AI customer support automation",
+    "AI workflow automation for customer support",
+    "AI back-office automation",
+    "AI workflow automation for back office",
+    "AI workflow automation for SaaS",
+    "CRM workflow automation",
+    "AI approval workflow",
+    "human in the loop automation",
+    "AI agent monitoring",
+    "workflow automation consulting",
+    "workflow automation implementation",
+    "operational AI service",
+  ]}
+  openGraph={{
+    title,
+    description,
+    url: pageUrl,
+    type: "website",
+    images: [
+      {
+        url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png",
+        width: 1536,
+        height: 1024,
+        alt: "Tactas AI workflow automation service",
+      },
+    ],
+  }}
+  twitter={{
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"],
+  }}
+  jsonLd={jsonLd}
+>
+  <AIWorkflowAutomationPage siteUrl={siteUrl} currentPath="/services/ai-workflow-automation" />
+</BaseLayout>

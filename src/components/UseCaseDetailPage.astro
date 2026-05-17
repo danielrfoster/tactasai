@@ -1,0 +1,361 @@
+---
+import {
+  ArrowRight,
+  Bot,
+  Check,
+  FileText,
+  Mail,
+  Send,
+  ShieldCheck,
+  Sparkles,
+  Workflow,
+  Zap,
+} from "@lucide/astro";
+import Navbar from "./Navbar.astro";
+import { getBrandEmail } from "../lib/site";
+
+interface Pair {
+  title: string;
+  body: string;
+}
+
+interface Props {
+  siteUrl: string;
+  currentPath: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  primaryKeyword: string;
+  secondaryKeywords: string[];
+  fit: Pair[];
+  workflow: Pair[];
+  outcomes: Pair[];
+  integrations: string[];
+  faqs: Pair[];
+}
+
+const {
+  siteUrl,
+  currentPath,
+  eyebrow,
+  title,
+  description,
+  primaryKeyword,
+  secondaryKeywords,
+  fit,
+  workflow,
+  outcomes,
+  integrations,
+  faqs,
+} = Astro.props;
+
+const brandEmail = getBrandEmail();
+const currentYear = new Date().getFullYear();
+const CONTAINER = "mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10";
+---
+
+<div class="min-h-screen overflow-x-hidden bg-[#050A14] text-white selection:bg-[#8B5CF6]/30">
+  <div class="pointer-events-none fixed inset-0 -z-20 grid-faint opacity-[0.24] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_10%,black_0%,transparent_75%)]"></div>
+
+  <Navbar currentPath={currentPath} ctaLabel="Book a Demo" theme="dark" />
+
+  <main>
+    <section class="relative overflow-hidden border-b border-white/10">
+      <div class="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(180deg,rgba(124,58,237,0.14)_0%,rgba(5,10,20,0)_58%)]"></div>
+      <div class="pointer-events-none absolute inset-0 z-0 opacity-[0.30] [background-image:linear-gradient(to_right,rgba(255,255,255,0.055)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.045)_1px,transparent_1px)] [background-size:72px_72px]"></div>
+
+      <div class={`${CONTAINER} relative z-10 grid min-h-[690px] items-center gap-14 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:py-20`}>
+        <div class="reveal">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-[#7C3AED]/35 bg-[#130B2A]/80 px-3 py-1.5">
+            <Sparkles class="h-3.5 w-3.5 text-[#A78BFA]" stroke-width={1.8} />
+            <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#C4B5FD]">{eyebrow}</span>
+          </div>
+
+          <h1 class="max-w-[12ch] text-[clamp(3rem,7vw,5.6rem)] font-extrabold leading-[0.94] tracking-[-0.045em]">
+            {title}
+          </h1>
+          <p class="mt-7 max-w-[42rem] text-[17px] leading-relaxed text-[#C8D0DE]">
+            {description}
+          </p>
+
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a href="#contact" class="group inline-flex h-12 items-center justify-center rounded-[6px] bg-[#7C3AED] px-6 text-[14px] font-semibold text-white shadow-[0_18px_48px_-24px_rgba(124,58,237,0.8)] transition hover:bg-[#8B5CF6]">
+              Plan this workflow
+              <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-0.5" stroke-width={1.9} />
+            </a>
+            <a href="/services/ai-workflow-automation" class="inline-flex h-12 items-center justify-center rounded-[6px] border border-white/18 bg-white/[0.03] px-6 text-[14px] font-semibold text-white transition hover:border-[#A78BFA]/70 hover:text-[#C4B5FD]">
+              Workflow automation service
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal" data-delay="2">
+          <div class="rounded-[12px] border border-white/12 bg-[#07101F] p-5 shadow-[0_40px_110px_-56px_rgba(0,0,0,0.95)]">
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#A78BFA]">Workflow snapshot</p>
+              <Workflow class="h-5 w-5 text-[#A78BFA]" stroke-width={1.8} />
+            </div>
+            <div class="mt-5 grid gap-3">
+              {workflow.slice(0, 4).map((step, index) => (
+                <div class="grid gap-3 rounded-[8px] border border-white/10 bg-white/[0.025] p-4 sm:grid-cols-[56px_1fr]">
+                  <span class="font-mono text-[11px] text-[#A78BFA]">{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3 class="text-[15px] font-semibold text-white">{step.title}</h3>
+                    <p class="mt-1 text-[13px] leading-relaxed text-[#8A93A6]">{step.body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-white/10 bg-[#070B16]">
+      <div class={`${CONTAINER} py-10`}>
+        <div class="grid gap-3 text-center sm:grid-cols-2 lg:grid-cols-4">
+          {[primaryKeyword, ...secondaryKeywords.slice(0, 3)].map((term) => (
+            <div class="rounded-[8px] border border-white/10 bg-white/[0.025] px-4 py-4 font-mono text-[11px] uppercase tracking-[0.18em] text-[#A78BFA]">
+              {term}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-white/10 bg-[#050A14]">
+      <div class={`${CONTAINER} grid gap-12 py-18 lg:grid-cols-[0.72fr_1.28fr] lg:py-24`}>
+        <div>
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#A78BFA]">Best fit</p>
+          <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+            When this use case is worth automating.
+          </h2>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-2">
+          {fit.map((item) => (
+            <div class="rounded-[8px] border border-white/10 bg-[#07101F] p-5">
+              <div class="flex items-center gap-3">
+                <Check class="h-4.5 w-4.5 shrink-0 text-[#A78BFA]" stroke-width={2.1} />
+                <h3 class="text-[15px] font-semibold text-[#E5E7EB]">{item.title}</h3>
+              </div>
+              <p class="mt-3 text-[13px] leading-relaxed text-[#8A93A6]">{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-white/10 bg-[#F8FAFC] text-[#0F172A]">
+      <div class={`${CONTAINER} py-16 lg:py-20`}>
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#7C3AED]">Execution flow</p>
+          <h2 class="mt-4 text-[clamp(2rem,4vw,3.1rem)] font-bold leading-tight tracking-[-0.025em]">
+            How the workflow runs with AI agents.
+          </h2>
+        </div>
+
+        <div class="mt-12 grid gap-4 lg:grid-cols-5">
+          {workflow.map((step, index) => (
+            <article class="relative rounded-[8px] border border-[#D8E1EA] bg-white p-5 shadow-[0_20px_60px_-52px_rgba(15,23,42,0.28)]">
+              {index < workflow.length - 1 ? (
+                <div class="absolute -right-3 top-10 hidden h-px w-6 bg-[#7C3AED]/45 lg:block"></div>
+              ) : null}
+              <p class="font-mono text-[11px] text-[#7C3AED]">{String(index + 1).padStart(2, "0")}</p>
+              <h3 class="mt-5 text-[17px] font-semibold">{step.title}</h3>
+              <p class="mt-3 text-[13px] leading-relaxed text-[#64748B]">{step.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-white/10 bg-[#050A14]">
+      <div class={`${CONTAINER} grid gap-12 py-18 lg:grid-cols-[0.72fr_1.28fr] lg:py-24`}>
+        <div>
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#A78BFA]">Outcomes</p>
+          <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+            What the team gets after launch.
+          </h2>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-2">
+          {outcomes.map((item) => (
+            <div class="rounded-[8px] border border-white/10 bg-[#07101F] p-5">
+              <div class="flex items-center gap-3">
+                <Zap class="h-4.5 w-4.5 shrink-0 text-[#A78BFA]" stroke-width={1.8} />
+                <h3 class="text-[15px] font-semibold text-[#E5E7EB]">{item.title}</h3>
+              </div>
+              <p class="mt-3 text-[13px] leading-relaxed text-[#8A93A6]">{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-white/10 bg-[#070B16]">
+      <div class={`${CONTAINER} py-18 lg:py-24`}>
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#A78BFA]">Integrations</p>
+          <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+            Built around the systems your team already uses.
+          </h2>
+        </div>
+        <div class="mt-10 flex flex-wrap justify-center gap-3">
+          {integrations.map((item) => (
+            <span class="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-[13px] text-[#C8D0DE]">{item}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="border-b border-white/10 bg-[#050A14]">
+      <div class={`${CONTAINER} grid gap-12 py-18 lg:grid-cols-[0.72fr_1.28fr] lg:py-24`}>
+        <div>
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#A78BFA]">FAQ</p>
+          <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+            Questions about this automation use case.
+          </h2>
+        </div>
+
+        <div class="grid rounded-[8px] border border-white/10 bg-[#07101F]">
+          {faqs.map((item, index) => (
+            <article class="grid gap-3 border-b border-white/10 p-6 last:border-b-0 sm:grid-cols-[76px_1fr]">
+              <p class="font-mono text-[11px] text-[#A78BFA]">{String(index + 1).padStart(2, "0")}</p>
+              <div>
+                <h3 class="text-[20px] font-semibold tracking-tight">{item.title}</h3>
+                <p class="mt-3 text-[15px] leading-relaxed text-[#8A93A6]">{item.body}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="bg-[#070B16]">
+      <div class={`${CONTAINER} py-18 lg:py-24`}>
+        <div class="grid overflow-hidden rounded-[12px] border border-[#7C3AED]/35 bg-[#0A1324] lg:grid-cols-[0.92fr_1.08fr]">
+          <div class="p-7 sm:p-9 lg:p-10">
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#A78BFA]">Start this use case</p>
+            <h2 class="mt-4 text-[clamp(2rem,4vw,3.2rem)] font-bold leading-tight tracking-[-0.025em]">
+              Turn this workflow into a supervised AI pilot.
+            </h2>
+            <p class="mt-5 max-w-[34rem] text-[16px] leading-relaxed text-[#8A93A6]">
+              Share the current process, tools, documents, owners, and approval constraints. Tactas AI will help scope the first practical workflow.
+            </p>
+
+            <div class="mt-8 flex items-center gap-3 text-[14px] text-[#C8D0DE]">
+              <Mail class="h-4 w-4 text-[#A78BFA]" stroke-width={1.8} />
+              <a href={`mailto:${brandEmail}`} class="border-b border-[#7C3AED]/55 pb-0.5 transition hover:border-[#A78BFA] hover:text-white">
+                {brandEmail}
+              </a>
+            </div>
+          </div>
+
+          <form id="detail-use-case-form" class="border-t border-white/10 bg-[#050A14] p-7 sm:p-9 lg:border-l lg:border-t-0">
+            <div class="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
+              <div>
+                <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#A78BFA]">Pilot request</p>
+                <h3 class="mt-2 text-[24px] font-semibold tracking-tight">Tell us about your workflow.</h3>
+              </div>
+              <Send class="hidden h-5 w-5 text-[#A78BFA] sm:block" stroke-width={1.8} />
+            </div>
+
+            <div class="mt-5 grid gap-4 sm:grid-cols-2">
+              <label class="grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#8A93A6]">
+                First name
+                <input required name="name" class="h-11 rounded-[6px] border border-white/12 bg-white/[0.035] px-3.5 text-[14px] text-white outline-none transition placeholder:text-[#5E6678] focus:border-[#8B5CF6] focus:ring-2 focus:ring-[#8B5CF6]/15" placeholder="Your name" />
+              </label>
+              <label class="grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#8A93A6]">
+                Work email
+                <input required type="email" name="email" class="h-11 rounded-[6px] border border-white/12 bg-white/[0.035] px-3.5 text-[14px] text-white outline-none transition placeholder:text-[#5E6678] focus:border-[#8B5CF6] focus:ring-2 focus:ring-[#8B5CF6]/15" placeholder="you@company.com" />
+              </label>
+            </div>
+
+            <label class="mt-4 grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#8A93A6]">
+              Workflow details
+              <textarea required name="workflow" class="min-h-32 rounded-[6px] border border-white/12 bg-white/[0.035] px-3.5 py-3 text-[14px] text-white outline-none transition placeholder:text-[#5E6678] focus:border-[#8B5CF6] focus:ring-2 focus:ring-[#8B5CF6]/15" placeholder="Current process, systems, documents, rules, approvals, and pain points..."></textarea>
+            </label>
+
+            <button type="submit" class="mt-6 inline-flex h-12 w-full items-center justify-center rounded-[6px] bg-[#7C3AED] px-6 text-[14px] font-semibold text-white transition hover:bg-[#8B5CF6]">
+              Request pilot review
+            </button>
+            <p id="detail-use-case-status" class="mt-3 text-center text-[12px] text-[#8A93A6]">
+              Prefer email? {brandEmail}
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 bg-[#050A14] py-14">
+    <div class={`${CONTAINER}`}>
+      <div class="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+        <div class="max-w-md">
+          <div class="flex items-center gap-2.5">
+            <img src="/favicon-96x96.png" alt="" width="30" height="30" class="rounded-md" aria-hidden="true" loading="lazy" decoding="async" />
+            <span class="text-sm font-semibold">Tactas AI</span>
+          </div>
+          <p class="mt-4 text-[14px] leading-relaxed text-[#8A93A6]">
+            Managed AI workflow automation and document intelligence for teams that need governed, useful AI in production.
+          </p>
+        </div>
+
+        <div class="grid gap-8 sm:grid-cols-3">
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#A78BFA]">Use cases</p>
+            <div class="mt-4 grid gap-2.5 text-[14px] text-[#8A93A6]">
+              <a href="/use-cases" class="hover:text-[#C4B5FD]">All use cases</a>
+              <a href="/use-cases/ai-customer-support-automation" class="hover:text-[#C4B5FD]">Customer Support</a>
+              <a href="/use-cases/ai-back-office-automation" class="hover:text-[#C4B5FD]">Back Office</a>
+            </div>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#A78BFA]">Services</p>
+            <div class="mt-4 grid gap-2.5 text-[14px] text-[#8A93A6]">
+              <a href="/services/ai-workflow-automation" class="hover:text-[#C4B5FD]">Workflow Automation</a>
+              <a href="/services/ai-knowledge-base" class="hover:text-[#C4B5FD]">AI Knowledge Base</a>
+              <a href="/#why-choose" class="hover:text-[#C4B5FD]">Control Layer</a>
+            </div>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#A78BFA]">Company</p>
+            <div class="mt-4 grid gap-2.5 text-[14px] text-[#8A93A6]">
+              <a href="/" class="hover:text-[#C4B5FD]">Home</a>
+              <a href="/about" class="hover:text-[#C4B5FD]">About</a>
+              <a href={siteUrl} class="hover:text-[#C4B5FD]">{siteUrl.replace(/^https?:\/\//, "")}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 border-t border-white/10 pt-5 text-[12px] text-[#5E6678]">
+        &copy; {currentYear} Tactas AI. All rights reserved.
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script define:vars={{ brandEmail, title }} is:inline>
+  const detailUseCaseForm = document.getElementById("detail-use-case-form");
+  const detailUseCaseStatus = document.getElementById("detail-use-case-status");
+  detailUseCaseForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const form = new FormData(detailUseCaseForm);
+    const subject = encodeURIComponent(`${title} pilot review`);
+    const body = encodeURIComponent(
+      [
+        `Name: ${String(form.get("name") || "")}`,
+        `Work email: ${String(form.get("email") || "")}`,
+        "",
+        "Workflow details:",
+        String(form.get("workflow") || ""),
+      ].join("\n"),
+    );
+    if (detailUseCaseStatus) {
+      detailUseCaseStatus.textContent = "Opening your email client with the workflow details.";
+    }
+    window.location.href = `mailto:${brandEmail}?subject=${subject}&body=${body}`;
+  });
+</script>

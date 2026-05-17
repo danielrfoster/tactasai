@@ -1,0 +1,113 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import UseCaseDetailPage from "../../components/UseCaseDetailPage.astro";
+import { getBrandEmail, getSiteUrl } from "../../lib/site";
+
+const siteUrl = getSiteUrl();
+const pageUrl = `${siteUrl}/use-cases/ai-back-office-automation`;
+const brandEmail = getBrandEmail();
+const title = "AI Back-Office Automation for Admin Workflows | Tactas AI";
+const description =
+  "AI back-office automation for document checks, invoice review, record updates, approval routing, reconciliation, admin tasks, and reporting.";
+
+const props = {
+  siteUrl,
+  currentPath: "/use-cases/ai-back-office-automation",
+  eyebrow: "Back-office automation",
+  title: "AI back-office automation for admin and operations teams.",
+  description:
+    "Tactas AI helps teams automate repetitive back-office workflows such as document checks, invoice review, record updates, approval routing, reconciliation, and reporting.",
+  primaryKeyword: "AI back-office automation",
+  secondaryKeywords: ["AI document processing", "invoice workflow automation", "approval routing automation", "admin workflow automation"],
+  fit: [
+    {
+      title: "Manual document review",
+      body: "Teams spend time checking PDFs, forms, invoices, statements, IDs, contracts, or supporting files before work can continue.",
+    },
+    {
+      title: "Approval routing slows work",
+      body: "Requests wait because ownership, thresholds, exceptions, and missing information are handled manually.",
+    },
+    {
+      title: "Records need constant updates",
+      body: "Operations staff copy data between spreadsheets, CRMs, billing systems, portals, and internal tools.",
+    },
+    {
+      title: "Auditability matters",
+      body: "Finance, admin, and operations teams need clear logs, review notes, source documents, and exception handling.",
+    },
+  ],
+  workflow: [
+    { title: "Receive request", body: "A form, invoice, file, email, or record starts the back-office workflow." },
+    { title: "Extract and check", body: "AI reads documents, extracts fields, checks completeness, and flags missing or conflicting data." },
+    { title: "Apply business rules", body: "The workflow applies thresholds, approval rules, duplicate checks, and exception criteria." },
+    { title: "Prepare action", body: "AI drafts notes, updates records, creates tasks, prepares approval packets, or routes work." },
+    { title: "Log outcome", body: "Every action, source, decision, and human review step remains visible for audit." },
+  ],
+  outcomes: [
+    { title: "Less repetitive admin work", body: "Reduce manual checking, copying, routing, and status-update work across internal systems." },
+    { title: "Faster approvals", body: "Prepare complete approval packets with source documents, extracted data, and exception notes." },
+    { title: "Cleaner records", body: "Keep CRM, billing, spreadsheets, portals, and databases aligned with fewer manual updates." },
+    { title: "Better exception handling", body: "Route ambiguous, risky, or incomplete cases to the right owner with context." },
+  ],
+  integrations: ["Email", "Google Drive", "SharePoint", "S3", "PostgreSQL", "Airtable", "HubSpot", "Salesforce", "QuickBooks", "Internal APIs"],
+  faqs: [
+    { title: "Can AI extract data from PDFs and invoices?", body: "Yes. The workflow can include OCR, field extraction, validation, and review for low-confidence fields." },
+    { title: "Can approvals stay human?", body: "Yes. AI can prepare the approval packet while managers approve, reject, or edit the action." },
+    { title: "What is a good first back-office workflow?", body: "Start with a frequent process such as invoice review, document collection, record updates, or approval routing." },
+  ],
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebPage", "@id": `${pageUrl}#webpage`, name: "AI Back-Office Automation", url: pageUrl, description, isPartOf: { "@id": `${siteUrl}/#website` }, inLanguage: "en-US" },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
+      name: "AI Back-Office Automation",
+      serviceType: ["AI back-office automation", "AI document processing", "Invoice workflow automation", "Approval routing automation"],
+      url: pageUrl,
+      description,
+      provider: { "@id": `${siteUrl}/#organization` },
+      areaServed: "Worldwide",
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: props.faqs.map((item) => ({ "@type": "Question", name: item.title, acceptedAnswer: { "@type": "Answer", text: item.body } })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "Use Cases", item: `${siteUrl}/use-cases` },
+        { "@type": "ListItem", position: 3, name: "AI Back-Office Automation", item: pageUrl },
+      ],
+    },
+    { "@type": "ContactPoint", contactType: "sales", email: brandEmail, areaServed: "Worldwide", availableLanguage: ["en", "vi"] },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/use-cases/ai-back-office-automation"
+  keywords={[
+    "AI back-office automation",
+    "AI document processing",
+    "invoice workflow automation",
+    "approval routing automation",
+    "admin workflow automation",
+    "AI operations automation",
+    "document review automation",
+    "AI invoice processing",
+    "back-office workflow automation",
+  ]}
+  openGraph={{ title, description, url: pageUrl, type: "website", images: [{ url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png", width: 1536, height: 1024, alt: "AI back-office automation" }] }}
+  twitter={{ card: "summary_large_image", title, description, images: ["/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"] }}
+  jsonLd={jsonLd}
+>
+  <UseCaseDetailPage {...props} />
+</BaseLayout>

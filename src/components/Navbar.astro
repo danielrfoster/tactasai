@@ -2,13 +2,11 @@
 import {
   ArrowRight,
   Briefcase,
+  BrainCircuit,
   ChevronDown,
   FileText,
-  Globe2,
   HeartPulse,
-  Headphones,
   Menu,
-  Network,
   Server,
   ShieldCheck,
   ShoppingBag,
@@ -41,132 +39,100 @@ interface Props {
   theme?: "dark" | "light";
 }
 
-const { currentPath = "/", ctaLabel = "Book demo", ctaHref = "#contact" } = Astro.props;
+const { currentPath = "/", ctaLabel = "Book demo", ctaHref = "#contact", theme = "light" } = Astro.props;
 const brandEmail = getBrandEmail();
 const CONTAINER = "mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10";
+const isDark = theme === "dark";
 
 const navGroups: NavGroup[] = [
   {
-    label: "Platform",
-    href: "/#platform",
+    label: "Services",
+    href: "/#solutions",
     featured: {
-      title: "AI workflow control",
-      href: "/#platform",
-      description: "Tactas connects agents, workflows, business systems, monitoring, and implementation support in one operating layer.",
-      icon: Network,
+      title: "AI Knowledge Base",
+      href: "/services/ai-knowledge-base",
+      description: "Managed RAG, enterprise AI search, document Q&A, cited answers, permissions, APIs, and ongoing retrieval support.",
+      icon: BrainCircuit,
     },
     columns: [
       {
-        title: "Use cases",
+        title: "Core services",
         links: [
-          { label: "Modernize operations", href: "/#solutions" },
-          { label: "Automate workflows", href: "/#platform" },
-          { label: "Monitor AI agents", href: "/#why-choose" },
+          { label: "AI Workflow Automation", href: "/services/ai-workflow-automation", description: "Agents that run business workflows" },
+          { label: "AI Knowledge Base", href: "/services/ai-knowledge-base", description: "Managed RAG and document search" },
+          { label: "AI Document Processing", href: "/#contact", description: "OCR, extraction, validation, and routing" },
         ],
       },
       {
-        title: "CxO topics",
+        title: "Operations",
         links: [
-          { label: "Adopt AI", href: "/#platform", description: "Bring agents into daily workflows" },
-          { label: "AI control", href: "/#why-choose", description: "Track actions and decisions" },
-          { label: "Data setup", href: "/#platform", description: "Prepare systems for automation" },
+          { label: "Customer Support Assistant", href: "/use-cases/ai-customer-support-automation", description: "Triage, draft, escalate, and update systems" },
+          { label: "Back-Office Automation", href: "/use-cases/ai-back-office-automation", description: "Invoices, records, approvals, and admin workflows" },
+          { label: "CRM & Sales Assistant", href: "/use-cases/ai-crm-workflow-automation", description: "Lead qualification, follow-up, and CRM updates" },
         ],
       },
       {
-        title: "Industries",
+        title: "Control layer",
         links: [
-          { label: "Ecommerce", href: "/industries/ecommerce" },
-          { label: "Healthcare", href: "/industries/healthcare" },
-          { label: "Professional services", href: "/industries/professional-services" },
-          { label: "SaaS operations", href: "/#solutions" },
-        ],
-      },
-      {
-        title: "Engage",
-        links: [
-          { label: "Automation guides", href: "/#faq" },
-          { label: "Reference architectures", href: "/#platform" },
-          { label: "Request a demo", href: "#contact" },
+          { label: "Agent Monitoring", href: "/#why-choose", description: "Logs, visibility, and exception review" },
+          { label: "Human Approval Gates", href: "/#why-choose", description: "Keep sensitive work under control" },
+          { label: "Implementation Support", href: "/#contact", description: "Managed setup and ongoing tuning" },
         ],
       },
     ],
   },
   {
-    label: "Products",
-    href: "/#solutions",
-    columns: [
-      {
-      title: "Agent operations",
-      links: [
-          { label: "Workflow automation", href: "/#platform" },
-          { label: "Support automation", href: "/#solutions" },
-          { label: "Back-office automation", href: "/#solutions" },
-        ],
-      },
-      {
-      title: "Governance",
-      links: [
-          { label: "Agent monitoring", href: "/#why-choose" },
-          { label: "Action tracking", href: "/#why-choose" },
-          { label: "Human handoff", href: "/#why-choose" },
-        ],
-      },
-      {
-        title: "Plans & pricing",
-        links: [
-          { label: "Enterprise plans", href: "#contact" },
-          { label: "Workflow setup review", href: "#contact" },
-          { label: "Compare use cases", href: "/#solutions" },
-        ],
-      },
-    ],
-  },
-  {
-    label: "Developers",
-    href: "/#platform",
-    columns: [
-      {
-        title: "Documentation",
-        links: [
-          { label: "Developer library", href: "/#platform", description: "Implementation guides" },
-          { label: "Application demos", href: "/#solutions", description: "Workflow examples" },
-          { label: "Tutorials", href: "/#faq", description: "Step-by-step build notes" },
-        ],
-      },
-      {
-        title: "Products",
-        links: [
-          { label: "Artificial intelligence", href: "/#platform" },
-          { label: "Agent observability", href: "/#why-choose" },
-          { label: "Internal tools", href: "/#solutions" },
-        ],
-      },
-    ],
-  },
-  {
-    label: "Partners",
-    href: "/#contact",
+    label: "Industries",
+    href: "/industries",
     featured: {
-      title: "Partner network",
-      href: "#contact",
-      description: "Work with Tactas to design, deploy, monitor, and support AI workflow automation for client teams.",
+      title: "Industry workflows",
+      href: "/industries",
+      description: "Start with the operating patterns where supervised AI agents create clear business value.",
       icon: Briefcase,
     },
     columns: [
       {
-        title: "Partnership types",
+        title: "Live pages",
         links: [
-          { label: "Technology partners", href: "#contact" },
-          { label: "Service providers", href: "#contact" },
-          { label: "Implementation partners", href: "#contact" },
+          { label: "Ecommerce", href: "/industries/ecommerce", description: "Support, order, return, and customer workflows" },
+          { label: "Healthcare", href: "/industries/healthcare", description: "Patient intake, reminders, forms, and handoff" },
+          { label: "Professional Services", href: "/industries/professional-services", description: "Client intake, documents, CRM, and follow-up" },
         ],
       },
       {
-        title: "Resources",
+        title: "Common fits",
         links: [
-          { label: "Partner brief", href: "#contact" },
-          { label: "Solution guide", href: "/#solutions" },
-          { label: "Contact partnerships", href: "#contact" },
+          { label: "SaaS Operations", href: "/#solutions", description: "Support, docs, CRM, and internal tooling" },
+          { label: "Finance & Admin", href: "/#solutions", description: "Invoices, approvals, reconciliation, and reports" },
+          { label: "Logistics Teams", href: "/#contact", description: "Tracking, exception handling, and updates" },
+        ],
+      },
+    ],
+  },
+  {
+    label: "How It Works",
+    href: "/#platform",
+    featured: {
+      title: "Managed implementation",
+      href: "/#contact",
+      description: "Tactas maps the workflow, connects the tools, adds controls, launches supervised, and keeps improving it.",
+      icon: Zap,
+    },
+    columns: [
+      {
+        title: "Process",
+        links: [
+          { label: "Discovery", href: "/#contact", description: "Choose one workflow worth automating" },
+          { label: "Build", href: "/#platform", description: "Prepare tools, data, SOPs, and prompts" },
+          { label: "Integrate", href: "/#platform", description: "Connect APIs, documents, CRM, and helpdesk" },
+        ],
+      },
+      {
+        title: "Operate",
+        links: [
+          { label: "Monitor", href: "/#why-choose", description: "Track actions, exceptions, and quality" },
+          { label: "Human Review", href: "/#why-choose", description: "Route sensitive decisions to the right owner" },
+          { label: "Improve", href: "/#contact", description: "Tune retrieval, rules, and workflow behavior" },
         ],
       },
     ],
@@ -176,28 +142,20 @@ const navGroups: NavGroup[] = [
     href: "/#faq",
     columns: [
       {
-        title: "Engage",
-        links: [
-          { label: "Demos + product tours", href: "#contact" },
-          { label: "Case studies", href: "/#solutions" },
-          { label: "Webinars", href: "#contact" },
-          { label: "Workshops", href: "#contact" },
-        ],
-      },
-      {
-        title: "Build",
-        links: [
-          { label: "Reference architecture", href: "/#platform" },
-          { label: "Solution + product guides", href: "/#solutions" },
-          { label: "Developer documentation", href: "/#platform" },
-        ],
-      },
-      {
         title: "Explore",
         links: [
-          { label: "Operational AI brief", href: "/#faq" },
-          { label: "Security reports", href: "/#why-choose" },
-          { label: "Learning center", href: "/#faq" },
+          { label: "Use Cases", href: "/use-cases" },
+          { label: "Reference Architecture", href: "/#platform" },
+          { label: "FAQ", href: "/#faq" },
+        ],
+      },
+      {
+        title: "Service guides",
+        links: [
+          { label: "AI Knowledge Base", href: "/services/ai-knowledge-base" },
+          { label: "Workflow Automation", href: "/services/ai-workflow-automation" },
+          { label: "Customer Support Automation", href: "/use-cases/ai-customer-support-automation" },
+          { label: "Control & Monitoring", href: "/#why-choose" },
         ],
       },
     ],
@@ -237,22 +195,20 @@ const isActive = (href: string) => {
 
 <header
   id="site-header"
-  class="sticky top-0 z-[11111] border-b border-black/10 bg-white/95 text-[#111111] shadow-[0_1px_0_rgba(0,0,0,0.05)] backdrop-blur"
+  class:list={[
+    "sticky top-0 z-[11111] backdrop-blur",
+    isDark
+      ? "border-b border-white/10 bg-[#050A14]/92 text-white shadow-[0_1px_0_rgba(255,255,255,0.06)]"
+      : "border-b border-black/10 bg-white/95 text-[#111111] shadow-[0_1px_0_rgba(0,0,0,0.05)]",
+  ]}
 >
-  <div class={`${CONTAINER} hidden h-8 items-center justify-end gap-5 text-[12px] text-[#4f4f4f] lg:flex`}>
-    <a href={`mailto:${brandEmail}`} class="transition hover:text-[#06B6D4]">Log in</a>
-    <a href="#contact" class="transition hover:text-[#06B6D4]">Support</a>
-    <button type="button" class="inline-flex items-center gap-1 transition hover:text-[#06B6D4]" aria-label="Languages">
-      <Globe2 class="h-3.5 w-3.5" stroke-width={1.8} />
-      Languages
-      <ChevronDown class="h-3 w-3" stroke-width={1.9} />
-    </button>
-  </div>
-
   <div class={`${CONTAINER} flex h-[64px] items-center justify-between gap-5 lg:h-[68px]`}>
     <a href="/" class="flex min-w-0 items-center gap-3" aria-label="Tactas AI home">
       <img src="/favicon-96x96.png" alt="" width="32" height="32" class="h-8 w-8 rounded-[6px]" aria-hidden="true" loading="eager" decoding="async" />
-      <span class="text-[22px] font-semibold leading-none tracking-[-0.03em] text-[#111111]">Tactas AI</span>
+      <span class:list={[
+        "text-[22px] font-semibold leading-none tracking-[-0.03em]",
+        isDark ? "text-white" : "text-[#111111]",
+      ]}>Tactas AI</span>
     </a>
 
     <nav class="hidden h-full items-center lg:flex" aria-label="Primary">
@@ -261,8 +217,9 @@ const isActive = (href: string) => {
           <a
             href={group.href}
             class:list={[
-              "flex h-full items-center gap-1.5 px-3 text-[14px] font-semibold text-[#1f1f1f] transition hover:text-[#06B6D4]",
-              isActive(group.href) ? "text-[#06B6D4]" : "",
+              "flex h-full items-center gap-1.5 px-3 text-[14px] font-semibold transition",
+              isDark ? "text-white/82 hover:text-[#A78BFA]" : "text-[#1f1f1f] hover:text-[#06B6D4]",
+              isActive(group.href) ? (isDark ? "text-[#A78BFA]" : "text-[#06B6D4]") : "",
             ]}
           >
             {group.label}
@@ -311,10 +268,10 @@ const isActive = (href: string) => {
     </nav>
 
     <div class="hidden items-center gap-4 lg:flex">
-      <a href={`mailto:${brandEmail}`} class="text-[14px] font-semibold text-[#1f1f1f] transition hover:text-[#06B6D4]">
-        Log in
-      </a>
-      <a href={ctaHref} class="inline-flex h-10 items-center justify-center rounded-[3px] bg-[#1f1f1f] px-4 text-[14px] font-semibold text-white transition hover:bg-[#06B6D4]">
+      <a href={ctaHref} class:list={[
+        "inline-flex h-10 items-center justify-center rounded-[3px] px-4 text-[14px] font-semibold text-white transition",
+        isDark ? "bg-[#7C3AED] hover:bg-[#8B5CF6]" : "bg-[#1f1f1f] hover:bg-[#06B6D4]",
+      ]}>
         {ctaLabel}
       </a>
     </div>
@@ -322,7 +279,10 @@ const isActive = (href: string) => {
     <button
       id="mobile-nav-toggle"
       type="button"
-      class="inline-flex h-10 w-10 items-center justify-center rounded-[3px] border border-black/15 bg-white text-[#111111] lg:hidden"
+      class:list={[
+        "inline-flex h-10 w-10 items-center justify-center rounded-[3px] border lg:hidden",
+        isDark ? "border-white/15 bg-white/8 text-white" : "border-black/15 bg-white text-[#111111]",
+      ]}
       aria-label="Open navigation"
       aria-expanded="false"
       aria-controls="mobile-nav"
@@ -332,33 +292,63 @@ const isActive = (href: string) => {
     </button>
   </div>
 
-  <div id="mobile-nav" class="hidden border-t border-black/10 bg-white lg:hidden">
+  <div id="mobile-nav" class:list={[
+    "hidden border-t lg:hidden",
+    isDark ? "border-white/10 bg-[#050A14]" : "border-black/10 bg-white",
+  ]}>
     <div class={`${CONTAINER} max-h-[calc(100vh-72px)] overflow-y-auto py-5`}>
-      <div class="mb-5 grid grid-cols-2 gap-3 text-[13px] font-semibold">
-        <a href={`mailto:${brandEmail}`} class="rounded-[3px] border border-black/15 px-3 py-2.5 text-center text-[#111111]" data-mobile-link>Log in</a>
-        <a href={ctaHref} class="rounded-[3px] bg-[#1f1f1f] px-3 py-2.5 text-center text-white" data-mobile-link>{ctaLabel}</a>
+      <div class="mb-5 grid gap-3 text-[13px] font-semibold sm:grid-cols-2">
+        <a href={`mailto:${brandEmail}`} class:list={[
+          "rounded-[3px] border px-3 py-2.5 text-center",
+          isDark ? "border-white/15 text-white" : "border-black/15 text-[#111111]",
+        ]} data-mobile-link>Email us</a>
+        <a href={ctaHref} class:list={[
+          "rounded-[3px] px-3 py-2.5 text-center text-white",
+          isDark ? "bg-[#7C3AED]" : "bg-[#1f1f1f]",
+        ]} data-mobile-link>{ctaLabel}</a>
       </div>
 
-      <div class="divide-y divide-black/10 border-y border-black/10">
+      <div class:list={[
+        "divide-y border-y",
+        isDark ? "divide-white/10 border-white/10" : "divide-black/10 border-black/10",
+      ]}>
         {navGroups.map((group) => (
           <details class="group/mobile">
-            <summary class="flex cursor-pointer list-none items-center justify-between py-4 text-[16px] font-semibold text-[#111111]">
+            <summary class:list={[
+              "flex cursor-pointer list-none items-center justify-between py-4 text-[16px] font-semibold",
+              isDark ? "text-white" : "text-[#111111]",
+            ]}>
               {group.label}
               <ChevronDown class="h-4 w-4 transition group-open/mobile:rotate-180" stroke-width={1.8} />
             </summary>
             <div class="grid gap-5 pb-5">
               {group.featured ? (
-                <a href={group.featured.href} class="rounded-lg bg-[#f7f7f7] p-4" data-mobile-link>
-                  <span class="block text-[15px] font-semibold text-[#111111]">{group.featured.title}</span>
-                  <span class="mt-1 block text-[13px] leading-relaxed text-[#5f5f5f]">{group.featured.description}</span>
+                <a href={group.featured.href} class:list={[
+                  "rounded-lg p-4",
+                  isDark ? "border border-white/10 bg-white/[0.04]" : "bg-[#f7f7f7]",
+                ]} data-mobile-link>
+                  <span class:list={[
+                    "block text-[15px] font-semibold",
+                    isDark ? "text-white" : "text-[#111111]",
+                  ]}>{group.featured.title}</span>
+                  <span class:list={[
+                    "mt-1 block text-[13px] leading-relaxed",
+                    isDark ? "text-white/62" : "text-[#5f5f5f]",
+                  ]}>{group.featured.description}</span>
                 </a>
               ) : null}
               {group.columns.map((column) => (
                 <div>
-                  <p class="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6d6d6d]">{column.title}</p>
+                  <p class:list={[
+                    "mb-3 text-[11px] font-semibold uppercase tracking-[0.18em]",
+                    isDark ? "text-[#A78BFA]" : "text-[#6d6d6d]",
+                  ]}>{column.title}</p>
                   <div class="grid gap-3">
                     {column.links.map((link) => (
-                      <a href={link.href} class="text-[14px] font-medium text-[#222222]" data-mobile-link>{link.label}</a>
+                      <a href={link.href} class:list={[
+                        "text-[14px] font-medium",
+                        isDark ? "text-white/78" : "text-[#222222]",
+                      ]} data-mobile-link>{link.label}</a>
                     ))}
                   </div>
                 </div>
@@ -368,14 +358,17 @@ const isActive = (href: string) => {
         ))}
       </div>
 
-      <div class="mt-5 grid gap-3 text-[14px] text-[#4f4f4f]">
-        <a href="#contact" class="inline-flex items-center gap-2" data-mobile-link>
-          <FileText class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
-          Support
+      <div class:list={[
+        "mt-5 grid gap-3 text-[14px]",
+        isDark ? "text-white/70" : "text-[#4f4f4f]",
+      ]}>
+        <a href="/#solutions" class="inline-flex items-center gap-2" data-mobile-link>
+          <Zap class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
+          Services
         </a>
-        <a href="/#faq" class="inline-flex items-center gap-2" data-mobile-link>
-          <Server class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
-          Resources
+        <a href="/services/ai-knowledge-base" class="inline-flex items-center gap-2" data-mobile-link>
+          <BrainCircuit class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
+          AI Knowledge Base
         </a>
         <a href="/industries/ecommerce" class="inline-flex items-center gap-2" data-mobile-link>
           <ShoppingBag class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
@@ -389,13 +382,17 @@ const isActive = (href: string) => {
           <Briefcase class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
           Professional services
         </a>
-        <a href="/#solutions" class="inline-flex items-center gap-2" data-mobile-link>
-          <Headphones class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
-          Solutions
+        <a href="/#platform" class="inline-flex items-center gap-2" data-mobile-link>
+          <Server class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
+          How It Works
         </a>
         <a href="/#why-choose" class="inline-flex items-center gap-2" data-mobile-link>
           <ShieldCheck class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
           Control
+        </a>
+        <a href="/#faq" class="inline-flex items-center gap-2" data-mobile-link>
+          <FileText class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
+          Resources
         </a>
       </div>
     </div>

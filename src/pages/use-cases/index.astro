@@ -1,0 +1,72 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import UseCasesIndexPage from "../../components/UseCasesIndexPage.astro";
+import { getSiteUrl } from "../../lib/site";
+
+const siteUrl = getSiteUrl();
+const pageUrl = `${siteUrl}/use-cases`;
+const title = "AI Automation Use Cases for Business Operations | Tactas AI";
+const description =
+  "Explore AI workflow automation use cases for customer support, back-office operations, CRM workflows, documents, approvals, and human handoff.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": `${pageUrl}#collectionpage`,
+      name: "AI Automation Use Cases",
+      url: pageUrl,
+      description,
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "Use Cases", item: pageUrl },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/use-cases"
+  keywords={[
+    "AI automation use cases",
+    "AI workflow automation use cases",
+    "AI customer support automation",
+    "AI back-office automation",
+    "AI CRM workflow automation",
+    "business process automation use cases",
+    "AI agents for operations",
+    "human in the loop automation",
+  ]}
+  openGraph={{
+    title,
+    description,
+    url: pageUrl,
+    type: "website",
+    images: [
+      {
+        url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png",
+        width: 1536,
+        height: 1024,
+        alt: "Tactas AI automation use cases",
+      },
+    ],
+  }}
+  twitter={{
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"],
+  }}
+  jsonLd={jsonLd}
+>
+  <UseCasesIndexPage siteUrl={siteUrl} currentPath="/use-cases" />
+</BaseLayout>

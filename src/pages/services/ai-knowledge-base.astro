@@ -1,0 +1,168 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AIKnowledgeBasePage from "../../components/AIKnowledgeBasePage.astro";
+import { getBrandEmail, getSiteUrl } from "../../lib/site";
+
+const siteUrl = getSiteUrl();
+const pageUrl = `${siteUrl}/services/ai-knowledge-base`;
+const brandEmail = getBrandEmail();
+
+const title = "AI Knowledge Base Service | Managed RAG & Document Search | Tactas AI";
+const description =
+  "Managed AI Knowledge Base service for document ingestion, enterprise search, RAG Q&A, cited answers, permissions, APIs, and ongoing retrieval support.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      name: "AI Knowledge Base as a Managed Service",
+      url: pageUrl,
+      description,
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      about: { "@id": `${siteUrl}/#organization` },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
+      name: "AI Knowledge Base as a Managed Service",
+      serviceType: [
+        "AI Knowledge Base",
+        "AI Knowledge Base service",
+        "Managed RAG service",
+        "RAG as a service",
+        "Retrieval augmented generation service",
+        "Document intelligence",
+        "AI document search",
+        "Enterprise search",
+        "Enterprise AI search",
+        "Semantic search",
+        "Hybrid search",
+        "Document Q&A",
+        "Cited AI answers",
+        "Knowledge base implementation",
+        "Internal knowledge assistant",
+        "Private AI knowledge base",
+      ],
+      url: pageUrl,
+      description:
+        "Managed document intelligence service for company knowledge bases, including ingestion, parsing, indexing, semantic and hybrid search, retrieval-augmented answers, citations, permissions, APIs, dashboards, and operations support.",
+      provider: { "@id": `${siteUrl}/#organization` },
+      areaServed: "Worldwide",
+      audience: {
+        "@type": "BusinessAudience",
+        audienceType: "Operations, support, HR, legal, sales, SaaS, and enterprise teams managing internal documents",
+      },
+      offers: {
+        "@type": "Offer",
+        availability: "https://schema.org/InStock",
+        url: pageUrl,
+        category: "Managed AI Knowledge Base",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Is this a software product or a service?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "It is a managed service. Tactas AI designs the architecture, sets up ingestion and retrieval, builds the interface or API, and keeps the knowledge base operating after launch.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can it use our existing document storage?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. The service can connect to existing sources such as Google Drive, SharePoint, S3-compatible storage, databases, helpdesks, CRMs, and internal document repositories.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How do you reduce hallucinations?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The system retrieves approved source passages before generating an answer, attaches citations, limits unsupported claims, and uses evaluation questions to find weak retrieval paths.",
+          },
+        },
+      ],
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "AI Knowledge Base", item: pageUrl },
+      ],
+    },
+    {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      email: brandEmail,
+      areaServed: "Worldwide",
+      availableLanguage: ["en", "vi"],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/services/ai-knowledge-base"
+  keywords={[
+    "AI Knowledge Base",
+    "AI Knowledge Base service",
+    "AI Knowledge Base as a managed service",
+    "managed RAG service",
+    "RAG as a service",
+    "retrieval augmented generation service",
+    "document intelligence",
+    "AI document search",
+    "AI document management service",
+    "enterprise AI search",
+    "enterprise knowledge search",
+    "semantic search for documents",
+    "hybrid search for documents",
+    "document Q&A",
+    "cited AI answers",
+    "RAG implementation service",
+    "RAG consulting service",
+    "OpenSearch RAG",
+    "Vespa RAG",
+    "knowledge base implementation",
+    "internal knowledge assistant",
+    "internal knowledge base AI",
+    "private AI knowledge base",
+    "SharePoint AI search",
+    "Google Drive AI search",
+    "AI document management",
+  ]}
+  openGraph={{
+    title,
+    description,
+    url: pageUrl,
+    type: "website",
+    images: [
+      {
+        url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png",
+        width: 1536,
+        height: 1024,
+        alt: "Tactas AI Knowledge Base managed service",
+      },
+    ],
+  }}
+  twitter={{
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"],
+  }}
+  jsonLd={jsonLd}
+>
+  <AIKnowledgeBasePage siteUrl={siteUrl} currentPath="/services/ai-knowledge-base" />
+</BaseLayout>

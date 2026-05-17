@@ -1,0 +1,128 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import UseCaseDetailPage from "../../components/UseCaseDetailPage.astro";
+import { getBrandEmail, getSiteUrl } from "../../lib/site";
+
+const siteUrl = getSiteUrl();
+const pageUrl = `${siteUrl}/use-cases/ai-customer-support-automation`;
+const brandEmail = getBrandEmail();
+const title = "AI Customer Support Automation & Ticket Triage | Tactas AI";
+const description =
+  "AI customer support automation for ticket triage, helpdesk workflows, drafted replies, CRM updates, human handoff, and support monitoring.";
+
+const props = {
+  siteUrl,
+  currentPath: "/use-cases/ai-customer-support-automation",
+  eyebrow: "Customer support automation",
+  title: "AI customer support automation for ticket triage and agent assist.",
+  description:
+    "Tactas AI helps support teams automate ticket triage, retrieve customer context, draft accurate replies, update helpdesk and CRM records, and escalate sensitive cases with human review.",
+  primaryKeyword: "AI customer support automation",
+  secondaryKeywords: ["ticket triage automation", "AI helpdesk automation", "customer service workflow automation", "support agent assist"],
+  fit: [
+    {
+      title: "High ticket volume",
+      body: "Support teams receive repeatable questions about orders, accounts, billing, policies, product usage, or troubleshooting.",
+    },
+    {
+      title: "Context spread across tools",
+      body: "Agents need helpdesk history, CRM data, knowledge base content, order records, and internal notes before responding.",
+    },
+    {
+      title: "Sensitive cases need review",
+      body: "Refunds, cancellations, account changes, legal issues, and angry customers should route to qualified humans.",
+    },
+    {
+      title: "Response quality matters",
+      body: "Teams want faster first response times without losing policy accuracy, tone control, and source visibility.",
+    },
+  ],
+  workflow: [
+    { title: "Ticket intake", body: "A new email, chat, or helpdesk ticket enters the support queue." },
+    { title: "Classify and retrieve", body: "The agent detects intent, priority, account context, relevant policy, and prior interactions." },
+    { title: "Draft response", body: "AI prepares a reply grounded in approved knowledge and customer data." },
+    { title: "Update systems", body: "The workflow can tag tickets, update CRM fields, create tasks, or prepare refund notes." },
+    { title: "Escalate when needed", body: "Sensitive cases route to humans with context, recommended next steps, and an audit trail." },
+  ],
+  outcomes: [
+    { title: "Faster first responses", body: "Reduce repetitive reading, searching, and drafting work for support agents." },
+    { title: "Better handoff quality", body: "Escalations include customer context, issue summary, policy references, and next actions." },
+    { title: "Consistent policy use", body: "Replies are grounded in approved knowledge base, SOP, billing, and return policy content." },
+    { title: "Visible operations", body: "Leaders can review AI actions, exceptions, approval paths, and support workflow quality." },
+  ],
+  integrations: ["Zendesk", "Intercom", "Freshdesk", "HubSpot", "Salesforce", "Shopify", "Stripe", "Google Drive", "Knowledge base", "Internal APIs"],
+  faqs: [
+    { title: "Can AI reply directly to customers?", body: "Yes, but many teams start with drafted replies and human approval before allowing direct responses for low-risk tickets." },
+    { title: "Can it use our support policies?", body: "Yes. Tactas AI can connect support SOPs, help center articles, internal docs, and order or account data." },
+    { title: "What should stay human?", body: "Refund exceptions, legal threats, account changes, sensitive billing issues, and angry escalations usually need human review." },
+  ],
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      name: "AI Customer Support Automation",
+      url: pageUrl,
+      description,
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
+      name: "AI Customer Support Automation",
+      serviceType: ["AI customer support automation", "Ticket triage automation", "AI helpdesk automation", "AI support agent", "Customer service workflow automation"],
+      url: pageUrl,
+      description,
+      provider: { "@id": `${siteUrl}/#organization` },
+      areaServed: "Worldwide",
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: props.faqs.map((item) => ({
+        "@type": "Question",
+        name: item.title,
+        acceptedAnswer: { "@type": "Answer", text: item.body },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "Use Cases", item: `${siteUrl}/use-cases` },
+        { "@type": "ListItem", position: 3, name: "AI Customer Support Automation", item: pageUrl },
+      ],
+    },
+    { "@type": "ContactPoint", contactType: "sales", email: brandEmail, areaServed: "Worldwide", availableLanguage: ["en", "vi"] },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/use-cases/ai-customer-support-automation"
+  keywords={[
+    "AI customer support automation",
+    "AI support agent",
+    "ticket triage automation",
+    "customer service workflow automation",
+    "AI helpdesk automation",
+    "AI agent for customer support",
+    "support agent assist",
+    "AI ticket triage",
+    "AI customer service automation",
+    "AI customer support agent",
+    "Zendesk AI automation",
+    "Intercom AI automation",
+  ]}
+  openGraph={{ title, description, url: pageUrl, type: "website", images: [{ url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png", width: 1536, height: 1024, alt: "AI customer support automation" }] }}
+  twitter={{ card: "summary_large_image", title, description, images: ["/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"] }}
+  jsonLd={jsonLd}
+>
+  <UseCaseDetailPage {...props} />
+</BaseLayout>

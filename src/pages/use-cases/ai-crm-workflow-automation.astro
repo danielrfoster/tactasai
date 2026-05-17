@@ -1,0 +1,113 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import UseCaseDetailPage from "../../components/UseCaseDetailPage.astro";
+import { getBrandEmail, getSiteUrl } from "../../lib/site";
+
+const siteUrl = getSiteUrl();
+const pageUrl = `${siteUrl}/use-cases/ai-crm-workflow-automation`;
+const brandEmail = getBrandEmail();
+const title = "AI CRM Workflow Automation & Lead Qualification | Tactas AI";
+const description =
+  "AI CRM workflow automation for lead qualification, CRM updates, sales follow-up, call summaries, account research, and pipeline task management.";
+
+const props = {
+  siteUrl,
+  currentPath: "/use-cases/ai-crm-workflow-automation",
+  eyebrow: "CRM workflow automation",
+  title: "AI CRM workflow automation for sales and operations teams.",
+  description:
+    "Tactas AI helps teams qualify leads, summarize conversations, enrich CRM records, prepare follow-up, create tasks, and keep pipeline workflows moving.",
+  primaryKeyword: "AI CRM workflow automation",
+  secondaryKeywords: ["AI lead qualification", "sales follow-up automation", "CRM update automation", "AI sales assistant"],
+  fit: [
+    {
+      title: "Leads need qualification",
+      body: "Sales or operations teams manually assess fit, urgency, budget, service line, routing, and next steps.",
+    },
+    {
+      title: "CRM hygiene is inconsistent",
+      body: "Important fields, notes, next steps, owners, and tasks are often missing or updated late.",
+    },
+    {
+      title: "Follow-up takes too long",
+      body: "Teams need better first replies, meeting summaries, proposal reminders, and next-action tracking.",
+    },
+    {
+      title: "Context lives everywhere",
+      body: "CRM records, email, forms, documents, call notes, product docs, and support history all shape the next action.",
+    },
+  ],
+  workflow: [
+    { title: "Lead or account intake", body: "A form, email, call note, CRM update, or meeting creates a sales workflow event." },
+    { title: "Enrich context", body: "AI collects CRM history, company details, service needs, notes, documents, and related activity." },
+    { title: "Score and route", body: "The workflow classifies fit, urgency, service line, owner, and recommended next step." },
+    { title: "Prepare follow-up", body: "AI drafts replies, meeting briefs, proposal notes, CRM updates, and task reminders." },
+    { title: "Track progress", body: "Actions, assumptions, owner changes, and follow-up status remain visible for review." },
+  ],
+  outcomes: [
+    { title: "Cleaner CRM data", body: "Reduce missing notes, stale fields, unclear owners, and untracked next steps." },
+    { title: "Faster lead response", body: "Prepare qualified summaries and follow-up drafts so teams respond faster." },
+    { title: "Better sales handoff", body: "Route opportunities with context, fit signals, pain points, and recommended actions." },
+    { title: "More consistent follow-up", body: "Create reminders, tasks, summaries, and email drafts from the same operating rules." },
+  ],
+  integrations: ["HubSpot", "Salesforce", "Pipedrive", "Attio", "Gmail", "Outlook", "Google Calendar", "Slack", "Forms", "Internal APIs"],
+  faqs: [
+    { title: "Can AI update CRM records?", body: "Yes. Updates can be drafted for review or applied directly within approved permissions and workflow rules." },
+    { title: "Can this qualify leads?", body: "Yes. The workflow can score fit, urgency, budget, service line, routing, and missing information." },
+    { title: "Can it prepare sales follow-up?", body: "Yes. AI can draft emails, meeting summaries, task reminders, proposal notes, and handoff briefs." },
+  ],
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebPage", "@id": `${pageUrl}#webpage`, name: "AI CRM Workflow Automation", url: pageUrl, description, isPartOf: { "@id": `${siteUrl}/#website` }, inLanguage: "en-US" },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
+      name: "AI CRM Workflow Automation",
+      serviceType: ["AI CRM workflow automation", "AI lead qualification", "Sales follow-up automation", "CRM update automation"],
+      url: pageUrl,
+      description,
+      provider: { "@id": `${siteUrl}/#organization` },
+      areaServed: "Worldwide",
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: props.faqs.map((item) => ({ "@type": "Question", name: item.title, acceptedAnswer: { "@type": "Answer", text: item.body } })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "Use Cases", item: `${siteUrl}/use-cases` },
+        { "@type": "ListItem", position: 3, name: "AI CRM Workflow Automation", item: pageUrl },
+      ],
+    },
+    { "@type": "ContactPoint", contactType: "sales", email: brandEmail, areaServed: "Worldwide", availableLanguage: ["en", "vi"] },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/use-cases/ai-crm-workflow-automation"
+  keywords={[
+    "AI CRM workflow automation",
+    "AI lead qualification",
+    "sales follow-up automation",
+    "CRM update automation",
+    "AI sales assistant",
+    "CRM workflow automation",
+    "AI agents for sales",
+    "HubSpot AI automation",
+    "Salesforce AI automation",
+  ]}
+  openGraph={{ title, description, url: pageUrl, type: "website", images: [{ url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png", width: 1536, height: 1024, alt: "AI CRM workflow automation" }] }}
+  twitter={{ card: "summary_large_image", title, description, images: ["/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"] }}
+  jsonLd={jsonLd}
+>
+  <UseCaseDetailPage {...props} />
+</BaseLayout>

@@ -11,6 +11,12 @@ export const GET = (() => {
     { path: "/industries/ecommerce", changefreq: "weekly", priority: "0.85" },
     { path: "/industries/healthcare", changefreq: "weekly", priority: "0.85" },
     { path: "/industries/professional-services", changefreq: "weekly", priority: "0.85" },
+    { path: "/services/ai-workflow-automation", changefreq: "weekly", priority: "0.9" },
+    { path: "/services/ai-knowledge-base", changefreq: "weekly", priority: "0.9" },
+    { path: "/use-cases", changefreq: "weekly", priority: "0.85" },
+    { path: "/use-cases/ai-customer-support-automation", changefreq: "weekly", priority: "0.82" },
+    { path: "/use-cases/ai-back-office-automation", changefreq: "weekly", priority: "0.82" },
+    { path: "/use-cases/ai-crm-workflow-automation", changefreq: "weekly", priority: "0.82" },
     { path: "/privacy", changefreq: "yearly", priority: "0.4" },
     { path: "/terms", changefreq: "yearly", priority: "0.4" },
   ];
