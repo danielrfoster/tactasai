@@ -39,7 +39,7 @@ interface Props {
   theme?: "dark" | "light";
 }
 
-const { currentPath = "/", ctaLabel = "Book demo", ctaHref = "#contact", theme = "light" } = Astro.props;
+const { currentPath = "/", ctaLabel = "Book demo", ctaHref = "/contact", theme = "light" } = Astro.props;
 const brandEmail = getBrandEmail();
 const CONTAINER = "mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10";
 const isDark = theme === "dark";
@@ -60,7 +60,7 @@ const navGroups: NavGroup[] = [
         links: [
           { label: "AI Workflow Automation", href: "/services/ai-workflow-automation", description: "Agents that run business workflows" },
           { label: "AI Knowledge Base", href: "/services/ai-knowledge-base", description: "Managed RAG and document search" },
-          { label: "AI Document Processing", href: "/#contact", description: "OCR, extraction, validation, and routing" },
+          { label: "AI Document Processing", href: "/contact", description: "OCR, extraction, validation, and routing" },
         ],
       },
       {
@@ -74,9 +74,9 @@ const navGroups: NavGroup[] = [
       {
         title: "Control layer",
         links: [
-          { label: "Agent Monitoring", href: "/#why-choose", description: "Logs, visibility, and exception review" },
-          { label: "Human Approval Gates", href: "/#why-choose", description: "Keep sensitive work under control" },
-          { label: "Implementation Support", href: "/#contact", description: "Managed setup and ongoing tuning" },
+          { label: "Agent Monitoring", href: "/#platform", description: "Logs, visibility, and exception review" },
+          { label: "Human Approval Gates", href: "/#platform", description: "Keep sensitive work under control" },
+          { label: "Implementation Support", href: "/contact", description: "Managed setup and ongoing tuning" },
         ],
       },
     ],
@@ -104,7 +104,7 @@ const navGroups: NavGroup[] = [
         links: [
           { label: "SaaS Operations", href: "/#solutions", description: "Support, docs, CRM, and internal tooling" },
           { label: "Finance & Admin", href: "/#solutions", description: "Invoices, approvals, reconciliation, and reports" },
-          { label: "Logistics Teams", href: "/#contact", description: "Tracking, exception handling, and updates" },
+          { label: "Logistics Teams", href: "/contact", description: "Tracking, exception handling, and updates" },
         ],
       },
     ],
@@ -114,7 +114,7 @@ const navGroups: NavGroup[] = [
     href: "/#platform",
     featured: {
       title: "Managed implementation",
-      href: "/#contact",
+      href: "/contact",
       description: "Tactas maps the workflow, connects the tools, adds controls, launches supervised, and keeps improving it.",
       icon: Zap,
     },
@@ -122,7 +122,7 @@ const navGroups: NavGroup[] = [
       {
         title: "Process",
         links: [
-          { label: "Discovery", href: "/#contact", description: "Choose one workflow worth automating" },
+          { label: "Discovery", href: "/contact", description: "Choose one workflow worth automating" },
           { label: "Build", href: "/#platform", description: "Prepare tools, data, SOPs, and prompts" },
           { label: "Integrate", href: "/#platform", description: "Connect APIs, documents, CRM, and helpdesk" },
         ],
@@ -130,23 +130,23 @@ const navGroups: NavGroup[] = [
       {
         title: "Operate",
         links: [
-          { label: "Monitor", href: "/#why-choose", description: "Track actions, exceptions, and quality" },
-          { label: "Human Review", href: "/#why-choose", description: "Route sensitive decisions to the right owner" },
-          { label: "Improve", href: "/#contact", description: "Tune retrieval, rules, and workflow behavior" },
+          { label: "Monitor", href: "/#platform", description: "Track actions, exceptions, and quality" },
+          { label: "Human Review", href: "/#platform", description: "Route sensitive decisions to the right owner" },
+          { label: "Improve", href: "/contact", description: "Tune retrieval, rules, and workflow behavior" },
         ],
       },
     ],
   },
   {
     label: "Resources",
-    href: "/#faq",
+    href: "/use-cases",
     columns: [
       {
         title: "Explore",
         links: [
           { label: "Use Cases", href: "/use-cases" },
           { label: "Reference Architecture", href: "/#platform" },
-          { label: "FAQ", href: "/#faq" },
+          { label: "Contact", href: "/contact" },
         ],
       },
       {
@@ -155,7 +155,7 @@ const navGroups: NavGroup[] = [
           { label: "AI Knowledge Base", href: "/services/ai-knowledge-base" },
           { label: "Workflow Automation", href: "/services/ai-workflow-automation" },
           { label: "Customer Support Automation", href: "/use-cases/ai-customer-support-automation" },
-          { label: "Control & Monitoring", href: "/#why-choose" },
+          { label: "Control & Monitoring", href: "/#platform" },
         ],
       },
     ],
@@ -179,7 +179,7 @@ const navGroups: NavGroup[] = [
         links: [
           { label: "Privacy Policy", href: "/privacy" },
           { label: "Terms of Service", href: "/terms" },
-          { label: "Contact", href: "#contact" },
+          { label: "Contact", href: "/contact" },
         ],
       },
     ],
@@ -386,11 +386,11 @@ const isActive = (href: string) => {
           <Server class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
           How It Works
         </a>
-        <a href="/#why-choose" class="inline-flex items-center gap-2" data-mobile-link>
+        <a href="/#platform" class="inline-flex items-center gap-2" data-mobile-link>
           <ShieldCheck class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
           Control
         </a>
-        <a href="/#faq" class="inline-flex items-center gap-2" data-mobile-link>
+        <a href="/use-cases" class="inline-flex items-center gap-2" data-mobile-link>
           <FileText class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
           Resources
         </a>

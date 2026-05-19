@@ -1,0 +1,142 @@
+---
+import { Check, Mail, Send } from "@lucide/astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import { getBrandEmail, getOrganization, getSiteUrl } from "../lib/site";
+
+const siteUrl = getSiteUrl();
+const brandEmail = getBrandEmail();
+const organization = getOrganization();
+const workflowReviewPoints = [
+  "Pick one repetitive workload",
+  "Map tools, data, rules, and handoffs",
+  "Launch with controls, logs, and review",
+];
+
+const title = "Contact Tactas AI";
+const description =
+  "Contact Tactas AI to scope a managed AI operator for repetitive support, admin, and back-office work.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    organization,
+    {
+      "@type": "ContactPage",
+      "@id": `${siteUrl}/contact#contactpage`,
+      name: "Contact Tactas AI",
+      url: `${siteUrl}/contact`,
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      about: { "@id": `${siteUrl}/#organization` },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "Contact", item: `${siteUrl}/contact` },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} canonical="/contact" jsonLd={jsonLd}>
+  <div class="min-h-screen bg-[#F8FAFC] text-[#0F172A]">
+    <Navbar currentPath="/contact" ctaLabel="Contact" ctaHref="/contact" theme="light" />
+
+    <main>
+      <section class="bg-white">
+        <div class="mx-auto grid w-full max-w-[1240px] gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14 lg:px-10 lg:py-20">
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Get started</p>
+            <h1 class="mt-4 text-4xl font-semibold leading-tight tracking-normal text-[#0F172A] sm:text-5xl lg:text-[54px]">
+              Turn one repetitive workload into a managed AI operator.
+            </h1>
+            <p class="mt-5 max-w-[34rem] text-[17px] leading-relaxed text-[#475569]">
+              Tell us what your team repeats every week. We will help scope the first operator.
+            </p>
+
+            <div class="mt-6 grid gap-3">
+              {workflowReviewPoints.map((point) => (
+                <div class="flex items-start gap-3 border border-[#D8E1EA] bg-[#F8FAFC] px-4 py-3">
+                  <Check class="mt-0.5 h-4 w-4 shrink-0 text-[#06B6D4]" stroke-width={2.4} />
+                  <p class="text-[14px] leading-relaxed text-[#334155]">{point}</p>
+                </div>
+              ))}
+            </div>
+
+            <div class="mt-8 flex items-center gap-3 text-[14px] text-[#334155]">
+              <Mail class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
+              <a href={`mailto:${brandEmail}`} class="border-b border-[#BAE6FD] pb-0.5 hover:border-[#06B6D4] hover:text-[#06B6D4]">
+                {brandEmail}
+              </a>
+            </div>
+          </div>
+
+          <form id="workflow-inquiry-form" class="border border-[#D8E1EA] bg-[#F1F5F9] p-6 shadow-[0_24px_64px_-54px_rgba(15,23,42,0.20)] sm:p-7">
+            <div class="flex items-center justify-between gap-4 border-b border-[#D8E1EA] pb-4">
+              <div>
+                <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#0E7490]">Start simple</p>
+                <h2 class="mt-2 text-[24px] font-semibold tracking-normal text-[#0F172A]">What work should your AI operators take over?</h2>
+              </div>
+              <Send class="hidden h-5 w-5 text-[#06B6D4] sm:block" stroke-width={1.8} />
+            </div>
+
+            <div class="mt-5 grid gap-4 sm:grid-cols-2">
+              <label class="grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#64748B]">
+                First name
+                <input required name="name" class="h-11 rounded-md border border-[#CBD5E1] bg-white px-3.5 text-[14px] text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Your name" />
+              </label>
+              <label class="grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#64748B]">
+                Work email
+                <input required type="email" name="email" class="h-11 rounded-md border border-[#CBD5E1] bg-white px-3.5 text-[14px] text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="you@company.com" />
+              </label>
+            </div>
+
+            <label class="mt-4 grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#64748B]">
+              Company
+              <input name="company" class="h-11 rounded-md border border-[#CBD5E1] bg-white px-3.5 text-[14px] text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Company name" />
+            </label>
+
+            <label class="mt-4 grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#64748B]">
+              Workload
+              <textarea required name="workflow" class="min-h-32 rounded-md border border-[#CBD5E1] bg-white px-3.5 py-3 text-[14px] text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Example: answer support tickets, review invoices, update CRM records, route order issues..."></textarea>
+            </label>
+
+            <button type="submit" class="mt-6 inline-flex h-12 w-full items-center justify-center rounded-md bg-[#06B6D4] px-6 text-[14px] font-semibold text-white transition hover:bg-[#0891B2]">
+              Request operator review
+            </button>
+            <p id="workflow-form-status" class="mt-3 text-center text-[12px] text-[#94A3B8]">
+              Prefer email? {brandEmail}
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script define:vars={{ brandEmail }} is:inline>
+    const workflowForm = document.getElementById("workflow-inquiry-form");
+    const workflowStatus = document.getElementById("workflow-form-status");
+    workflowForm?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const form = new FormData(workflowForm);
+      const company = String(form.get("company") || "").trim() || "Tactas AI";
+      const subject = encodeURIComponent(`Operator review inquiry — ${company}`);
+      const body = encodeURIComponent(
+        [
+          `Name: ${String(form.get("name") || "")}`,
+          `Work email: ${String(form.get("email") || "")}`,
+          `Company: ${String(form.get("company") || "")}`,
+          "",
+          "Workload:",
+          String(form.get("workflow") || ""),
+        ].join("\n"),
+      );
+      if (workflowStatus) {
+        workflowStatus.textContent = "Opening your email client with the operator review details.";
+      }
+      window.location.href = `mailto:${brandEmail}?subject=${subject}&body=${body}`;
+    });
+  </script>
+</BaseLayout>
