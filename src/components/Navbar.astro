@@ -1,15 +1,34 @@
 ---
 import {
   ArrowRight,
+  Banknote,
+  BarChart3,
+  Bot,
   Briefcase,
   BrainCircuit,
   ChevronDown,
+  Code2,
+  Database,
+  Factory,
   FileText,
+  GraduationCap,
   HeartPulse,
+  Headphones,
+  KeyRound,
+  Landmark,
   Menu,
+  Megaphone,
+  Network,
+  Puzzle,
+  Search,
+  Settings,
   Server,
   ShieldCheck,
   ShoppingBag,
+  Sparkles,
+  Truck,
+  User,
+  Users,
   X,
   Zap,
 } from "@lucide/astro";
@@ -17,7 +36,7 @@ import { getBrandEmail } from "../lib/site";
 
 interface NavColumn {
   title: string;
-  links: Array<{ label: string; href: string; description?: string }>;
+  links: Array<{ label: string; href: string; description?: string; icon?: typeof Zap; nested?: boolean }>;
 }
 
 interface NavGroup {
@@ -46,65 +65,45 @@ const isDark = theme === "dark";
 
 const navGroups: NavGroup[] = [
   {
-    label: "Services",
-    href: "/#solutions",
-    featured: {
-      title: "AI Knowledge Base",
-      href: "/services/ai-knowledge-base",
-      description: "Managed RAG, enterprise AI search, document Q&A, cited answers, permissions, APIs, and ongoing retrieval support.",
-      icon: BrainCircuit,
-    },
-    columns: [
-      {
-        title: "Core services",
-        links: [
-          { label: "AI Workflow Automation", href: "/services/ai-workflow-automation", description: "Agents that run business workflows" },
-          { label: "AI Knowledge Base", href: "/services/ai-knowledge-base", description: "Managed RAG and document search" },
-          { label: "AI Document Processing", href: "/contact", description: "OCR, extraction, validation, and routing" },
-        ],
-      },
-      {
-        title: "Operations",
-        links: [
-          { label: "Customer Support Assistant", href: "/use-cases/ai-customer-support-automation", description: "Triage, draft, escalate, and update systems" },
-          { label: "Back-Office Automation", href: "/use-cases/ai-back-office-automation", description: "Invoices, records, approvals, and admin workflows" },
-          { label: "CRM & Sales Assistant", href: "/use-cases/ai-crm-workflow-automation", description: "Lead qualification, follow-up, and CRM updates" },
-        ],
-      },
-      {
-        title: "Control layer",
-        links: [
-          { label: "Agent Monitoring", href: "/#platform", description: "Logs, visibility, and exception review" },
-          { label: "Human Approval Gates", href: "/#platform", description: "Keep sensitive work under control" },
-          { label: "Implementation Support", href: "/contact", description: "Managed setup and ongoing tuning" },
-        ],
-      },
-    ],
+    label: "Product",
+    href: "/#platform",
+    columns: [],
   },
   {
-    label: "Industries",
-    href: "/industries",
-    featured: {
-      title: "Industry workflows",
-      href: "/industries",
-      description: "Start with the operating patterns where supervised AI agents create clear business value.",
-      icon: Briefcase,
-    },
+    label: "Solutions",
+    href: "/#solutions",
     columns: [
       {
-        title: "Live pages",
+        title: "Departments",
         links: [
-          { label: "Ecommerce", href: "/industries/ecommerce", description: "Support, order, return, and customer workflows" },
-          { label: "Healthcare", href: "/industries/healthcare", description: "Patient intake, reminders, forms, and handoff" },
-          { label: "Professional Services", href: "/industries/professional-services", description: "Client intake, documents, CRM, and follow-up" },
+          { label: "All Teams", href: "/use-cases", icon: Users },
+          { label: "Engineering", href: "/contact", icon: Code2 },
+          { label: "Customer Service", href: "/use-cases/ai-customer-support-automation", icon: Headphones },
+          { label: "Sales", href: "/use-cases/ai-crm-workflow-automation", icon: BarChart3 },
+          { label: "Marketing", href: "/contact", icon: Megaphone },
+          { label: "B2B Marketing", href: "/contact", nested: true },
+          { label: "B2C Marketing", href: "/contact", nested: true },
+          { label: "People", href: "/contact", icon: User },
+          { label: "IT", href: "/services/ai-knowledge-base", icon: Settings },
+          { label: "Finance", href: "/use-cases/ai-back-office-automation", icon: Banknote },
         ],
       },
       {
-        title: "Common fits",
+        title: "Industries",
         links: [
-          { label: "SaaS Operations", href: "/#solutions", description: "Support, docs, CRM, and internal tooling" },
-          { label: "Finance & Admin", href: "/#solutions", description: "Invoices, approvals, reconciliation, and reports" },
-          { label: "Logistics Teams", href: "/contact", description: "Tracking, exception handling, and updates" },
+          { label: "Retail", href: "/industries/ecommerce", icon: ShoppingBag },
+          { label: "Financial Services", href: "/contact", icon: Banknote },
+          { label: "Banking", href: "/contact", nested: true },
+          { label: "PE/VC", href: "/contact", nested: true },
+          { label: "Asset management", href: "/contact", nested: true },
+          { label: "Insurance", href: "/contact", nested: true },
+          { label: "Higher Education", href: "/contact", icon: GraduationCap },
+          { label: "Healthcare", href: "/industries/healthcare", icon: HeartPulse },
+          { label: "Government", href: "/contact", icon: Landmark },
+          { label: "Industrials", href: "/contact", icon: Factory },
+          { label: "Energy & Utilities", href: "/contact", nested: true },
+          { label: "Manufacturing", href: "/contact", nested: true },
+          { label: "Supply Chain", href: "/contact", icon: Truck },
         ],
       },
     ],
@@ -145,16 +144,29 @@ const navGroups: NavGroup[] = [
         title: "Explore",
         links: [
           { label: "Use Cases", href: "/use-cases" },
+          { label: "Service Guides", href: "/services/ai-workflow-automation" },
           { label: "Reference Architecture", href: "/#platform" },
+          { label: "Industry Pages", href: "/industries" },
           { label: "Contact", href: "/contact" },
         ],
       },
       {
-        title: "Service guides",
+        title: "Engage",
         links: [
+          { label: "Workflow Review", href: "/contact" },
+          { label: "Implementation Consult", href: "/contact" },
           { label: "AI Knowledge Base", href: "/services/ai-knowledge-base" },
-          { label: "Workflow Automation", href: "/services/ai-workflow-automation" },
+          { label: "Automation Assessment", href: "/contact" },
+          { label: "Partner Inquiry", href: "/contact" },
+        ],
+      },
+      {
+        title: "Support & Services",
+        links: [
+          { label: "AI Workflow Automation", href: "/services/ai-workflow-automation" },
           { label: "Customer Support Automation", href: "/use-cases/ai-customer-support-automation" },
+          { label: "Back-Office Automation", href: "/use-cases/ai-back-office-automation" },
+          { label: "CRM Workflow Automation", href: "/use-cases/ai-crm-workflow-automation" },
           { label: "Control & Monitoring", href: "/#platform" },
         ],
       },
@@ -165,9 +177,17 @@ const navGroups: NavGroup[] = [
     href: "/about",
     columns: [
       {
-        title: "Company info",
+        title: "Company",
         links: [
           { label: "About Tactas AI", href: "/about" },
+          { label: "Contact", href: "/contact" },
+          { label: "Workflow Review", href: "/contact" },
+          { label: "Implementation Support", href: "/contact" },
+        ],
+      },
+      {
+        title: "Industries",
+        links: [
           { label: "Industries", href: "/industries" },
           { label: "Ecommerce", href: "/industries/ecommerce" },
           { label: "Healthcare", href: "/industries/healthcare" },
@@ -175,11 +195,12 @@ const navGroups: NavGroup[] = [
         ],
       },
       {
-        title: "Trust, privacy, & safety",
+        title: "Trust & Legal",
         links: [
           { label: "Privacy Policy", href: "/privacy" },
           { label: "Terms of Service", href: "/terms" },
-          { label: "Contact", href: "/contact" },
+          { label: "Security Review", href: "/contact" },
+          { label: "Data Handling", href: "/privacy" },
         ],
       },
     ],
@@ -244,23 +265,237 @@ const isActive = (href: string) => {
                 </a>
               ) : null}
 
-              <div class={`grid gap-7 ${group.columns.length >= 4 ? "lg:grid-cols-4" : group.columns.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}>
-                {group.columns.map((column) => (
-                  <div class="border-l border-black/10 pl-5 first:border-l-0 first:pl-0">
-                    <p class="mb-4 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#6d6d6d]">{column.title}</p>
-                    <ul class="grid gap-3">
-                      {column.links.map((link) => (
-                        <li>
-                          <a href={link.href} class="group/item block text-[14px] leading-snug text-[#222222] transition hover:text-[#06B6D4]">
-                            <span class="font-semibold">{link.label}</span>
-                            {link.description ? <span class="mt-1 block text-[12px] leading-relaxed text-[#6a6a6a] group-hover/item:text-[#4f4f4f]">{link.description}</span> : null}
-                          </a>
-                        </li>
+              {group.label === "Product" ? (
+                <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
+                  <div>
+                    <div class="grid gap-8 lg:grid-cols-[250px_1fr] lg:items-start">
+                      <p class="text-[20px] font-bold uppercase tracking-[-0.02em] text-[#0F172A]">Tactas AI Platform</p>
+                      <a href="/#platform" class="flex h-14 items-center justify-between rounded-[10px] bg-[linear-gradient(90deg,#EAFA6A_0%,#F7E7FF_48%,#F4F1B4_100%)] px-5 text-[20px] font-bold text-[#0F172A] transition hover:brightness-[0.98]">
+                        Platform Overview
+                        <ArrowRight class="h-5 w-5" stroke-width={1.8} />
+                      </a>
+                    </div>
+
+                    <div class="mt-7 grid gap-8 lg:grid-cols-3">
+                      {[
+                        {
+                          title: "Operator Console",
+                          description: "Run supervised AI work",
+                          href: "/#platform",
+                          icon: Sparkles,
+                          links: ["Requests", "Approvals", "Action logs"],
+                        },
+                        {
+                          title: "AI Agents",
+                          description: "Build and manage operators",
+                          href: "/services/ai-workflow-automation",
+                          icon: Bot,
+                          links: ["Agent setup", "Governance", "Orchestration", "Agent library"],
+                        },
+                        {
+                          title: "Knowledge Layer",
+                          description: "Context for every workflow",
+                          href: "/services/ai-knowledge-base",
+                          icon: Search,
+                          links: ["Enterprise search", "Document graph", "System context", "Hybrid retrieval"],
+                        },
+                      ].map((item) => {
+                        const Icon = item.icon;
+                        return (
+                          <div>
+                            <a href={item.href} class="group/item flex items-start gap-3">
+                              <Icon class="mt-0.5 h-5 w-5 shrink-0 text-[#3B49FF]" stroke-width={1.9} />
+                              <span>
+                                <span class="block text-[20px] font-bold leading-tight text-[#3341FF] group-hover/item:text-[#06B6D4]">{item.title}</span>
+                                <span class="mt-1 block text-[14px] leading-relaxed text-[#7a6f63]">{item.description}</span>
+                              </span>
+                            </a>
+                            <div class="mt-5 grid gap-3 text-[15px] font-semibold text-[#111111]">
+                              {item.links.map((link) => (
+                                <a href={item.href} class="transition hover:text-[#06B6D4]">{link}</a>
+                              ))}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    <div class="mt-10 grid gap-6 border-t border-black/12 pt-8 sm:grid-cols-2 lg:grid-cols-3">
+                      {[
+                        ["Connectors & Actions", "Connect to your apps", Puzzle],
+                        ["Model Hub", "Use the right model for each workflow", BrainCircuit],
+                        ["APIs", "Build operational AI experiences", Server],
+                        ["Security", "Safely scale AI at work", KeyRound],
+                        ["Agentic Engine", "Plan and adapt over company context", Network],
+                      ].map(([title, body, Icon]) => (
+                        <a href="/#platform" class="group/item flex gap-3">
+                          <Icon class="mt-1 h-4 w-4 shrink-0 text-[#111111]" stroke-width={1.9} />
+                          <span>
+                            <span class="block text-[15px] font-bold text-[#111111] group-hover/item:text-[#06B6D4]">{title}</span>
+                            <span class="mt-1 block text-[14px] leading-relaxed text-[#7a6f63]">{body}</span>
+                          </span>
+                        </a>
                       ))}
+                    </div>
+                  </div>
+
+                  <aside class="border-l border-black/12 bg-[#F3F3EF] px-8 py-5">
+                    <p class="text-[20px] font-bold uppercase tracking-[-0.02em] text-[#0F172A]">Tactas where you work</p>
+                    <div class="mt-8 grid gap-6">
+                      {[
+                        ["Tactas in Slack", "slack"],
+                        ["Tactas in Microsoft Teams", "microsoftteams"],
+                        ["Tactas in Zoom", "zoom"],
+                        ["Tactas in Service Cloud", "salesforce"],
+                        ["Tactas in ServiceNow", "servicenow"],
+                        ["Tactas in Zendesk", "zendesk"],
+                        ["Tactas in GitHub", "github"],
+                        ["Tactas in Miro", "miro"],
+                      ].map(([label, slug]) => (
+                        <a href="/contact" class="flex items-center gap-3 text-[15px] font-semibold text-[#111111] transition hover:text-[#06B6D4]">
+                          <img src={`https://cdn.simpleicons.org/${slug}`} alt="" loading="lazy" class="h-4 w-4 object-contain" />
+                          {label}
+                        </a>
+                      ))}
+                      <a href="/contact" class="flex items-center gap-3 text-[15px] font-semibold text-[#111111] transition hover:text-[#06B6D4]">
+                        <Puzzle class="h-4 w-4 text-[#111111]" stroke-width={1.8} />
+                        Browser Extension
+                      </a>
+                    </div>
+                  </aside>
+                </div>
+              ) : (
+              <div class={`grid ${
+                group.label === "Solutions"
+                  ? "gap-x-16 gap-y-8 lg:grid-cols-[minmax(0,780px)_280px]"
+                  : group.label === "Resources" || group.label === "Company"
+                    ? "gap-x-16 gap-y-8 lg:grid-cols-[minmax(0,820px)_334px]"
+                    : `gap-7 ${group.columns.length >= 4 ? "lg:grid-cols-4" : group.columns.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`
+              }`}>
+                <div class={`grid ${
+                  group.label === "Solutions"
+                    ? "gap-x-16 gap-y-8 lg:grid-cols-2"
+                    : group.label === "Resources" || group.label === "Company"
+                      ? "gap-x-14 gap-y-8 lg:grid-cols-3"
+                      : "contents"
+                }`}>
+                {group.columns.map((column) => (
+                  <div class:list={[
+                    group.label === "Solutions" || group.label === "Resources" || group.label === "Company" ? "" : "border-l border-black/10 pl-5 first:border-l-0 first:pl-0",
+                  ]}>
+                    <p class:list={[
+                      group.label === "Solutions"
+                        ? "mb-6 text-[20px] font-bold uppercase tracking-[-0.02em] text-[#2b2b2b]"
+                        : group.label === "Resources" || group.label === "Company"
+                          ? "mb-6 text-[20px] font-bold uppercase tracking-[-0.02em] text-[#0F172A]"
+                        : "mb-4 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#6d6d6d]",
+                    ]}>{column.title}</p>
+                    <ul class:list={[
+                      group.label === "Solutions" ? "grid gap-4" : group.label === "Resources" || group.label === "Company" ? "grid gap-4" : "grid gap-3",
+                    ]}>
+                      {column.links.map((link) => {
+                        const Icon = link.icon;
+                        return (
+                          <li>
+                            <a
+                              href={link.href}
+                              class:list={[
+                                "group/item text-[#151515] transition hover:text-[#06B6D4]",
+                                group.label === "Solutions"
+                                  ? "flex min-h-5 items-center gap-4 text-[16px] font-semibold leading-tight"
+                                  : group.label === "Resources" || group.label === "Company"
+                                    ? "block text-[15px] font-semibold leading-tight"
+                                  : "block text-[14px] leading-snug",
+                              ]}
+                            >
+                              {group.label === "Solutions" ? (
+                                Icon ? (
+                                  <Icon class="h-4 w-4 shrink-0 text-[#8c8c8c] transition group-hover/item:text-[#06B6D4]" stroke-width={2} />
+                                ) : (
+                                  <span class="h-4 w-4 shrink-0" aria-hidden="true"></span>
+                                )
+                              ) : null}
+                              <span>{link.label}</span>
+                              {link.description ? <span class="mt-1 block text-[12px] leading-relaxed text-[#6a6a6a] group-hover/item:text-[#4f4f4f]">{link.description}</span> : null}
+                            </a>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 ))}
+                </div>
+
+                {group.label === "Solutions" ? (
+                  <a href="/services/ai-workflow-automation" class="flex min-h-full flex-col justify-between border border-black/10 bg-[#F8FAFC] p-5 transition hover:border-[#94A3B8] hover:bg-white">
+                    <span>
+                      <span class="flex h-10 w-10 items-center justify-center rounded-[4px] bg-[#0F172A] text-white">
+                        <Zap class="h-5 w-5" stroke-width={1.8} />
+                      </span>
+                      <span class="mt-5 block text-[12px] font-semibold uppercase tracking-[0.18em] text-[#64748B]">Featured</span>
+                      <span class="mt-2 block text-[22px] font-semibold leading-tight tracking-normal text-[#111111]">
+                        AI Workflow Automation
+                      </span>
+                      <span class="mt-3 block text-[13px] leading-relaxed text-[#5f5f5f]">
+                        Operators that retrieve context, follow approval rules, update systems, and log every action.
+                      </span>
+                    </span>
+                    <span class="mt-6 inline-flex items-center text-[13px] font-semibold text-[#0F172A]">
+                      Explore service
+                      <ArrowRight class="ml-1.5 h-3.5 w-3.5" />
+                    </span>
+                  </a>
+                ) : null}
+
+                {group.label === "Resources" ? (
+                  <div>
+                    <a href="/services/ai-workflow-automation" class="block overflow-hidden rounded-[6px] bg-[#0F172A] transition hover:translate-y-[-1px]">
+                      <div class="relative flex h-48 items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_20%_10%,rgba(6,182,212,0.55),transparent_35%),radial-gradient(circle_at_80%_70%,rgba(124,58,237,0.42),transparent_34%),linear-gradient(135deg,#0F172A_0%,#111827_48%,#E6FBFF_140%)]">
+                        <div class="absolute inset-0 opacity-25 [background-image:radial-gradient(circle,rgba(255,255,255,0.8)_1px,transparent_1px)] [background-size:18px_18px]"></div>
+                        <div class="relative text-center text-white">
+                          <p class="text-[30px] font-semibold leading-none tracking-[-0.04em]">Tactas AI</p>
+                          <p class="mt-2 font-mono text-[11px] uppercase tracking-[0.34em] text-white/72">Operations Guide</p>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="mt-5">
+                      <h3 class="text-[19px] font-semibold leading-tight text-[#0F172A]">The AI Workflow Automation Guide</h3>
+                      <p class="mt-2 text-[15px] leading-relaxed text-[#343434]">
+                        Explore how operators move work across tools, approvals, context, and action logs.
+                      </p>
+                      <a href="/services/ai-workflow-automation" class="mt-5 inline-flex items-center text-[15px] font-semibold text-[#2563EB] transition hover:text-[#06B6D4]">
+                        Read the guide
+                        <ArrowRight class="ml-1.5 h-3.5 w-3.5" />
+                      </a>
+                    </div>
+                  </div>
+                ) : null}
+
+                {group.label === "Company" ? (
+                  <div>
+                    <a href="/about" class="block overflow-hidden rounded-[6px] bg-[#0F172A] transition hover:translate-y-[-1px]">
+                      <div class="relative flex h-48 items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_18%_18%,rgba(6,182,212,0.42),transparent_36%),radial-gradient(circle_at_88%_76%,rgba(15,23,42,0.72),transparent_38%),linear-gradient(135deg,#F8FAFC_0%,#DFF7FB_42%,#0F172A_132%)]">
+                        <div class="absolute inset-0 opacity-35 [background-image:linear-gradient(to_right,rgba(15,23,42,0.10)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.08)_1px,transparent_1px)] [background-size:28px_28px]"></div>
+                        <div class="relative text-center text-[#0F172A]">
+                          <p class="text-[30px] font-semibold leading-none tracking-[-0.04em]">Tactas AI</p>
+                          <p class="mt-2 font-mono text-[11px] uppercase tracking-[0.34em] text-[#0E7490]">Company</p>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="mt-5">
+                      <h3 class="text-[19px] font-semibold leading-tight text-[#0F172A]">Built for supervised operational AI</h3>
+                      <p class="mt-2 text-[15px] leading-relaxed text-[#343434]">
+                        Learn how Tactas designs managed AI operators around business systems, approvals, monitoring, and support.
+                      </p>
+                      <a href="/about" class="mt-5 inline-flex items-center text-[15px] font-semibold text-[#2563EB] transition hover:text-[#06B6D4]">
+                        About Tactas
+                        <ArrowRight class="ml-1.5 h-3.5 w-3.5" />
+                      </a>
+                    </div>
+                  </div>
+                ) : null}
               </div>
+              )}
             </div>
           </div>
         </div>
@@ -322,6 +557,36 @@ const isActive = (href: string) => {
               <ChevronDown class="h-4 w-4 transition group-open/mobile:rotate-180" stroke-width={1.8} />
             </summary>
             <div class="grid gap-5 pb-5">
+              {group.label === "Product" ? (
+                <div class="grid gap-5">
+                  <a href="/#platform" class:list={[
+                    "rounded-lg p-4",
+                    isDark ? "border border-white/10 bg-white/[0.04]" : "bg-[#f7f7f7]",
+                  ]} data-mobile-link>
+                    <span class:list={[
+                      "block text-[15px] font-semibold",
+                      isDark ? "text-white" : "text-[#111111]",
+                    ]}>Platform Overview</span>
+                    <span class:list={[
+                      "mt-1 block text-[13px] leading-relaxed",
+                      isDark ? "text-white/62" : "text-[#5f5f5f]",
+                    ]}>Operators, knowledge, approvals, actions, and monitoring in one operating layer.</span>
+                  </a>
+                  {[
+                    ["Operator Console", "/#platform"],
+                    ["AI Agents", "/services/ai-workflow-automation"],
+                    ["Knowledge Layer", "/services/ai-knowledge-base"],
+                    ["Connectors & Actions", "/#platform"],
+                    ["Security", "/#platform"],
+                    ["APIs", "/#platform"],
+                  ].map(([label, href]) => (
+                    <a href={href} class:list={[
+                      "text-[14px] font-medium",
+                      isDark ? "text-white/78" : "text-[#222222]",
+                    ]} data-mobile-link>{label}</a>
+                  ))}
+                </div>
+              ) : null}
               {group.featured ? (
                 <a href={group.featured.href} class:list={[
                   "rounded-lg p-4",
@@ -343,13 +608,27 @@ const isActive = (href: string) => {
                     "mb-3 text-[11px] font-semibold uppercase tracking-[0.18em]",
                     isDark ? "text-[#A78BFA]" : "text-[#6d6d6d]",
                   ]}>{column.title}</p>
-                  <div class="grid gap-3">
-                    {column.links.map((link) => (
-                      <a href={link.href} class:list={[
-                        "text-[14px] font-medium",
-                        isDark ? "text-white/78" : "text-[#222222]",
-                      ]} data-mobile-link>{link.label}</a>
-                    ))}
+                  <div class:list={[
+                    group.label === "Solutions" ? "grid gap-3.5" : "grid gap-3",
+                  ]}>
+                    {column.links.map((link) => {
+                      const Icon = link.icon;
+                      return (
+                        <a href={link.href} class:list={[
+                          group.label === "Solutions" ? "flex items-center gap-3 text-[15px] font-semibold" : "text-[14px] font-medium",
+                          isDark ? "text-white/78" : "text-[#222222]",
+                        ]} data-mobile-link>
+                          {group.label === "Solutions" ? (
+                            Icon ? (
+                              <Icon class="h-4 w-4 shrink-0 text-[#8c8c8c]" stroke-width={2} />
+                            ) : (
+                              <span class="h-4 w-4 shrink-0" aria-hidden="true"></span>
+                            )
+                          ) : null}
+                          <span>{link.label}</span>
+                        </a>
+                      );
+                    })}
                   </div>
                 </div>
               ))}
