@@ -42,6 +42,7 @@ interface NavColumn {
 interface NavGroup {
   label: string;
   href: string;
+  simple?: boolean;
   featured?: {
     title: string;
     href: string;
@@ -109,32 +110,10 @@ const navGroups: NavGroup[] = [
     ],
   },
   {
-    label: "How It Works",
-    href: "/#platform",
-    featured: {
-      title: "Managed implementation",
-      href: "/contact",
-      description: "Tactas maps the workflow, connects the tools, adds controls, launches supervised, and keeps improving it.",
-      icon: Zap,
-    },
-    columns: [
-      {
-        title: "Process",
-        links: [
-          { label: "Discovery", href: "/contact", description: "Choose one workflow worth automating" },
-          { label: "Build", href: "/#platform", description: "Prepare tools, data, SOPs, and prompts" },
-          { label: "Integrate", href: "/#platform", description: "Connect APIs, documents, CRM, and helpdesk" },
-        ],
-      },
-      {
-        title: "Operate",
-        links: [
-          { label: "Monitor", href: "/#platform", description: "Track actions, exceptions, and quality" },
-          { label: "Human Review", href: "/#platform", description: "Route sensitive decisions to the right owner" },
-          { label: "Improve", href: "/contact", description: "Tune retrieval, rules, and workflow behavior" },
-        ],
-      },
-    ],
+    label: "Pricing",
+    href: "/pricing",
+    simple: true,
+    columns: [],
   },
   {
     label: "Resources",
@@ -244,9 +223,10 @@ const isActive = (href: string) => {
             ]}
           >
             {group.label}
-            <ChevronDown class="h-3.5 w-3.5 transition group-hover/nav:rotate-180" stroke-width={1.9} />
+            {group.simple ? null : <ChevronDown class="h-3.5 w-3.5 transition group-hover/nav:rotate-180" stroke-width={1.9} />}
           </a>
 
+          {group.simple ? null : (
           <div class="invisible absolute left-0 top-full w-full translate-y-2 border-y border-black/10 bg-white opacity-0 shadow-[0_26px_70px_-46px_rgba(0,0,0,0.34)] transition duration-150 group-hover/nav:visible group-hover/nav:translate-y-0 group-hover/nav:opacity-100 group-focus-within/nav:visible group-focus-within/nav:translate-y-0 group-focus-within/nav:opacity-100">
             <div class={`${CONTAINER} grid gap-8 py-8 ${group.featured ? "lg:grid-cols-[290px_1fr]" : "lg:grid-cols-1"}`}>
               {group.featured ? (
@@ -499,6 +479,7 @@ const isActive = (href: string) => {
               )}
             </div>
           </div>
+          )}
         </div>
       ))}
     </nav>
@@ -549,6 +530,15 @@ const isActive = (href: string) => {
         isDark ? "divide-white/10 border-white/10" : "divide-black/10 border-black/10",
       ]}>
         {navGroups.map((group) => (
+          group.simple ? (
+            <a href={group.href} class:list={[
+              "flex items-center justify-between py-4 text-[16px] font-semibold",
+              isDark ? "text-white" : "text-[#111111]",
+            ]} data-mobile-link>
+              {group.label}
+              <ArrowRight class="h-4 w-4" stroke-width={1.8} />
+            </a>
+          ) : (
           <details class="group/mobile">
             <summary class:list={[
               "flex cursor-pointer list-none items-center justify-between py-4 text-[16px] font-semibold",
@@ -635,6 +625,7 @@ const isActive = (href: string) => {
               ))}
             </div>
           </details>
+          )
         ))}
       </div>
 
@@ -662,9 +653,9 @@ const isActive = (href: string) => {
           <Briefcase class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
           Professional services
         </a>
-        <a href="/#platform" class="inline-flex items-center gap-2" data-mobile-link>
-          <Server class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
-          How It Works
+        <a href="/pricing" class="inline-flex items-center gap-2" data-mobile-link>
+          <Banknote class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
+          Pricing
         </a>
         <a href="/#platform" class="inline-flex items-center gap-2" data-mobile-link>
           <ShieldCheck class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
