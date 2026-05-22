@@ -284,17 +284,17 @@ const integrationLogoPositions = [
 
     <section class="border-b border-[#D8E1EA] bg-[#F8FAFC]">
       <div class={`${CONTAINER} py-16 lg:py-20`}>
-        <div class="grid gap-10 lg:grid-cols-[0.68fr_1.32fr] lg:items-start">
-          <div class="max-w-[500px] lg:sticky lg:top-24 lg:pt-2">
+        <div class="grid gap-10">
+          <div class="max-w-none">
             <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Example operators</p>
-            <h2 class="mt-4 max-w-[620px] text-4xl font-semibold leading-[1.05] tracking-[-0.015em] text-[#0F172A] sm:text-5xl">
+            <h2 class="mt-4 max-w-[760px] text-4xl font-semibold leading-[1.05] tracking-[-0.015em] text-[#0F172A] sm:text-5xl">
               See how work moves through chat.
             </h2>
-            <p class="mt-5 text-[16px] leading-relaxed text-[#475569]">
+            <p class="mt-5 max-w-[48rem] text-[16px] leading-relaxed text-[#475569]">
               Your team talks to specialist operators like a colleague. Each thread pulls live context,
               explains its reasoning, and prepares actions for approval when policy requires it.
             </p>
-            <dl class="mt-8 grid gap-x-8 gap-y-5 border-t border-[#E2E8F0] pt-7 sm:grid-cols-2">
+            <dl class="mt-8 grid gap-x-8 gap-y-5 border-t border-[#E2E8F0] pt-7 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 ["Grounded", "Live context from CRM, docs, tickets, and projects."],
                 ["Governed", "Sensitive actions wait for human approval."],
@@ -942,7 +942,7 @@ const integrationLogoPositions = [
             </h2>
           </div>
           <p class="max-w-[48rem] text-[17px] leading-relaxed text-[#475569] lg:justify-self-end">
-            Configure operators, connect systems, govern actions, and monitor results in one place.
+            Systems, operators, controls, and actions in one operating layer.
           </p>
         </div>
 
@@ -1013,16 +1013,6 @@ const integrationLogoPositions = [
                 <path class="tactas-flow-line" d="M1018 394 C1062 394 1062 428 1106 428" />
                 <path class="tactas-flow-line" d="M1018 474 C1062 474 1062 508 1106 508" />
               </svg>
-
-              <div class="absolute left-[300px] top-[54px] w-[640px] text-center">
-                <p class="text-[15px] leading-relaxed text-[#334155]">
-                  Tactas AI connects business context, specialist operators, approval logic, action execution, monitoring, and support into one operational AI layer.
-                </p>
-                <div class="mt-3 inline-flex items-center gap-2 rounded-full border border-[#CBD5E1] bg-white px-3 py-1.5 text-[12px] text-[#64748B]">
-                  <span class="h-2 w-2 rounded-full bg-[#06B6D4]"></span>
-                  AI operator operating layer
-                </div>
-              </div>
 
               <div class="absolute left-[78px] top-[138px] flex flex-col items-center gap-2">
                 <p class="text-[13px] text-[#0E7490]">Email</p>
@@ -1130,23 +1120,6 @@ const integrationLogoPositions = [
                 <div class="flex h-14 w-14 items-center justify-center border border-[#06B6D4] bg-white/80 text-[#06B6D4]">
                   <ShieldCheck class="h-6 w-6" stroke-width={1.7} />
                 </div>
-              </div>
-
-              <div class="absolute left-[394px] top-[226px] rounded-full border border-[#CBD5E1] bg-white px-2.5 py-1 text-[10px] text-[#64748B]">Context retrieved</div>
-              <div class="absolute left-[394px] top-[414px] rounded-full border border-[#CBD5E1] bg-white px-2.5 py-1 text-[10px] text-[#64748B]">Data normalized</div>
-              <div class="absolute left-[596px] top-[306px] rounded-full border border-[#CBD5E1] bg-white px-2.5 py-1 text-[10px] text-[#64748B]">Tool call planned</div>
-              <div class="absolute left-[820px] top-[226px] rounded-full border border-[#CBD5E1] bg-white px-2.5 py-1 text-[10px] text-[#64748B]">Risk scored</div>
-              <div class="absolute left-[820px] top-[414px] rounded-full border border-[#CBD5E1] bg-white px-2.5 py-1 text-[10px] text-[#64748B]">Action approved</div>
-              <div class="absolute left-[1036px] top-[306px] rounded-full border border-[#CBD5E1] bg-white px-2.5 py-1 text-[10px] text-[#64748B]">System updated</div>
-              <div class="absolute left-[1036px] top-[492px] rounded-full border border-[#CBD5E1] bg-white px-2.5 py-1 text-[10px] text-[#64748B]">Logged</div>
-
-              <div class="absolute bottom-5 left-6 right-6 grid grid-cols-7 border border-[#CBD5E1] bg-white/90 text-center text-[11px] text-[#475569]">
-                {["Intake live", "Data indexed", "Retrieval tested", "Operators trained", "Controls active", "Monitoring live", "Audit enabled"].map((item) => (
-                  <div class="border-r border-[#E2E8F0] px-3 py-3 last:border-r-0">
-                    <span class="mx-auto mb-1 block h-1.5 w-1.5 rounded-full bg-[#06B6D4]"></span>
-                    {item}
-                  </div>
-                ))}
               </div>
             </div>
           </div>
