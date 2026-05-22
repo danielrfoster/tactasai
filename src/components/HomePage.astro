@@ -28,30 +28,6 @@ const { siteUrl, currentPath = "/" } = Astro.props;
 const currentYear = new Date().getFullYear();
 const CONTAINER = "mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10";
 
-const platformColumns = [
-  {
-    title: "connect",
-    heading: "Connect the tools your team already uses",
-    body: "Give AI operators the context they need to resolve real requests.",
-    points: ["Business systems", "Documents and SOPs", "Secure access"],
-    icon: Network,
-  },
-  {
-    title: "govern",
-    heading: "Define what AI can decide and do",
-    body: "Set approval rules, escalation paths, and limits for sensitive work.",
-    points: ["Approval gates", "Action logs", "Human handoff"],
-    icon: ShieldCheck,
-  },
-  {
-    title: "operate",
-    heading: "Operate and improve after launch",
-    body: "Monitor outcomes, review exceptions, and improve the operator over time.",
-    points: ["Operator setup", "Exception monitoring", "Ongoing support"],
-    icon: Zap,
-  },
-];
-
 const exampleOperators = [
   {
     id: "analysis",
@@ -129,85 +105,276 @@ const exampleOperators = [
 
 const solutionCards = [
   {
-    title: "Customer intelligence",
-    body: "Runs customer operations with account history, product context, and support knowledge already in scope.",
+    title: "Customer operations",
+    body: "Give every customer conversation memory: account history, contract details, product knowledge, open tickets, and the next best action.",
+    points: ["Customer memory", "Next action"],
+    icon: Mail,
   },
   {
-    title: "Internal execution",
-    body: "Owns internal requests from intake to routing, approvals, updates, and follow-through across tools.",
+    title: "Business research",
+    body: "Research markets, competitors, customers, and operating signals across trusted information sources and your internal data, then turn the evidence into decision briefs.",
+    points: ["Trusted sources", "Decision briefs"],
+    icon: Search,
   },
   {
-    title: "Finance and admin reasoning",
-    body: "Reviews exceptions, reconciles records, prepares decisions, and surfaces evidence for approval.",
+    title: "Operational drafting",
+    body: "Turn messy context into polished client emails, support replies, investor updates, reports, SOPs, and project handoffs in your company voice.",
+    points: ["Founder-grade drafts", "Company voice"],
+    icon: Paperclip,
   },
   {
-    title: "Governed autonomy",
-    body: "Operates within defined access, decision, execution, approval, escalation, and audit boundaries.",
+    title: "Workflow routing",
+    body: "Convert inbound requests into owned work: classify intent, assign the right team, create tasks, set priority, and escalate when risk appears.",
+    points: ["Auto-triage", "Ownership"],
+    icon: Layers,
+  },
+  {
+    title: "System updates",
+    body: "Let AI prepare real tool actions: update CRM fields, support tickets, billing records, spreadsheets, databases, and internal systems.",
+    points: ["Tool actions", "Record sync"],
+    icon: Network,
+  },
+  {
+    title: "Approval control",
+    body: "Move fast without losing control: sensitive changes pause for review with evidence, policy checks, risk notes, and downstream impact.",
+    points: ["Risk review", "Human control"],
+    icon: ShieldCheck,
+  },
+  {
+    title: "Queue monitoring",
+    body: "Keep the business from leaking work: monitor stale deals, aging tickets, failed automations, SLA risk, and follow-ups before they become problems.",
+    points: ["Always watching", "Exception alerts"],
+    icon: Zap,
+  },
+  {
+    title: "Audit visibility",
+    body: "Give technical and operations teams a full trail of sources, reasoning, approvals, API calls, field changes, and systems touched.",
+    points: ["Explainable", "Audit-ready"],
+    icon: CheckCheck,
   },
 ];
 
-const integrationLogoPositions = [
-  "left-[76px] top-[58px]",
-  "left-[158px] top-[86px]",
-  "left-[252px] top-[58px]",
-  "left-[352px] top-[100px]",
-  "left-[462px] top-[58px]",
-  "left-[580px] top-[66px]",
-  "left-[704px] top-[58px]",
-  "left-[820px] top-[88px]",
-  "left-[940px] top-[58px]",
-  "left-[1042px] top-[104px]",
-  "left-[52px] top-[174px]",
-  "left-[154px] top-[194px]",
-  "left-[282px] top-[178px]",
-  "left-[414px] top-[188px]",
-  "left-[756px] top-[182px]",
-  "left-[894px] top-[174px]",
-  "left-[1018px] top-[206px]",
-  "left-[1090px] top-[292px]",
-  "left-[58px] top-[318px]",
-  "left-[170px] top-[326px]",
-  "left-[304px] top-[306px]",
-  "left-[414px] top-[284px]",
-  "left-[774px] top-[284px]",
-  "left-[900px] top-[300px]",
-  "left-[1034px] top-[342px]",
-  "left-[1120px] top-[410px]",
-  "left-[56px] top-[460px]",
-  "left-[166px] top-[488px]",
-  "left-[292px] top-[456px]",
-  "left-[406px] top-[484px]",
-  "left-[770px] top-[466px]",
-  "left-[890px] top-[500px]",
-  "left-[1022px] top-[512px]",
-  "left-[1110px] top-[574px]",
-  "left-[90px] top-[626px]",
-  "left-[220px] top-[648px]",
-  "left-[356px] top-[610px]",
-  "left-[486px] top-[656px]",
-  "left-[606px] top-[626px]",
-  "left-[728px] top-[656px]",
-  "left-[850px] top-[610px]",
-  "left-[986px] top-[648px]",
-  "left-[220px] top-[30px]",
-  "left-[514px] top-[122px]",
-  "left-[646px] top-[130px]",
-  "left-[786px] top-[124px]",
-  "left-[304px] top-[650px]",
-  "left-[428px] top-[586px]",
-  "left-[540px] top-[592px]",
-  "left-[660px] top-[588px]",
-  "left-[74px] top-[248px]",
-  "left-[216px] top-[258px]",
-  "left-[346px] top-[366px]",
-  "left-[452px] top-[402px]",
-  "left-[748px] top-[392px]",
-  "left-[860px] top-[392px]",
-  "left-[984px] top-[438px]",
-  "left-[1090px] top-[498px]",
-  "left-[376px] top-[28px]",
-  "left-[932px] top-[652px]",
+const capabilitySlices = [
+  {
+    phase: "01",
+    label: "Context",
+    title: "Understand the business state before acting.",
+    body: "Operators pull market signals, customer history, company knowledge, and live operating data into one working view.",
+    cardIndexes: [0, 1],
+    highlights: ["Customer memory", "Market signals", "Company knowledge"],
+    memory: ["CRM history", "Support tickets", "Internal docs", "Market notes"],
+    outputTitle: "Evidence brief",
+    outputBody: "A concise view of what changed, why it matters, and which decision is ready for review.",
+    accent: "bg-[#06B6D4]",
+    tint: "bg-[#E6FBFF]",
+    textAccent: "text-[#0E7490]",
+    borderAccent: "border-[#BAE6FD]",
+  },
+  {
+    phase: "02",
+    label: "Creation",
+    title: "Turn messy context into work teams can use.",
+    body: "Operators draft replies, reports, handoffs, SOP updates, and routed work in the language your company already uses.",
+    cardIndexes: [2, 3],
+    highlights: ["Client-ready drafts", "Routed ownership", "Company voice"],
+    memory: ["Brand voice", "Prior decisions", "Open requests", "Team ownership"],
+    outputTitle: "Review-ready work",
+    outputBody: "Polished drafts and assignments prepared with the source context still attached.",
+    accent: "bg-[#7C3AED]",
+    tint: "bg-[#F3E8FF]",
+    textAccent: "text-[#6D28D9]",
+    borderAccent: "border-[#DDD6FE]",
+  },
+  {
+    phase: "03",
+    label: "Execution",
+    title: "Prepare actions inside the systems that run the company.",
+    body: "Operators can update records, create tasks, sync fields, trigger workflows, and pause sensitive work for approval.",
+    cardIndexes: [4, 5],
+    highlights: ["System updates", "Approval gates", "Record sync"],
+    memory: ["CRM fields", "Billing records", "Project tasks", "Policy rules"],
+    outputTitle: "Controlled action plan",
+    outputBody: "Every proposed change is packaged with impact, evidence, and the required approval path.",
+    accent: "bg-[#F59E0B]",
+    tint: "bg-[#FEF3C7]",
+    textAccent: "text-[#B45309]",
+    borderAccent: "border-[#FDE68A]",
+  },
+  {
+    phase: "04",
+    label: "Control",
+    title: "Keep delegated work observable and accountable.",
+    body: "Operators monitor queues, catch exceptions, surface risk, and keep a complete trail behind every AI-assisted action.",
+    cardIndexes: [6, 7],
+    highlights: ["Exception monitoring", "Audit trail", "Operational visibility"],
+    memory: ["SLA risk", "Failed automations", "Approval logs", "Action history"],
+    outputTitle: "Operating record",
+    outputBody: "A traceable history of sources, reasoning, approvals, system changes, and outcomes.",
+    accent: "bg-[#14B8A6]",
+    tint: "bg-[#CCFBF1]",
+    textAccent: "text-[#0F766E]",
+    borderAccent: "border-[#99F6E4]",
+  },
 ];
+
+const integrationGroups = [
+  {
+    title: "Workspace & knowledge",
+    eyebrow: "Context systems",
+    body: "Company docs, identity, files, design assets, and delivery knowledge.",
+    icon: Network,
+    accent: "text-[#06B6D4] bg-[#E6FBFF] border-[#BAE6FD]",
+    logos: [
+      ["Microsoft 365", "microsoft", "multi", "filter: invert(44%) sepia(6%) saturate(20%) hue-rotate(314deg) brightness(88%) contrast(84%);"],
+      ["Google Workspace", "google", "color"],
+      ["Okta", "okta", "color"],
+      ["1Password", "1password", "color"],
+      ["Dropbox", "dropbox", "color"],
+      ["Box", "box", "color"],
+      ["DocuSign", "docusign", "multi", "filter: invert(49%) sepia(94%) saturate(1722%) hue-rotate(201deg) brightness(100%) contrast(97%);"],
+      ["Calendly", "calendly", "color"],
+      ["Notion", "notion", "color"],
+      ["Confluence", "confluence", "color"],
+      ["Asana", "asana", "color"],
+      ["Trello", "trello", "color"],
+      ["Jira", "jira", "color"],
+      ["Airtable", "airtable", "color"],
+      ["ClickUp", "clickup", "color"],
+      ["Miro", "miro", "color"],
+      ["Figma", "figma", "color"],
+      ["Canva", "canva", "multi"],
+    ],
+  },
+  {
+    title: "Customer & revenue",
+    eyebrow: "CRM + support",
+    body: "Accounts, tickets, campaigns, forms, and customer-facing workflows.",
+    icon: Mail,
+    accent: "text-[#7C3AED] bg-[#F3E8FF] border-[#DDD6FE]",
+    logos: [
+      ["Salesforce", "salesforce", "multi"],
+      ["HubSpot", "hubspot", "color"],
+      ["Zendesk", "zendesk", "color"],
+      ["Intercom", "intercom", "color"],
+      ["Mailchimp", "mailchimp", "color"],
+      ["Qualtrics", "qualtrics", "color"],
+      ["SurveyMonkey", "surveymonkey", "color"],
+      ["Typeform", "typeform", "color"],
+      ["Gmail", "gmail", "color"],
+      ["Outlook", "microsoftoutlook", "multi", "filter: invert(34%) sepia(87%) saturate(1657%) hue-rotate(184deg) brightness(91%) contrast(101%);"],
+      ["Microsoft Teams", "microsoftteams", "multi", "filter: invert(44%) sepia(16%) saturate(2078%) hue-rotate(203deg) brightness(88%) contrast(88%);"],
+      ["Slack", "slack", "multi", "filter: invert(23%) sepia(62%) saturate(1036%) hue-rotate(127deg) brightness(92%) contrast(93%);"],
+      ["Zoom", "zoom", "color"],
+    ],
+  },
+  {
+    title: "Commerce & finance",
+    eyebrow: "Billing + operations",
+    body: "Orders, payments, invoices, reconciliation, and store actions.",
+    icon: Zap,
+    accent: "text-[#B45309] bg-[#FEF3C7] border-[#FDE68A]",
+    logos: [
+      ["Shopify", "shopify", "color"],
+      ["WooCommerce", "woocommerce", "color"],
+      ["Stripe", "stripe", "color"],
+      ["PayPal", "paypal", "color"],
+      ["Square", "square", "color"],
+      ["QuickBooks", "quickbooks", "color"],
+      ["Xero", "xero", "color"],
+      ["SAP", "sap", "color"],
+      ["Gusto", "gusto", "color"],
+      ["ADP", "adp", "color"],
+    ],
+  },
+  {
+    title: "Data, cloud & APIs",
+    eyebrow: "Execution systems",
+    body: "Internal APIs, cloud services, databases, observability, and dev tools.",
+    icon: ShieldCheck,
+    accent: "text-[#2563EB] bg-[#DBEAFE] border-[#BFDBFE]",
+    logos: [
+      ["GitHub", "github", "color"],
+      ["AWS", "amazonwebservices", "multi", "filter: invert(62%) sepia(85%) saturate(1981%) hue-rotate(360deg) brightness(102%) contrast(106%);"],
+      ["Microsoft Azure", "microsoftazure", "multi", "filter: invert(39%) sepia(72%) saturate(1966%) hue-rotate(181deg) brightness(96%) contrast(101%);"],
+      ["Google Cloud", "googlecloud", "color"],
+      ["GitLab", "gitlab", "color"],
+      ["Cloudflare", "cloudflare", "color"],
+      ["Vercel", "vercel", "color"],
+      ["Netlify", "netlify", "color"],
+      ["Docker", "docker", "color"],
+      ["Postman", "postman", "color"],
+      ["Zapier", "zapier", "color"],
+      ["Snowflake", "snowflake", "color"],
+      ["MongoDB", "mongodb", "color"],
+      ["Redis", "redis", "color"],
+      ["Elastic", "elastic", "color"],
+      ["Sentry", "sentry", "color"],
+      ["New Relic", "newrelic", "color"],
+      ["Datadog", "datadog", "color"],
+      ["Looker", "looker", "color"],
+    ],
+  },
+];
+
+const integrationFeatureNodes = [
+  { title: "Activity", x: 430, y: 148, width: 150, feature: "activity" },
+  { title: "Tasks", x: 950, y: 124, width: 136, feature: "tasks" },
+  { title: "Projects", x: 360, y: 398, width: 154, feature: "projects" },
+  { title: "People", x: 990, y: 398, width: 142, feature: "people" },
+  { title: "Data", x: 660, y: 536, width: 118, feature: "data" },
+];
+
+const featureOrbit = {
+  activity: { rx: 210, ry: 118, start: -2.65 },
+  tasks: { rx: 205, ry: 118, start: -1.35 },
+  projects: { rx: 215, ry: 126, start: -2.95 },
+  people: { rx: 205, ry: 126, start: -0.55 },
+  data: { rx: 260, ry: 118, start: 0.05 },
+};
+
+const rawIntegrationNodes = integrationGroups.flatMap((group, groupIndex) =>
+  group.logos.map(([label, slug, source, logoStyle], itemIndex) => ({
+    label,
+    slug,
+    source,
+    logoStyle,
+    accent: group.accent,
+    feature:
+      groupIndex === 0
+        ? itemIndex < 8
+          ? "activity"
+          : "projects"
+        : groupIndex === 1
+          ? "people"
+          : groupIndex === 2
+            ? "tasks"
+            : "data",
+  })),
+);
+
+const featureCounts = rawIntegrationNodes.reduce((counts, node) => {
+  counts[node.feature] = (counts[node.feature] || 0) + 1;
+  return counts;
+}, {});
+const featureSeen = {};
+
+const integrationNodes = rawIntegrationNodes.map((node) => {
+  const feature = integrationFeatureNodes.find((item) => item.feature === node.feature) || integrationFeatureNodes[0];
+  const orbit = featureOrbit[node.feature];
+  const localIndex = featureSeen[node.feature] || 0;
+  featureSeen[node.feature] = localIndex + 1;
+  const count = featureCounts[node.feature];
+  const angle = orbit.start + (localIndex * Math.PI * 2) / count;
+  const radiusScale = localIndex % 3 === 0 ? 0.78 : localIndex % 3 === 1 ? 1 : 1.16;
+
+  return {
+    ...node,
+    anchorX: feature.x,
+    anchorY: feature.y,
+    x: Math.max(46, Math.min(1194, feature.x + Math.cos(angle) * orbit.rx * radiusScale)),
+    y: Math.max(46, Math.min(594, feature.y + Math.sin(angle) * orbit.ry * radiusScale)),
+  };
+});
 
 ---
 
@@ -239,44 +406,155 @@ const integrationLogoPositions = [
             </a>
           </div>
 
-          <div class="mx-auto mt-7 flex max-w-[760px] flex-wrap items-center justify-center gap-2.5 text-[12px] font-semibold text-[#07324A] sm:text-[13px]">
-            <span class="rounded-full border border-[#E4D7B6] bg-white/70 px-3 py-1.5">Company context</span>
-            <span class="rounded-full border border-[#E4D7B6] bg-white/70 px-3 py-1.5">Tool orchestration</span>
-            <span class="rounded-full border border-[#E4D7B6] bg-white/70 px-3 py-1.5">Policy gates</span>
-            <span class="rounded-full border border-[#E4D7B6] bg-white/70 px-3 py-1.5">Human approval</span>
+          <div class="mx-auto mt-7 grid max-w-[720px] overflow-hidden rounded-[8px] border border-[#E4D7B6] bg-white/65 text-left shadow-[0_18px_44px_-36px_rgba(7,50,74,0.35)] backdrop-blur sm:grid-cols-3">
+            {[
+              ["Integrations", Network],
+              ["Approval gates", ShieldCheck],
+              ["Monitoring", Zap],
+            ].map(([label, Icon]) => (
+              <div class="flex items-center justify-center gap-2.5 border-b border-[#E4D7B6] px-4 py-3 text-[13px] font-semibold text-[#07324A] last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0">
+                <Icon class="h-4 w-4 text-[#06AEEA]" stroke-width={2} />
+                <span>{label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </section>
 
-    <section id="solutions" class="border-b border-[#D8E1EA] bg-white">
+    <section id="solutions" class="relative overflow-hidden border-b border-[#D8E1EA] bg-[#FBFAF6]">
+      <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,#06B6D4_24%,#D7A22A_72%,transparent)]"></div>
       <div class={`${CONTAINER} py-16 lg:py-20`}>
-        <div class="flex flex-col gap-6 border-b border-[#D8E1EA] pb-8 lg:flex-row lg:items-end lg:justify-between">
-          <div class="max-w-3xl">
-            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Operator use cases</p>
-            <h2 class="mt-4 text-4xl font-semibold leading-tight tracking-normal text-[#0F172A] sm:text-5xl lg:text-[52px]">
-              Deploy managed AI operators for high-value operational areas.
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,0.98fr)_minmax(360px,0.74fr)] lg:items-end lg:justify-between">
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Operator capabilities</p>
+            <h2 class="mt-4 max-w-[760px] text-[38px] font-semibold leading-[1.02] tracking-normal text-[#07324A] sm:text-[56px]">
+              AI operators for research, decisions, and execution.
             </h2>
-            <p class="mt-5 max-w-2xl text-[17px] leading-relaxed text-[#475569]">
-              Each operator is scoped to a business function, with the context, permissions,
-              approvals, and escalation paths it needs to carry work end to end.
-            </p>
           </div>
-          <a href="/contact" class="inline-flex h-11 items-center justify-center rounded-[4px] border border-[#94A3B8] px-4 text-[14px] font-semibold text-[#0F172A] hover:border-[#06B6D4] hover:text-[#06B6D4]">
-            Scope an operator
-          </a>
+          <div class="grid gap-5 lg:justify-self-end lg:pb-1">
+            <p class="max-w-[39rem] text-[16px] leading-relaxed text-[#07324A]/78">
+              Tactas operators combine research from multiple information sources, company knowledge, live business data, approval rules, and connected tools so teams can move from question to decision to action.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {["Research", "Decide", "Execute", "Govern"].map((item) => (
+                <span class="rounded-full border border-[#E4D7B6] bg-white/70 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#07324A]">{item}</span>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div class="grid border-x border-[#D8E1EA] md:grid-cols-2 xl:grid-cols-4">
-          {solutionCards.map((card, index) => (
-            <article class="border-b border-r border-[#D8E1EA] p-6 last:border-r-0 xl:border-b-0">
-              <div class="flex h-10 w-10 items-center justify-center rounded-[4px] border border-[#BAE6FD] bg-[#E6FBFF] text-[#06B6D4]">
-                {index === 0 ? <Bot class="h-5 w-5" stroke-width={1.8} /> : index === 1 ? <ShieldCheck class="h-5 w-5" stroke-width={1.8} /> : index === 2 ? <Layers class="h-5 w-5" stroke-width={1.8} /> : <Zap class="h-5 w-5" stroke-width={1.8} />}
-              </div>
-              <h3 class="mt-6 text-[20px] font-semibold tracking-normal text-[#0F172A]">{card.title}</h3>
-              <p class="mt-3 text-[15px] leading-relaxed text-[#475569]">{card.body}</p>
-            </article>
-          ))}
+        <div class="capability-carousel relative mt-10 overflow-hidden border border-[#D8E1EA] bg-[#F8FAFC] shadow-[0_34px_100px_-68px_rgba(7,50,74,0.38)]">
+          <div class="h-1 bg-[linear-gradient(90deg,#2F66FF_0%,#06AEEA_50%,#D7A22A_100%)]"></div>
+          <div class="pointer-events-none absolute inset-0 opacity-65 [background-image:radial-gradient(circle,rgba(15,23,42,0.14)_1px,transparent_1px)] [background-size:22px_22px]"></div>
+          <div class="relative min-h-[1160px] overflow-hidden sm:min-h-[1080px] md:min-h-[720px] lg:min-h-[560px]">
+            {capabilitySlices.map((slice, index) => (
+              <section
+                class="capability-carousel-panel absolute inset-0 overflow-hidden bg-white/94"
+                style={`--panel-delay: ${index * 3}s;`}
+              >
+                <div class="grid h-full md:grid-cols-[0.68fr_1.32fr]">
+                  <div class="relative flex min-h-[340px] flex-col justify-between overflow-hidden border-b border-[#D8E1EA] bg-[#07324A] p-6 text-white sm:p-8 md:min-h-0 md:border-b-0 md:border-r">
+                    <div class="pointer-events-none absolute -right-16 top-[-22%] h-[420px] w-[230px] rotate-12 bg-white/[0.06]"></div>
+                    <div class="pointer-events-none absolute bottom-0 left-0 h-28 w-full bg-[linear-gradient(0deg,rgba(6,174,234,0.22),transparent)]"></div>
+                    <div class="relative">
+                      <div class="flex items-center gap-2">
+                        <span class:list={["h-2.5 w-2.5 rounded-full", slice.accent]}></span>
+                        <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#BFEFFF]">{slice.phase} / {slice.label}</p>
+                      </div>
+                      <h3 class="mt-5 max-w-[34rem] text-[34px] font-semibold leading-[1.02] tracking-normal sm:text-[44px] lg:text-[48px]">{slice.title}</h3>
+                      <p class="mt-5 max-w-[30rem] text-[15px] leading-relaxed text-white/72 sm:text-[16px]">{slice.body}</p>
+                    </div>
+
+                    <div class="relative mt-8 grid gap-2.5">
+                      {slice.highlights.map((highlight) => (
+                        <div class="flex items-center gap-3 border border-white/10 bg-white/[0.06] px-3 py-2.5 backdrop-blur">
+                          <Check class="h-4 w-4 shrink-0 text-[#67E8F9]" stroke-width={2.4} />
+                          <span class="text-[13px] font-semibold text-white/86">{highlight}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div class="relative overflow-hidden px-5 pb-24 pt-5 sm:px-7 sm:pb-24 sm:pt-7 lg:p-8 lg:pb-28">
+                    <div class:list={["pointer-events-none absolute -right-20 top-0 h-56 w-56 rounded-full opacity-50 blur-3xl", slice.tint]}></div>
+                    <div class="relative flex flex-wrap items-center justify-between gap-3 border-b border-[#E2E8F0] pb-4">
+                      <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#64748B]">Live operator workspace</p>
+                      <span class:list={["rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em]", slice.tint, slice.textAccent, slice.borderAccent]}>
+                        One layer at a time
+                      </span>
+                    </div>
+
+                    <div class="relative mt-5 grid gap-4 md:grid-cols-[1.05fr_0.95fr]">
+                      <div class="grid gap-3">
+                        {slice.cardIndexes.map((cardIndex) => {
+                          const card = solutionCards[cardIndex];
+                          const Icon = card.icon;
+                          return (
+                            <article class="capability-carousel-chip border border-[#D8E1EA] bg-white p-4 shadow-[0_16px_44px_-36px_rgba(7,50,74,0.5)] sm:p-5">
+                              <div class="flex items-start justify-between gap-4">
+                                <div class:list={["flex h-10 w-10 items-center justify-center rounded-[6px] border bg-white shadow-[0_14px_30px_-24px_rgba(6,182,212,0.7)]", slice.borderAccent, slice.textAccent]}>
+                                  <Icon class="h-5 w-5" stroke-width={1.8} />
+                                </div>
+                                <span class="font-mono text-[10px] text-[#94A3B8]">0{cardIndex + 1}</span>
+                              </div>
+                              <h4 class="mt-4 text-[20px] font-semibold tracking-normal text-[#07324A]">{card.title}</h4>
+                              <p class="mt-2 text-[13.5px] leading-relaxed text-[#475569]">{card.body}</p>
+                              <div class="mt-4 flex flex-wrap gap-1.5">
+                                {card.points.map((point) => (
+                                  <span class="rounded-full border border-[#E2E8F0] bg-[#F8FAFC] px-2.5 py-1 text-[10.5px] font-semibold text-[#07324A]">{point}</span>
+                                ))}
+                              </div>
+                            </article>
+                          );
+                        })}
+                      </div>
+
+                      <div class="grid gap-3">
+                        <div class="border border-[#D8E1EA] bg-[#F8FAFC] p-4">
+                          <div class="flex items-center justify-between gap-3">
+                            <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#64748B]">Working set</p>
+                            <span class:list={["h-2 w-2 rounded-full", slice.accent]}></span>
+                          </div>
+                          <div class="mt-4 grid gap-2">
+                            {slice.memory.map((item) => (
+                              <div class="flex items-center justify-between gap-3 border-b border-[#E2E8F0] pb-2 last:border-b-0 last:pb-0">
+                                <span class="text-[13px] font-medium text-[#334155]">{item}</span>
+                                <Check class:list={["h-3.5 w-3.5", slice.textAccent]} stroke-width={2.6} />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div class:list={["border p-4", slice.borderAccent, slice.tint]}>
+                          <p class:list={["font-mono text-[10px] uppercase tracking-[0.2em]", slice.textAccent]}>Prepared output</p>
+                          <h4 class="mt-3 text-[22px] font-semibold leading-tight tracking-normal text-[#07324A]">{slice.outputTitle}</h4>
+                          <p class="mt-2 text-[13.5px] leading-relaxed text-[#475569]">{slice.outputBody}</p>
+                          <a href="/contact" class="mt-5 inline-flex h-10 items-center justify-center rounded-[6px] bg-[#2F66FF] px-4 text-[13px] font-semibold text-white shadow-[0_16px_34px_-24px_rgba(47,102,255,0.85)] transition hover:bg-[#0EA5E9]">
+                            Scope workflow
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            ))}
+
+            <div class="absolute inset-x-0 bottom-0 z-20 grid grid-cols-2 border-t border-[#D8E1EA] bg-white/92 backdrop-blur sm:grid-cols-4">
+              {capabilitySlices.map((slice, index) => (
+                <div class="border-r border-[#E2E8F0] px-3 py-3 last:border-r-0 sm:px-4">
+                  <div class="mb-2 flex items-center justify-between gap-2">
+                    <span class="text-[12px] font-semibold text-[#07324A]">{slice.label}</span>
+                    <span class="font-mono text-[10px] text-[#94A3B8]">{slice.phase}</span>
+                  </div>
+                  <div class="capability-carousel-step h-1 overflow-hidden rounded-full bg-[#E2E8F0]" style={`--panel-delay: ${index * 3}s;`}>
+                    <span class:list={["block h-full w-full origin-left scale-x-0 rounded-full", slice.accent]}></span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -934,19 +1212,19 @@ const integrationLogoPositions = [
 
     <section id="platform" class="border-b border-[#D8E1EA] bg-[#F8FAFC]">
       <div class={`${CONTAINER} py-16 lg:py-20`}>
-        <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-          <div>
-            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Tactas platform</p>
-            <h2 class="mt-4 text-4xl font-semibold leading-tight tracking-normal text-[#0F172A] sm:text-5xl lg:text-[56px]">
-              The operating layer for delegated AI work.
+        <div class="border-b border-[#D8E1EA] pb-9">
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Reference architecture</p>
+          <div class="mt-4 grid gap-5 lg:grid-cols-[minmax(0,760px)_minmax(280px,420px)] lg:items-end lg:justify-between">
+            <h2 class="max-w-[760px] text-4xl font-semibold leading-tight tracking-normal text-[#0F172A] sm:text-5xl lg:text-[52px]">
+              How delegated AI work moves through your business.
             </h2>
+            <p class="max-w-[26rem] text-[17px] leading-relaxed text-[#475569] lg:pb-2">
+              A simple view of context, reasoning, review, and action.
+            </p>
           </div>
-          <p class="max-w-[48rem] text-[17px] leading-relaxed text-[#475569] lg:justify-self-end">
-            Systems, operators, controls, and actions in one operating layer.
-          </p>
         </div>
 
-        <div class="relative mt-10 border border-[#D8E1EA] bg-[#F8FAFC] shadow-[0_28px_90px_-64px_rgba(15,23,42,0.36)]">
+        <div class="relative mt-8 border border-[#D8E1EA] bg-[#F8FAFC] shadow-[0_28px_90px_-64px_rgba(15,23,42,0.36)]">
           <div class="pointer-events-none absolute inset-0 z-10 hidden select-none md:block" aria-hidden="true">
             <div class="absolute left-[-7px] top-[-7px] h-3.5 w-3.5 rounded-[3px] border border-[#CBD5E1] bg-[#F8FAFC]"></div>
             <div class="absolute right-[-7px] top-[-7px] h-3.5 w-3.5 rounded-[3px] border border-[#CBD5E1] bg-[#F8FAFC]"></div>
@@ -1125,203 +1403,122 @@ const integrationLogoPositions = [
           </div>
         </div>
 
-        <div class="mt-10 overflow-hidden border border-[#D8E1EA] bg-white shadow-[0_28px_90px_-64px_rgba(15,23,42,0.32)]">
-          <div class="grid gap-6 border-b border-[#E2E8F0] bg-white px-5 py-5 sm:px-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
-            <div>
-              <p class="font-mono text-[10.5px] uppercase tracking-[0.24em] text-[#0891B2]">Platform integrations</p>
-              <h3 class="mt-2 text-[28px] font-semibold leading-tight tracking-normal text-[#0F172A] sm:text-[34px]">
-                Connect operators to the tools your team already uses.
-              </h3>
-            </div>
-            <p class="max-w-[48rem] text-[15px] leading-relaxed text-[#475569] lg:justify-self-end">
-              Tactas AI can retrieve context, prepare updates, route approvals, and sync records across CRMs, helpdesks, documents, communication tools, billing systems, databases, and internal APIs.
-            </p>
-          </div>
-
-          <div class="relative min-h-[760px] overflow-x-auto overflow-y-hidden bg-[#F8FAFC] font-mono">
-            <div class="relative h-[760px] min-w-[1180px]">
-              <div class="absolute inset-0 opacity-80 [background-image:radial-gradient(circle,rgba(15,23,42,0.14)_1px,transparent_1px)] [background-size:22px_22px]"></div>
-
-              <svg class="absolute inset-0 h-full w-full" viewBox="0 0 1180 760" fill="none" aria-hidden="true">
-                <path class="tactas-flow-line" d="M590 380 C494 252 396 154 282 116" />
-                <path class="tactas-flow-line" d="M590 380 C526 230 510 136 590 92" />
-                <path class="tactas-flow-line" d="M590 380 C690 246 798 154 926 116" />
-                <path class="tactas-flow-line" d="M590 380 C406 342 282 326 152 334" />
-                <path class="tactas-flow-line" d="M590 380 C770 344 894 328 1028 334" />
-                <path class="tactas-flow-line" d="M590 380 C438 502 328 588 254 638" />
-                <path class="tactas-flow-line" d="M590 380 C590 520 590 596 590 650" />
-                <path class="tactas-flow-line" d="M590 380 C750 504 852 590 928 638" />
-              </svg>
-
-              <div class="absolute left-[505px] top-[300px] z-20 flex h-40 w-40 items-center justify-center rounded-full border border-[#7C3AED]/40 bg-white shadow-[0_24px_60px_-42px_rgba(15,23,42,0.55)]">
-                <div class="flex h-28 w-28 flex-col items-center justify-center rounded-full border border-[#06B6D4]/60 bg-[#E6FBFF] text-center text-[#0F172A]">
-                  <Bot class="h-9 w-9 text-[#06B6D4]" stroke-width={1.7} />
-                  <span class="mt-2 text-[15px] font-semibold tracking-normal">Tactas AI</span>
-                  <span class="mt-0.5 text-[10px] uppercase tracking-[0.18em] text-[#0E7490]">operator hub</span>
-                </div>
+        <div class="mt-10 border-t border-[#D8E1EA] pt-9">
+          <p class="font-mono text-[10.5px] uppercase tracking-[0.24em] text-[#0891B2]">Platform integrations</p>
+          <div class="mt-3 grid gap-5 lg:grid-cols-[minmax(0,560px)_minmax(280px,620px)] lg:items-end lg:justify-between">
+            <h3 class="text-[30px] font-semibold leading-tight tracking-normal text-[#0F172A] sm:text-[38px]">
+              One operator layer across every business system.
+            </h3>
+            <div class="grid gap-4">
+              <p class="max-w-[44rem] text-[15px] leading-relaxed text-[#475569]">
+                Tactas AI retrieves context, prepares updates, routes approvals, and syncs records across CRMs, helpdesks, documents, communication tools, billing systems, databases, and internal APIs.
+              </p>
+              <div class="flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-[0.16em]">
+                <span class="rounded-full border border-[#BAE6FD] bg-[#E6FBFF] px-3 py-1.5 text-[#0E7490]">Read</span>
+                <span class="rounded-full border border-[#DDD6FE] bg-[#F3E8FF] px-3 py-1.5 text-[#6D28D9]">Reason</span>
+                <span class="rounded-full border border-[#99F6E4] bg-[#CCFBF1] px-3 py-1.5 text-[#0F766E]">Approve</span>
+                <span class="rounded-full border border-[#FDE68A] bg-[#FEF3C7] px-3 py-1.5 text-[#B45309]">Write back</span>
               </div>
-
-              {[
-                {
-                  position: "left-[60px] top-[42px]",
-                  colorClass: "border-[#06B6D4]/45 text-[#0E7490]",
-                  logos: [
-                    ["Microsoft 365", "microsoft", "multi", "filter: invert(44%) sepia(6%) saturate(20%) hue-rotate(314deg) brightness(88%) contrast(84%);"],
-                    ["Google Workspace", "google", "color"],
-                    ["Okta", "okta", "color"],
-                    ["1Password", "1password", "color"],
-                    ["Dropbox", "dropbox", "color"],
-                    ["Box", "box", "color"],
-                    ["DocuSign", "docusign", "multi", "filter: invert(49%) sepia(94%) saturate(1722%) hue-rotate(201deg) brightness(100%) contrast(97%);"],
-                    ["Calendly", "calendly", "color"],
-                  ],
-                },
-                {
-                  position: "left-[470px] top-[34px]",
-                  colorClass: "border-[#F59E0B]/50 text-[#B45309]",
-                  logos: [
-                    ["Shopify", "shopify", "color"],
-                    ["WooCommerce", "woocommerce", "color"],
-                    ["Stripe", "stripe", "color"],
-                    ["PayPal", "paypal", "color"],
-                    ["Square", "square", "color"],
-                    ["QuickBooks", "quickbooks", "color"],
-                    ["Xero", "xero", "color"],
-                    ["SAP", "sap", "color"],
-                    ["Gusto", "gusto", "color"],
-                    ["ADP", "adp", "color"],
-                  ],
-                },
-                {
-                  position: "left-[876px] top-[42px]",
-                  colorClass: "border-[#7C3AED]/45 text-[#6D28D9]",
-                  logos: [
-                    ["Gmail", "gmail", "color"],
-                    ["Outlook", "microsoftoutlook", "multi", "filter: invert(34%) sepia(87%) saturate(1657%) hue-rotate(184deg) brightness(91%) contrast(101%);"],
-                    ["Microsoft Teams", "microsoftteams", "multi", "filter: invert(44%) sepia(16%) saturate(2078%) hue-rotate(203deg) brightness(88%) contrast(88%);"],
-                    ["Slack", "slack", "multi", "filter: invert(23%) sepia(62%) saturate(1036%) hue-rotate(127deg) brightness(92%) contrast(93%);"],
-                    ["Zoom", "zoom", "color"],
-                  ],
-                },
-                {
-                  position: "left-[54px] top-[266px]",
-                  colorClass: "border-[#06B6D4]/45 text-[#0E7490]",
-                  logos: [
-                    ["Salesforce", "salesforce", "multi"],
-                    ["HubSpot", "hubspot", "color"],
-                    ["Zendesk", "zendesk", "color"],
-                    ["Intercom", "intercom", "color"],
-                    ["Mailchimp", "mailchimp", "color"],
-                    ["Qualtrics", "qualtrics", "color"],
-                    ["SurveyMonkey", "surveymonkey", "color"],
-                    ["Typeform", "typeform", "color"],
-                  ],
-                },
-                {
-                  position: "left-[878px] top-[266px]",
-                  colorClass: "border-[#14B8A6]/50 text-[#0F766E]",
-                  logos: [
-                    ["GitHub", "github", "color"],
-                    ["GitLab", "gitlab", "color"],
-                    ["AWS", "amazonwebservices", "multi", "filter: invert(62%) sepia(85%) saturate(1981%) hue-rotate(360deg) brightness(102%) contrast(106%);"],
-                    ["Microsoft Azure", "microsoftazure", "multi", "filter: invert(39%) sepia(72%) saturate(1966%) hue-rotate(181deg) brightness(96%) contrast(101%);"],
-                    ["Google Cloud", "googlecloud", "color"],
-                    ["Cloudflare", "cloudflare", "color"],
-                    ["Vercel", "vercel", "color"],
-                    ["Netlify", "netlify", "color"],
-                    ["Docker", "docker", "color"],
-                    ["Postman", "postman", "color"],
-                    ["Zapier", "zapier", "color"],
-                  ],
-                },
-                {
-                  position: "left-[184px] top-[560px]",
-                  colorClass: "border-[#F59E0B]/50 text-[#B45309]",
-                  logos: [
-                    ["Notion", "notion", "color"],
-                    ["Confluence", "confluence", "color"],
-                    ["Asana", "asana", "color"],
-                    ["Trello", "trello", "color"],
-                    ["Jira", "jira", "color"],
-                    ["Airtable", "airtable", "color"],
-                    ["ClickUp", "clickup", "color"],
-                    ["Miro", "miro", "color"],
-                  ],
-                },
-                {
-                  position: "left-[470px] top-[558px]",
-                  colorClass: "border-[#14B8A6]/50 text-[#0F766E]",
-                  logos: [
-                    ["Datadog", "datadog", "color"],
-                    ["Snowflake", "snowflake", "color"],
-                    ["MongoDB", "mongodb", "color"],
-                    ["Redis", "redis", "color"],
-                    ["Elastic", "elastic", "color"],
-                    ["Sentry", "sentry", "color"],
-                    ["New Relic", "newrelic", "color"],
-                    ["Looker", "looker", "color"],
-                  ],
-                },
-                {
-                  position: "left-[756px] top-[560px]",
-                  colorClass: "border-[#7C3AED]/45 text-[#6D28D9]",
-                  logos: [
-                    ["Figma", "figma", "color"],
-                    ["Canva", "canva", "multi"],
-                  ],
-                },
-              ].flatMap((group) => group.logos).map(([label, slug, source, logoStyle], index) => (
-                <div
-                  class:list={[
-                    "absolute z-10 flex h-11 w-11 items-center justify-center rounded-full border border-[#E2E8F0] bg-white p-2.5 shadow-[0_14px_30px_-24px_rgba(15,23,42,0.45)]",
-                    integrationLogoPositions[index],
-                  ]}
-                  aria-label={`${label} integration`}
-                  title={`${label} integration`}
-                >
-                  <img
-                    src={source === "color" ? `https://cdn.simpleicons.org/${slug}` : `https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/${slug}.svg`}
-                    alt=""
-                    loading="lazy"
-                    style={logoStyle || ""}
-                    class="h-5.5 w-5.5 object-contain"
-                  />
-                </div>
-              ))}
-
-              <div class="absolute left-[510px] top-[246px] rounded-full border border-[#CBD5E1] bg-white px-3 py-1 text-[10px] text-[#64748B]">Read context</div>
-              <div class="absolute left-[668px] top-[348px] rounded-full border border-[#CBD5E1] bg-white px-3 py-1 text-[10px] text-[#64748B]">Prepare action</div>
-              <div class="absolute left-[486px] top-[462px] rounded-full border border-[#CBD5E1] bg-white px-3 py-1 text-[10px] text-[#64748B]">Sync records</div>
-              <div class="absolute left-[650px] top-[456px] rounded-full border border-[#CBD5E1] bg-white px-3 py-1 text-[10px] text-[#64748B]">Govern access</div>
             </div>
           </div>
         </div>
 
-        <div class="mt-10 grid overflow-hidden border border-[#D8E1EA] bg-white lg:grid-cols-3">
-          {platformColumns.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <article class="group border-b border-[#D8E1EA] p-6 transition hover:bg-[#F1F5F9] lg:border-b-0 lg:border-r lg:last:border-r-0">
-                <div class="flex items-center justify-between gap-4">
-                  <span class="flex h-10 w-10 items-center justify-center rounded-[4px] border border-[#BAE6FD] bg-[#E6FBFF] text-[#06B6D4]">
-                    <Icon class="h-5 w-5" stroke-width={1.8} />
-                  </span>
-                  <span class="font-mono text-[11px] text-[#64748B]">0{index + 1}</span>
+        <div class="mt-8 overflow-hidden border border-[#D8E1EA] bg-white shadow-[0_28px_90px_-64px_rgba(15,23,42,0.32)]">
+          <div class="relative overflow-hidden bg-[#F8FAFC]">
+            <div class="absolute inset-0 opacity-75 [background-image:radial-gradient(circle,rgba(15,23,42,0.16)_1px,transparent_1px)] [background-size:22px_22px]"></div>
+            <div class="relative grid grid-cols-4 gap-3 p-5 sm:grid-cols-8 sm:p-7 lg:block lg:min-h-[660px] lg:p-0">
+              <svg class="pointer-events-none absolute inset-0 hidden h-full w-full lg:block" viewBox="0 0 1240 640" fill="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="integrationSignal" x1="320" y1="120" x2="1000" y2="540" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#2F66FF" />
+                    <stop offset="0.48" stop-color="#D946EF" />
+                    <stop offset="1" stop-color="#F59E0B" />
+                  </linearGradient>
+                </defs>
+                <circle cx="620" cy="320" r="154" class="stroke-[#06B6D4]/16" stroke-width="1" stroke-dasharray="4 12" />
+                <circle cx="620" cy="320" r="246" class="stroke-[#7C3AED]/12" stroke-width="1" stroke-dasharray="2 14" />
+                {integrationFeatureNodes.map((node) => (
+                  <path
+                    d={`M620 320 C${620 + (node.x - 620) * 0.36} ${320 + (node.y - 320) * 0.1} ${620 + (node.x - 620) * 0.72} ${320 + (node.y - 320) * 0.92} ${node.x} ${node.y}`}
+                    stroke="url(#integrationSignal)"
+                    stroke-width="2.25"
+                    stroke-linecap="round"
+                    fill="none"
+                    opacity="0.78"
+                  />
+                ))}
+                {integrationNodes.map((node) => (
+                  <path
+                    class="tactas-flow-line opacity-35"
+                    d={`M${node.anchorX} ${node.anchorY} C${node.anchorX + (node.x - node.anchorX) * 0.36} ${node.anchorY + (node.y - node.anchorY) * 0.1} ${node.anchorX + (node.x - node.anchorX) * 0.7} ${node.anchorY + (node.y - node.anchorY) * 0.92} ${node.x} ${node.y}`}
+                  />
+                ))}
+                {integrationFeatureNodes.map((node) => (
+                  <circle cx={node.x} cy={node.y} r="5" class="fill-[#2F66FF]" />
+                ))}
+              </svg>
+
+              <div class="absolute left-[7%] top-[54px] z-10 hidden max-w-[230px] text-[17px] font-semibold leading-snug text-[#070B3F] lg:block">
+                Connect every tool to one governed AI operating layer.
+              </div>
+
+              <div class="pointer-events-none absolute left-1/2 top-1/2 z-20 hidden -translate-x-1/2 -translate-y-1/2 lg:block" aria-hidden="true">
+                <div class="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#06B6D4]/15"></div>
+                <div class="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#7C3AED]/15"></div>
+                <div class="relative flex h-24 w-24 items-center justify-center rounded-full border border-[#BAE6FD] bg-white shadow-[0_0_0_12px_rgba(6,182,212,0.07),0_24px_60px_-36px_rgba(15,23,42,0.65)]">
+                  <img src="/favicon-96x96.png" alt="" width="48" height="48" class="h-12 w-12 rounded-[10px]" loading="lazy" decoding="async" />
                 </div>
-                <p class="mt-8 font-mono text-[10px] uppercase tracking-[0.22em] text-[#0E7490]">{item.title}</p>
-                <h3 class="mt-2 text-[22px] font-semibold tracking-normal text-[#0F172A]">{item.heading}</h3>
-                <p class="mt-3 text-[15px] leading-relaxed text-[#475569]">{item.body}</p>
-                <ul class="mt-6 grid gap-3 border-t border-[#D8E1EA] pt-5 text-[14px] text-[#334155]">
-                  {item.points.map((point) => (
-                    <li class="flex items-start gap-2.5">
-                      <Check class="mt-1 h-3.5 w-3.5 shrink-0 text-[#06B6D4]" stroke-width={2.4} />
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            );
-          })}
+              </div>
+
+              {integrationFeatureNodes.map((node) => (
+                <div
+                  class="absolute z-20 hidden rounded-[10px] bg-[linear-gradient(135deg,#2F66FF_0%,#D946EF_50%,#F59E0B_100%)] p-[1px] shadow-[0_22px_54px_-42px_rgba(15,23,42,0.55)] lg:block"
+                  style={`left: ${node.x - node.width / 2}px; top: ${node.y - 34}px; width: ${node.width}px;`}
+                >
+                  <div class="flex h-[68px] items-center justify-center rounded-[9px] bg-white px-5 text-[24px] font-semibold tracking-normal text-[#1D2BD8]">
+                    {node.title}
+                  </div>
+                </div>
+              ))}
+
+              {[
+                { label: "Activities", body: "Update customer status", x: 650, y: 68, w: 210 },
+                { label: "Task", body: "Prepare workflow action", x: 188, y: 248, w: 220 },
+                { label: "Project", body: "Route work to owner", x: 88, y: 468, w: 185 },
+                { label: "Activities", body: "Sync approved update", x: 932, y: 210, w: 230 },
+                { label: "Support", body: "Escalate with context", x: 1068, y: 468, w: 190 },
+              ].map((card) => (
+                <div
+                  class="absolute z-10 hidden rounded-[8px] border border-[#C7D2FE] bg-white/80 px-4 py-3 shadow-[0_18px_50px_-44px_rgba(15,23,42,0.4)] backdrop-blur lg:block"
+                  style={`left: ${card.x}px; top: ${card.y}px; width: ${card.w}px;`}
+                >
+                  <p class="font-mono text-[13px] font-semibold text-[#4F46E5]">{card.label}</p>
+                  <p class="mt-2 text-[13px] text-[#0F172A]">{card.body}</p>
+                </div>
+              ))}
+
+              {integrationNodes.map((node) => (
+                <div
+                  class:list={[
+                    "relative z-10 flex aspect-square items-center justify-center rounded-full border bg-white p-2.5 shadow-[0_14px_34px_-26px_rgba(15,23,42,0.5)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_44px_-28px_rgba(15,23,42,0.6)] lg:absolute lg:h-12 lg:w-12 lg:p-2.5",
+                    node.accent,
+                    "lg:left-[var(--node-left)] lg:top-[var(--node-top)]",
+                  ]}
+                  style={`--node-left: ${node.x - 24}px; --node-top: ${node.y - 24}px;`}
+                  aria-label={`${node.label} integration`}
+                  title={`${node.label} integration`}
+                >
+                  <img
+                    src={node.source === "color" ? `https://cdn.simpleicons.org/${node.slug}` : `https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/${node.slug}.svg`}
+                    alt=""
+                    loading="lazy"
+                    style={node.logoStyle || ""}
+                    class="h-5.5 w-5.5 object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1346,51 +1543,87 @@ const integrationLogoPositions = [
 
   </main>
 
-  <footer class="border-t border-[#D8E1EA] bg-white">
-    <div class={`${CONTAINER} py-12`}>
-      <div class="grid gap-10 border-b border-[#D8E1EA] pb-9 lg:grid-cols-[0.9fr_1.35fr] lg:items-start">
-        <div class="max-w-md">
+  <footer class="border-t border-[#CBD5E1] bg-[#F1F5F9]">
+    <div class={`${CONTAINER} py-10 lg:py-12`}>
+      <div class="grid gap-10 border-b border-[#CBD5E1] pb-10 lg:grid-cols-[0.88fr_1.35fr] lg:items-start">
+        <div>
           <div class="flex items-center gap-3">
-            <img src="/favicon-96x96.png" alt="" width="32" height="32" class="rounded-[6px]" aria-hidden="true" loading="lazy" decoding="async" />
-            <span class="text-[15px] font-semibold text-[#0F172A]">Tactas AI</span>
+            <img src="/favicon-96x96.png" alt="" width="34" height="34" class="h-8.5 w-8.5 rounded-[6px]" aria-hidden="true" loading="lazy" decoding="async" />
+            <div>
+              <p class="text-[15px] font-semibold text-[#0F172A]">Tactas AI</p>
+              <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#64748B]">Managed AI operations</p>
+            </div>
           </div>
-          <p class="mt-5 text-[14px] leading-relaxed text-[#475569]">
-            AI operators for repetitive support, admin, and back-office work with system integration, decision visibility, monitoring, and support.
+
+          <p class="mt-5 max-w-[28rem] text-[14px] leading-relaxed text-[#475569]">
+            Managed AI operators for business workflows that need context, approvals, connected tools, and operational visibility.
           </p>
+
+          <div class="mt-6 grid max-w-[30rem] grid-cols-2 border border-[#CBD5E1] bg-white/55 text-[12px] text-[#475569]">
+            <div class="border-r border-[#CBD5E1] px-3 py-3">
+              <p class="font-mono text-[9.5px] uppercase tracking-[0.18em] text-[#64748B]">Deployment</p>
+              <p class="mt-1 font-semibold text-[#0F172A]">Pilot to production</p>
+            </div>
+            <div class="px-3 py-3">
+              <p class="font-mono text-[9.5px] uppercase tracking-[0.18em] text-[#64748B]">Controls</p>
+              <p class="mt-1 font-semibold text-[#0F172A]">Approvals + audit</p>
+            </div>
+          </div>
         </div>
 
-        <div class="grid gap-8 sm:grid-cols-3 lg:justify-self-end lg:gap-12">
-          <div>
-            <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#64748B]">Platform</p>
-            <div class="mt-4 grid gap-2.5 text-[14px] text-[#475569]">
-              <a href="#platform" class="transition hover:text-[#0F172A]">Operator runtime</a>
-              <a href="#platform" class="transition hover:text-[#0F172A]">Operator layer</a>
-              <a href="#platform" class="transition hover:text-[#0F172A]">Control layer</a>
-              <a href="#solutions" class="transition hover:text-[#0F172A]">Operator patterns</a>
-            </div>
-          </div>
-          <div>
-            <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#64748B]">Company</p>
-            <div class="mt-4 grid gap-2.5 text-[14px] text-[#475569]">
-              <a href="/about" class="transition hover:text-[#0F172A]">About</a>
-              <a href="/contact" class="transition hover:text-[#0F172A]">Contact</a>
-              <a href="/industries" class="transition hover:text-[#0F172A]">Industries</a>
-              <a href="/industries/ecommerce" class="transition hover:text-[#0F172A]">Ecommerce</a>
-            </div>
-          </div>
-          <div>
-            <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#64748B]">Legal</p>
-            <div class="mt-4 grid gap-2.5 text-[14px] text-[#475569]">
-              <a href="/privacy" class="transition hover:text-[#0F172A]">Privacy</a>
-              <a href="/terms" class="transition hover:text-[#0F172A]">Terms</a>
-              <a href={siteUrl} class="transition hover:text-[#0F172A]">{siteUrl.replace(/^https?:\/\//, "")}</a>
-            </div>
-          </div>
+        <div class="grid gap-8 sm:grid-cols-3 lg:gap-10">
+            {[
+              {
+                title: "Platform",
+                links: [
+                  ["Operator runtime", "#platform"],
+                  ["Control layer", "#platform"],
+                  ["Integrations", "#platform"],
+                  ["Operator patterns", "#solutions"],
+                ],
+              },
+              {
+                title: "Solutions",
+                links: [
+                  ["AI workflow automation", "/services/ai-workflow-automation"],
+                  ["AI knowledge base", "/services/ai-knowledge-base"],
+                  ["Use cases", "/use-cases"],
+                  ["Industries", "/industries"],
+                ],
+              },
+              {
+                title: "Company",
+                links: [
+                  ["About", "/about"],
+                  ["Pricing", "/pricing"],
+                  ["Contact", "/contact"],
+                  ["Privacy", "/privacy"],
+                ],
+              },
+            ].map((column, index) => (
+              <div>
+                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#64748B]">{column.title}</p>
+                <div class="mt-4 grid gap-2.5 text-[14px] text-[#475569]">
+                  {column.links.map(([label, href]) => (
+                    <a href={href} class="group inline-flex items-center gap-2 transition hover:text-[#0F172A]">
+                      <span>{label}</span>
+                      <ArrowUpRight class="h-3 w-3 opacity-0 transition group-hover:opacity-100" stroke-width={2} />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
         </div>
       </div>
 
-      <div class="pt-5 text-[12px] text-[#64748B]">
-        © {currentYear} Tactas AI. All rights reserved.
+      <div class="flex flex-col gap-3 pt-5 text-[12px] text-[#64748B] sm:flex-row sm:items-center sm:justify-between">
+        <p>© {currentYear} Tactas AI. All rights reserved.</p>
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <a href="/terms" class="transition hover:text-[#0F172A]">Terms</a>
+          <a href="/privacy" class="transition hover:text-[#0F172A]">Privacy</a>
+          <a href="/contact" class="transition hover:text-[#0F172A]">Contact</a>
+          <a href={siteUrl} class="transition hover:text-[#0F172A]">{siteUrl.replace(/^https?:\/\//, "")}</a>
+        </div>
       </div>
     </div>
   </footer>
@@ -1418,6 +1651,34 @@ const integrationLogoPositions = [
     animation: tactas-typing 1.2s ease-in-out infinite;
   }
 
+  .capability-carousel-panel {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(12px) scale(0.985);
+    animation: tactas-capability-panel 12s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    animation-delay: var(--panel-delay, 0s);
+    will-change: opacity, transform;
+  }
+
+  .capability-carousel-chip {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: tactas-capability-chip 12s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    animation-delay: calc(var(--panel-delay, 0s) + 120ms);
+    will-change: opacity, transform;
+  }
+
+  .capability-carousel-step > span {
+    animation: tactas-capability-progress 12s linear infinite;
+    animation-delay: var(--panel-delay, 0s);
+  }
+
+  .capability-carousel:hover .capability-carousel-panel,
+  .capability-carousel:hover .capability-carousel-chip,
+  .capability-carousel:hover .capability-carousel-step > span {
+    animation-play-state: paused;
+  }
+
   @keyframes tactas-message-in {
     0% {
       opacity: 0;
@@ -1436,10 +1697,64 @@ const integrationLogoPositions = [
     30% { opacity: 1; transform: translateY(-2px); }
   }
 
+  @keyframes tactas-capability-panel {
+    0%, 21% {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    26%, 100% {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px) scale(0.985);
+    }
+  }
+
+  @keyframes tactas-capability-chip {
+    0%, 4% {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    8%, 21% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    26%, 100% {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+  }
+
+  @keyframes tactas-capability-progress {
+    0% {
+      transform: scaleX(0);
+    }
+
+    21% {
+      transform: scaleX(1);
+    }
+
+    22%, 100% {
+      transform: scaleX(0);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .example-panel.is-playing .example-conversation > *,
-    .tactas-dot {
+    .tactas-dot,
+    .capability-carousel-panel,
+    .capability-carousel-chip,
+    .capability-carousel-step > span {
       animation: none;
+    }
+
+    .capability-carousel-panel:first-of-type,
+    .capability-carousel-panel:first-of-type .capability-carousel-chip {
+      opacity: 1;
+      transform: none;
     }
   }
 </style>
