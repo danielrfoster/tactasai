@@ -10,7 +10,6 @@ import {
   Sparkles,
   TrendingUp,
 } from "@lucide/astro";
-import Navbar from "./Navbar.astro";
 import { getBrandEmail } from "../lib/site";
 
 interface Props {
@@ -18,9 +17,8 @@ interface Props {
   currentPath?: string;
 }
 
-const { siteUrl, currentPath = "/use-cases" } = Astro.props;
+const { currentPath = "/use-cases" } = Astro.props;
 const brandEmail = getBrandEmail();
-const currentYear = new Date().getFullYear();
 const CONTAINER = "mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10";
 
 const useCases = [
@@ -57,8 +55,6 @@ const evaluationPoints = [
 
 <div class="min-h-screen overflow-x-hidden bg-[#050A14] text-white selection:bg-[#8B5CF6]/30">
   <div class="pointer-events-none fixed inset-0 -z-20 grid-faint opacity-[0.24] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_10%,black_0%,transparent_75%)]"></div>
-
-  <Navbar currentPath={currentPath} ctaLabel="Book a Demo" theme="dark" />
 
   <main>
     <section class="relative overflow-hidden border-b border-white/10">
@@ -202,53 +198,6 @@ const evaluationPoints = [
       </div>
     </section>
   </main>
-
-  <footer class="border-t border-white/10 bg-[#050A14] py-14">
-    <div class={`${CONTAINER}`}>
-      <div class="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
-        <div class="max-w-md">
-          <div class="flex items-center gap-2.5">
-            <img src="/favicon-96x96.png" alt="" width="30" height="30" class="rounded-md" aria-hidden="true" loading="lazy" decoding="async" />
-            <span class="text-sm font-semibold">Tactas AI</span>
-          </div>
-          <p class="mt-4 text-[14px] leading-relaxed text-[#8A93A6]">
-            Managed AI workflow automation and document intelligence for teams that need governed, useful AI in production.
-          </p>
-        </div>
-
-        <div class="grid gap-8 sm:grid-cols-3">
-          <div>
-            <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#A78BFA]">Use cases</p>
-            <div class="mt-4 grid gap-2.5 text-[14px] text-[#8A93A6]">
-              <a href="/use-cases/ai-customer-support-automation" class="hover:text-[#C4B5FD]">Customer Support</a>
-              <a href="/use-cases/ai-back-office-automation" class="hover:text-[#C4B5FD]">Back Office</a>
-              <a href="/use-cases/ai-crm-workflow-automation" class="hover:text-[#C4B5FD]">CRM Workflows</a>
-            </div>
-          </div>
-          <div>
-            <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#A78BFA]">Services</p>
-            <div class="mt-4 grid gap-2.5 text-[14px] text-[#8A93A6]">
-              <a href="/services/ai-workflow-automation" class="hover:text-[#C4B5FD]">Workflow Automation</a>
-              <a href="/services/ai-knowledge-base" class="hover:text-[#C4B5FD]">AI Knowledge Base</a>
-              <a href="/#platform" class="hover:text-[#C4B5FD]">Control Layer</a>
-            </div>
-          </div>
-          <div>
-            <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#A78BFA]">Company</p>
-            <div class="mt-4 grid gap-2.5 text-[14px] text-[#8A93A6]">
-              <a href="/" class="hover:text-[#C4B5FD]">Home</a>
-              <a href="/about" class="hover:text-[#C4B5FD]">About</a>
-              <a href={siteUrl} class="hover:text-[#C4B5FD]">{siteUrl.replace(/^https?:\/\//, "")}</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-10 border-t border-white/10 pt-5 text-[12px] text-[#5E6678]">
-        &copy; {currentYear} Tactas AI. All rights reserved.
-      </div>
-    </div>
-  </footer>
 </div>
 
 <script define:vars={{ brandEmail }} is:inline>

@@ -1,7 +1,6 @@
 ---
 import { ArrowRight, Briefcase, GraduationCap, HeartPulse, Home, ShoppingBag } from "@lucide/astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Navbar from "../../components/Navbar.astro";
 import { getSiteUrl } from "../../lib/site";
 
 const siteUrl = getSiteUrl();
@@ -73,11 +72,13 @@ const jsonLd = {
   title="AI Automation by Industry"
   description="Explore Tactas AI industry landing pages for ecommerce, healthcare, real estate, education, and professional services workflow automation."
   canonical="/industries"
+  currentPath="/industries"
+  navbarTheme="dark"
+  navbarCtaLabel="Discuss workflow"
   jsonLd={jsonLd}
 >
   <div class="min-h-screen overflow-x-hidden bg-[#07090f] text-[#f5f7fb] selection:bg-[#67e8f9]/20">
     <div class="pointer-events-none fixed inset-0 -z-20 grid-faint opacity-[0.35] [mask-image:radial-gradient(ellipse_70%_55%_at_50%_15%,black_0%,transparent_75%)]"></div>
-    <Navbar currentPath="/industries" ctaLabel="Discuss workflow" />
 
     <main>
       <section class="py-20 lg:py-28">

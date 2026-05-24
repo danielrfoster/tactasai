@@ -1,7 +1,6 @@
 ---
-import { Check, Mail, Send } from "@lucide/astro";
+import { ArrowUpRight, CalendarCheck, Check, Mail, Network, Send, ShieldCheck } from "@lucide/astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Navbar from "../components/Navbar.astro";
 import { getBrandEmail, getOrganization, getSiteUrl } from "../lib/site";
 
 const siteUrl = getSiteUrl();
@@ -40,75 +39,129 @@ const jsonLd = {
 };
 ---
 
-<BaseLayout title={title} description={description} canonical="/contact" jsonLd={jsonLd}>
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/contact"
+  currentPath="/contact"
+  navbarTheme="light"
+  navbarCtaLabel="Contact"
+  navbarCtaHref="/contact"
+  jsonLd={jsonLd}
+>
   <div class="min-h-screen bg-[#F8FAFC] text-[#0F172A]">
-    <Navbar currentPath="/contact" ctaLabel="Contact" ctaHref="/contact" theme="light" />
 
     <main>
-      <section class="bg-white">
-        <div class="mx-auto grid w-full max-w-[1240px] gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14 lg:px-10 lg:py-20">
-          <div>
-            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Get started</p>
-            <h1 class="mt-4 text-4xl font-semibold leading-tight tracking-normal text-[#0F172A] sm:text-5xl lg:text-[54px]">
-              Turn one repetitive workload into a managed AI operator.
+      <section class="relative overflow-hidden border-b border-[#D8E1EA] bg-[#FBFAF6]">
+        <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,#06B6D4_24%,#D7A22A_72%,transparent)]"></div>
+        <div class="mx-auto grid w-full max-w-[1240px] gap-8 px-5 py-16 sm:px-8 lg:grid-cols-[minmax(0,0.88fr)_minmax(420px,1.12fr)] lg:gap-10 lg:px-10 lg:py-20">
+          <div class="lg:pt-3">
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Operator review</p>
+            <h1 class="mt-4 max-w-[42rem] text-[42px] font-semibold leading-[1.02] tracking-normal text-[#07324A] sm:text-[58px]">
+              Scope the first workflow your team should stop doing by hand.
             </h1>
-            <p class="mt-5 max-w-[34rem] text-[17px] leading-relaxed text-[#475569]">
-              Tell us what your team repeats every week. We will help scope the first operator.
+            <p class="mt-6 max-w-[36rem] text-[17px] leading-relaxed text-[#07324A]/78">
+              Share the repetitive work, the tools involved, and the approval points. We will turn it into a concrete operator plan.
             </p>
 
-            <div class="mt-6 grid gap-3">
-              {workflowReviewPoints.map((point) => (
-                <div class="flex items-start gap-3 border border-[#D8E1EA] bg-[#F8FAFC] px-4 py-3">
-                  <Check class="mt-0.5 h-4 w-4 shrink-0 text-[#06B6D4]" stroke-width={2.4} />
-                  <p class="text-[14px] leading-relaxed text-[#334155]">{point}</p>
+            <div class="mt-8 grid gap-3 sm:grid-cols-3 lg:max-w-[38rem]">
+              {[
+                ["01", "Workflow fit"],
+                ["02", "Systems map"],
+                ["03", "Pilot plan"],
+              ].map(([number, label]) => (
+                <div class="border border-[#E4D7B6] bg-white/70 px-4 py-3">
+                  <p class="font-mono text-[10px] text-[#94A3B8]">{number}</p>
+                  <p class="mt-1 text-[13px] font-semibold text-[#07324A]">{label}</p>
                 </div>
               ))}
             </div>
 
-            <div class="mt-8 flex items-center gap-3 text-[14px] text-[#334155]">
-              <Mail class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
-              <a href={`mailto:${brandEmail}`} class="border-b border-[#BAE6FD] pb-0.5 hover:border-[#06B6D4] hover:text-[#06B6D4]">
-                {brandEmail}
-              </a>
+            <div class="mt-8 overflow-hidden border border-[#D8E1EA] bg-white shadow-[0_24px_70px_-62px_rgba(7,50,74,0.35)]">
+              <div class="border-b border-[#E2E8F0] bg-[#F8FAFC] px-5 py-4">
+                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#64748B]">What we review</p>
+              </div>
+              <div class="divide-y divide-[#E2E8F0]">
+                {workflowReviewPoints.map((point, index) => {
+                  const icons = [CalendarCheck, Network, ShieldCheck];
+                  const Icon = icons[index] || Check;
+                  return (
+                    <div class="flex items-start gap-3 px-5 py-4">
+                      <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-[7px] border border-[#BAE6FD] bg-[#E6FBFF] text-[#0E7490]">
+                        <Icon class="h-4.5 w-4.5" stroke-width={2} />
+                      </span>
+                      <p class="pt-1 text-[14px] leading-relaxed text-[#334155]">{point}</p>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
+
+            <a href={`mailto:${brandEmail}`} class="mt-6 inline-flex items-center gap-2 text-[14px] font-semibold text-[#07324A] transition hover:text-[#0891B2]">
+              <Mail class="h-4 w-4 text-[#06B6D4]" stroke-width={1.9} />
+              <span>{brandEmail}</span>
+              <ArrowUpRight class="h-3.5 w-3.5" stroke-width={2} />
+            </a>
           </div>
 
-          <form id="workflow-inquiry-form" class="border border-[#D8E1EA] bg-[#F1F5F9] p-6 shadow-[0_24px_64px_-54px_rgba(15,23,42,0.20)] sm:p-7">
-            <div class="flex items-center justify-between gap-4 border-b border-[#D8E1EA] pb-4">
-              <div>
-                <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#0E7490]">Start simple</p>
-                <h2 class="mt-2 text-[24px] font-semibold tracking-normal text-[#0F172A]">What work should your AI operators take over?</h2>
+          <form id="workflow-inquiry-form" class="border border-[#D8E1EA] bg-white shadow-[0_34px_100px_-72px_rgba(7,50,74,0.42)]">
+            <div class="border-b border-[#D8E1EA] bg-[#07324A] px-5 py-5 text-white sm:px-6">
+              <div class="flex items-center justify-between gap-4">
+                <div>
+                  <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#A5F3FC]">Start with one workflow</p>
+                  <h2 class="mt-2 text-[26px] font-semibold leading-tight tracking-normal">Request an operator review</h2>
+                </div>
+                <span class="hidden h-10 w-10 items-center justify-center rounded-[8px] bg-white/[0.08] text-[#67E8F9] sm:flex">
+                  <Send class="h-5 w-5" stroke-width={1.9} />
+                </span>
               </div>
-              <Send class="hidden h-5 w-5 text-[#06B6D4] sm:block" stroke-width={1.8} />
             </div>
 
-            <div class="mt-5 grid gap-4 sm:grid-cols-2">
-              <label class="grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#64748B]">
-                First name
-                <input required name="name" class="h-11 rounded-md border border-[#CBD5E1] bg-white px-3.5 text-[14px] text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Your name" />
+            <div class="p-5 sm:p-6">
+              <div class="grid gap-4 sm:grid-cols-2">
+                <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">
+                  Name
+                  <input required name="name" class="h-11 rounded-[6px] border border-[#CBD5E1] bg-[#F8FAFC] px-3.5 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Your name" />
+                </label>
+                <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">
+                  Work email
+                  <input required type="email" name="email" class="h-11 rounded-[6px] border border-[#CBD5E1] bg-[#F8FAFC] px-3.5 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="you@company.com" />
+                </label>
+              </div>
+
+              <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">
+                  Company
+                  <input name="company" class="h-11 rounded-[6px] border border-[#CBD5E1] bg-[#F8FAFC] px-3.5 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Company name" />
+                </label>
+                <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">
+                  Systems involved
+                  <input name="systems" class="h-11 rounded-[6px] border border-[#CBD5E1] bg-[#F8FAFC] px-3.5 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Zendesk, HubSpot, Slack..." />
+                </label>
+              </div>
+
+              <label class="mt-4 grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">
+                Workflow to delegate
+                <textarea required name="workflow" class="min-h-36 rounded-[6px] border border-[#CBD5E1] bg-[#F8FAFC] px-3.5 py-3 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Example: answer support tickets, review invoices, update CRM records, route order issues..."></textarea>
               </label>
-              <label class="grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#64748B]">
-                Work email
-                <input required type="email" name="email" class="h-11 rounded-md border border-[#CBD5E1] bg-white px-3.5 text-[14px] text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="you@company.com" />
-              </label>
+
+              <div class="mt-5 grid gap-2.5 border border-[#D8E1EA] bg-[#F8FAFC] p-4">
+                {["Human approval stays in the loop", "Tool access and audit logs are scoped before launch", "Pilot plan focuses on one measurable workflow"].map((item) => (
+                  <div class="flex items-center gap-2 text-[13px] font-medium text-[#334155]">
+                    <Check class="h-4 w-4 shrink-0 text-[#06B6D4]" stroke-width={2.4} />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              <button type="submit" class="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-[6px] bg-[#2F66FF] px-6 text-[14px] font-semibold text-white shadow-[0_16px_34px_-24px_rgba(47,102,255,0.85)] transition hover:bg-[#0EA5E9]">
+                Request operator review
+                <Send class="h-4 w-4" stroke-width={2} />
+              </button>
+              <p id="workflow-form-status" class="mt-3 text-center text-[12px] text-[#64748B]">
+                Prefer email? {brandEmail}
+              </p>
             </div>
-
-            <label class="mt-4 grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#64748B]">
-              Company
-              <input name="company" class="h-11 rounded-md border border-[#CBD5E1] bg-white px-3.5 text-[14px] text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Company name" />
-            </label>
-
-            <label class="mt-4 grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#64748B]">
-              Workload
-              <textarea required name="workflow" class="min-h-32 rounded-md border border-[#CBD5E1] bg-white px-3.5 py-3 text-[14px] text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Example: answer support tickets, review invoices, update CRM records, route order issues..."></textarea>
-            </label>
-
-            <button type="submit" class="mt-6 inline-flex h-12 w-full items-center justify-center rounded-md bg-[#06B6D4] px-6 text-[14px] font-semibold text-white transition hover:bg-[#0891B2]">
-              Request operator review
-            </button>
-            <p id="workflow-form-status" class="mt-3 text-center text-[12px] text-[#94A3B8]">
-              Prefer email? {brandEmail}
-            </p>
           </form>
         </div>
       </section>
@@ -128,6 +181,7 @@ const jsonLd = {
           `Name: ${String(form.get("name") || "")}`,
           `Work email: ${String(form.get("email") || "")}`,
           `Company: ${String(form.get("company") || "")}`,
+          `Systems involved: ${String(form.get("systems") || "")}`,
           "",
           "Workload:",
           String(form.get("workflow") || ""),

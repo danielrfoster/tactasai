@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
 import { getSiteUrl } from "../lib/site";
 
 interface ImageMeta {
@@ -34,6 +36,10 @@ interface Props {
   twitter?: TwitterMeta;
   jsonLd?: unknown | unknown[];
   currentPath?: string;
+  navbarTheme?: "dark" | "light";
+  navbarCtaLabel?: string;
+  navbarCtaHref?: string;
+  showNavbar?: boolean;
 }
 
 const {
@@ -44,6 +50,11 @@ const {
   openGraph,
   twitter,
   jsonLd,
+  currentPath,
+  navbarTheme = "light",
+  navbarCtaLabel = "Operator review",
+  navbarCtaHref = "/contact",
+  showNavbar = true,
 } = Astro.props;
 
 const siteUrl = getSiteUrl();
@@ -101,7 +112,9 @@ const defaultOgImage = "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png";
     ))}
   </head>
   <body>
+    {showNavbar ? <Navbar currentPath={currentPath || canonical || "/"} ctaLabel={navbarCtaLabel} ctaHref={navbarCtaHref} theme={navbarTheme} /> : null}
     <slot />
+    <Footer />
     <script is:inline>
       const revealElements = document.querySelectorAll(".reveal");
       if (!("IntersectionObserver" in window) || revealElements.length === 0) {
