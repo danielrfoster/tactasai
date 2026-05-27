@@ -5,6 +5,48 @@ import { getSiteUrl } from "../lib/site";
 const siteUrl = getSiteUrl();
 const currentYear = new Date().getFullYear();
 const CONTAINER = "mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10";
+
+const footerColumns = [
+  {
+    title: "Product",
+    links: [
+      ["Business task automation", "/services/ai-workflow-automation"],
+      ["Company knowledge layer", "/services/ai-knowledge-base"],
+      ["Connected tools", "/#platform"],
+      ["Work console", "/#platform"],
+      ["AI operating layer", "/#platform"],
+    ],
+  },
+  {
+    title: "Tasks",
+    links: [
+      ["Task examples", "/use-cases"],
+      ["Answer with context", "/use-cases/ai-customer-support-automation"],
+      ["Automate repeated updates", "/use-cases/ai-back-office-automation"],
+      ["Prepare next steps", "/use-cases/ai-crm-workflow-automation"],
+      ["Task review", "/contact"],
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      ["Blog", "/blog"],
+      ["Pricing", "/pricing"],
+      ["Industries", "/industries"],
+      ["Automation guide", "/services/ai-workflow-automation"],
+      ["Contact", "/contact"],
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      ["About", "/about"],
+      ["Contact", "/contact"],
+      ["Privacy", "/privacy"],
+      ["Terms", "/terms"],
+    ],
+  },
+];
 ---
 
 <footer class="border-t border-white/10 bg-[#05073B] text-white">
@@ -13,117 +55,48 @@ const CONTAINER = "mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10";
       <div>
         <a href="/" class="inline-flex items-center gap-3" aria-label="Tactas AI home">
           <img src="/favicon-96x96.png" alt="" width="42" height="42" class="h-10 w-10 rounded-[8px]" loading="lazy" decoding="async" />
-          <span class="text-[28px] font-semibold leading-none tracking-normal">Tactas AI</span>
+          <span class="text-[28px] font-semibold leading-none tracking-normal text-white">Tactas AI</span>
         </a>
 
-        <p class="mt-8 max-w-[18rem] text-[15px] leading-relaxed text-white/82">
-          Ask AI operators to research, decide, and prepare work across the systems your team already uses.
+        <p class="mt-8 max-w-[20rem] text-[15px] leading-relaxed text-white/78">
+          Managed AI agents that learn how your business works, turn company knowledge into action, and automate repeated business tasks.
         </p>
 
-        <div class="mt-5 flex items-center gap-4 text-white/68">
+        <div class="mt-5 flex items-center gap-4 text-[#67E8F9]">
           {[Bot, Search, Network, Sparkles, ShieldCheck].map((Icon) => (
-            <span class="flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-white/[0.04]">
+            <span class="flex h-8 w-8 items-center justify-center rounded-[8px] border border-white/10 bg-white/[0.06]">
               <Icon class="h-4 w-4" stroke-width={1.8} />
             </span>
           ))}
         </div>
 
-        <div class="mt-8 grid gap-1.5 text-[14px] leading-relaxed text-white/82">
-          <p>Managed AI operations</p>
-          <p>Pilot to production</p>
-          <a href="/contact" class="mt-1 inline-flex w-fit items-center gap-2 text-white transition hover:text-[#67E8F9]">
-            Request operator review
+        <div class="mt-8 grid gap-1.5 text-[14px] leading-relaxed text-white/78">
+          <p>Managed agent systems</p>
+          <p>Business task automation</p>
+          <a href="/contact" class="mt-1 inline-flex w-fit items-center gap-2 font-semibold text-white transition hover:text-[#67E8F9]">
+            Request task review
             <ArrowUpRight class="h-3.5 w-3.5" stroke-width={2} />
           </a>
         </div>
 
-        <div class="mt-8 flex items-center gap-2 text-[14px] text-white/72">
+        <div class="mt-8 flex items-center gap-2 text-[14px] text-white/64">
           <Globe class="h-5 w-5" stroke-width={1.8} />
           <span>English</span>
         </div>
       </div>
 
       <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
-        <div>
-          <p class="font-mono text-[12px] uppercase tracking-[0.12em] text-white">Product</p>
-          <div class="mt-4 h-px w-full bg-white/14"></div>
-          <div class="mt-5 grid gap-3 text-[15px] leading-relaxed">
-            {[
-              ["Operator runtime", "/#platform", true],
-              ["Workplace knowledge", "/services/ai-knowledge-base", true],
-              ["Workflow automation", "/services/ai-workflow-automation", true],
-              ["Business research", "/#solutions", false],
-              ["Decision briefs", "/#solutions", false],
-              ["Approval control", "/#platform", false],
-              ["Audit visibility", "/#platform", false],
-            ].map(([label, href, strong]) => (
-              <a href={href} class:list={["transition hover:text-[#67E8F9]", strong ? "font-semibold text-white" : "text-white/68"]}>{label}</a>
-            ))}
+        {footerColumns.map((column) => (
+          <div>
+            <p class="font-mono text-[12px] uppercase tracking-[0.12em] text-white">{column.title}</p>
+            <div class="mt-4 h-px w-full bg-white/14"></div>
+            <div class="mt-5 grid gap-3 text-[15px] leading-relaxed text-white/78">
+              {column.links.map(([label, href]) => (
+                <a href={href} class="transition hover:text-[#67E8F9]">{label}</a>
+              ))}
+            </div>
           </div>
-        </div>
-
-        <div>
-          <p class="font-mono text-[12px] uppercase tracking-[0.12em] text-white">Solutions</p>
-          <div class="mt-4 h-px w-full bg-white/14"></div>
-          <div class="mt-5 grid gap-3 text-[15px] leading-relaxed text-white/82">
-            {[
-              ["All use cases", "/use-cases"],
-              ["Customer support", "/use-cases/ai-customer-support-automation"],
-              ["Back office", "/use-cases/ai-back-office-automation"],
-              ["CRM workflows", "/use-cases/ai-crm-workflow-automation"],
-              ["Healthcare", "/industries/healthcare"],
-              ["Ecommerce", "/industries/ecommerce"],
-              ["Professional services", "/industries/professional-services"],
-            ].map(([label, href]) => (
-              <a href={href} class="transition hover:text-[#67E8F9]">{label}</a>
-            ))}
-          </div>
-
-          <p class="mt-7 font-mono text-[12px] uppercase tracking-[0.12em] text-white">Use Cases</p>
-          <div class="mt-4 h-px w-full bg-white/14"></div>
-          <div class="mt-5 grid gap-3 text-[15px] leading-relaxed text-white/82">
-            {[
-              ["AI workflow automation", "/services/ai-workflow-automation"],
-              ["AI knowledge base", "/services/ai-knowledge-base"],
-              ["AI operator systems", "/#solutions"],
-            ].map(([label, href]) => (
-              <a href={href} class="transition hover:text-[#67E8F9]">{label}</a>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <p class="font-mono text-[12px] uppercase tracking-[0.12em] text-white">Resources</p>
-          <div class="mt-4 h-px w-full bg-white/14"></div>
-          <div class="mt-5 grid gap-3 text-[15px] leading-relaxed text-white/82">
-            {[
-              ["Pricing", "/pricing"],
-              ["Industries", "/industries"],
-              ["Operator patterns", "/#solutions"],
-              ["Integrations", "/#platform"],
-              ["Platform overview", "/#platform"],
-              ["Contact", "/contact"],
-            ].map(([label, href]) => (
-              <a href={href} class="transition hover:text-[#67E8F9]">{label}</a>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <p class="font-mono text-[12px] uppercase tracking-[0.12em] text-white">Company</p>
-          <div class="mt-4 h-px w-full bg-white/14"></div>
-          <div class="mt-5 grid gap-3 text-[15px] leading-relaxed text-white/82">
-            {[
-              ["About", "/about"],
-              ["Contact", "/contact"],
-              ["Pricing", "/pricing"],
-              ["Privacy", "/privacy"],
-              ["Terms", "/terms"],
-            ].map(([label, href]) => (
-              <a href={href} class="transition hover:text-[#67E8F9]">{label}</a>
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
     </div>
 

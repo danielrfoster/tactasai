@@ -6,55 +6,55 @@ import { getBrandEmail, getSiteUrl } from "../../lib/site";
 const siteUrl = getSiteUrl();
 const pageUrl = `${siteUrl}/use-cases/ai-customer-support-automation`;
 const brandEmail = getBrandEmail();
-const title = "AI Customer Support Automation & Ticket Triage | Tactas AI";
+const title = "Answer with Context Using Managed AI Agents | Tactas AI";
 const description =
-  "AI customer support automation for ticket triage, helpdesk workflows, drafted replies, CRM updates, human handoff, and support monitoring.";
+  "Managed AI agents answer repeated business requests with company knowledge, source context, business data, and connected tools.";
 
 const props = {
   siteUrl,
   currentPath: "/use-cases/ai-customer-support-automation",
-  eyebrow: "Customer support automation",
-  title: "AI customer support automation for ticket triage and agent assist.",
+  eyebrow: "Answer with context",
+  title: "Help teams answer repeated requests with business context.",
   description:
-    "Tactas AI helps support teams automate ticket triage, retrieve customer context, draft accurate replies, update helpdesk and CRM records, and escalate sensitive cases with human review.",
-  primaryKeyword: "AI customer support automation",
-  secondaryKeywords: ["ticket triage automation", "AI helpdesk automation", "customer service workflow automation", "support agent assist"],
+    "Tactas AI connects company knowledge, source documents, business data, and team tools so managed AI agents can prepare useful answers, summaries, updates, and next steps.",
+  primaryKeyword: "answer with context",
+  secondaryKeywords: ["company knowledge automation", "source-backed answers", "managed AI agents", "business task automation"],
   fit: [
     {
-      title: "High ticket volume",
-      body: "Support teams receive repeatable questions about orders, accounts, billing, policies, product usage, or troubleshooting.",
+      title: "Repeated questions slow work",
+      body: "Teams answer the same operational, customer, partner, or internal questions from scattered company knowledge.",
     },
     {
-      title: "Context spread across tools",
-      body: "Agents need helpdesk history, CRM data, knowledge base content, order records, and internal notes before responding.",
+      title: "Context lives across sources",
+      body: "Useful answers depend on documents, records, messages, policies, product notes, account history, or internal data.",
     },
     {
-      title: "Sensitive cases need review",
-      body: "Refunds, cancellations, account changes, legal issues, and angry customers should route to qualified humans.",
+      title: "Answers need source confidence",
+      body: "Teams need responses grounded in source context so people can see why an answer was prepared.",
     },
     {
-      title: "Response quality matters",
-      body: "Teams want faster first response times without losing policy accuracy, tone control, and source visibility.",
+      title: "Speed and consistency matter",
+      body: "The business wants faster answers without every team member searching the same knowledge again.",
     },
   ],
   workflow: [
-    { title: "Ticket intake", body: "A new email, chat, or helpdesk ticket enters the support queue." },
-    { title: "Classify and retrieve", body: "The agent detects intent, priority, account context, relevant policy, and prior interactions." },
-    { title: "Draft response", body: "AI prepares a reply grounded in approved knowledge and customer data." },
-    { title: "Update systems", body: "The workflow can tag tickets, update CRM fields, create tasks, or prepare refund notes." },
-    { title: "Escalate when needed", body: "Sensitive cases route to humans with context, recommended next steps, and an audit trail." },
+    { title: "Request arrives", body: "A message, form, note, or internal question asks for information or a decision-ready answer." },
+    { title: "Find context", body: "The agent retrieves relevant source documents, business records, prior messages, and connected tool data." },
+    { title: "Prepare answer", body: "AI creates an answer, summary, or explanation grounded in the available company context." },
+    { title: "Suggest next step", body: "The agent can recommend follow-up, create a task draft, prepare an update, or point to missing information." },
+    { title: "Improve reuse", body: "Patterns from repeated questions help refine the knowledge layer and make future answers faster." },
   ],
   outcomes: [
-    { title: "Faster first responses", body: "Reduce repetitive reading, searching, and drafting work for support agents." },
-    { title: "Better handoff quality", body: "Escalations include customer context, issue summary, policy references, and next actions." },
-    { title: "Consistent policy use", body: "Replies are grounded in approved knowledge base, SOP, billing, and return policy content." },
-    { title: "Visible operations", body: "Leaders can review AI actions, exceptions, approval paths, and support workflow quality." },
+    { title: "Faster answers", body: "Reduce repeated searching, reading, and drafting when people need business context." },
+    { title: "Source-backed work", body: "Answers include useful source context so teams can review and reuse the result confidently." },
+    { title: "Better next steps", body: "Responses can include recommended owners, missing data, follow-up drafts, or task updates." },
+    { title: "Improved work performance", body: "Teams spend less time hunting for context and more time moving work forward." },
   ],
-  integrations: ["Zendesk", "Intercom", "Freshdesk", "HubSpot", "Salesforce", "Shopify", "Stripe", "Google Drive", "Knowledge base", "Internal APIs"],
+  integrations: ["Email", "Slack", "Forms", "Google Drive", "SharePoint", "Notion", "HubSpot", "Databases", "Knowledge base", "Internal APIs"],
   faqs: [
-    { title: "Can AI reply directly to customers?", body: "Yes, but many teams start with drafted replies and human approval before allowing direct responses for low-risk tickets." },
-    { title: "Can it use our support policies?", body: "Yes. Tactas AI can connect support SOPs, help center articles, internal docs, and order or account data." },
-    { title: "What should stay human?", body: "Refund exceptions, legal threats, account changes, sensitive billing issues, and angry escalations usually need human review." },
+    { title: "Can this use our company documents?", body: "Yes. Tactas AI can connect documents, files, messages, business data, and source context for managed agents to use." },
+    { title: "Can answers include source context?", body: "Yes. Source-backed answers are a useful proof point so teams can see which knowledge shaped the output." },
+    { title: "What is a good first request type?", body: "Start with repeated questions where the answer depends on known documents, records, policies, or prior work." },
   ],
 };
 
@@ -64,7 +64,7 @@ const jsonLd = {
     {
       "@type": "WebPage",
       "@id": `${pageUrl}#webpage`,
-      name: "AI Customer Support Automation",
+      name: "Answer with Context Using Managed AI Agents",
       url: pageUrl,
       description,
       isPartOf: { "@id": `${siteUrl}/#website` },
@@ -73,8 +73,8 @@ const jsonLd = {
     {
       "@type": "Service",
       "@id": `${pageUrl}#service`,
-      name: "AI Customer Support Automation",
-      serviceType: ["AI customer support automation", "Ticket triage automation", "AI helpdesk automation", "AI support agent", "Customer service workflow automation"],
+      name: "Answer with Context Using Managed AI Agents",
+      serviceType: ["Answer with context", "Company knowledge automation", "Source-backed answers", "Managed AI agents", "Business task automation"],
       url: pageUrl,
       description,
       provider: { "@id": `${siteUrl}/#organization` },
@@ -94,7 +94,7 @@ const jsonLd = {
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
         { "@type": "ListItem", position: 2, name: "Use Cases", item: `${siteUrl}/use-cases` },
-        { "@type": "ListItem", position: 3, name: "AI Customer Support Automation", item: pageUrl },
+        { "@type": "ListItem", position: 3, name: "Answer with Context", item: pageUrl },
       ],
     },
     { "@type": "ContactPoint", contactType: "sales", email: brandEmail, areaServed: "Worldwide", availableLanguage: ["en", "vi"] },
@@ -107,23 +107,19 @@ const jsonLd = {
   description={description}
   canonical="/use-cases/ai-customer-support-automation"
   currentPath="/use-cases/ai-customer-support-automation"
-  navbarTheme="dark"
-  navbarCtaLabel="Book a Demo"
+  navbarTheme="light"
+  navbarCtaLabel="Task review"
   keywords={[
-    "AI customer support automation",
-    "AI support agent",
-    "ticket triage automation",
-    "customer service workflow automation",
-    "AI helpdesk automation",
-    "AI agent for customer support",
-    "support agent assist",
-    "AI ticket triage",
-    "AI customer service automation",
-    "AI customer support agent",
-    "Zendesk AI automation",
-    "Intercom AI automation",
+    "answer with context",
+    "managed AI agents",
+    "company knowledge automation",
+    "source-backed answers",
+    "business task automation",
+    "AI agents for business operations",
+    "connected business tools",
+    "work performance AI",
   ]}
-  openGraph={{ title, description, url: pageUrl, type: "website", images: [{ url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png", width: 1536, height: 1024, alt: "AI customer support automation" }] }}
+  openGraph={{ title, description, url: pageUrl, type: "website", images: [{ url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png", width: 1536, height: 1024, alt: "Managed AI agents answering with business context" }] }}
   twitter={{ card: "summary_large_image", title, description, images: ["/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"] }}
   jsonLd={jsonLd}
 >

@@ -5,9 +5,9 @@ import { getSiteUrl } from "../../lib/site";
 
 const siteUrl = getSiteUrl();
 const pageUrl = `${siteUrl}/use-cases`;
-const title = "AI Automation Use Cases for Business Operations | Tactas AI";
+const title = "Business Task Automation Use Cases | Tactas AI";
 const description =
-  "Explore AI workflow automation use cases for customer support, back-office operations, CRM workflows, documents, approvals, and human handoff.";
+  "Explore how managed AI agents use company knowledge, business context, and connected tools to answer with context, prepare next steps, track open work, and automate repeated business tasks.";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -15,7 +15,7 @@ const jsonLd = {
     {
       "@type": "CollectionPage",
       "@id": `${pageUrl}#collectionpage`,
-      name: "AI Automation Use Cases",
+      name: "Business Task Automation Use Cases",
       url: pageUrl,
       description,
       isPartOf: { "@id": `${siteUrl}/#website` },
@@ -37,17 +37,17 @@ const jsonLd = {
   description={description}
   canonical="/use-cases"
   currentPath="/use-cases"
-  navbarTheme="dark"
-  navbarCtaLabel="Book a Demo"
+  navbarTheme="light"
+  navbarCtaLabel="Task review"
   keywords={[
-    "AI automation use cases",
-    "AI workflow automation use cases",
-    "AI customer support automation",
-    "AI back-office automation",
-    "AI CRM workflow automation",
-    "business process automation use cases",
-    "AI agents for operations",
-    "human in the loop automation",
+    "business task automation use cases",
+    "managed AI agents",
+    "AI agents for business operations",
+    "company knowledge automation",
+    "connected business tools",
+    "work performance AI",
+    "automated business tasks",
+    "AI operating layer",
   ]}
   openGraph={{
     title,
@@ -59,7 +59,7 @@ const jsonLd = {
         url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png",
         width: 1536,
         height: 1024,
-        alt: "Tactas AI automation use cases",
+        alt: "Tactas AI business task automation use cases",
       },
     ],
   }}

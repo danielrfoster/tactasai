@@ -6,67 +6,67 @@ import { getBrandEmail, getSiteUrl } from "../../lib/site";
 const siteUrl = getSiteUrl();
 const pageUrl = `${siteUrl}/use-cases/ai-back-office-automation`;
 const brandEmail = getBrandEmail();
-const title = "AI Back-Office Automation for Admin Workflows | Tactas AI";
+const title = "Automate Repeated Business Updates with Managed AI Agents | Tactas AI";
 const description =
-  "AI back-office automation for document checks, invoice review, record updates, approval routing, reconciliation, admin tasks, and reporting.";
+  "Managed AI agents turn repeated business updates, document summaries, record changes, and routine coordination into action-ready work.";
 
 const props = {
   siteUrl,
   currentPath: "/use-cases/ai-back-office-automation",
-  eyebrow: "Back-office automation",
-  title: "AI back-office automation for admin and operations teams.",
+  eyebrow: "Automate repeated updates",
+  title: "Automate recurring business updates across tools.",
   description:
-    "Tactas AI helps teams automate repetitive back-office workflows such as document checks, invoice review, record updates, approval routing, reconciliation, and reporting.",
-  primaryKeyword: "AI back-office automation",
-  secondaryKeywords: ["AI document processing", "invoice workflow automation", "approval routing automation", "admin workflow automation"],
+    "Tactas AI uses company knowledge, business context, and connected systems to prepare summaries, update records, track status, and automate repeated steps.",
+  primaryKeyword: "automate repeated updates",
+  secondaryKeywords: ["business task automation", "connected business tools", "managed AI agents", "work performance AI"],
   fit: [
     {
-      title: "Manual document review",
-      body: "Teams spend time checking PDFs, forms, invoices, statements, IDs, contracts, or supporting files before work can continue.",
+      title: "Updates repeat every day",
+      body: "Teams keep writing the same status notes, summaries, task updates, and follow-up messages across business tools.",
     },
     {
-      title: "Approval routing slows work",
-      body: "Requests wait because ownership, thresholds, exceptions, and missing information are handled manually.",
+      title: "Inputs come from many places",
+      body: "The work depends on files, messages, forms, databases, spreadsheets, or tool activity that people manually combine.",
     },
     {
-      title: "Records need constant updates",
-      body: "Operations staff copy data between spreadsheets, CRMs, billing systems, portals, and internal tools.",
+      title: "Records drift out of sync",
+      body: "Important fields, notes, owners, and task status need regular updates after work happens elsewhere.",
     },
     {
-      title: "Auditability matters",
-      body: "Finance, admin, and operations teams need clear logs, review notes, source documents, and exception handling.",
+      title: "Teams need work ready to use",
+      body: "The output should be ready to review, edit, send, assign, or push into a connected business tool.",
     },
   ],
   workflow: [
-    { title: "Receive request", body: "A form, invoice, file, email, or record starts the back-office workflow." },
-    { title: "Extract and check", body: "AI reads documents, extracts fields, checks completeness, and flags missing or conflicting data." },
-    { title: "Apply business rules", body: "The workflow applies thresholds, approval rules, duplicate checks, and exception criteria." },
-    { title: "Prepare action", body: "AI drafts notes, updates records, creates tasks, prepares approval packets, or routes work." },
-    { title: "Log outcome", body: "Every action, source, decision, and human review step remains visible for audit." },
+    { title: "Watch for work", body: "A message, record change, uploaded file, new form, or scheduled moment starts the task." },
+    { title: "Gather context", body: "The agent pulls source content, business data, recent changes, related notes, and tool activity." },
+    { title: "Prepare update", body: "AI drafts the summary, status update, record change, checklist, or next action." },
+    { title: "Automate step", body: "The agent can create tasks, update fields, send a prepared message, or move work to the next tool." },
+    { title: "Improve pattern", body: "Repeated updates become more consistent as the agent learns the business context and preferred output." },
   ],
   outcomes: [
-    { title: "Less repetitive admin work", body: "Reduce manual checking, copying, routing, and status-update work across internal systems." },
-    { title: "Faster approvals", body: "Prepare complete approval packets with source documents, extracted data, and exception notes." },
-    { title: "Cleaner records", body: "Keep CRM, billing, spreadsheets, portals, and databases aligned with fewer manual updates." },
-    { title: "Better exception handling", body: "Route ambiguous, risky, or incomplete cases to the right owner with context." },
+    { title: "Less repetitive coordination", body: "Reduce manual searching, copying, summarizing, and updating across everyday business systems." },
+    { title: "Faster work status", body: "Generate clear status updates from source context without rebuilding the same summary each time." },
+    { title: "Cleaner records", body: "Keep fields, notes, owners, and task status aligned with fewer manual updates." },
+    { title: "More reliable routines", body: "Turn repeated updates into a managed pattern that the team can reuse and improve." },
   ],
-  integrations: ["Email", "Google Drive", "SharePoint", "S3", "PostgreSQL", "Airtable", "HubSpot", "Salesforce", "QuickBooks", "Internal APIs"],
+  integrations: ["Email", "Slack", "Google Drive", "SharePoint", "S3", "PostgreSQL", "Airtable", "HubSpot", "Notion", "Internal APIs"],
   faqs: [
-    { title: "Can AI extract data from PDFs and invoices?", body: "Yes. The workflow can include OCR, field extraction, validation, and review for low-confidence fields." },
-    { title: "Can approvals stay human?", body: "Yes. AI can prepare the approval packet while managers approve, reject, or edit the action." },
-    { title: "What is a good first back-office workflow?", body: "Start with a frequent process such as invoice review, document collection, record updates, or approval routing." },
+    { title: "What repeated updates are a good fit?", body: "Good first tasks include weekly summaries, record updates, document recaps, status reports, and routine follow-up messages." },
+    { title: "Can the agent update our tools?", body: "Yes. Tactas can connect to business tools and prepare or apply updates within the permissions you choose." },
+    { title: "Does this require perfect data?", body: "No. Start with the sources you already use, then improve the knowledge layer and task pattern over time." },
   ],
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
-    { "@type": "WebPage", "@id": `${pageUrl}#webpage`, name: "AI Back-Office Automation", url: pageUrl, description, isPartOf: { "@id": `${siteUrl}/#website` }, inLanguage: "en-US" },
+    { "@type": "WebPage", "@id": `${pageUrl}#webpage`, name: "Automate Repeated Business Updates", url: pageUrl, description, isPartOf: { "@id": `${siteUrl}/#website` }, inLanguage: "en-US" },
     {
       "@type": "Service",
       "@id": `${pageUrl}#service`,
-      name: "AI Back-Office Automation",
-      serviceType: ["AI back-office automation", "AI document processing", "Invoice workflow automation", "Approval routing automation"],
+      name: "Automate Repeated Business Updates",
+      serviceType: ["Business task automation", "Managed AI agents", "Connected business tools", "Company knowledge automation", "Work performance AI"],
       url: pageUrl,
       description,
       provider: { "@id": `${siteUrl}/#organization` },
@@ -82,7 +82,7 @@ const jsonLd = {
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
         { "@type": "ListItem", position: 2, name: "Use Cases", item: `${siteUrl}/use-cases` },
-        { "@type": "ListItem", position: 3, name: "AI Back-Office Automation", item: pageUrl },
+        { "@type": "ListItem", position: 3, name: "Automate Repeated Updates", item: pageUrl },
       ],
     },
     { "@type": "ContactPoint", contactType: "sales", email: brandEmail, areaServed: "Worldwide", availableLanguage: ["en", "vi"] },
@@ -95,20 +95,19 @@ const jsonLd = {
   description={description}
   canonical="/use-cases/ai-back-office-automation"
   currentPath="/use-cases/ai-back-office-automation"
-  navbarTheme="dark"
-  navbarCtaLabel="Book a Demo"
+  navbarTheme="light"
+  navbarCtaLabel="Task review"
   keywords={[
-    "AI back-office automation",
-    "AI document processing",
-    "invoice workflow automation",
-    "approval routing automation",
-    "admin workflow automation",
-    "AI operations automation",
-    "document review automation",
-    "AI invoice processing",
-    "back-office workflow automation",
+    "automate repeated updates",
+    "business task automation",
+    "managed AI agents",
+    "connected business tools",
+    "company knowledge automation",
+    "AI agents for business operations",
+    "work performance AI",
+    "automated business tasks",
   ]}
-  openGraph={{ title, description, url: pageUrl, type: "website", images: [{ url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png", width: 1536, height: 1024, alt: "AI back-office automation" }] }}
+  openGraph={{ title, description, url: pageUrl, type: "website", images: [{ url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png", width: 1536, height: 1024, alt: "Managed AI agents automating repeated business updates" }] }}
   twitter={{ card: "summary_large_image", title, description, images: ["/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"] }}
   jsonLd={jsonLd}
 >

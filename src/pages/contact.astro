@@ -7,14 +7,14 @@ const siteUrl = getSiteUrl();
 const brandEmail = getBrandEmail();
 const organization = getOrganization();
 const workflowReviewPoints = [
-  "Pick one repetitive workload",
-  "Map tools, data, rules, and handoffs",
-  "Launch with controls, logs, and review",
+  "Pick one repeated business task",
+  "Map knowledge, tools, context, and outputs",
+  "Define automation steps and review points",
 ];
 
 const title = "Contact Tactas AI";
 const description =
-  "Contact Tactas AI to scope a managed AI operator for repetitive support, admin, and back-office work.";
+  "Contact Tactas AI to map one repeated business task into managed AI agent automation with company knowledge and connected tools.";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -49,26 +49,26 @@ const jsonLd = {
   navbarCtaHref="/contact"
   jsonLd={jsonLd}
 >
-  <div class="min-h-screen bg-[#F8FAFC] text-[#0F172A]">
+  <div class="min-h-screen bg-[#F6F8FB] text-[#0F172A]">
 
     <main>
-      <section class="relative overflow-hidden border-b border-[#D8E1EA] bg-[#FBFAF6]">
+      <section class="relative overflow-hidden border-b border-[#D8E1EA] bg-[#F6F8FB]">
         <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,#06B6D4_24%,#D7A22A_72%,transparent)]"></div>
         <div class="mx-auto grid w-full max-w-[1240px] gap-8 px-5 py-16 sm:px-8 lg:grid-cols-[minmax(0,0.88fr)_minmax(420px,1.12fr)] lg:gap-10 lg:px-10 lg:py-20">
           <div class="lg:pt-3">
-            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Operator review</p>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Task review</p>
             <h1 class="mt-4 max-w-[42rem] text-[42px] font-semibold leading-[1.02] tracking-normal text-[#07324A] sm:text-[58px]">
-              Scope the first workflow your team should stop doing by hand.
+              Scope the first business task your team should automate.
             </h1>
             <p class="mt-6 max-w-[36rem] text-[17px] leading-relaxed text-[#07324A]/78">
-              Share the repetitive work, the tools involved, and the approval points. We will turn it into a concrete operator plan.
+              Share the repeated work, knowledge sources, tools involved, and outputs you want prepared. We will map it into a concrete managed agent plan.
             </p>
 
             <div class="mt-8 grid gap-3 sm:grid-cols-3 lg:max-w-[38rem]">
               {[
-                ["01", "Workflow fit"],
-                ["02", "Systems map"],
-                ["03", "Pilot plan"],
+                ["01", "Task fit"],
+                ["02", "Tools map"],
+                ["03", "Automation map"],
               ].map(([number, label]) => (
                 <div class="border border-[#E4D7B6] bg-white/70 px-4 py-3">
                   <p class="font-mono text-[10px] text-[#94A3B8]">{number}</p>
@@ -78,7 +78,7 @@ const jsonLd = {
             </div>
 
             <div class="mt-8 overflow-hidden border border-[#D8E1EA] bg-white shadow-[0_24px_70px_-62px_rgba(7,50,74,0.35)]">
-              <div class="border-b border-[#E2E8F0] bg-[#F8FAFC] px-5 py-4">
+              <div class="border-b border-[#E2E8F0] bg-[#F6F8FB] px-5 py-4">
                 <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#64748B]">What we review</p>
               </div>
               <div class="divide-y divide-[#E2E8F0]">
@@ -108,8 +108,8 @@ const jsonLd = {
             <div class="border-b border-[#D8E1EA] bg-[#07324A] px-5 py-5 text-white sm:px-6">
               <div class="flex items-center justify-between gap-4">
                 <div>
-                  <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#A5F3FC]">Start with one workflow</p>
-                  <h2 class="mt-2 text-[26px] font-semibold leading-tight tracking-normal">Request an operator review</h2>
+                  <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#A5F3FC]">Start with one task</p>
+                  <h2 class="mt-2 text-[26px] font-semibold leading-tight tracking-normal">Request an task review</h2>
                 </div>
                 <span class="hidden h-10 w-10 items-center justify-center rounded-[8px] bg-white/[0.08] text-[#67E8F9] sm:flex">
                   <Send class="h-5 w-5" stroke-width={1.9} />
@@ -121,32 +121,32 @@ const jsonLd = {
               <div class="grid gap-4 sm:grid-cols-2">
                 <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">
                   Name
-                  <input required name="name" class="h-11 rounded-[6px] border border-[#CBD5E1] bg-[#F8FAFC] px-3.5 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Your name" />
+                  <input required name="name" class="h-11 rounded-[6px] border border-[#CBD5E1] bg-[#F6F8FB] px-3.5 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Your name" />
                 </label>
                 <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">
                   Work email
-                  <input required type="email" name="email" class="h-11 rounded-[6px] border border-[#CBD5E1] bg-[#F8FAFC] px-3.5 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="you@company.com" />
+                  <input required type="email" name="email" class="h-11 rounded-[6px] border border-[#CBD5E1] bg-[#F6F8FB] px-3.5 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="you@company.com" />
                 </label>
               </div>
 
               <div class="mt-4 grid gap-4 sm:grid-cols-2">
                 <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">
                   Company
-                  <input name="company" class="h-11 rounded-[6px] border border-[#CBD5E1] bg-[#F8FAFC] px-3.5 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Company name" />
+                  <input name="company" class="h-11 rounded-[6px] border border-[#CBD5E1] bg-[#F6F8FB] px-3.5 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Company name" />
                 </label>
                 <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">
                   Systems involved
-                  <input name="systems" class="h-11 rounded-[6px] border border-[#CBD5E1] bg-[#F8FAFC] px-3.5 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Zendesk, HubSpot, Slack..." />
+                  <input name="systems" class="h-11 rounded-[6px] border border-[#CBD5E1] bg-[#F6F8FB] px-3.5 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Slack, Drive, HubSpot, Notion..." />
                 </label>
               </div>
 
               <label class="mt-4 grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">
-                Workflow to delegate
-                <textarea required name="workflow" class="min-h-36 rounded-[6px] border border-[#CBD5E1] bg-[#F8FAFC] px-3.5 py-3 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Example: answer support tickets, review invoices, update CRM records, route order issues..."></textarea>
+                Business task
+                <textarea required name="workflow" class="min-h-36 rounded-[6px] border border-[#CBD5E1] bg-[#F6F8FB] px-3.5 py-3 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Example: summarize updates, answer repeated requests, prepare next steps, track open work..."></textarea>
               </label>
 
-              <div class="mt-5 grid gap-2.5 border border-[#D8E1EA] bg-[#F8FAFC] p-4">
-                {["Human approval stays in the loop", "Tool access and audit logs are scoped before launch", "Pilot plan focuses on one measurable workflow"].map((item) => (
+              <div class="mt-5 grid gap-2.5 border border-[#D8E1EA] bg-[#F6F8FB] p-4">
+                {["Task outputs stay reviewable before launch", "Tool access is scoped before launch", "Automation map focuses on one measurable workflow"].map((item) => (
                   <div class="flex items-center gap-2 text-[13px] font-medium text-[#334155]">
                     <Check class="h-4 w-4 shrink-0 text-[#06B6D4]" stroke-width={2.4} />
                     <span>{item}</span>
@@ -155,7 +155,7 @@ const jsonLd = {
               </div>
 
               <button type="submit" class="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-[6px] bg-[#2F66FF] px-6 text-[14px] font-semibold text-white shadow-[0_16px_34px_-24px_rgba(47,102,255,0.85)] transition hover:bg-[#0EA5E9]">
-                Request operator review
+                Request task review
                 <Send class="h-4 w-4" stroke-width={2} />
               </button>
               <p id="workflow-form-status" class="mt-3 text-center text-[12px] text-[#64748B]">
@@ -175,7 +175,7 @@ const jsonLd = {
       event.preventDefault();
       const form = new FormData(workflowForm);
       const company = String(form.get("company") || "").trim() || "Tactas AI";
-      const subject = encodeURIComponent(`Operator review inquiry — ${company}`);
+      const subject = encodeURIComponent(`Task review inquiry — ${company}`);
       const body = encodeURIComponent(
         [
           `Name: ${String(form.get("name") || "")}`,
@@ -183,12 +183,12 @@ const jsonLd = {
           `Company: ${String(form.get("company") || "")}`,
           `Systems involved: ${String(form.get("systems") || "")}`,
           "",
-          "Workload:",
+          "Business task:",
           String(form.get("workflow") || ""),
         ].join("\n"),
       );
       if (workflowStatus) {
-        workflowStatus.textContent = "Opening your email client with the operator review details.";
+        workflowStatus.textContent = "Opening your email client with the task review details.";
       }
       window.location.href = `mailto:${brandEmail}?subject=${subject}&body=${body}`;
     });

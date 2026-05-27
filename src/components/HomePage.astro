@@ -29,63 +29,63 @@ const CONTAINER = "mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10";
 const exampleOperators = [
   {
     id: "analysis",
-    name: "Analysis operator",
-    role: "Business analysis · CFO office",
-    initials: "AO",
+    name: "Summarize changes",
+    role: "Business task · Brief",
+    initials: "SC",
     avatar: "bg-[#E0F2FE] text-[#0369A1]",
     statusColor: "bg-[#10B981]",
     statusLabel: "Online",
     time: "10:24",
-    preview: "Draft monthly brief ready for review",
+    preview: "Monthly change brief prepared",
     badge: "Brief",
     badgeClass: "bg-[#DBEAFE] text-[#1D4ED8] border-[#BFDBFE]",
-    intent: "Monthly business change brief",
-    sources: "Sheets, HubSpot, Projects, Marketing",
-    nextAction: "Review draft",
+    intent: "Summarize what changed this month",
+    sources: "Sheets, projects, notes, updates",
+    nextAction: "Use brief",
     connectors: 4,
     responds: "~12s",
   },
   {
     id: "client",
-    name: "Support operator",
-    role: "Customer success · Tier 1",
-    initials: "SO",
+    name: "Answer with context",
+    role: "Business task · Knowledge",
+    initials: "AC",
     avatar: "bg-[#E6FBFF] text-[#0E7490]",
     statusColor: "bg-[#10B981]",
     statusLabel: "Online",
     time: "11:02",
-    preview: "Invoice + invite waiting on approval",
-    badge: "Approval",
+    preview: "Answer and next steps prepared",
+    badge: "Answer",
     badgeClass: "bg-[#FEF3C7] text-[#B45309] border-[#FDE68A]",
-    intent: "Answer support question and prepare actions",
-    sources: "Knowledge base, pricing, Stripe, Admin",
-    nextAction: "Approve all",
+    intent: "Answer a business question with company context",
+    sources: "Knowledge base, pricing, product notes",
+    nextAction: "Send answer",
     connectors: 3,
     responds: "~8s",
   },
   {
     id: "employee",
-    name: "Employee operator",
-    role: "People ops · Internal knowledge",
-    initials: "EO",
+    name: "Prepare next steps",
+    role: "Business task · Action plan",
+    initials: "NS",
     avatar: "bg-[#F3E8FF] text-[#7C3AED]",
     statusColor: "bg-[#10B981]",
     statusLabel: "Online",
     time: "9:48",
-    preview: "Project Z checklist update sent",
-    badge: "Training",
+    preview: "Update turned into next steps",
+    badge: "Steps",
     badgeClass: "bg-[#F3E8FF] text-[#7C3AED] border-[#E9D5FF]",
-    intent: "Explain project update and next step",
-    sources: "Notion, Jira, manager note",
-    nextAction: "View sources",
+    intent: "Turn an update into clear next steps",
+    sources: "Docs, project board, manager note",
+    nextAction: "Use checklist",
     connectors: 3,
     responds: "~6s",
   },
   {
     id: "workspace",
-    name: "Workspace operator",
-    role: "Operations · Internal",
-    initials: "WO",
+    name: "Track open work",
+    role: "Business task · Follow-up",
+    initials: "TW",
     avatar: "bg-[#FEF3C7] text-[#B45309]",
     statusColor: "bg-[#94A3B8]",
     statusLabel: "Idle",
@@ -93,8 +93,8 @@ const exampleOperators = [
     preview: "Follow-up queue prepared for Friday",
     badge: "Queue",
     badgeClass: "bg-[#DCFCE7] text-[#047857] border-[#BBF7D0]",
-    intent: "Find open requests needing follow-up",
-    sources: "Gmail, Asana, Zendesk, Salesforce",
+    intent: "Find open work that needs follow-up",
+    sources: "Inbox, tasks, calendar, workspace",
     nextAction: "Assign owners",
     connectors: 5,
     responds: "~14s",
@@ -103,51 +103,51 @@ const exampleOperators = [
 
 const solutionCards = [
   {
-    title: "Customer operations",
-    body: "Give every customer conversation memory: account history, contract details, product knowledge, open tickets, and the next best action.",
-    points: ["Customer memory", "Next action"],
+    title: "Company knowledge",
+    body: "Bring company knowledge, prior work, and business context into the task so people do not start from a blank page.",
+    points: ["Business context", "Useful knowledge"],
     icon: Mail,
   },
   {
-    title: "Business research",
-    body: "Research markets, competitors, customers, and operating signals across trusted information sources and your internal data, then turn the evidence into decision briefs.",
-    points: ["Trusted sources", "Decision briefs"],
+    title: "Business context",
+    body: "Combine live business information with the details behind each request so the agent understands what work needs to happen.",
+    points: ["Live context", "Work intent"],
     icon: Search,
   },
   {
-    title: "Operational drafting",
-    body: "Turn messy context into polished client emails, support replies, investor updates, reports, SOPs, and project handoffs in your company voice.",
-    points: ["Founder-grade drafts", "Company voice"],
+    title: "Work creation",
+    body: "Turn messy inputs into ready-to-use emails, briefs, summaries, reports, and handoffs in the language your company already uses.",
+    points: ["Ready drafts", "Company voice"],
     icon: Paperclip,
   },
   {
-    title: "Workflow routing",
-    body: "Convert inbound requests into owned work: classify intent, assign the right team, create tasks, set priority, and escalate when risk appears.",
-    points: ["Auto-triage", "Ownership"],
+    title: "Request handling",
+    body: "Turn everyday requests into organized work with clear intent, next steps, owners, and the context needed to move forward.",
+    points: ["Clear next step", "Owned work"],
     icon: Layers,
   },
   {
-    title: "System updates",
-    body: "Let AI prepare real tool actions: update CRM fields, support tickets, billing records, spreadsheets, databases, and internal systems.",
-    points: ["Tool actions", "Record sync"],
+    title: "Task automation",
+    body: "Let AI prepare and automate repeatable business tasks across the tools, records, and systems your team already uses.",
+    points: ["Automated tasks", "Tool actions"],
     icon: Network,
   },
   {
-    title: "Approval control",
-    body: "Move fast without losing control: sensitive changes pause for review with evidence, policy checks, risk notes, and downstream impact.",
-    points: ["Risk review", "Human control"],
+    title: "Business actions",
+    body: "Move from information to action: create tasks, update information, organize follow-ups, and keep work moving across teams.",
+    points: ["Action prep", "Work movement"],
     icon: ShieldCheck,
   },
   {
-    title: "Queue monitoring",
-    body: "Keep the business from leaking work: monitor stale deals, aging tickets, failed automations, SLA risk, and follow-ups before they become problems.",
-    points: ["Always watching", "Exception alerts"],
+    title: "Work tracking",
+    body: "Track open work, pending follow-ups, and repeated activity so teams can see what needs attention before work slows down.",
+    points: ["Work visibility", "Follow-ups"],
     icon: Zap,
   },
   {
-    title: "Audit visibility",
-    body: "Give technical and operations teams a full trail of sources, reasoning, approvals, API calls, field changes, and systems touched.",
-    points: ["Explainable", "Audit-ready"],
+    title: "Performance support",
+    body: "Help teams work faster by turning knowledge, context, and repeated actions into a smoother operating rhythm.",
+    points: ["Faster work", "Less manual effort"],
     icon: CheckCheck,
   },
 ];
@@ -155,15 +155,15 @@ const solutionCards = [
 const capabilitySlices = [
   {
     phase: "01",
-    label: "Context",
-    title: "Understand the business state before acting.",
-    body: "Operators pull market signals, customer history, company knowledge, and live operating data into one working view.",
+    label: "Understand",
+    title: "Learn how your business works before helping.",
+    body: "Agents combine company knowledge, live business context, prior work, and task details into one useful working view.",
     icon: Search,
     cardIndexes: [0, 1],
-    highlights: ["Customer memory", "Market signals", "Company knowledge"],
-    memory: ["CRM history", "Support tickets", "Internal docs", "Market notes"],
-    outputTitle: "Evidence brief",
-    outputBody: "A concise view of what changed, why it matters, and which decision is ready for review.",
+    highlights: ["Company knowledge", "Live context", "Task intent"],
+    memory: ["Company knowledge", "Business data", "Open requests", "Tool context"],
+    outputTitle: "Working context",
+    outputBody: "A clear view of what the request means, what information matters, and what can happen next.",
     accent: "bg-[#06B6D4]",
     tint: "bg-[#E6FBFF]",
     textAccent: "text-[#0E7490]",
@@ -171,15 +171,15 @@ const capabilitySlices = [
   },
   {
     phase: "02",
-    label: "Creation",
+    label: "Create",
     title: "Turn messy context into work teams can use.",
-    body: "Operators draft replies, reports, handoffs, SOP updates, and routed work in the language your company already uses.",
+    body: "Agents draft messages, briefs, summaries, reports, handoffs, and organized next steps in the language your company already uses.",
     icon: Paperclip,
     cardIndexes: [2, 3],
-    highlights: ["Client-ready drafts", "Routed ownership", "Company voice"],
-    memory: ["Brand voice", "Prior decisions", "Open requests", "Team ownership"],
-    outputTitle: "Review-ready work",
-    outputBody: "Polished drafts and assignments prepared with the source context still attached.",
+    highlights: ["Ready-to-use work", "Clear next steps", "Company voice"],
+    memory: ["Company voice", "Prior work", "Open requests", "Team context"],
+    outputTitle: "Ready work",
+    outputBody: "Useful drafts, summaries, and task-ready outputs prepared with the source context still attached.",
     accent: "bg-[#7C3AED]",
     tint: "bg-[#F3E8FF]",
     textAccent: "text-[#6D28D9]",
@@ -187,15 +187,15 @@ const capabilitySlices = [
   },
   {
     phase: "03",
-    label: "Execution",
-    title: "Prepare actions inside the systems that run the company.",
-    body: "Operators can update records, create tasks, sync fields, trigger workflows, and pause sensitive work for approval.",
+    label: "Automate",
+    title: "Automate repeatable business tasks across tools.",
+    body: "Agents prepare updates, create tasks, organize requests, sync information, and move repeated work across connected systems.",
     icon: Network,
     cardIndexes: [4, 5],
-    highlights: ["System updates", "Approval gates", "Record sync"],
-    memory: ["CRM fields", "Billing records", "Project tasks", "Policy rules"],
-    outputTitle: "Controlled action plan",
-    outputBody: "Every proposed change is packaged with impact, evidence, and the required approval path.",
+    highlights: ["Task automation", "Tool actions", "Repeated work"],
+    memory: ["Tasks", "Records", "Requests", "Connected tools"],
+    outputTitle: "Action plan",
+    outputBody: "Prepared actions that turn business context into updates, tasks, follow-ups, and system-ready work.",
     accent: "bg-[#F59E0B]",
     tint: "bg-[#FEF3C7]",
     textAccent: "text-[#B45309]",
@@ -203,15 +203,15 @@ const capabilitySlices = [
   },
   {
     phase: "04",
-    label: "Control",
-    title: "Keep delegated work observable and accountable.",
-    body: "Operators monitor queues, catch exceptions, surface risk, and keep a complete trail behind every AI-assisted action.",
+    label: "Improve",
+    title: "Support better work performance over time.",
+    body: "Agents keep work visible, surface what needs attention, and help teams reduce repeated manual effort as the business changes.",
     icon: ShieldCheck,
     cardIndexes: [6, 7],
-    highlights: ["Exception monitoring", "Audit trail", "Operational visibility"],
-    memory: ["SLA risk", "Failed automations", "Approval logs", "Action history"],
-    outputTitle: "Operating record",
-    outputBody: "A traceable history of sources, reasoning, approvals, system changes, and outcomes.",
+    highlights: ["Work visibility", "Performance support", "Less manual effort"],
+    memory: ["Open work", "Follow-ups", "Repeated tasks", "Action history"],
+    outputTitle: "Performance view",
+    outputBody: "A practical view of work in motion, what has been completed, and what should happen next.",
     accent: "bg-[#14B8A6]",
     tint: "bg-[#CCFBF1]",
     textAccent: "text-[#0F766E]",
@@ -221,9 +221,9 @@ const capabilitySlices = [
 
 const integrationGroups = [
   {
-    title: "Workspace & knowledge",
-    eyebrow: "Context systems",
-    body: "Company docs, identity, files, design assets, and delivery knowledge.",
+    title: "Knowledge & files",
+    eyebrow: "Context sources",
+    body: "Company docs, shared files, workspace knowledge, and business context.",
     icon: Network,
     accent: "text-[#06B6D4] bg-[#E6FBFF] border-[#BAE6FD]",
     logos: [
@@ -248,9 +248,9 @@ const integrationGroups = [
     ],
   },
   {
-    title: "Customer & revenue",
-    eyebrow: "CRM + support",
-    body: "Accounts, tickets, campaigns, forms, and customer-facing workflows.",
+    title: "Messages & forms",
+    eyebrow: "Request sources",
+    body: "Messages, forms, inboxes, meetings, and shared conversations.",
     icon: Mail,
     accent: "text-[#7C3AED] bg-[#F3E8FF] border-[#DDD6FE]",
     logos: [
@@ -270,9 +270,9 @@ const integrationGroups = [
     ],
   },
   {
-    title: "Commerce & finance",
-    eyebrow: "Billing + operations",
-    body: "Orders, payments, invoices, reconciliation, and store actions.",
+    title: "Business tools",
+    eyebrow: "Work systems",
+    body: "Records, orders, payments, documents, and business applications.",
     icon: Zap,
     accent: "text-[#B45309] bg-[#FEF3C7] border-[#FDE68A]",
     logos: [
@@ -289,9 +289,9 @@ const integrationGroups = [
     ],
   },
   {
-    title: "Data, cloud & APIs",
-    eyebrow: "Execution systems",
-    body: "Internal APIs, cloud services, databases, observability, and dev tools.",
+    title: "Data & automation",
+    eyebrow: "Connected systems",
+    body: "Data stores, cloud apps, APIs, automation tools, and system events.",
     icon: ShieldCheck,
     accent: "text-[#2563EB] bg-[#DBEAFE] border-[#BFDBFE]",
     logos: [
@@ -319,10 +319,10 @@ const integrationGroups = [
 ];
 
 const integrationFeatureNodes = [
-  { title: "Activity", x: 430, y: 148, width: 150, feature: "activity" },
+  { title: "Knowledge", x: 430, y: 148, width: 170, feature: "activity" },
   { title: "Tasks", x: 950, y: 124, width: 136, feature: "tasks" },
-  { title: "Projects", x: 360, y: 398, width: 154, feature: "projects" },
-  { title: "People", x: 990, y: 398, width: 142, feature: "people" },
+  { title: "Outputs", x: 360, y: 398, width: 154, feature: "projects" },
+  { title: "Teams", x: 990, y: 398, width: 142, feature: "people" },
   { title: "Data", x: 660, y: 536, width: 118, feature: "data" },
 ];
 
@@ -380,10 +380,10 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
 
 ---
 
-<div class="min-h-screen bg-[#F8FAFC] text-[#0F172A]">
+<div class="min-h-screen bg-[#F6F8FB] text-[#0F172A]">
 
   <main>
-    <section class="border-b border-[#E6E0D4] bg-[#FBFAF6]">
+    <section class="border-b border-[#E6E0D4] bg-[#F6F8FB]">
       <div class={`${CONTAINER} flex min-h-[620px] items-center justify-center py-20 sm:py-24 lg:min-h-[700px] lg:py-28`}>
         <div class="mx-auto max-w-[1020px] text-center">
           <div class="mb-8 inline-flex items-center rounded-full bg-[#06AEEA] px-4 py-2 text-[14px] font-medium text-white shadow-[0_14px_32px_-24px_rgba(6,174,234,0.9)] sm:text-[16px]">
@@ -423,22 +423,22 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
       </div>
     </section>
 
-    <section id="solutions" class="relative overflow-hidden border-b border-[#D8E1EA] bg-[#FBFAF6]">
+    <section id="solutions" class="relative overflow-hidden border-b border-[#D8E1EA] bg-[#F6F8FB]">
       <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,#06B6D4_24%,#D7A22A_72%,transparent)]"></div>
       <div class={`${CONTAINER} py-16 lg:py-20`}>
         <div class="grid gap-8 lg:grid-cols-[minmax(0,0.98fr)_minmax(360px,0.74fr)] lg:items-end lg:justify-between">
           <div>
-            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Operator capabilities</p>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Agent capabilities</p>
             <h2 class="mt-4 max-w-[760px] text-[38px] font-semibold leading-[1.02] tracking-normal text-[#07324A] sm:text-[56px]">
-              AI operators for research, decisions, and execution.
+              AI agents that improve work performance and automate business tasks.
             </h2>
           </div>
           <div class="grid gap-5 lg:justify-self-end lg:pb-1">
             <p class="max-w-[39rem] text-[16px] leading-relaxed text-[#07324A]/78">
-              Tactas operators combine research from multiple information sources, company knowledge, live business data, approval rules, and connected tools so teams can move from question to decision to action.
+              Tactas agents learn how your business works, combine company knowledge with live business context, and turn everyday requests into useful work, prepared outputs, and automated actions.
             </p>
             <div class="flex flex-wrap gap-2">
-              {["Research", "Decide", "Execute", "Govern"].map((item) => (
+              {["Understand", "Create", "Automate", "Improve"].map((item) => (
                 <span class="rounded-full border border-[#E4D7B6] bg-white/70 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#07324A]">{item}</span>
               ))}
             </div>
@@ -446,7 +446,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
         </div>
 
         <div class="capability-carousel relative mt-10 overflow-hidden border border-[#D8E1EA] bg-white shadow-[0_34px_100px_-68px_rgba(7,50,74,0.38)]">
-          <div class="grid grid-cols-2 border-b border-[#E2E8F0] bg-[#F8FAFC] sm:grid-cols-4">
+          <div class="grid grid-cols-2 border-b border-[#E2E8F0] bg-[#F6F8FB] sm:grid-cols-4">
             {capabilitySlices.map((slice, index) => (
               <div class="border-r border-[#E2E8F0] px-4 py-3 last:border-r-0">
                 <div class="mb-2 flex items-center justify-between gap-2">
@@ -494,7 +494,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                             const card = solutionCards[cardIndex];
                             const CardIcon = card.icon;
                             return (
-                              <article class="capability-carousel-chip border border-[#D8E1EA] bg-[#F8FAFC] p-4">
+                              <article class="capability-carousel-chip border border-[#D8E1EA] bg-[#F6F8FB] p-4">
                                 <div class="flex items-start gap-3">
                                   <span class:list={["flex h-9 w-9 shrink-0 items-center justify-center rounded-[7px] border bg-white", slice.borderAccent, slice.textAccent]}>
                                     <CardIcon class="h-4.5 w-4.5" stroke-width={1.9} />
@@ -533,24 +533,23 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
     </section>
 
 
-    <section class="border-b border-[#D8E1EA] bg-[#F8FAFC]">
+    <section class="border-b border-[#D8E1EA] bg-[#F6F8FB]">
       <div class={`${CONTAINER} py-16 lg:py-20`}>
         <div class="grid gap-10">
           <div class="max-w-none">
-            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Example operators</p>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Business task examples</p>
             <h2 class="mt-4 max-w-[760px] text-4xl font-semibold leading-[1.05] tracking-[-0.015em] text-[#0F172A] sm:text-5xl">
-              See how work moves through chat.
+              See everyday business tasks move from request to done.
             </h2>
             <p class="mt-5 max-w-[48rem] text-[16px] leading-relaxed text-[#475569]">
-              Your team talks to specialist operators like a colleague. Each thread pulls live context,
-              explains its reasoning, and prepares actions for approval when policy requires it.
+              Tactas agents turn common business requests into prepared outputs, next steps, updates, and automated actions across the tools your team already uses.
             </p>
             <dl class="mt-8 grid gap-x-8 gap-y-5 border-t border-[#E2E8F0] pt-7 sm:grid-cols-2 lg:grid-cols-4">
               {[
-                ["Grounded", "Live context from CRM, docs, tickets, and projects."],
-                ["Governed", "Sensitive actions wait for human approval."],
-                ["Observable", "Every step is logged, explained, and reviewable."],
-                ["Composable", "Specialist operators matched to the right operating area."],
+                ["Understands context", "Uses company knowledge and live business details."],
+                ["Prepares output", "Turns messy requests into usable work."],
+                ["Automates steps", "Moves repeated tasks through connected tools."],
+                ["Keeps work moving", "Tracks next steps, owners, and follow-ups."],
               ].map(([term, desc]) => (
                 <div>
                   <dt class="flex items-center gap-2 text-[13px] font-semibold text-[#0F172A]">
@@ -565,29 +564,29 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
             <div class="mt-8 flex flex-wrap items-center gap-2 text-[11px] text-[#64748B]">
               <span class="inline-flex items-center gap-1 rounded-full border border-[#A7F3D0] bg-[#ECFDF5] px-2.5 py-1 font-semibold text-[#047857]">
                 <ShieldCheck class="h-3 w-3" stroke-width={2} />
-                SOC 2 ready
+                Works across tools
               </span>
               <span class="inline-flex items-center gap-1 rounded-full border border-[#E2E8F0] bg-white px-2.5 py-1 font-semibold text-[#475569]">
-                SSO &middot; SCIM &middot; SAML
+                Knowledge &middot; outputs &middot; actions
               </span>
             </div>
           </div>
 
           <div class="overflow-hidden rounded-[14px] border border-[#CBD5E1]/80 bg-white shadow-[0_48px_120px_-64px_rgba(15,23,42,0.45)] ring-1 ring-[#0F172A]/[0.04]">
-            <div class="flex h-11 items-center justify-between gap-3 border-b border-[#E2E8F0] bg-[#F8FAFC] px-4">
+            <div class="flex h-11 items-center justify-between gap-3 border-b border-[#E2E8F0] bg-[#F6F8FB] px-4">
               <div class="flex min-w-0 items-center gap-3">
                 <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-[6px] bg-[#06B6D4] text-white">
                   <Bot class="h-4 w-4" stroke-width={1.9} />
                 </span>
                 <div class="min-w-0">
-                  <p class="truncate text-[13px] font-semibold text-[#0F172A]">Tactas Operator Console</p>
+                  <p class="truncate text-[13px] font-semibold text-[#0F172A]">Tactas Work Console</p>
                   <p class="truncate font-mono text-[10px] uppercase tracking-[0.18em] text-[#64748B]">Acme Corp workspace</p>
                 </div>
               </div>
               <div class="flex shrink-0 items-center gap-2">
                 <span class="hidden items-center gap-1.5 rounded-full border border-[#A7F3D0] bg-[#ECFDF5] px-2.5 py-1 text-[10px] font-medium text-[#047857] sm:inline-flex">
                   <span class="h-1.5 w-1.5 rounded-full bg-[#10B981]"></span>
-                  Policies active
+                  Automation ready
                 </span>
                 <div class="hidden h-7 items-center gap-1.5 rounded-[5px] border border-[#E2E8F0] bg-white px-2 text-[11px] text-[#94A3B8] md:flex md:w-40">
                   <Search class="h-3.5 w-3.5" stroke-width={1.8} />
@@ -598,9 +597,9 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-[268px_1fr_220px]">
-              <aside class="border-b border-[#E2E8F0] bg-[#F8FAFC] lg:border-b-0 lg:border-r" role="tablist" aria-label="Example operator conversations">
+              <aside class="border-b border-[#E2E8F0] bg-[#F6F8FB] lg:border-b-0 lg:border-r" role="tablist" aria-label="Example business task conversations">
                 <div class="flex items-center justify-between px-3.5 pt-3.5 pb-2">
-                  <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#64748B]">Operators</p>
+                  <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#64748B]">Task types</p>
                   <button type="button" class="flex h-6 w-6 items-center justify-center rounded-[4px] text-[#94A3B8] transition hover:bg-white hover:text-[#0F172A]" aria-label="New conversation">
                     <Plus class="h-3.5 w-3.5" stroke-width={2} />
                   </button>
@@ -626,7 +625,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                         <span class:list={["flex h-9 w-9 items-center justify-center rounded-[8px] font-mono text-[11px] font-semibold tracking-wide ring-1 ring-white/70", op.avatar]}>
                           {op.initials}
                         </span>
-                        <span class:list={["absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full ring-2 ring-[#F8FAFC]", op.statusColor]}></span>
+                        <span class:list={["absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full ring-2 ring-[#F6F8FB]", op.statusColor]}></span>
                       </span>
                       <span class="min-w-0 flex-1">
                         <span class="flex items-center justify-between gap-2">
@@ -648,13 +647,13 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                 <div class="hidden px-3 pb-3.5 pt-1 lg:block">
                   <div class="rounded-[8px] border border-[#E2E8F0] bg-white p-3">
                     <div class="flex items-center justify-between">
-                      <p class="font-mono text-[9.5px] uppercase tracking-[0.2em] text-[#0E7490]">Approval queue</p>
+                      <p class="font-mono text-[9.5px] uppercase tracking-[0.2em] text-[#0E7490]">Work queue</p>
                       <span class="rounded-full bg-[#FEF3C7] px-1.5 py-0.5 text-[9.5px] font-semibold text-[#B45309]">3</span>
                     </div>
-                    <p class="mt-2 text-[12px] font-semibold leading-snug text-[#0F172A]">3 actions waiting on you</p>
-                    <p class="mt-1 text-[11px] leading-relaxed text-[#64748B]">Refund, workspace invite, and outbound email pending human review.</p>
+                    <p class="mt-2 text-[12px] font-semibold leading-snug text-[#0F172A]">3 tasks ready to move</p>
+                    <p class="mt-1 text-[11px] leading-relaxed text-[#64748B]">Brief, answer, and follow-up work prepared from company context.</p>
                     <a href="/contact" class="mt-2.5 inline-flex items-center gap-1 text-[11px] font-semibold text-[#06B6D4] hover:text-[#0891B2]">
-                      Review queue
+                      View tasks
                       <ArrowUpRight class="h-3 w-3" stroke-width={2} />
                     </a>
                   </div>
@@ -685,7 +684,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                             <div class="flex flex-wrap items-center gap-2">
                               <p class="truncate text-[14px] font-semibold text-[#0F172A]">{op.name}</p>
                               <span class="inline-flex items-center gap-1 rounded-full border border-[#BAE6FD] bg-[#E6FBFF] px-1.5 py-0.5 text-[10px] font-semibold text-[#0E7490]">
-                                AI operator
+                                AI task
                               </span>
                               <span class="hidden items-center gap-1 rounded-full bg-[#ECFDF5] px-1.5 py-0.5 text-[10px] font-semibold text-[#047857] sm:inline-flex">
                                 <span class="h-1 w-1 rounded-full bg-[#10B981]"></span>
@@ -696,7 +695,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                           </div>
                         </div>
                         <div class="flex shrink-0 items-center gap-1.5">
-                          <div class="hidden items-center gap-1 rounded-full border border-[#E2E8F0] bg-[#F8FAFC] px-2 py-1 text-[10px] font-medium text-[#475569] md:flex">
+                          <div class="hidden items-center gap-1 rounded-full border border-[#E2E8F0] bg-[#F6F8FB] px-2 py-1 text-[10px] font-medium text-[#475569] md:flex">
                             <Network class="h-3 w-3 text-[#06B6D4]" stroke-width={2} />
                             <span>{op.connectors} connected</span>
                           </div>
@@ -739,7 +738,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                 <div class="rounded-[12px] rounded-bl-[3px] border border-[#E2E8F0] border-l-[3px] border-l-[#06B6D4] bg-white px-3.5 py-3 text-[14px] leading-relaxed text-[#334155] shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
                                   <p>Pulling live context across your business sources to summarize what changed.</p>
                                   <div class="mt-2.5 flex flex-wrap gap-1.5 border-t border-[#F1F5F9] pt-2.5">
-                                    {["Google Sheets", "HubSpot CRM", "Projects", "Marketing"].map((source) => (
+                                    {["Business data", "Project updates", "Team notes", "Market signals"].map((source) => (
                                       <span class="inline-flex items-center gap-1 rounded-full border border-[#BAE6FD] bg-[#E6FBFF] px-2 py-0.5 text-[10.5px] font-semibold text-[#0E7490]">
                                         <Check class="h-2.5 w-2.5" stroke-width={2.8} />
                                         {source}
@@ -788,13 +787,13 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   <div class="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-[#F1F5F9] pt-3">
                                     <div class="flex items-center gap-1.5 text-[10.5px] text-[#94A3B8]">
                                       <Sparkles class="h-3 w-3 text-[#06B6D4]" stroke-width={2} />
-                                      Generated from 4 sources &middot; full reasoning trail
+                                      Generated from 4 sources &middot; source context attached
                                     </div>
                                     <div class="flex gap-2">
                                       <button type="button" class="rounded-[4px] border border-[#E2E8F0] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#475569] transition hover:border-[#06B6D4] hover:text-[#06B6D4]">Edit</button>
                                       <button type="button" class="inline-flex items-center gap-1 rounded-[4px] bg-[#06B6D4] px-2.5 py-1 text-[11px] font-semibold text-white transition hover:bg-[#06B6D4]">
                                         <Check class="h-3 w-3" stroke-width={2.4} />
-                                        Approve &amp; send
+                                        Use brief
                                       </button>
                                     </div>
                                   </div>
@@ -809,10 +808,10 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                             <div class="flex justify-end">
                               <div class="flex max-w-[80%] flex-col items-end gap-1">
                                 <div class="rounded-[12px] rounded-br-[3px] bg-[#06B6D4] px-3.5 py-2.5 text-[14px] leading-relaxed text-white shadow-[0_8px_20px_-16px_rgba(15,23,42,0.5)]">
-                                  Does Product A support team workspaces?
+                                  Can Product A be used by multiple teams?
                                 </div>
                                 <p class="flex items-center gap-1 pr-1 text-[10px] text-[#94A3B8]">
-                                  <span>Client &middot; 11:02 AM</span>
+                                  <span>Team &middot; 11:02 AM</span>
                                   <CheckCheck class="h-3 w-3 text-[#06B6D4]" stroke-width={2.2} />
                                 </p>
                               </div>
@@ -828,13 +827,13 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   <p class="text-[10px] text-[#94A3B8]">11:02 AM</p>
                                 </div>
                                 <div class="rounded-[12px] rounded-bl-[3px] border border-[#E2E8F0] border-l-[3px] border-l-[#06B6D4] bg-white px-3.5 py-3 text-[14px] leading-relaxed text-[#334155] shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
-                                  <p>Yes. Product A supports shared workspaces, role-based access, and member invites. On your current plan you have <span class="font-semibold text-[#0F172A]">up to 25 members</span> included.</p>
+                                  <p>Yes. Product A supports shared workspaces, role-based access, and team invites. Your current plan includes <span class="font-semibold text-[#0F172A]">up to 25 members</span>.</p>
                                   <div class="mt-2.5 flex flex-wrap gap-1.5 border-t border-[#F1F5F9] pt-2.5">
                                     <span class="inline-flex items-center gap-1 rounded-full border border-[#BAE6FD] bg-[#E6FBFF] px-2 py-0.5 text-[10.5px] font-semibold text-[#0E7490]">
                                       <Check class="h-2.5 w-2.5" stroke-width={2.8} /> Knowledge base
                                     </span>
                                     <span class="inline-flex items-center gap-1 rounded-full border border-[#BAE6FD] bg-[#E6FBFF] px-2 py-0.5 text-[10.5px] font-semibold text-[#0E7490]">
-                                      <Check class="h-2.5 w-2.5" stroke-width={2.8} /> Pricing rules
+                                      <Check class="h-2.5 w-2.5" stroke-width={2.8} /> Product notes
                                     </span>
                                   </div>
                                 </div>
@@ -844,10 +843,10 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                             <div class="flex justify-end">
                               <div class="flex max-w-[82%] flex-col items-end gap-1">
                                 <div class="rounded-[12px] rounded-br-[3px] bg-[#06B6D4] px-3.5 py-2.5 text-[14px] leading-relaxed text-white shadow-[0_8px_20px_-16px_rgba(15,23,42,0.5)]">
-                                  Great. Please issue this month's invoice and add <span class="font-semibold text-[#67E8F9]">Mai Nguyen</span> to our workspace.
+                                  Great. Prepare a short reply and the next steps for the account owner.
                                 </div>
                                 <p class="flex items-center gap-1 pr-1 text-[10px] text-[#94A3B8]">
-                                  <span>Client &middot; 11:03 AM</span>
+                                  <span>Team &middot; 11:03 AM</span>
                                   <CheckCheck class="h-3 w-3 text-[#06B6D4]" stroke-width={2.2} />
                                 </p>
                               </div>
@@ -860,7 +859,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-[#94A3B8] [animation-delay:120ms]"></span>
                                   <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-[#94A3B8] [animation-delay:240ms]"></span>
                                 </span>
-                                <span>Checking billing account, invoice rules, and workspace permissions</span>
+                                <span>Checking product details, prior notes, and workspace context</span>
                               </div>
                             </div>
 
@@ -870,15 +869,15 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                               </span>
                               <div class="flex max-w-[92%] flex-1 flex-col gap-1.5">
                                 <div class="flex items-baseline gap-2">
-                                  <p class="text-[11.5px] font-semibold text-[#0F172A]">Prepared actions</p>
+                                  <p class="text-[11.5px] font-semibold text-[#0F172A]">Prepared work</p>
                                   <p class="text-[10px] text-[#94A3B8]">11:03 AM</p>
                                 </div>
                                 <div class="rounded-[12px] rounded-bl-[3px] border border-[#E2E8F0] border-l-[3px] border-l-[#06B6D4] bg-white px-4 py-3.5 shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
                                   <div class="grid gap-2.5">
                                     {[
-                                      ["Invoice", "drafted for the current billing period and ready to send.", "Stripe"],
-                                      ["Workspace", "Mai Nguyen invite prepared with member-level access.", "Admin"],
-                                      ["Approval", "send + invite waiting on human approval.", "Policy"],
+                                      ["Answer", "drafted a clear reply using company knowledge.", "Knowledge"],
+                                      ["Next step", "prepared owner follow-up with the right account context.", "Task"],
+                                      ["Update", "captured the answer and next action for the workspace.", "Record"],
                                     ].map(([label, value, system]) => (
                                       <div class="flex items-start gap-2.5">
                                         <Check class="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#06B6D4]" stroke-width={2.6} />
@@ -896,13 +895,13 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   <div class="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-[#F1F5F9] pt-3">
                                     <span class="inline-flex items-center gap-1 rounded-full bg-[#FEF3C7] px-2 py-0.5 text-[10.5px] font-semibold text-[#B45309]">
                                       <ShieldCheck class="h-3 w-3" stroke-width={2} />
-                                      Awaiting approval
+                                      Ready to use
                                     </span>
                                     <div class="flex gap-2">
-                                      <button type="button" class="rounded-[4px] border border-[#E2E8F0] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#475569] transition hover:border-[#94A3B8]">Decline</button>
+                                      <button type="button" class="rounded-[4px] border border-[#E2E8F0] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#475569] transition hover:border-[#94A3B8]">Edit</button>
                                       <button type="button" class="inline-flex items-center gap-1 rounded-[4px] bg-[#06B6D4] px-2.5 py-1 text-[11px] font-semibold text-white transition hover:bg-[#06B6D4]">
                                         <Check class="h-3 w-3" stroke-width={2.4} />
-                                        Approve all
+                                        Apply steps
                                       </button>
                                     </div>
                                   </div>
@@ -924,7 +923,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   <p class="text-[10px] text-[#94A3B8]">9:48 AM</p>
                                 </div>
                                 <div class="rounded-[12px] rounded-bl-[3px] border border-[#E2E8F0] border-l-[3px] border-l-[#06B6D4] bg-white px-3.5 py-3 text-[14px] leading-relaxed text-[#334155] shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
-                                  <p>Project Manager just updated <span class="font-semibold text-[#0F172A]">Project Z</span>. Please review the new rollout checklist before tomorrow's standup.</p>
+                                  <p>A new project update arrived for <span class="font-semibold text-[#0F172A]">Project Z</span>. The team needs the next steps before tomorrow's standup.</p>
                                 </div>
                               </div>
                             </div>
@@ -935,7 +934,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   What changed in Project Z, and what should I do next?
                                 </div>
                                 <p class="flex items-center gap-1 pr-1 text-[10px] text-[#94A3B8]">
-                                  <span>You &middot; 9:50 AM</span>
+                                  <span>Team &middot; 9:50 AM</span>
                                   <CheckCheck class="h-3 w-3 text-[#06B6D4]" stroke-width={2.2} />
                                 </p>
                               </div>
@@ -948,7 +947,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-[#94A3B8] [animation-delay:120ms]"></span>
                                   <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-[#94A3B8] [animation-delay:240ms]"></span>
                                 </span>
-                                <span>Reading project notes, training docs, and manager comments</span>
+                                <span>Reading project notes, company docs, and manager comments</span>
                               </div>
                             </div>
 
@@ -958,15 +957,15 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                               </span>
                               <div class="flex max-w-[92%] flex-1 flex-col gap-1.5">
                                 <div class="flex items-baseline gap-2">
-                                  <p class="text-[11.5px] font-semibold text-[#0F172A]">Training answer</p>
+                                  <p class="text-[11.5px] font-semibold text-[#0F172A]">Next-step plan</p>
                                   <p class="text-[10px] text-[#94A3B8]">9:50 AM</p>
                                 </div>
                                 <div class="rounded-[12px] rounded-bl-[3px] border border-[#E2E8F0] border-l-[3px] border-l-[#06B6D4] bg-white px-4 py-3.5 shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
                                   <div class="grid gap-2.5">
                                     {[
-                                      ["Update", "Project Z now requires the new QA checklist before client handoff."],
-                                      ["Your task", "review the checklist, confirm the test owner, and update the status by 4 PM."],
-                                      ["Guidance", "use the onboarding playbook section 3 for the step-by-step process."],
+                                      ["Update", "Project Z now needs the new checklist before handoff."],
+                                      ["Next step", "confirm the owner, review the checklist, and update status by 4 PM."],
+                                      ["Context", "use the company playbook for the required handoff steps."],
                                     ].map(([label, value]) => (
                                       <div class="flex gap-2.5">
                                         <Check class="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#06B6D4]" stroke-width={2.6} />
@@ -979,7 +978,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   <div class="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-[#F1F5F9] pt-3">
                                     <div class="flex items-center gap-1.5 text-[10.5px] text-[#94A3B8]">
                                       <Sparkles class="h-3 w-3 text-[#06B6D4]" stroke-width={2} />
-                                      Cited from Notion &middot; Jira &middot; Manager note
+                                      Built from docs &middot; project board &middot; manager note
                                     </div>
                                     <button type="button" class="inline-flex items-center gap-1 rounded-[4px] border border-[#E2E8F0] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#475569] transition hover:border-[#06B6D4] hover:text-[#06B6D4]">
                                       View sources
@@ -993,7 +992,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                             <div class="flex justify-end">
                               <div class="flex max-w-[78%] flex-col items-end gap-1">
                                 <div class="rounded-[12px] rounded-br-[3px] bg-[#06B6D4] px-3.5 py-2.5 text-[14px] leading-relaxed text-white shadow-[0_8px_20px_-16px_rgba(15,23,42,0.5)]">
-                                  Remind me again tomorrow morning if I have not updated it.
+                                  Add this to my task list and remind me tomorrow morning if it is still open.
                                 </div>
                                 <p class="flex items-center gap-1 pr-1 text-[10px] text-[#94A3B8]">
                                   <span>You &middot; 9:51 AM</span>
@@ -1012,7 +1011,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   Which open requests need follow-up before Friday?
                                 </div>
                                 <p class="flex items-center gap-1 pr-1 text-[10px] text-[#94A3B8]">
-                                  <span>Operations &middot; 4:18 PM</span>
+                                  <span>Team &middot; 4:18 PM</span>
                                   <CheckCheck class="h-3 w-3 text-[#06B6D4]" stroke-width={2.2} />
                                 </p>
                               </div>
@@ -1028,9 +1027,9 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   <p class="text-[10px] text-[#94A3B8]">4:18 PM</p>
                                 </div>
                                 <div class="rounded-[12px] rounded-bl-[3px] border border-[#E2E8F0] border-l-[3px] border-l-[#06B6D4] bg-white px-3.5 py-3 text-[14px] leading-relaxed text-[#334155] shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
-                                  <p>Reviewing inboxes, project tasks, support tickets, and owner assignments.</p>
+                                  <p>Reviewing inboxes, task lists, shared notes, and owner assignments.</p>
                                   <div class="mt-2.5 flex flex-wrap gap-1.5 border-t border-[#F1F5F9] pt-2.5">
-                                    {["Gmail", "Asana", "Zendesk", "Salesforce"].map((source) => (
+                                    {["Inbox", "Tasks", "Calendar", "Workspace"].map((source) => (
                                       <span class="inline-flex items-center gap-1 rounded-full border border-[#BAE6FD] bg-[#E6FBFF] px-2 py-0.5 text-[10.5px] font-semibold text-[#0E7490]">
                                         <Check class="h-2.5 w-2.5" stroke-width={2.8} />
                                         {source}
@@ -1053,9 +1052,9 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                 <div class="rounded-[12px] rounded-bl-[3px] border border-[#E2E8F0] border-l-[3px] border-l-[#06B6D4] bg-white px-4 py-3.5 shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
                                   <div class="grid gap-2.5">
                                     {[
-                                      ["Client renewal", "waiting on legal review from Minh.", "High"],
-                                      ["Onboarding task", "workspace setup blocked by missing billing details.", "Med"],
-                                      ["Support issue", "VIP account needs a status update today.", "High"],
+                                      ["Customer reply", "waiting on owner input before it can be sent.", "High"],
+                                      ["Setup task", "missing one detail before the workspace can be finished.", "Med"],
+                                      ["Project handoff", "needs a status update before the end of day.", "High"],
                                     ].map(([label, value, prio]) => (
                                       <div class="flex items-start gap-2.5">
                                         <Check class="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#06B6D4]" stroke-width={2.6} />
@@ -1081,7 +1080,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   Create follow-up drafts and assign owners?
                                 </div>
                                 <p class="flex items-center gap-1 pr-1 text-[10px] text-[#94A3B8]">
-                                  <span>Operations &middot; 4:20 PM</span>
+                                  <span>Team &middot; 4:20 PM</span>
                                   <CheckCheck class="h-3 w-3 text-[#06B6D4]" stroke-width={2.2} />
                                 </p>
                               </div>
@@ -1096,7 +1095,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                 <div class="border-t border-[#E2E8F0] bg-white p-3 sm:px-4 sm:py-3.5">
                   <div class="rounded-[10px] border border-[#CBD5E1] bg-[#FAFBFC] shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition focus-within:border-[#06B6D4] focus-within:bg-white focus-within:shadow-[0_0_0_3px_rgba(103,232,249,0.2)]">
                     <div class="flex items-center gap-2 px-3.5 py-2.5">
-                      <p class="flex-1 text-[13.5px] text-[#94A3B8]">Message your operator&hellip;</p>
+                      <p class="flex-1 text-[13.5px] text-[#94A3B8]">Ask Tactas to handle work&hellip;</p>
                     </div>
                     <div class="flex items-center justify-between border-t border-[#E2E8F0]/80 px-2 py-1.5">
                       <div class="flex items-center gap-0.5 text-[#64748B]">
@@ -1111,7 +1110,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                         <span class="ml-1 hidden h-3.5 w-px bg-[#E2E8F0] sm:block"></span>
                         <span class="ml-1.5 hidden items-center gap-1 rounded-full bg-[#ECFDF5] px-2 py-0.5 text-[10px] font-medium text-[#047857] sm:flex">
                           <ShieldCheck class="h-3 w-3" stroke-width={2} />
-                          Governed
+                          Automated
                         </span>
                       </div>
                       <button type="button" class="inline-flex h-8 items-center gap-1.5 rounded-[6px] bg-[#06B6D4] px-3.5 text-[12px] font-semibold text-white transition hover:bg-[#06B6D4]" aria-label="Send message">
@@ -1123,7 +1122,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                 </div>
               </div>
 
-              <aside class="hidden border-t border-[#E2E8F0] bg-[#FAFBFC] lg:block lg:border-t-0 lg:border-l" aria-label="Operator context">
+              <aside class="hidden border-t border-[#E2E8F0] bg-[#FAFBFC] lg:block lg:border-t-0 lg:border-l" aria-label="Task context">
                 {exampleOperators.map((op, idx) => (
                   <div
                     id={`example-context-${op.id}`}
@@ -1132,7 +1131,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                       idx === 0 ? "" : "hidden",
                     ]}
                   >
-                    <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#94A3B8]">Session context</p>
+                    <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#94A3B8]">Task context</p>
 
                     <div class="mt-4 space-y-3">
                       <div class="rounded-[8px] border border-[#E2E8F0] bg-white p-3">
@@ -1156,7 +1155,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                       </div>
                       <div class="mt-2 flex flex-wrap gap-1">
                         {op.sources.split(", ").slice(0, 4).map((source) => (
-                          <span class="rounded-[4px] border border-[#E2E8F0] bg-[#F8FAFC] px-1.5 py-0.5 text-[10px] font-medium text-[#64748B]">
+                          <span class="rounded-[4px] border border-[#E2E8F0] bg-[#F6F8FB] px-1.5 py-0.5 text-[10px] font-medium text-[#64748B]">
                             {source}
                           </span>
                         ))}
@@ -1167,10 +1166,10 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                       <div class="rounded-[8px] border border-[#BAE6FD] bg-[#E6FBFF] p-3">
                         <div class="flex items-center gap-2">
                           <ShieldCheck class="h-3.5 w-3.5 text-[#0E7490]" stroke-width={2} />
-                          <p class="text-[11px] font-semibold text-[#0E7490]">Policy envelope</p>
+                          <p class="text-[11px] font-semibold text-[#0E7490]">Operating flow</p>
                         </div>
                         <p class="mt-1.5 text-[11px] leading-relaxed text-[#0369A1]">
-                          High-impact actions require human approval before execution.
+                          Each task keeps the request, sources, prepared output, and next action together.
                         </p>
                       </div>
                     </div>
@@ -1183,7 +1182,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
       </div>
     </section>
 
-    <section id="platform" class="border-b border-[#D8E1EA] bg-[#F8FAFC]">
+    <section id="platform" class="border-b border-[#D8E1EA] bg-[#F6F8FB]">
       <div class={`${CONTAINER} py-16 lg:py-20`}>
         <div class="border-b border-[#D8E1EA] pb-9">
           <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Reference architecture</p>
@@ -1197,12 +1196,12 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
           </div>
         </div>
 
-        <div class="relative mt-8 border border-[#D8E1EA] bg-[#F8FAFC] shadow-[0_28px_90px_-64px_rgba(15,23,42,0.36)]">
+        <div class="relative mt-8 border border-[#D8E1EA] bg-[#F6F8FB] shadow-[0_28px_90px_-64px_rgba(15,23,42,0.36)]">
           <div class="pointer-events-none absolute inset-0 z-10 hidden select-none md:block" aria-hidden="true">
-            <div class="absolute left-[-7px] top-[-7px] h-3.5 w-3.5 rounded-[3px] border border-[#CBD5E1] bg-[#F8FAFC]"></div>
-            <div class="absolute right-[-7px] top-[-7px] h-3.5 w-3.5 rounded-[3px] border border-[#CBD5E1] bg-[#F8FAFC]"></div>
-            <div class="absolute bottom-[-7px] left-[-7px] h-3.5 w-3.5 rounded-[3px] border border-[#CBD5E1] bg-[#F8FAFC]"></div>
-            <div class="absolute bottom-[-7px] right-[-7px] h-3.5 w-3.5 rounded-[3px] border border-[#CBD5E1] bg-[#F8FAFC]"></div>
+            <div class="absolute left-[-7px] top-[-7px] h-3.5 w-3.5 rounded-[3px] border border-[#CBD5E1] bg-[#F6F8FB]"></div>
+            <div class="absolute right-[-7px] top-[-7px] h-3.5 w-3.5 rounded-[3px] border border-[#CBD5E1] bg-[#F6F8FB]"></div>
+            <div class="absolute bottom-[-7px] left-[-7px] h-3.5 w-3.5 rounded-[3px] border border-[#CBD5E1] bg-[#F6F8FB]"></div>
+            <div class="absolute bottom-[-7px] right-[-7px] h-3.5 w-3.5 rounded-[3px] border border-[#CBD5E1] bg-[#F6F8FB]"></div>
           </div>
 
           <div class="relative min-h-[660px] overflow-x-auto overflow-y-hidden border-t bg-[#F1F5F9] font-mono md:border">
@@ -1210,34 +1209,34 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
               <div class="absolute inset-0 [background-image:radial-gradient(circle,rgba(15,23,42,0.18)_1px,transparent_1px)] [background-size:20px_20px]"></div>
 
               <div class="absolute left-[214px] top-[226px] h-[296px] w-[172px] rounded-[2px] border border-[#06B6D4]/70 bg-[#06B6D4]/10">
-                <div class="absolute left-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#06B6D4]/70 bg-[#F8FAFC]"></div>
-                <div class="absolute right-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#06B6D4]/70 bg-[#F8FAFC]"></div>
-                <div class="absolute bottom-[-4px] left-[-4px] h-2 w-2 rounded-[1.5px] border border-[#06B6D4]/70 bg-[#F8FAFC]"></div>
-                <div class="absolute bottom-[-4px] right-[-4px] h-2 w-2 rounded-[1.5px] border border-[#06B6D4]/70 bg-[#F8FAFC]"></div>
+                <div class="absolute left-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#06B6D4]/70 bg-[#F6F8FB]"></div>
+                <div class="absolute right-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#06B6D4]/70 bg-[#F6F8FB]"></div>
+                <div class="absolute bottom-[-4px] left-[-4px] h-2 w-2 rounded-[1.5px] border border-[#06B6D4]/70 bg-[#F6F8FB]"></div>
+                <div class="absolute bottom-[-4px] right-[-4px] h-2 w-2 rounded-[1.5px] border border-[#06B6D4]/70 bg-[#F6F8FB]"></div>
               </div>
               <p class="absolute left-[300px] top-[200px] -translate-x-1/2 text-[12px] text-[#0E7490]">Business Data</p>
 
               <div class="absolute left-[438px] top-[194px] h-[348px] w-[154px] rounded-[2px] border border-[#7C3AED]/60 bg-[#7C3AED]/10">
-                <div class="absolute left-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#7C3AED]/60 bg-[#F8FAFC]"></div>
-                <div class="absolute right-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#7C3AED]/60 bg-[#F8FAFC]"></div>
-                <div class="absolute bottom-[-4px] left-[-4px] h-2 w-2 rounded-[1.5px] border border-[#7C3AED]/60 bg-[#F8FAFC]"></div>
-                <div class="absolute bottom-[-4px] right-[-4px] h-2 w-2 rounded-[1.5px] border border-[#7C3AED]/60 bg-[#F8FAFC]"></div>
+                <div class="absolute left-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#7C3AED]/60 bg-[#F6F8FB]"></div>
+                <div class="absolute right-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#7C3AED]/60 bg-[#F6F8FB]"></div>
+                <div class="absolute bottom-[-4px] left-[-4px] h-2 w-2 rounded-[1.5px] border border-[#7C3AED]/60 bg-[#F6F8FB]"></div>
+                <div class="absolute bottom-[-4px] right-[-4px] h-2 w-2 rounded-[1.5px] border border-[#7C3AED]/60 bg-[#F6F8FB]"></div>
               </div>
               <p class="absolute left-[515px] top-[168px] -translate-x-1/2 text-[12px] text-[#6D28D9]">Operator Runtime</p>
 
               <div class="absolute left-[650px] top-[194px] h-[348px] w-[166px] rounded-[2px] border border-[#14B8A6]/65 bg-[#14B8A6]/10">
-                <div class="absolute left-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#14B8A6]/65 bg-[#F8FAFC]"></div>
-                <div class="absolute right-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#14B8A6]/65 bg-[#F8FAFC]"></div>
-                <div class="absolute bottom-[-4px] left-[-4px] h-2 w-2 rounded-[1.5px] border border-[#14B8A6]/65 bg-[#F8FAFC]"></div>
-                <div class="absolute bottom-[-4px] right-[-4px] h-2 w-2 rounded-[1.5px] border border-[#14B8A6]/65 bg-[#F8FAFC]"></div>
+                <div class="absolute left-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#14B8A6]/65 bg-[#F6F8FB]"></div>
+                <div class="absolute right-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#14B8A6]/65 bg-[#F6F8FB]"></div>
+                <div class="absolute bottom-[-4px] left-[-4px] h-2 w-2 rounded-[1.5px] border border-[#14B8A6]/65 bg-[#F6F8FB]"></div>
+                <div class="absolute bottom-[-4px] right-[-4px] h-2 w-2 rounded-[1.5px] border border-[#14B8A6]/65 bg-[#F6F8FB]"></div>
               </div>
               <p class="absolute left-[733px] top-[168px] -translate-x-1/2 text-[12px] text-[#0F766E]">Control Layer</p>
 
               <div class="absolute left-[872px] top-[194px] h-[348px] w-[158px] rounded-[2px] border border-[#F59E0B]/65 bg-[#F59E0B]/10">
-                <div class="absolute left-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#F59E0B]/65 bg-[#F8FAFC]"></div>
-                <div class="absolute right-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#F59E0B]/65 bg-[#F8FAFC]"></div>
-                <div class="absolute bottom-[-4px] left-[-4px] h-2 w-2 rounded-[1.5px] border border-[#F59E0B]/65 bg-[#F8FAFC]"></div>
-                <div class="absolute bottom-[-4px] right-[-4px] h-2 w-2 rounded-[1.5px] border border-[#F59E0B]/65 bg-[#F8FAFC]"></div>
+                <div class="absolute left-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#F59E0B]/65 bg-[#F6F8FB]"></div>
+                <div class="absolute right-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#F59E0B]/65 bg-[#F6F8FB]"></div>
+                <div class="absolute bottom-[-4px] left-[-4px] h-2 w-2 rounded-[1.5px] border border-[#F59E0B]/65 bg-[#F6F8FB]"></div>
+                <div class="absolute bottom-[-4px] right-[-4px] h-2 w-2 rounded-[1.5px] border border-[#F59E0B]/65 bg-[#F6F8FB]"></div>
               </div>
               <p class="absolute left-[951px] top-[168px] -translate-x-1/2 text-[12px] text-[#B45309]">Business Actions</p>
 
@@ -1377,27 +1376,27 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
         </div>
 
         <div class="mt-10 border-t border-[#D8E1EA] pt-9">
-          <p class="font-mono text-[10.5px] uppercase tracking-[0.24em] text-[#0891B2]">Platform integrations</p>
+          <p class="font-mono text-[10.5px] uppercase tracking-[0.24em] text-[#0891B2]">Connected tools</p>
           <div class="mt-3 grid gap-5 lg:grid-cols-[minmax(0,560px)_minmax(280px,620px)] lg:items-end lg:justify-between">
             <h3 class="text-[30px] font-semibold leading-tight tracking-normal text-[#0F172A] sm:text-[38px]">
-              One operator layer across every business system.
+              One AI operating layer across the tools your business already uses.
             </h3>
             <div class="grid gap-4">
               <p class="max-w-[44rem] text-[15px] leading-relaxed text-[#475569]">
-                Tactas AI retrieves context, prepares updates, routes approvals, and syncs records across CRMs, helpdesks, documents, communication tools, billing systems, databases, and internal APIs.
+                Tactas brings company knowledge, business context, and connected tools into one AI operating layer so agents can turn requests into outputs, updates, and automated actions.
               </p>
               <div class="flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-[0.16em]">
-                <span class="rounded-full border border-[#BAE6FD] bg-[#E6FBFF] px-3 py-1.5 text-[#0E7490]">Read</span>
-                <span class="rounded-full border border-[#DDD6FE] bg-[#F3E8FF] px-3 py-1.5 text-[#6D28D9]">Reason</span>
-                <span class="rounded-full border border-[#99F6E4] bg-[#CCFBF1] px-3 py-1.5 text-[#0F766E]">Approve</span>
-                <span class="rounded-full border border-[#FDE68A] bg-[#FEF3C7] px-3 py-1.5 text-[#B45309]">Write back</span>
+                <span class="rounded-full border border-[#BAE6FD] bg-[#E6FBFF] px-3 py-1.5 text-[#0E7490]">Connect</span>
+                <span class="rounded-full border border-[#DDD6FE] bg-[#F3E8FF] px-3 py-1.5 text-[#6D28D9]">Understand</span>
+                <span class="rounded-full border border-[#99F6E4] bg-[#CCFBF1] px-3 py-1.5 text-[#0F766E]">Prepare</span>
+                <span class="rounded-full border border-[#FDE68A] bg-[#FEF3C7] px-3 py-1.5 text-[#B45309]">Automate</span>
               </div>
             </div>
           </div>
         </div>
 
         <div class="mt-8 overflow-hidden border border-[#D8E1EA] bg-white shadow-[0_28px_90px_-64px_rgba(15,23,42,0.32)]">
-          <div class="relative overflow-hidden bg-[#F8FAFC]">
+          <div class="relative overflow-hidden bg-[#F6F8FB]">
             <div class="absolute inset-0 opacity-75 [background-image:radial-gradient(circle,rgba(15,23,42,0.16)_1px,transparent_1px)] [background-size:22px_22px]"></div>
             <div class="relative grid grid-cols-4 gap-3 p-5 sm:grid-cols-8 sm:p-7 lg:block lg:min-h-[660px] lg:p-0">
               <svg class="pointer-events-none absolute inset-0 hidden h-full w-full lg:block" viewBox="0 0 1240 640" fill="none" aria-hidden="true">
@@ -1432,7 +1431,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
               </svg>
 
               <div class="absolute left-[7%] top-[54px] z-10 hidden max-w-[230px] text-[17px] font-semibold leading-snug text-[#070B3F] lg:block">
-                Connect every tool to one governed AI operating layer.
+                Connect business tools to one AI operating layer.
               </div>
 
               <div class="pointer-events-none absolute left-1/2 top-1/2 z-20 hidden -translate-x-1/2 -translate-y-1/2 lg:block" aria-hidden="true">
@@ -1455,11 +1454,11 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
               ))}
 
               {[
-                { label: "Activities", body: "Update customer status", x: 650, y: 68, w: 210 },
-                { label: "Task", body: "Prepare workflow action", x: 188, y: 248, w: 220 },
-                { label: "Project", body: "Route work to owner", x: 88, y: 468, w: 185 },
-                { label: "Activities", body: "Sync approved update", x: 932, y: 210, w: 230 },
-                { label: "Support", body: "Escalate with context", x: 1068, y: 468, w: 190 },
+                { label: "Context", body: "Summarize source context", x: 650, y: 68, w: 210 },
+                { label: "Task", body: "Prepare task output", x: 188, y: 248, w: 220 },
+                { label: "Project", body: "Update work status", x: 88, y: 468, w: 185 },
+                { label: "Action", body: "Automate repeated step", x: 932, y: 210, w: 230 },
+                { label: "Follow-up", body: "Create next action", x: 1068, y: 468, w: 190 },
               ].map((card) => (
                 <div
                   class="absolute z-10 hidden rounded-[8px] border border-[#C7D2FE] bg-white/80 px-4 py-3 shadow-[0_18px_50px_-44px_rgba(15,23,42,0.4)] backdrop-blur lg:block"
@@ -1496,23 +1495,23 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
       </div>
     </section>
 
-    <section class="border-b border-[#D8E1EA] bg-[#F8FAFC]">
+    <section class="border-b border-[#D8E1EA] bg-[#F6F8FB]">
       <div class={`${CONTAINER} py-12 lg:py-14`}>
         <div class="overflow-hidden border border-[#0E7490]/35 bg-[#07324A] text-white shadow-[0_34px_100px_-72px_rgba(7,50,74,0.58)]">
           <div class="grid gap-6 px-5 py-7 sm:px-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:py-8">
             <div>
-              <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#A5F3FC]">Operator review</p>
+              <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#A5F3FC]">Task automation review</p>
               <h2 class="mt-3 max-w-[46rem] text-[30px] font-semibold leading-tight tracking-normal sm:text-[38px]">
-                Pick one workflow. We will map the operator, systems, and approval path.
+                Pick one business task. We will map how Tactas can turn it into automated work.
               </h2>
               <div class="mt-5 flex flex-wrap gap-2">
-                {["Workflow fit", "Tool access", "Human review"].map((item) => (
+                {["Task fit", "Connected tools", "Automation steps"].map((item) => (
                   <span class="rounded-full border border-white/12 bg-white/[0.06] px-3 py-1.5 text-[11px] font-semibold text-white/82">{item}</span>
                 ))}
               </div>
             </div>
             <a href="/contact" class="inline-flex h-12 items-center justify-center gap-2 rounded-[6px] bg-white px-5 text-[14px] font-semibold text-[#07324A] shadow-[0_16px_34px_-24px_rgba(255,255,255,0.55)] transition hover:bg-[#A5F3FC]">
-              Request review
+              Book a task review
               <ArrowUpRight class="h-4 w-4" stroke-width={2} />
             </a>
           </div>
@@ -1525,7 +1524,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
 
 <style is:global>
   .example-conversation [class*="border-l-[#06B6D4]"] {
-    background-image: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    background-image: linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
   }
 
   .example-panel.is-playing .example-conversation > * {

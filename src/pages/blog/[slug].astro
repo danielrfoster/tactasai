@@ -1,0 +1,175 @@
+---
+import { ArrowLeft, CalendarDays, Clock } from "@lucide/astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { blogPosts, getBlogPostBySlug } from "../../lib/blog";
+import { getOrganization, getSiteUrl } from "../../lib/site";
+
+export function getStaticPaths() {
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { slug: post.slug },
+  }));
+}
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const post = getBlogPostBySlug(slug);
+
+if (!post) {
+  throw new Error(`Blog post not found: ${slug}`);
+}
+
+const siteUrl = getSiteUrl();
+const organization = getOrganization();
+const pageUrl = `${siteUrl}/blog/${post.slug}`;
+const formattedDate = new Date(`${post.publishedAt}T00:00:00`).toLocaleDateString("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+});
+
+const relatedPosts = blogPosts.filter((item) => item.slug !== post.slug).slice(0, 2);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    organization,
+    {
+      "@type": "BlogPosting",
+      "@id": `${pageUrl}#blogposting`,
+      headline: post.title,
+      description: post.description,
+      datePublished: post.publishedAt,
+      dateModified: post.publishedAt,
+      url: pageUrl,
+      inLanguage: "en-US",
+      author: { "@id": `${siteUrl}/#organization` },
+      publisher: { "@id": `${siteUrl}/#organization` },
+      mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
+      keywords: post.keywords,
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      name: post.title,
+      url: pageUrl,
+      description: post.description,
+      isPartOf: { "@id": `${siteUrl}/#website` },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "Blog", item: `${siteUrl}/blog` },
+        { "@type": "ListItem", position: 3, name: post.title, item: pageUrl },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={`${post.title} | Tactas AI Blog`}
+  description={post.description}
+  canonical={`/blog/${post.slug}`}
+  currentPath={`/blog/${post.slug}`}
+  navbarTheme="light"
+  navbarCtaLabel="Task review"
+  keywords={post.keywords}
+  openGraph={{
+    title: `${post.title} | Tactas AI Blog`,
+    description: post.description,
+    url: pageUrl,
+    type: "article",
+    images: [
+      {
+        url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png",
+        width: 1536,
+        height: 1024,
+        alt: post.title,
+      },
+    ],
+  }}
+  twitter={{ card: "summary_large_image", title: post.title, description: post.description, images: ["/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"] }}
+  jsonLd={jsonLd}
+>
+  <main class="min-h-screen bg-[#F6F8FB] text-[#0F172A] selection:bg-[#06B6D4]/20">
+    <article>
+      <header class="relative overflow-hidden border-b border-[#D8E1EA] bg-[#F6F8FB]">
+        <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,#06B6D4_24%,#D7A22A_72%,transparent)]"></div>
+        <div class="mx-auto w-full max-w-[940px] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+          <a href="/blog" class="inline-flex items-center gap-2 text-[14px] font-semibold text-[#07324A] transition hover:text-[#0891B2]">
+            <ArrowLeft class="h-4 w-4" stroke-width={1.9} />
+            Blog
+          </a>
+
+          <p class="mt-10 font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">{post.category}</p>
+          <h1 class="mt-5 text-[clamp(2.7rem,6vw,5.2rem)] font-semibold leading-[0.96] tracking-[-0.04em] text-[#07324A]">
+            {post.title}
+          </h1>
+          <p class="mt-7 max-w-[48rem] text-[18px] leading-relaxed text-[#07324A]/78">{post.summary}</p>
+
+          <div class="mt-8 flex flex-wrap items-center gap-4 text-[13px] text-[#64748B]">
+            <span class="inline-flex items-center gap-2">
+              <CalendarDays class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
+              {formattedDate}
+            </span>
+            <span class="inline-flex items-center gap-2">
+              <Clock class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
+              {post.readTime}
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <div class="mx-auto w-full max-w-[860px] px-5 py-14 sm:px-8 lg:px-10 lg:py-20">
+        <div class="space-y-12">
+          {post.sections.map((section) => (
+            <section>
+              <h2 class="text-[clamp(1.7rem,3vw,2.4rem)] font-semibold leading-tight tracking-[-0.02em] text-[#07324A]">
+                {section.heading}
+              </h2>
+              <div class="mt-5 space-y-5 text-[17px] leading-relaxed text-[#334155]">
+                {section.body.map((paragraph) => (
+                  <p>{paragraph}</p>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+
+        <section class="mt-16 border border-[#D8E1EA] bg-[#F6F8FB] p-7 shadow-[0_24px_70px_-62px_rgba(7,50,74,0.28)] sm:p-8">
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Task review</p>
+          <h2 class="mt-4 text-[clamp(1.8rem,4vw,2.8rem)] font-semibold leading-tight tracking-[-0.02em] text-[#07324A]">
+            Map one business task into managed AI automation.
+          </h2>
+          <p class="mt-4 max-w-[38rem] text-[15px] leading-relaxed text-[#475569]">
+            Share a repeated task, the knowledge behind it, and the tools where work happens. Tactas AI can help turn that task into action-ready agent work.
+          </p>
+          <a href="/contact" class="mt-7 inline-flex h-12 items-center justify-center rounded-[8px] bg-[#2F66FF] px-6 text-[14px] font-semibold text-white shadow-[0_16px_34px_-24px_rgba(47,102,255,0.85)] transition hover:bg-[#0EA5E9]">
+            Request task review
+          </a>
+        </section>
+      </div>
+    </article>
+
+    <section class="border-t border-[#D8E1EA] bg-[#F6F8FB]">
+      <div class="mx-auto w-full max-w-[940px] px-5 py-14 sm:px-8 lg:px-10">
+        <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Related</p>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          {relatedPosts.map((item) => (
+            <a href={`/blog/${item.slug}`} class="group border border-[#D8E1EA] bg-white p-5 transition hover:-translate-y-0.5 hover:border-[#06B6D4]/50">
+              <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#0891B2]">{item.category}</p>
+              <h3 class="mt-4 text-[20px] font-semibold leading-tight tracking-[-0.02em] text-[#07324A]">{item.title}</h3>
+              <p class="mt-3 text-[14px] leading-relaxed text-[#475569]">{item.summary}</p>
+              <span class="mt-5 inline-flex text-[13px] font-semibold text-[#0891B2]">Read article</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

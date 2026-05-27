@@ -1,11 +1,18 @@
 ---
+import { ArrowRight, BrainCircuit, Check, Network, Sparkles } from "@lucide/astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getBrandEmail, getOrganization, getSiteUrl } from "../lib/site";
 
 const siteUrl = getSiteUrl();
 const brandEmail = getBrandEmail();
 const organization = getOrganization();
-const updatedAt = "May 7, 2026";
+const updatedAt = "May 28, 2026";
+
+const principles = [
+  ["Company knowledge into action", "AI should not stop at search. It should help prepare answers, outputs, updates, next steps, and automated actions."],
+  ["Managed agents for real work", "Agents need business context, connected tools, clear task patterns, and ongoing improvement."],
+  ["Start with one task", "The best deployment begins with a repeated business task where the output is clear and measurable."],
+];
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -32,66 +39,96 @@ const jsonLd = {
 
 <BaseLayout
   title="About Tactas AI"
-  description="Learn about Tactas AI, our mission, operating model, and the principles behind supervised multi-agent systems for business workflows."
+  description="Learn how Tactas AI helps businesses turn company knowledge into action with managed AI agents for business task automation."
   canonical="/about"
   currentPath="/about"
-  navbarTheme="dark"
-  navbarCtaLabel="Workflow review"
+  navbarTheme="light"
+  navbarCtaLabel="Task review"
   jsonLd={jsonLd}
 >
-  <main class="min-h-screen bg-[#0b1220] py-20 text-[#f8fafc]">
-    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-      <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#06B6D4]">About</p>
-      <h1 class="mt-3 text-3xl font-bold tracking-tight text-[#f8fafc] sm:text-4xl">About Tactas AI</h1>
-      <p class="mt-3 text-sm text-[#94a3b8]">Last updated: {updatedAt}</p>
-
-      <div class="mt-10 space-y-8 text-sm leading-relaxed text-[#94a3b8]">
-        <section>
-          <h2 class="text-lg font-semibold text-[#f8fafc]">Who we are</h2>
-          <p class="mt-2">
-            Tactas AI is an operations-focused AI studio. We design and deploy supervised multi-agent systems that help
-            teams execute repetitive workflows with consistent quality, clear approvals, and full traceability.
+  <main class="min-h-screen bg-[#F6F8FB] text-[#0F172A]">
+    <section class="relative overflow-hidden border-b border-[#D8E1EA] bg-[#F6F8FB]">
+      <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,#06B6D4_24%,#D7A22A_72%,transparent)]"></div>
+      <div class="mx-auto grid w-full max-w-[1240px] items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.92fr_1.08fr] lg:px-10 lg:py-20">
+        <div>
+          <div class="mb-8 inline-flex items-center rounded-full bg-[#06AEEA] px-4 py-2 text-[14px] font-medium text-white shadow-[0_14px_32px_-24px_rgba(6,174,234,0.9)]">
+            About Tactas AI
+          </div>
+          <h1 class="max-w-[820px] text-[clamp(3.4rem,8vw,6.4rem)] font-semibold leading-[0.94] tracking-normal text-[#07324A]">
+            Managed AI agents for business operations.
+          </h1>
+          <p class="mt-7 max-w-[44rem] text-[18px] leading-relaxed text-[#07324A]/78">
+            Tactas AI helps businesses turn company knowledge into action. We design managed AI agents that learn how work happens, connect to the tools teams already use, and automate repeated business tasks.
           </p>
-        </section>
+          <p class="mt-4 text-sm text-[#64748B]">Last updated: {updatedAt}</p>
+        </div>
 
-        <section>
-          <h2 class="text-lg font-semibold text-[#f8fafc]">What we build</h2>
-          <p class="mt-2">
-            We build company-specific systems that connect to your existing tools, enforce your SOPs and guardrails,
-            and route sensitive decisions to humans when judgment is required.
-          </p>
-        </section>
-
-        <section>
-          <h2 class="text-lg font-semibold text-[#f8fafc]">How we operate</h2>
-          <ul class="mt-3 list-disc space-y-2 pl-5">
-            <li>Workflow-first design: map real operational steps before automation.</li>
-            <li>Approval-aware execution: high-impact actions always respect escalation paths.</li>
-            <li>Audit-ready delivery: every action is logged for review and compliance.</li>
-            <li>Human-in-the-loop by default: exceptions are escalated with context.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 class="text-lg font-semibold text-[#f8fafc]">Who we work with</h2>
-          <p class="mt-2">
-            We support teams in support operations, SaaS operations, finance operations, and back-office workflows where
-            repetitive tasks and cross-tool coordination create execution bottlenecks.
-          </p>
-        </section>
-
-        <section>
-          <h2 class="text-lg font-semibold text-[#f8fafc]">Contact</h2>
-          <p class="mt-2">
-            To discuss your workflow, send details to <a class="text-[#06B6D4] hover:text-[#22D3EE]" href={`mailto:${brandEmail}`}>{brandEmail}</a>
-            {" "}or go back to the <a class="text-[#06B6D4] hover:text-[#22D3EE]" href="/contact">contact page</a>.
-          </p>
-        </section>
+        <div class="border border-[#D8E1EA] bg-white p-6 shadow-[0_34px_100px_-72px_rgba(7,50,74,0.42)]">
+          <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#64748B]">Operating model</p>
+          <div class="mt-6 grid gap-3">
+            {[
+              ["Learn", "Understand business context"],
+              ["Use", "Apply company knowledge"],
+              ["Prepare", "Create action-ready work"],
+              ["Automate", "Move repeated tasks forward"],
+            ].map(([label, body]) => (
+              <div class="flex items-center gap-3 border border-[#E2E8F0] bg-[#F6F8FB] p-4">
+                <span class="flex h-9 w-9 items-center justify-center rounded-[8px] border border-[#BAE6FD] bg-[#E6FBFF] text-[#0E7490]">
+                  <Sparkles class="h-4 w-4" stroke-width={1.9} />
+                </span>
+                <div>
+                  <p class="text-[14px] font-semibold text-[#07324A]">{label}</p>
+                  <p class="mt-1 text-[13px] text-[#64748B]">{body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="mt-12 border-t border-[#1e293b] pt-6 text-xs text-[#64748b]">
-        <a href="/" class="transition hover:text-[#cbd5e1]">Back to home</a>
+    <section class="border-b border-[#D8E1EA] bg-[#F6F8FB]">
+      <div class="mx-auto grid w-full max-w-[1240px] gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.7fr_1.3fr] lg:px-10 lg:py-20">
+        <div>
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Principles</p>
+          <h2 class="mt-4 text-[clamp(2.3rem,4vw,4rem)] font-semibold leading-tight tracking-normal text-[#07324A]">
+            Built around work, not AI theater.
+          </h2>
+        </div>
+        <div class="grid gap-4">
+          {principles.map(([title, body], index) => {
+            const icons = [BrainCircuit, Network, Check];
+            const Icon = icons[index] || Sparkles;
+            return (
+              <article class="border border-[#D8E1EA] bg-white p-6 shadow-[0_20px_60px_-54px_rgba(7,50,74,0.25)]">
+                <Icon class="h-5 w-5 text-[#06B6D4]" stroke-width={1.9} />
+                <h3 class="mt-5 text-[22px] font-semibold tracking-normal text-[#07324A]">{title}</h3>
+                <p class="mt-3 text-[15px] leading-relaxed text-[#475569]">{body}</p>
+              </article>
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </section>
+
+    <section class="bg-[#F6F8FB]">
+      <div class="mx-auto w-full max-w-[1240px] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
+        <div class="grid gap-8 border border-[#D8E1EA] bg-white p-7 shadow-[0_34px_100px_-72px_rgba(7,50,74,0.42)] sm:p-9 lg:grid-cols-[1fr_320px] lg:items-center">
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Contact</p>
+            <h2 class="mt-4 text-[clamp(2rem,4vw,3.6rem)] font-semibold leading-tight tracking-normal text-[#07324A]">
+              Start with one business task.
+            </h2>
+            <p class="mt-4 max-w-[42rem] text-[16px] leading-relaxed text-[#475569]">
+              Tell us about repeated work, company knowledge, and the tools involved. We will help map the first useful managed agent.
+            </p>
+          </div>
+          <a href={`mailto:${brandEmail}`} class="inline-flex h-12 items-center justify-center rounded-[8px] bg-[#2F66FF] px-6 text-[14px] font-semibold text-white transition hover:bg-[#0EA5E9]">
+            Email Tactas
+            <ArrowRight class="ml-2 h-4 w-4" stroke-width={2} />
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 </BaseLayout>

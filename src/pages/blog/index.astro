@@ -1,0 +1,211 @@
+---
+import { ArrowRight, CalendarDays, Clock } from "@lucide/astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { blogPosts } from "../../lib/blog";
+import { getOrganization, getSiteUrl } from "../../lib/site";
+
+const siteUrl = getSiteUrl();
+const pageUrl = `${siteUrl}/blog`;
+const organization = getOrganization();
+const title = "Tactas AI Blog | Managed AI Agents for Business Operations";
+const description =
+  "Read practical guides on managed AI agents, business task automation, company knowledge, connected tools, and turning context into action-ready work.";
+
+const categories = ["All", "Guides", "Business Tasks", "Company Knowledge", "Connected Tools", "Task Review"];
+const featuredPost = blogPosts[0];
+const latestPosts = blogPosts.slice(1);
+
+const formatDate = (date: string) =>
+  new Date(`${date}T00:00:00`).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    organization,
+    {
+      "@type": "Blog",
+      "@id": `${pageUrl}#blog`,
+      name: "Tactas AI Blog",
+      url: pageUrl,
+      description,
+      publisher: { "@id": `${siteUrl}/#organization` },
+      inLanguage: "en-US",
+      blogPost: blogPosts.map((post) => ({
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.description,
+        datePublished: post.publishedAt,
+        dateModified: post.publishedAt,
+        url: `${pageUrl}/${post.slug}`,
+        author: { "@id": `${siteUrl}/#organization` },
+        publisher: { "@id": `${siteUrl}/#organization` },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "Blog", item: pageUrl },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/blog"
+  currentPath="/blog"
+  navbarTheme="light"
+  navbarCtaLabel="Task review"
+  keywords={[
+    "managed AI agents blog",
+    "business task automation",
+    "company knowledge automation",
+    "AI agents for business operations",
+    "connected business tools",
+    "work performance AI",
+  ]}
+  openGraph={{
+    title,
+    description,
+    url: pageUrl,
+    type: "website",
+    images: [
+      {
+        url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png",
+        width: 1536,
+        height: 1024,
+        alt: "Tactas AI blog about managed AI agents for business operations",
+      },
+    ],
+  }}
+  twitter={{ card: "summary_large_image", title, description, images: ["/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"] }}
+  jsonLd={jsonLd}
+>
+  <main class="min-h-screen bg-[#F6F8FB] text-[#07324A] selection:bg-[#06B6D4]/18">
+    <section class="border-b border-black/10 bg-[#F6F8FB]">
+      <div class="mx-auto w-full max-w-[1180px] px-5 pb-10 pt-16 sm:px-8 lg:px-10 lg:pb-12 lg:pt-22">
+        <div class="max-w-[760px]">
+          <p class="font-mono text-[12px] font-semibold uppercase tracking-[0.18em] text-[#0891B2]">Blog</p>
+          <h1 class="mt-5 text-[clamp(4rem,11vw,9.5rem)] font-semibold leading-[0.86] tracking-[-0.055em]">
+            Blog
+          </h1>
+          <p class="mt-8 max-w-[620px] text-[20px] leading-relaxed text-[#475569]">
+            Practical ideas on managed AI agents, business task automation, company knowledge, and turning context into action-ready work.
+          </p>
+        </div>
+
+        <nav class="mt-12 flex gap-2 overflow-x-auto pb-2" aria-label="Blog categories">
+          {categories.map((category, index) => (
+            <a
+              href="#articles"
+              class:list={[
+                "shrink-0 rounded-full border px-4 py-2 text-[14px] font-semibold transition",
+                index === 0
+                  ? "border-[#07324A] bg-[#07324A] text-white"
+                  : "border-black/12 bg-white/60 text-[#07324A] hover:border-[#06B6D4]/40 hover:text-[#0891B2]",
+              ]}
+            >
+              {category}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </section>
+
+    <section id="articles" class="bg-[#F6F8FB]">
+      <div class="mx-auto w-full max-w-[1180px] px-5 py-10 sm:px-8 lg:px-10 lg:py-14">
+        <a href={`/blog/${featuredPost.slug}`} class="group grid overflow-hidden rounded-[18px] border border-black/10 bg-white shadow-[0_24px_70px_-58px_rgba(17,17,17,0.45)] transition hover:-translate-y-0.5 hover:border-[#06B6D4]/35 lg:grid-cols-[0.96fr_1.04fr]">
+          <div class="relative min-h-[300px] overflow-hidden bg-[#101322] lg:min-h-[420px]">
+            <img
+              src="/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"
+              alt=""
+              class="h-full w-full object-cover opacity-95 transition duration-500 group-hover:scale-[1.025]"
+              loading="eager"
+              decoding="async"
+            />
+            <div class="absolute left-5 top-5 rounded-full bg-white px-3 py-1.5 text-[12px] font-semibold text-[#07324A]">
+              Featured
+            </div>
+          </div>
+
+          <div class="flex min-h-[360px] flex-col justify-between p-7 sm:p-9 lg:p-10">
+            <div>
+              <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] font-medium text-[#6B7280]">
+                <span>{formatDate(featuredPost.publishedAt)}</span>
+                <span class="h-1 w-1 rounded-full bg-[#9CA3AF]" aria-hidden="true"></span>
+                <span>{featuredPost.readTime}</span>
+              </div>
+              <p class="mt-8 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0891B2]">{featuredPost.category}</p>
+              <h2 class="mt-4 text-[clamp(2.2rem,4.2vw,4.2rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
+                {featuredPost.title}
+              </h2>
+              <p class="mt-6 max-w-[38rem] text-[17px] leading-relaxed text-[#475569]">{featuredPost.summary}</p>
+            </div>
+
+            <span class="mt-10 inline-flex items-center text-[15px] font-semibold text-[#07324A]">
+              Read article
+              <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-0.5" stroke-width={1.9} />
+            </span>
+          </div>
+        </a>
+
+        <div class="mt-16 flex items-end justify-between gap-5 border-t border-black/10 pt-10">
+          <div>
+            <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0891B2]">Latest</p>
+            <h2 class="mt-3 text-[clamp(2rem,4vw,3.4rem)] font-semibold leading-tight tracking-[-0.04em]">
+              More from Tactas AI
+            </h2>
+          </div>
+          <a href="/contact" class="hidden rounded-full border border-black/12 bg-white/65 px-4 py-2 text-[14px] font-semibold text-[#07324A] transition hover:border-[#06B6D4]/35 hover:text-[#0891B2] sm:inline-flex">
+            Request a topic
+          </a>
+        </div>
+
+        <div class="mt-8 grid gap-5 lg:grid-cols-2">
+          {latestPosts.map((post) => (
+            <a href={`/blog/${post.slug}`} class="group grid min-h-[310px] overflow-hidden rounded-[18px] border border-black/10 bg-white transition hover:-translate-y-0.5 hover:border-[#06B6D4]/35 sm:grid-cols-[180px_1fr]">
+              <div class="relative min-h-[170px] bg-[#141827] sm:min-h-full">
+                <div class="absolute inset-0 bg-[linear-gradient(135deg,#101322_0%,#2632B8_52%,#C7F7FF_140%)]"></div>
+                <div class="absolute inset-0 opacity-30 [background-image:linear-gradient(to_right,rgba(255,255,255,0.28)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.20)_1px,transparent_1px)] [background-size:26px_26px]"></div>
+                <div class="absolute bottom-5 left-5 right-5">
+                  <p class="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-white/78">{post.category}</p>
+                </div>
+              </div>
+
+              <div class="flex flex-col justify-between p-6">
+                <div>
+                  <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-[12px] font-medium text-[#6B7280]">
+                    <span class="inline-flex items-center gap-1.5">
+                      <CalendarDays class="h-3.5 w-3.5" stroke-width={1.8} />
+                      {formatDate(post.publishedAt)}
+                    </span>
+                    <span class="inline-flex items-center gap-1.5">
+                      <Clock class="h-3.5 w-3.5" stroke-width={1.8} />
+                      {post.readTime}
+                    </span>
+                  </div>
+                  <h3 class="mt-5 text-[26px] font-semibold leading-tight tracking-[-0.035em] text-[#07324A]">
+                    {post.title}
+                  </h3>
+                  <p class="mt-4 text-[15px] leading-relaxed text-[#475569]">{post.summary}</p>
+                </div>
+
+                <span class="mt-8 inline-flex items-center text-[14px] font-semibold text-[#07324A]">
+                  Read article
+                  <ArrowRight class="ml-2 h-3.5 w-3.5 transition group-hover:translate-x-0.5" stroke-width={1.9} />
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

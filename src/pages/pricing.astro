@@ -1,5 +1,5 @@
 ---
-import { ArrowRight, Bot, Check, Mail, Network, Search, ShieldCheck, Sparkles, Zap } from "@lucide/astro";
+import { ArrowRight, Bot, BrainCircuit, Check, Mail, Network, ShieldCheck, Sparkles, Zap } from "@lucide/astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getBrandEmail, getOrganization, getSiteUrl } from "../lib/site";
 
@@ -8,71 +8,65 @@ const brandEmail = getBrandEmail();
 const organization = getOrganization();
 const pageUrl = `${siteUrl}/pricing`;
 
-const title = "Managed AI Agent Systems Pricing | Tactas AI";
+const title = "Managed AI Agent Pricing for Business Task Automation | Tactas AI";
 const description =
-  "Explore Tactas AI pricing for AI system builds, managed AI operators, integrations, approvals, monitoring, and support for business operations.";
+  "Explore Tactas AI pricing for task reviews, managed AI agents, company knowledge layers, connected business tools, and ongoing business task automation.";
 
 const buildPlans = [
   {
-    id: "build-starter",
-    name: "AI Foundation",
-    eyebrow: "One business job",
-    summary: "Build one AI system that solves a specific business job, such as a support chatbot, content marketing assistant, lead intake assistant, reporting helper, or admin automation module.",
-    price: "Scoped quote",
-    suffix: "one-time build",
-    cta: "Scope build",
+    id: "task-review",
+    name: "Task Review",
+    eyebrow: "Find the first task",
+    summary: "Map one repeated business task, the knowledge behind it, the tools involved, and the outputs an AI agent should prepare.",
+    price: "Scoped",
+    suffix: "review",
+    cta: "Request task review",
     href: "/contact",
-    includedLabel: "Build includes:",
+    includedLabel: "Review includes:",
     points: [
-      "Define the exact job the AI should handle",
-      "Examples: support chatbot, content marketing assistant, lead intake, internal Q&A, reporting, or admin tasks",
-      "Prepare the required business knowledge, SOPs, FAQs, and example outputs",
-      "Connect the minimum tools and data needed for that job",
-      "Set approval rules for messages, updates, and sensitive actions",
-      "Test, refine, and launch the first usable AI module",
-    ],
-    icon: Bot,
-  },
-  {
-    id: "build-growth",
-    name: "Operations Build",
-    eyebrow: "Connected operations",
-    summary: "Build an AI system for a full business function, where several related jobs share context, data, tools, and approval rules.",
-    price: "Scoped quote",
-    suffix: "one-time build",
-    cta: "Scope build",
-    href: "/contact",
-    popular: true,
-    includedLabel: "Everything in Foundation, plus:",
-    points: [
-      "Connect several related business jobs under one operating layer",
-      "Examples: support plus CRM updates, marketing planning plus content production, sales intake plus follow-up",
-      "Create shared business context for the team or department",
-      "Connect CRM, inbox, documents, databases, and internal tools",
-      "Clean and structure data so agents can use it reliably",
-      "Set routing, handoffs, action logs, and quality review",
+      "Choose one repeated business task with clear value",
+      "Map knowledge sources, tools, inputs, and expected outputs",
+      "Identify where the agent should answer, summarize, update, or automate",
+      "Define the first launch scope and success criteria",
     ],
     icon: Sparkles,
   },
   {
-    id: "build-scale",
-    name: "Enterprise Multi-Agent",
-    eyebrow: "Company-wide AI system",
-    summary: "Build a professional multi-agent system designed around how the whole company works, with specialized agents, optimized data flow, and the right model selected for each responsibility.",
+    id: "managed-task",
+    name: "Managed Task",
+    eyebrow: "One automated task",
+    summary: "Deploy one managed AI agent that uses company knowledge and connected tools to prepare action-ready work.",
+    price: "Scoped quote",
+    suffix: "implementation",
+    cta: "Scope task",
+    href: "/contact",
+    popular: true,
+    includedLabel: "Everything in Task Review, plus:",
+    points: [
+      "Prepare the company knowledge and business context the agent needs",
+      "Connect the tools involved in the task",
+      "Build the output pattern, task flow, and automation steps",
+      "Launch with monitoring, quality review, and improvement cycles",
+    ],
+    icon: Bot,
+  },
+  {
+    id: "operating-layer",
+    name: "Operating Layer",
+    eyebrow: "Multiple business tasks",
+    summary: "Connect several task patterns under one managed AI operating layer for business operations.",
     price: "Custom",
-    suffix: "implementation scope",
+    suffix: "scope",
     cta: "Talk to sales",
     href: "/contact",
-    includedLabel: "Everything in Operations, plus:",
+    includedLabel: "Everything in Managed Task, plus:",
     points: [
-      "Map how the business operates across teams, tools, data, and decision points",
-      "Design specialized agents for support, sales, marketing, operations, reporting, research, or internal knowledge",
-      "Select the best model for each agent based on speed, cost, reasoning, context, and reliability",
-      "Build a central business memory and context layer",
-      "Optimize data flow between systems so agents understand current business activity",
-      "Add advanced integrations, permissions, monitoring, governance, and rollout support",
+      "Design shared context across teams, knowledge sources, and tools",
+      "Deploy multiple managed agents for related business tasks",
+      "Create reusable company knowledge and task patterns",
+      "Add advanced permissions, integration scope, and rollout support",
     ],
-    icon: ShieldCheck,
+    icon: Network,
   },
 ];
 
@@ -80,59 +74,59 @@ const ongoingPlans = [
   {
     id: "plus",
     name: "Plus",
-    eyebrow: "AI assistant, 24/7",
-    summary: "An AI operator for everyday operational support after the system is built.",
+    eyebrow: "Light ongoing operation",
+    summary: "For a launched task that needs basic ongoing support, monitoring, and refinement.",
     price: "$49.99",
     suffix: "/ month",
     cta: "Start ongoing",
     href: "/contact",
     includedLabel: "Ongoing includes:",
-    points: ["Standard usage", "Up to 2 operating areas", "Chat via SMS or email", "Email drafting", "Meeting scheduling", "Meeting notes", "Follow-up prep", "100+ integrations"],
-    icon: Search,
+    points: ["Standard usage", "One active task pattern", "Basic monitoring", "Email support", "Monthly improvement notes"],
+    icon: BrainCircuit,
   },
   {
     id: "pro",
     name: "Pro",
-    eyebrow: "More usage, more power",
-    summary: "More operating volume for teams with heavier daily activity.",
+    eyebrow: "Growing task volume",
+    summary: "For teams using managed agents across heavier daily work and connected tools.",
     price: "$99.99",
     suffix: "/ month",
     cta: "Start ongoing",
     href: "/contact",
     popular: true,
     includedLabel: "Everything in Plus, and:",
-    points: ["3x more usage than Plus", "Up to 3 operating areas", "Computer use", "Priority operator runs"],
-    icon: Sparkles,
+    points: ["More usage volume", "Up to 3 active task patterns", "Priority improvement cycles", "Tool connection support", "Expanded context handling"],
+    icon: Zap,
   },
   {
     id: "max",
     name: "Max",
-    eyebrow: "Heaviest workloads",
-    summary: "For operators that need more context, runs, and connected work.",
+    eyebrow: "Higher operating load",
+    summary: "For teams that need more context, higher volume, and more managed agent work in production.",
     price: "$199.99",
     suffix: "/ month",
     cta: "Start ongoing",
     href: "/contact",
     includedLabel: "Everything in Pro, and:",
-    points: ["7x more usage than Plus", "Up to 5 operating areas", "Higher volume queues", "Expanded context windows"],
-    icon: Network,
+    points: ["Highest monthly usage tier", "Up to 5 active task patterns", "Higher volume queues", "Expanded context windows", "Priority task review"],
+    icon: ShieldCheck,
   },
 ];
 
 const pricingSections = [
   {
     id: "build-packages",
-    eyebrow: "AI system build",
-    title: "3 build packages",
-    summary: "Choose how deeply Tactas should be built into your operations: one defined business area, a connected operating layer, or a professional multi-agent system designed around the whole business.",
+    eyebrow: "Implementation",
+    title: "Start with one task. Expand into an operating layer.",
+    summary: "Tactas pricing begins with a business task review, then scopes the managed agents, company knowledge, and connected tools needed to automate real work.",
     priceLabel: "Build fee",
     plans: buildPlans,
   },
   {
     id: "ongoing-fees",
-    eyebrow: "Ongoing fee",
-    title: "3 ongoing packages",
-    summary: "After launch, choose the monthly operator plan that matches usage, operating volume, and support needs.",
+    eyebrow: "Ongoing operation",
+    title: "Keep agents improving after launch.",
+    summary: "After launch, choose an ongoing plan for usage, monitoring, improvement cycles, and managed operation.",
     priceLabel: "Ongoing fee",
     plans: ongoingPlans,
   },
@@ -141,68 +135,59 @@ const pricingSections = [
 const plans = [...buildPlans, ...ongoingPlans];
 
 const securityItems = [
-  ["GDPR", "Compliant"],
-  ["SOC 2", "Compliant"],
-  ["HIPAA", "Compliant"],
-  ["PIPEDA", "Compliant"],
+  ["Scoped access", "Connect only the tools and knowledge sources each task needs."],
+  ["Managed operation", "Monitor outputs, improve task patterns, and refine agent behavior over time."],
+  ["Source context", "Use company knowledge and business context to make work easier to review."],
+  ["Rollout support", "Start with one task and expand when the operating pattern is proven."],
 ];
 
 const faqs = [
   [
-    "How do I start using Tactas AI?",
-    "Start by choosing a plan or requesting an AI system review. We will help connect the right tools, define the operator scope, and set approval rules before launch.",
+    "How do I start?",
+    "Start with a task review. We map one repeated business task, the knowledge behind it, the tools involved, and the output an AI agent should prepare.",
   ],
   [
-    "What's included in the trial-style review?",
-    "We review one business area, the systems it touches, the knowledge sources involved, and the actions that need human approval before an operator can run reliably.",
+    "What does pricing depend on?",
+    "Pricing depends on task complexity, knowledge sources, connected tools, automation steps, usage volume, and the level of ongoing managed operation required.",
   ],
   [
-    "Can I cancel anytime?",
-    "For self-serve style plans, yes. Managed and enterprise rollouts follow the terms agreed in the project or service agreement.",
+    "Do we need all company data connected first?",
+    "No. A good first launch uses the minimum knowledge and tools required for one useful business task, then expands as the pattern proves value.",
   ],
   [
-    "How does Tactas learn how our business works?",
-    "Operators are configured around your SOPs, examples, prior decisions, brand voice, approval rules, and connected business systems.",
+    "Can Tactas update tools automatically?",
+    "Yes. Agents can prepare or apply updates in connected tools based on the permissions and automation scope chosen for the task.",
   ],
   [
-    "Will Tactas send messages or update systems without approval?",
-    "Sensitive actions can pause for review with evidence, policy notes, and the downstream changes clearly listed before anything is sent or updated.",
+    "Is the knowledge layer separate from task automation?",
+    "It is a supporting capability. Company knowledge gives managed AI agents the context they need to answer, summarize, prepare outputs, and automate work.",
   ],
   [
-    "What integrations does Tactas support?",
-    "Tactas connects to CRMs, helpdesks, inboxes, documents, spreadsheets, internal tools, APIs, and approval processes depending on the plan.",
-  ],
-  [
-    "Is my data secure?",
-    "Tactas uses scoped access, approval controls, audit logs, and deployment review options. Enterprise plans can include SSO, SCIM, HIPAA review, and signed BAA support.",
-  ],
-  [
-    "What's the difference between Plus and Enterprise?",
-    "Plus is for simple operator support. Enterprise is for teams that need controls, visibility, security review, onboarding, and managed enablement.",
+    "Can we expand beyond the first task?",
+    "Yes. Once one task works, Tactas can reuse the knowledge layer, connected tools, and task patterns across adjacent business tasks.",
   ],
 ];
 
 const offerCatalog = {
   "@type": "OfferCatalog",
   name: "Tactas AI pricing plans",
-  itemListElement: plans
-    .map((plan) => ({
-      "@type": "Offer",
-      name: `${plan.name} plan`,
-      category: plan.eyebrow,
-      url: `${pageUrl}#${plan.id}`,
-      priceSpecification: {
-        "@type": "PriceSpecification",
-        priceCurrency: "USD",
-        description: `${plan.price} ${plan.suffix}`.trim(),
-      },
-      itemOffered: {
-        "@type": "Service",
-        name: `${plan.name} managed AI operator system`,
-        description: plan.summary,
-        provider: { "@id": `${siteUrl}/#organization` },
-      },
-    })),
+  itemListElement: plans.map((plan) => ({
+    "@type": "Offer",
+    name: `${plan.name} plan`,
+    category: plan.eyebrow,
+    url: `${pageUrl}#${plan.id}`,
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      priceCurrency: "USD",
+      description: `${plan.price} ${plan.suffix}`.trim(),
+    },
+    itemOffered: {
+      "@type": "Service",
+      name: `${plan.name} managed AI agent plan`,
+      description: plan.summary,
+      provider: { "@id": `${siteUrl}/#organization` },
+    },
+  })),
 };
 
 const jsonLd = {
@@ -223,9 +208,9 @@ const jsonLd = {
     {
       "@type": "Service",
       "@id": `${pageUrl}#service`,
-      name: "Managed AI operator systems pricing",
+      name: "Managed AI agent pricing",
       description,
-      serviceType: "Managed AI operator systems for business operations",
+      serviceType: "Managed AI agents for business task automation",
       areaServed: "Worldwide",
       provider: { "@id": `${siteUrl}/#organization` },
       hasOfferCatalog: offerCatalog,
@@ -256,17 +241,15 @@ const jsonLd = {
   canonical="/pricing"
   currentPath="/pricing"
   navbarTheme="light"
-  navbarCtaLabel="Scope pricing"
+  navbarCtaLabel="Task review"
   navbarCtaHref="/contact"
   keywords={[
     "managed AI agent pricing",
-    "AI agent systems pricing",
-    "AI operator pricing",
-    "AI operations automation pricing",
-    "business operations automation pricing",
+    "business task automation pricing",
     "managed AI agents for business operations",
-    "AI agents implementation pricing",
-    "AI back-office automation pricing",
+    "company knowledge automation pricing",
+    "connected business tools AI",
+    "AI task automation for business teams",
   ]}
   openGraph={{
     title,
@@ -278,7 +261,7 @@ const jsonLd = {
         url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png",
         width: 1200,
         height: 630,
-        alt: "Tactas AI managed AI operator systems pricing",
+        alt: "Tactas AI managed AI agent pricing",
       },
     ],
   }}
@@ -290,40 +273,62 @@ const jsonLd = {
   }}
   jsonLd={jsonLd}
 >
-  <div class="min-h-screen bg-[#F7F2E8] text-[#070B2F]">
+  <div class="min-h-screen bg-[#F6F8FB] text-[#0F172A]">
     <main>
-      <section class="relative overflow-hidden border-b border-[#E2D7C6]">
-        <div class="pointer-events-none absolute inset-x-0 top-0 h-[360px] bg-[linear-gradient(180deg,#FFF9EE_0%,rgba(255,249,238,0)_100%)]"></div>
-        <div class="mx-auto w-full max-w-[1240px] px-5 pb-10 pt-16 sm:px-8 lg:px-10 lg:pb-12 lg:pt-20">
-          <div class="mx-auto max-w-[720px] text-center">
-            <h1 class="text-[52px] font-semibold leading-[0.94] tracking-normal text-[#05073B] sm:text-[72px] lg:text-[92px]">
+      <section class="relative overflow-hidden border-b border-[#D8E1EA] bg-[#F6F8FB]">
+        <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,#06B6D4_24%,#D7A22A_72%,transparent)]"></div>
+        <div class="mx-auto grid w-full max-w-[1240px] items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.92fr_1.08fr] lg:px-10 lg:py-20">
+          <div>
+            <div class="mb-8 inline-flex items-center rounded-full bg-[#06AEEA] px-4 py-2 text-[14px] font-medium text-white shadow-[0_14px_32px_-24px_rgba(6,174,234,0.9)]">
               Pricing
+            </div>
+            <h1 class="max-w-[820px] text-[clamp(3.4rem,8vw,6.4rem)] font-semibold leading-[0.94] tracking-normal text-[#07324A]">
+              Pricing for managed AI agents at work.
             </h1>
-            <p class="mx-auto mt-6 max-w-[43rem] text-[18px] leading-relaxed text-[#30355F] sm:text-[20px]">
-              Start with the AI system build, then choose the ongoing operator plan that fits how your team works.
+            <p class="mt-7 max-w-[44rem] text-[18px] leading-relaxed text-[#07324A]/78">
+              Start with one business task, connect the company knowledge and tools behind it, then expand into managed AI automation as the value becomes clear.
             </p>
-            <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a href="/contact" class="inline-flex h-12 items-center justify-center rounded-[8px] bg-[#05073B] px-6 text-[14px] font-semibold text-white transition hover:bg-[#2F66FF]">
-                Talk to sales
+            <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a href="/contact" class="inline-flex h-12 items-center justify-center rounded-[8px] bg-[#2F66FF] px-6 text-[14px] font-semibold text-white shadow-[0_16px_34px_-24px_rgba(47,102,255,0.85)] transition hover:bg-[#0EA5E9]">
+                Request task review
               </a>
-              <a href="#plans" class="inline-flex h-12 items-center justify-center rounded-[8px] border border-[#CDBFA8] bg-white/60 px-6 text-[14px] font-semibold text-[#05073B] transition hover:border-[#2F66FF] hover:text-[#2F66FF]">
+              <a href="#plans" class="inline-flex h-12 items-center justify-center rounded-[8px] border border-[#D9CFAE] bg-white/60 px-6 text-[14px] font-semibold text-[#07324A] transition hover:border-[#2F66FF] hover:text-[#2F66FF]">
                 See plans
               </a>
+            </div>
+          </div>
+
+          <div class="border border-[#D8E1EA] bg-white shadow-[0_34px_100px_-72px_rgba(7,50,74,0.42)]">
+            <div class="border-b border-[#E2E8F0] bg-[#F6F8FB] px-5 py-4">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#64748B]">Pricing model</p>
+            </div>
+            <div class="grid gap-3 p-5">
+              {[
+                ["01", "Review one repeated task"],
+                ["02", "Scope knowledge and connected tools"],
+                ["03", "Deploy managed agent work"],
+                ["04", "Improve usage after launch"],
+              ].map(([number, label]) => (
+                <div class="flex items-center justify-between gap-4 border border-[#E2E8F0] bg-[#F6F8FB] px-4 py-3">
+                  <span class="font-mono text-[11px] text-[#0891B2]">{number}</span>
+                  <span class="text-[14px] font-semibold text-[#07324A]">{label}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section id="plans" class="border-b border-[#E2D7C6] bg-[#F7F2E8]">
-        <div class="mx-auto grid w-full max-w-[1240px] gap-14 px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
+      <section id="plans" class="border-b border-[#D8E1EA] bg-[#F6F8FB]">
+        <div class="mx-auto grid w-full max-w-[1240px] gap-16 px-5 py-14 sm:px-8 lg:px-10 lg:py-20">
           {pricingSections.map((section) => (
             <div id={section.id} class="scroll-mt-24">
-              <div class="max-w-[720px]">
-                <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#2F66FF]">{section.eyebrow}</p>
-                <h2 class="mt-4 text-[38px] font-semibold leading-[1.02] tracking-normal text-[#05073B] sm:text-[52px]">
+              <div class="max-w-[760px]">
+                <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">{section.eyebrow}</p>
+                <h2 class="mt-4 text-[38px] font-semibold leading-[1.02] tracking-normal text-[#07324A] sm:text-[54px]">
                   {section.title}
                 </h2>
-                <p class="mt-4 text-[16px] leading-relaxed text-[#30355F] sm:text-[17px]">{section.summary}</p>
+                <p class="mt-4 text-[16px] leading-relaxed text-[#475569] sm:text-[17px]">{section.summary}</p>
               </div>
 
               <div class="mt-8 grid gap-4 lg:grid-cols-3">
@@ -333,54 +338,51 @@ const jsonLd = {
                     <article
                       id={plan.id}
                       class:list={[
-                        "flex min-h-[520px] flex-col rounded-[24px] border p-6 shadow-[0_24px_70px_-60px_rgba(5,7,59,0.65)]",
-                        plan.popular ? "border-[#05073B] bg-[#05073B] text-white" : "border-[#D8CCB8] bg-white",
+                        "flex min-h-[520px] flex-col border bg-white p-6 shadow-[0_24px_70px_-62px_rgba(7,50,74,0.3)]",
+                        plan.popular ? "border-[#06B6D4] ring-1 ring-[#06B6D4]/25" : "border-[#D8E1EA]",
                       ]}
                     >
                       <div class="flex items-start justify-between gap-3">
-                        <span class:list={[
-                          "flex h-11 w-11 items-center justify-center rounded-full border",
-                          plan.popular ? "border-white/12 bg-white/10 text-[#A5F3FC]" : "border-[#DED2BF] bg-[#F7F2E8] text-[#05073B]",
-                        ]}>
+                        <span class="flex h-11 w-11 items-center justify-center rounded-[8px] border border-[#BAE6FD] bg-[#E6FBFF] text-[#0E7490]">
                           <Icon class="h-5 w-5" stroke-width={1.9} />
                         </span>
                         {plan.popular ? (
-                          <span class="rounded-full border border-white/16 bg-white/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-white/82">
-                            Popular
+                          <span class="rounded-full border border-[#A7F3D0] bg-[#ECFDF5] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#047857]">
+                            Recommended
                           </span>
                         ) : null}
                       </div>
 
-                      <p class:list={["mt-8 text-[13px] font-medium", plan.popular ? "text-white/64" : "text-[#6B6480]"]}>{plan.eyebrow}</p>
-                      <h3 class:list={["mt-2 text-[30px] font-semibold tracking-normal", plan.popular ? "text-white" : "text-[#05073B]"]}>{plan.name}</h3>
-                      <p class:list={["mt-2 min-h-[54px] text-[14px] leading-relaxed", plan.popular ? "text-white/64" : "text-[#5B6078]"]}>{plan.summary}</p>
+                      <p class="mt-8 text-[13px] font-medium text-[#64748B]">{plan.eyebrow}</p>
+                      <h3 class="mt-2 text-[30px] font-semibold tracking-normal text-[#07324A]">{plan.name}</h3>
+                      <p class="mt-2 min-h-[72px] text-[14px] leading-relaxed text-[#475569]">{plan.summary}</p>
 
-                      <div class:list={["mt-7 rounded-[16px] border p-4", plan.popular ? "border-white/12 bg-white/[0.06]" : "border-[#E2D7C6] bg-[#F7F2E8]"]}>
-                        <p class:list={["text-[11px] font-semibold uppercase tracking-[0.12em]", plan.popular ? "text-white/50" : "text-[#6B6480]"]}>{section.priceLabel}</p>
+                      <div class="mt-7 border border-[#D8E1EA] bg-[#F6F8FB] p-4">
+                        <p class="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#64748B]">{section.priceLabel}</p>
                         <div class="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                          <p class:list={["text-[32px] font-semibold leading-none tracking-normal", plan.popular ? "text-white" : "text-[#05073B]"]}>{plan.price}</p>
-                          <p class:list={["text-[13px]", plan.popular ? "text-white/58" : "text-[#6B6480]"]}>{plan.suffix}</p>
+                          <p class="text-[32px] font-semibold leading-none tracking-normal text-[#07324A]">{plan.price}</p>
+                          <p class="text-[13px] text-[#64748B]">{plan.suffix}</p>
                         </div>
                       </div>
 
                       <a
                         href={plan.href}
                         class:list={[
-                          "mt-7 inline-flex h-11 items-center justify-center rounded-full px-4 text-[14px] font-semibold transition",
+                          "mt-7 inline-flex h-11 items-center justify-center rounded-[8px] px-4 text-[14px] font-semibold transition",
                           plan.popular
-                            ? "bg-white text-[#05073B] hover:bg-[#A5F3FC]"
-                            : "bg-[#05073B] text-white hover:bg-[#2F66FF]",
+                            ? "bg-[#2F66FF] text-white hover:bg-[#0EA5E9]"
+                            : "border border-[#D9CFAE] bg-white text-[#07324A] hover:border-[#2F66FF] hover:text-[#2F66FF]",
                         ]}
                       >
                         {plan.cta}
                       </a>
 
-                      <div class:list={["mt-7 border-t pt-5", plan.popular ? "border-white/12" : "border-[#E2D7C6]"]}>
-                        <p class:list={["text-[13px] font-semibold", plan.popular ? "text-white" : "text-[#05073B]"]}>{plan.includedLabel}</p>
+                      <div class="mt-7 border-t border-[#D8E1EA] pt-5">
+                        <p class="text-[13px] font-semibold text-[#07324A]">{plan.includedLabel}</p>
                         <ul class="mt-4 grid gap-3">
                           {plan.points.map((point) => (
-                            <li class:list={["flex gap-2.5 text-[13px] leading-relaxed", plan.popular ? "text-white/72" : "text-[#30355F]"]}>
-                              <Check class:list={["mt-0.5 h-4 w-4 shrink-0", plan.popular ? "text-[#67E8F9]" : "text-[#2F66FF]"]} stroke-width={2.4} />
+                            <li class="flex gap-2.5 text-[13px] leading-relaxed text-[#334155]">
+                              <Check class="mt-0.5 h-4 w-4 shrink-0 text-[#06B6D4]" stroke-width={2.4} />
                               <span>{point}</span>
                             </li>
                           ))}
@@ -395,94 +397,82 @@ const jsonLd = {
         </div>
       </section>
 
-      <section class="border-b border-[#E2D7C6] bg-[#FFF9EE]">
+      <section class="border-b border-[#D8E1EA] bg-[#F6F8FB]">
         <div class="mx-auto grid w-full max-w-[1240px] gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-10 lg:py-20">
           <div>
-            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#2F66FF]">Security by design</p>
-            <h2 class="mt-4 max-w-[720px] text-[42px] font-semibold leading-[1.02] tracking-normal text-[#05073B] sm:text-[58px]">
-              Personalized AI, enterprise-grade security.
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">How pricing scales</p>
+            <h2 class="mt-4 max-w-[720px] text-[42px] font-semibold leading-[1.02] tracking-normal text-[#07324A] sm:text-[58px]">
+              Pay for the task pattern, context, and operation you actually need.
             </h2>
-            <p class="mt-5 max-w-[36rem] text-[17px] leading-relaxed text-[#30355F]">
-              Tactas is built privacy-first. You control your data, approvals are built in, and enterprise deployments can include SSO, audit logs, and compliance review.
+            <p class="mt-5 max-w-[36rem] text-[17px] leading-relaxed text-[#475569]">
+              Tactas starts narrow so the first managed agent has a real job. As the task proves useful, the same knowledge layer and connected tools can support more business tasks.
             </p>
           </div>
 
           <div class="grid gap-4 sm:grid-cols-2">
             {securityItems.map(([label, body], index) => (
-              <article class="rounded-[22px] border border-[#D8CCB8] bg-white p-5">
-                <div class="flex h-11 w-11 items-center justify-center rounded-full bg-[#F7F2E8] text-[#05073B]">
+              <article class="border border-[#D8E1EA] bg-white p-5 shadow-[0_20px_60px_-54px_rgba(7,50,74,0.25)]">
+                <div class="flex h-11 w-11 items-center justify-center rounded-[8px] border border-[#BAE6FD] bg-[#E6FBFF] text-[#0E7490]">
                   {index % 2 === 0 ? <ShieldCheck class="h-5 w-5" stroke-width={1.9} /> : <Zap class="h-5 w-5" stroke-width={1.9} />}
                 </div>
-                <h3 class="mt-5 text-[20px] font-semibold tracking-normal text-[#05073B]">{label}</h3>
-                <p class="mt-2 text-[14px] leading-relaxed text-[#5B6078]">{body}</p>
+                <h3 class="mt-5 text-[20px] font-semibold tracking-normal text-[#07324A]">{label}</h3>
+                <p class="mt-2 text-[14px] leading-relaxed text-[#475569]">{body}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section class="border-b border-[#E2D7C6] bg-[#F7F2E8]">
+      <section class="border-b border-[#D8E1EA] bg-[#F6F8FB]">
         <div class="mx-auto w-full max-w-[1020px] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
           <div class="text-center">
-            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#2F66FF]">FAQ</p>
-            <h2 class="mt-4 text-[42px] font-semibold leading-[1.02] tracking-normal text-[#05073B] sm:text-[58px]">
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">FAQ</p>
+            <h2 class="mt-4 text-[42px] font-semibold leading-[1.02] tracking-normal text-[#07324A] sm:text-[58px]">
               Frequently asked questions.
             </h2>
           </div>
-          <div class="mt-10 divide-y divide-[#D8CCB8] border-y border-[#D8CCB8]">
+          <div class="mt-10 divide-y divide-[#D8E1EA] border-y border-[#D8E1EA]">
             {faqs.map(([question, answer]) => (
               <details class="group py-6">
-                <summary class="flex cursor-pointer list-none items-center justify-between gap-5 text-[18px] font-semibold text-[#05073B]">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-5 text-[18px] font-semibold text-[#07324A]">
                   {question}
-                  <ArrowRight class="h-4 w-4 shrink-0 text-[#2F66FF] transition group-open:rotate-90" stroke-width={2} />
+                  <ArrowRight class="h-4 w-4 shrink-0 text-[#06B6D4] transition group-open:rotate-90" stroke-width={2} />
                 </summary>
-                <p class="mt-3 max-w-[48rem] text-[15px] leading-relaxed text-[#5B6078]">{answer}</p>
+                <p class="mt-3 max-w-[48rem] text-[15px] leading-relaxed text-[#475569]">{answer}</p>
               </details>
             ))}
           </div>
         </div>
       </section>
 
-      <section class="bg-[#05073B] text-white">
-        <div class="mx-auto grid w-full max-w-[1240px] gap-8 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_360px] lg:items-center lg:px-10 lg:py-20">
-          <div>
-            <h2 class="max-w-[760px] text-[44px] font-semibold leading-[1.02] tracking-normal sm:text-[64px]">
-              Your entire work life,
-              <span class="block">one operator away.</span>
-            </h2>
-            <p class="mt-5 max-w-[42rem] text-[17px] leading-relaxed text-white/68">
-              Join teams delegating repetitive operations to managed AI operators. Start with one business area, then expand.
-            </p>
-          </div>
-          <div class="rounded-[24px] border border-white/12 bg-white/[0.06] p-5">
-            <div class="flex items-start gap-3">
-              <Mail class="mt-1 h-5 w-5 shrink-0 text-[#67E8F9]" stroke-width={1.9} />
-              <div>
-                <h3 class="text-[18px] font-semibold tracking-normal">Prefer email?</h3>
-                <p class="mt-2 text-[14px] leading-relaxed text-white/64">
-                  Send the business context to <a href={`mailto:${brandEmail}`} class="text-[#67E8F9] hover:text-white">{brandEmail}</a>.
-                </p>
-              </div>
+      <section class="bg-[#F6F8FB]">
+        <div class="mx-auto w-full max-w-[1240px] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
+          <div class="grid gap-8 border border-[#D8E1EA] bg-white p-7 shadow-[0_34px_100px_-72px_rgba(7,50,74,0.42)] sm:p-9 lg:grid-cols-[1fr_360px] lg:items-center">
+            <div>
+              <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Task review</p>
+              <h2 class="mt-4 max-w-[760px] text-[42px] font-semibold leading-[1.02] tracking-normal text-[#07324A] sm:text-[58px]">
+                Map one business task before you commit to a build.
+              </h2>
+              <p class="mt-5 max-w-[42rem] text-[17px] leading-relaxed text-[#475569]">
+                Share the repeated work, knowledge sources, current tools, and output you want an agent to prepare.
+              </p>
             </div>
-            <a href="/contact" class="mt-6 inline-flex h-11 w-full items-center justify-center rounded-full bg-white px-4 text-[14px] font-semibold text-[#05073B] transition hover:bg-[#A5F3FC]">
-              Talk to sales
-              <ArrowRight class="ml-2 h-4 w-4" stroke-width={2} />
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="border-t border-white/10 bg-[#05073B] text-white">
-        <div class="mx-auto grid w-full max-w-[900px] gap-4 px-5 pb-14 sm:grid-cols-4 sm:px-8 lg:px-10">
-          {securityItems.map(([label, body]) => (
-            <div class="rounded-[18px] border border-white/12 bg-white/[0.05] px-4 py-4 text-center">
-              <div class="mx-auto flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-[#67E8F9]">
-                <ShieldCheck class="h-4.5 w-4.5" stroke-width={2} />
+            <div class="border border-[#D8E1EA] bg-[#F6F8FB] p-5">
+              <div class="flex items-start gap-3">
+                <Mail class="mt-1 h-5 w-5 shrink-0 text-[#06B6D4]" stroke-width={1.9} />
+                <div>
+                  <h3 class="text-[18px] font-semibold tracking-normal text-[#07324A]">Prefer email?</h3>
+                  <p class="mt-2 text-[14px] leading-relaxed text-[#475569]">
+                    Send the business context to <a href={`mailto:${brandEmail}`} class="text-[#0891B2] hover:text-[#07324A]">{brandEmail}</a>.
+                  </p>
+                </div>
               </div>
-              <p class="mt-3 text-[15px] font-semibold">{label}</p>
-              <p class="mt-1 text-[12px] text-white/58">{body}</p>
+              <a href="/contact" class="mt-6 inline-flex h-11 w-full items-center justify-center rounded-[8px] bg-[#2F66FF] px-4 text-[14px] font-semibold text-white transition hover:bg-[#0EA5E9]">
+                Request task review
+                <ArrowRight class="ml-2 h-4 w-4" stroke-width={2} />
+              </a>
             </div>
-          ))}
+          </div>
         </div>
       </section>
     </main>

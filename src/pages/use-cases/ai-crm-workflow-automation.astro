@@ -6,67 +6,67 @@ import { getBrandEmail, getSiteUrl } from "../../lib/site";
 const siteUrl = getSiteUrl();
 const pageUrl = `${siteUrl}/use-cases/ai-crm-workflow-automation`;
 const brandEmail = getBrandEmail();
-const title = "AI CRM Workflow Automation & Lead Qualification | Tactas AI";
+const title = "Prepare Next Steps with Managed AI Agents | Tactas AI";
 const description =
-  "AI CRM workflow automation for lead qualification, CRM updates, sales follow-up, call summaries, account research, and pipeline task management.";
+  "Managed AI agents summarize business context, prepare follow-up drafts, recommend owners, and keep open work moving across connected tools.";
 
 const props = {
   siteUrl,
   currentPath: "/use-cases/ai-crm-workflow-automation",
-  eyebrow: "CRM workflow automation",
-  title: "AI CRM workflow automation for sales and operations teams.",
+  eyebrow: "Prepare next steps",
+  title: "Move work forward with action-ready next steps.",
   description:
-    "Tactas AI helps teams qualify leads, summarize conversations, enrich CRM records, prepare follow-up, create tasks, and keep pipeline workflows moving.",
-  primaryKeyword: "AI CRM workflow automation",
-  secondaryKeywords: ["AI lead qualification", "sales follow-up automation", "CRM update automation", "AI sales assistant"],
+    "Tactas AI helps teams turn messages, notes, documents, business data, and tool activity into summaries, follow-up drafts, task owners, and next actions.",
+  primaryKeyword: "prepare next steps",
+  secondaryKeywords: ["managed AI agents", "business task automation", "connected business tools", "work performance AI"],
   fit: [
     {
-      title: "Leads need qualification",
-      body: "Sales or operations teams manually assess fit, urgency, budget, service line, routing, and next steps.",
+      title: "Work stalls after context gathering",
+      body: "People collect notes, messages, files, and records but still need to decide what should happen next.",
     },
     {
-      title: "CRM hygiene is inconsistent",
-      body: "Important fields, notes, next steps, owners, and tasks are often missing or updated late.",
+      title: "Follow-up is inconsistent",
+      body: "Next actions, owners, reminders, summaries, and task updates are often missing or prepared late.",
     },
     {
-      title: "Follow-up takes too long",
-      body: "Teams need better first replies, meeting summaries, proposal reminders, and next-action tracking.",
+      title: "Context changes quickly",
+      body: "The right next step depends on recent messages, document changes, tool activity, and company knowledge.",
     },
     {
-      title: "Context lives everywhere",
-      body: "CRM records, email, forms, documents, call notes, product docs, and support history all shape the next action.",
+      title: "Outputs should be ready to use",
+      body: "Teams need prepared briefs, tasks, updates, or follow-up drafts that can be reviewed and acted on quickly.",
     },
   ],
   workflow: [
-    { title: "Lead or account intake", body: "A form, email, call note, CRM update, or meeting creates a sales workflow event." },
-    { title: "Enrich context", body: "AI collects CRM history, company details, service needs, notes, documents, and related activity." },
-    { title: "Score and route", body: "The workflow classifies fit, urgency, service line, owner, and recommended next step." },
-    { title: "Prepare follow-up", body: "AI drafts replies, meeting briefs, proposal notes, CRM updates, and task reminders." },
-    { title: "Track progress", body: "Actions, assumptions, owner changes, and follow-up status remain visible for review." },
+    { title: "Work signal appears", body: "A message, meeting note, form response, document update, or tool event indicates work should move." },
+    { title: "Summarize context", body: "The agent gathers relevant history, source knowledge, recent changes, and related business data." },
+    { title: "Recommend next step", body: "AI identifies the likely owner, missing information, follow-up action, or task path." },
+    { title: "Prepare output", body: "The agent drafts the message, task, brief, update, checklist, or record change needed to continue." },
+    { title: "Track open work", body: "The task stays visible with status, next action, owner, and related source context." },
   ],
   outcomes: [
-    { title: "Cleaner CRM data", body: "Reduce missing notes, stale fields, unclear owners, and untracked next steps." },
-    { title: "Faster lead response", body: "Prepare qualified summaries and follow-up drafts so teams respond faster." },
-    { title: "Better sales handoff", body: "Route opportunities with context, fit signals, pain points, and recommended actions." },
-    { title: "More consistent follow-up", body: "Create reminders, tasks, summaries, and email drafts from the same operating rules." },
+    { title: "Clearer next actions", body: "Reduce unclear owners, missing follow-up, and work that sits between tools." },
+    { title: "Faster prepared outputs", body: "Generate briefs, replies, tasks, and status updates from the same business context." },
+    { title: "Better handoff quality", body: "Pass work forward with source context, summary, owner, and recommended action." },
+    { title: "More consistent execution", body: "Use repeatable task patterns so teams spend less energy rebuilding next steps." },
   ],
-  integrations: ["HubSpot", "Salesforce", "Pipedrive", "Attio", "Gmail", "Outlook", "Google Calendar", "Slack", "Forms", "Internal APIs"],
+  integrations: ["HubSpot", "Salesforce", "Airtable", "Gmail", "Outlook", "Google Calendar", "Slack", "Forms", "Project tools", "Internal APIs"],
   faqs: [
-    { title: "Can AI update CRM records?", body: "Yes. Updates can be drafted for review or applied directly within approved permissions and workflow rules." },
-    { title: "Can this qualify leads?", body: "Yes. The workflow can score fit, urgency, budget, service line, routing, and missing information." },
-    { title: "Can it prepare sales follow-up?", body: "Yes. AI can draft emails, meeting summaries, task reminders, proposal notes, and handoff briefs." },
+    { title: "Can this prepare follow-up drafts?", body: "Yes. The agent can prepare emails, notes, summaries, task descriptions, briefs, and status updates from business context." },
+    { title: "Can it recommend an owner or next action?", body: "Yes. Tactas can use task rules, historical context, source knowledge, and connected tool data to recommend where work should go next." },
+    { title: "Can it track open work?", body: "Yes. The agent can keep status, owner, next action, and source context visible across the tools your team uses." },
   ],
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
-    { "@type": "WebPage", "@id": `${pageUrl}#webpage`, name: "AI CRM Workflow Automation", url: pageUrl, description, isPartOf: { "@id": `${siteUrl}/#website` }, inLanguage: "en-US" },
+    { "@type": "WebPage", "@id": `${pageUrl}#webpage`, name: "Prepare Next Steps with Managed AI Agents", url: pageUrl, description, isPartOf: { "@id": `${siteUrl}/#website` }, inLanguage: "en-US" },
     {
       "@type": "Service",
       "@id": `${pageUrl}#service`,
-      name: "AI CRM Workflow Automation",
-      serviceType: ["AI CRM workflow automation", "AI lead qualification", "Sales follow-up automation", "CRM update automation"],
+      name: "Prepare Next Steps with Managed AI Agents",
+      serviceType: ["Prepare next steps", "Managed AI agents", "Business task automation", "Connected business tools", "Work performance AI"],
       url: pageUrl,
       description,
       provider: { "@id": `${siteUrl}/#organization` },
@@ -82,7 +82,7 @@ const jsonLd = {
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
         { "@type": "ListItem", position: 2, name: "Use Cases", item: `${siteUrl}/use-cases` },
-        { "@type": "ListItem", position: 3, name: "AI CRM Workflow Automation", item: pageUrl },
+        { "@type": "ListItem", position: 3, name: "Prepare Next Steps", item: pageUrl },
       ],
     },
     { "@type": "ContactPoint", contactType: "sales", email: brandEmail, areaServed: "Worldwide", availableLanguage: ["en", "vi"] },
@@ -95,20 +95,19 @@ const jsonLd = {
   description={description}
   canonical="/use-cases/ai-crm-workflow-automation"
   currentPath="/use-cases/ai-crm-workflow-automation"
-  navbarTheme="dark"
-  navbarCtaLabel="Book a Demo"
+  navbarTheme="light"
+  navbarCtaLabel="Task review"
   keywords={[
-    "AI CRM workflow automation",
-    "AI lead qualification",
-    "sales follow-up automation",
-    "CRM update automation",
-    "AI sales assistant",
-    "CRM workflow automation",
-    "AI agents for sales",
-    "HubSpot AI automation",
-    "Salesforce AI automation",
+    "prepare next steps",
+    "managed AI agents",
+    "business task automation",
+    "connected business tools",
+    "work performance AI",
+    "AI agents for business operations",
+    "automated business tasks",
+    "company knowledge automation",
   ]}
-  openGraph={{ title, description, url: pageUrl, type: "website", images: [{ url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png", width: 1536, height: 1024, alt: "AI CRM workflow automation" }] }}
+  openGraph={{ title, description, url: pageUrl, type: "website", images: [{ url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png", width: 1536, height: 1024, alt: "Managed AI agents preparing next steps" }] }}
   twitter={{ card: "summary_large_image", title, description, images: ["/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"] }}
   jsonLd={jsonLd}
 >
