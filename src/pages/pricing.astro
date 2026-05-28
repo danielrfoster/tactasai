@@ -1,5 +1,6 @@
 ---
-import { ArrowRight, Bot, BrainCircuit, Check, Mail, Network, ShieldCheck, Sparkles, Zap } from "@lucide/astro";
+import { ArrowRight, Bot, BrainCircuit, Check, Mail, Network, ShieldCheck, Zap } from "@lucide/astro";
+import CTASection from "../components/CTASection.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getBrandEmail, getOrganization, getSiteUrl } from "../lib/site";
 
@@ -8,63 +9,63 @@ const brandEmail = getBrandEmail();
 const organization = getOrganization();
 const pageUrl = `${siteUrl}/pricing`;
 
-const title = "Managed AI Agent Pricing for Business Task Automation | Tactas AI";
+const title = "Managed AI Agent Pricing for Business Operations | Tactas AI";
 const description =
-  "Explore Tactas AI pricing for task reviews, managed AI agents, company knowledge layers, connected business tools, and ongoing business task automation.";
+  "Explore Tactas AI pricing for managed agent setup, company knowledge layers, connected tools, monthly usage quota, and ongoing managed operation.";
 
 const buildPlans = [
   {
-    id: "task-review",
-    name: "Task Review",
-    eyebrow: "Find the first task",
-    summary: "Map one repeated business task, the knowledge behind it, the tools involved, and the outputs an AI agent should prepare.",
-    price: "Scoped",
-    suffix: "review",
-    cta: "Request task review",
+    id: "managed-agent-launch",
+    name: "Ignition",
+    eyebrow: "Single workflow build",
+    summary: "One-time implementation for the first production workflow: company knowledge, agent behavior, and connected actions configured for your business.",
+    price: "$3,500",
+    suffix: "setup",
+    cta: "Scope build",
     href: "/contact",
-    includedLabel: "Review includes:",
+    includedLabel: "Implementation work:",
     points: [
-      "Choose one repeated business task with clear value",
-      "Map knowledge sources, tools, inputs, and expected outputs",
-      "Identify where the agent should answer, summarize, update, or automate",
-      "Define the first launch scope and success criteria",
-    ],
-    icon: Sparkles,
-  },
-  {
-    id: "managed-task",
-    name: "Managed Task",
-    eyebrow: "One automated task",
-    summary: "Deploy one managed AI agent that uses company knowledge and connected tools to prepare action-ready work.",
-    price: "Scoped quote",
-    suffix: "implementation",
-    cta: "Scope task",
-    href: "/contact",
-    popular: true,
-    includedLabel: "Everything in Task Review, plus:",
-    points: [
-      "Prepare the company knowledge and business context the agent needs",
-      "Connect the tools involved in the task",
-      "Build the output pattern, task flow, and automation steps",
-      "Launch with monitoring, quality review, and improvement cycles",
+      "Define the workflow, inputs, outputs, and success criteria",
+      "Prepare and index the required company knowledge",
+      "Configure agent behavior, retrieval, and connected tool actions",
+      "Test with real examples and operational edge cases",
+      "Launch with monitoring and an improvement backlog",
     ],
     icon: Bot,
   },
   {
-    id: "operating-layer",
-    name: "Operating Layer",
-    eyebrow: "Multiple business tasks",
-    summary: "Connect several task patterns under one managed AI operating layer for business operations.",
-    price: "Custom",
-    suffix: "scope",
-    cta: "Talk to sales",
+    id: "agent-expansion",
+    name: "Forge",
+    eyebrow: "Expansion build",
+    summary: "Add a new workflow, output, data source, or connected business action on top of an existing Tactas system.",
+    price: "$8,000",
+    suffix: "setup",
+    cta: "Scope expansion",
     href: "/contact",
-    includedLabel: "Everything in Managed Task, plus:",
+    includedLabel: "Expansion work:",
     points: [
-      "Design shared context across teams, knowledge sources, and tools",
-      "Deploy multiple managed agents for related business tasks",
-      "Create reusable company knowledge and task patterns",
-      "Add advanced permissions, integration scope, and rollout support",
+      "Extend indexed context or add new source systems",
+      "Add workflow variants, outputs, and automation actions",
+      "Connect additional business tools or records",
+      "Tune retrieval, routing, review points, and quality checks",
+    ],
+    icon: Zap,
+  },
+  {
+    id: "operating-layer",
+    name: "Grid",
+    eyebrow: "Operating layer rollout",
+    summary: "A larger implementation program for teams that need several workflows, shared context, and connected actions across systems.",
+    price: "From $25,000",
+    suffix: "setup",
+    cta: "Scope program",
+    href: "/contact",
+    includedLabel: "Program work:",
+    points: [
+      "Architect shared context across teams, knowledge sources, and tools",
+      "Configure multiple agent workflows under one operating layer",
+      "Integrate core business systems and permission boundaries",
+      "Define rollout, monitoring, ownership, and improvement cadence",
     ],
     icon: Network,
   },
@@ -72,43 +73,67 @@ const buildPlans = [
 
 const ongoingPlans = [
   {
-    id: "plus",
-    name: "Plus",
-    eyebrow: "Light ongoing operation",
-    summary: "For a launched task that needs basic ongoing support, monitoring, and refinement.",
-    price: "$49.99",
-    suffix: "/ month",
-    cta: "Start ongoing",
+    id: "core-quota",
+    name: "Signal",
+    eyebrow: "1x operating quota",
+    summary: "For launched agent systems with steady monthly usage.",
+    price: "$499",
+    suffix: "/mo",
+    quota: "1x operating quota",
+    cta: "Start Signal",
     href: "/contact",
-    includedLabel: "Ongoing includes:",
-    points: ["Standard usage", "One active task pattern", "Basic monitoring", "Email support", "Monthly improvement notes"],
+    includedLabel: "Includes:",
+    points: [
+      "1x monthly operating quota",
+      "1x model/runtime quota",
+      "1x indexed company context capacity",
+      "1x retrieval and monitoring volume",
+      "1x connected tool action allowance",
+      "Standard improvement allocation",
+    ],
     icon: BrainCircuit,
   },
   {
-    id: "pro",
-    name: "Pro",
-    eyebrow: "Growing task volume",
-    summary: "For teams using managed agents across heavier daily work and connected tools.",
-    price: "$99.99",
-    suffix: "/ month",
-    cta: "Start ongoing",
+    id: "growth-quota",
+    name: "Vector",
+    eyebrow: "10x Signal quota",
+    summary: "For teams using managed agents in daily operations.",
+    price: "$1,999",
+    suffix: "/mo",
+    quota: "10x Signal quota",
+    cta: "Start Vector",
     href: "/contact",
     popular: true,
-    includedLabel: "Everything in Plus, and:",
-    points: ["More usage volume", "Up to 3 active task patterns", "Priority improvement cycles", "Tool connection support", "Expanded context handling"],
+    includedLabel: "Includes:",
+    points: [
+      "10x Signal operating quota",
+      "10x model/runtime quota",
+      "10x indexed company context capacity",
+      "10x retrieval and monitoring volume",
+      "10x connected tool action allowance",
+      "Higher improvement allocation",
+    ],
     icon: Zap,
   },
   {
-    id: "max",
-    name: "Max",
-    eyebrow: "Higher operating load",
-    summary: "For teams that need more context, higher volume, and more managed agent work in production.",
-    price: "$199.99",
-    suffix: "/ month",
-    cta: "Start ongoing",
+    id: "scale-quota",
+    name: "Atlas",
+    eyebrow: "Unmetered standard quota",
+    summary: "For high-volume operations that need broad operating capacity across most supported models, large indexed context, retrieval-heavy workflows, monitoring, and connected business actions.",
+    price: "From $7,500",
+    suffix: "/mo",
+    quota: "Unmetered standard quota",
+    cta: "Talk to sales",
     href: "/contact",
-    includedLabel: "Everything in Pro, and:",
-    points: ["Highest monthly usage tier", "Up to 5 active task patterns", "Higher volume queues", "Expanded context windows", "Priority task review"],
+    includedLabel: "Includes:",
+    points: [
+      "Unmetered standard operating quota for most supported models",
+      "Premium / high-cost model quota up to 12x Vector",
+      "Custom indexed context capacity",
+      "Custom retrieval and monitoring volume",
+      "Custom connected tool action allowance",
+      "Custom improvement allocation",
+    ],
     icon: ShieldCheck,
   },
 ];
@@ -116,18 +141,19 @@ const ongoingPlans = [
 const pricingSections = [
   {
     id: "build-packages",
-    eyebrow: "Implementation",
-    title: "Start with one task. Expand into an operating layer.",
-    summary: "Tactas pricing begins with a business task review, then scopes the managed agents, company knowledge, and connected tools needed to automate real work.",
-    priceLabel: "Build fee",
+    eyebrow: "Setup and build",
+    title: "One-time build work before monthly usage.",
+    summary: "Tactas requires implementation work before the monthly quota starts: workflow mapping, company data preparation, tool connections, agent configuration, testing, and launch.",
+    priceLabel: "One-time fee",
     plans: buildPlans,
   },
   {
     id: "ongoing-fees",
-    eyebrow: "Ongoing operation",
-    title: "Keep agents improving after launch.",
-    summary: "After launch, choose an ongoing plan for usage, monitoring, improvement cycles, and managed operation.",
-    priceLabel: "Ongoing fee",
+    eyebrow: "Monthly usage",
+    title: "Monthly Operating Quota",
+    summary: "All monthly plans run on the same managed agent system. Plans do not unlock or remove core features. They define monthly operating capacity: model/runtime usage, indexed context capacity, retrieval volume, connected tool actions, monitoring volume, and improvement allocation.",
+    priceLabel: "Monthly plan",
+    note: "Subject to fair use, agreed operating scope, system safety limits, and premium model quota.",
     plans: ongoingPlans,
   },
 ];
@@ -135,20 +161,24 @@ const pricingSections = [
 const plans = [...buildPlans, ...ongoingPlans];
 
 const securityItems = [
-  ["Scoped access", "Connect only the tools and knowledge sources each task needs."],
-  ["Managed operation", "Monitor outputs, improve task patterns, and refine agent behavior over time."],
-  ["Source context", "Use company knowledge and business context to make work easier to review."],
-  ["Rollout support", "Start with one task and expand when the operating pattern is proven."],
+  ["Setup scope", "Pay for the data preparation, tool connections, and workflow configuration the system needs."],
+  ["Usage quota", "Choose a monthly plan around agent usage, model/runtime resources, context, and tool actions."],
+  ["Managed operation", "Keep monitoring, support, and improvement cycles aligned with production usage."],
+  ["Expansion path", "Start with one operational workflow and expand once the system pattern is proven."],
 ];
 
 const faqs = [
   [
     "How do I start?",
-    "Start with a task review. We map one repeated business task, the knowledge behind it, the tools involved, and the output an AI agent should prepare.",
+    "Start by booking a review. We map the repeated work, company knowledge, tools involved, and the output an AI agent should prepare before scoping the paid build.",
   ],
   [
     "What does pricing depend on?",
-    "Pricing depends on task complexity, knowledge sources, connected tools, automation steps, usage volume, and the level of ongoing managed operation required.",
+    "Setup pricing depends on workflow complexity, company knowledge sources, connected tools, automation steps, and launch requirements. Monthly pricing depends on the operating quota required for model/runtime usage, indexed context, retrieval, monitoring, connected tool actions, and improvement allocation.",
+  ],
+  [
+    "How do monthly plans work?",
+    "Monthly plans run on the same managed agent system. They do not unlock or remove core features; they define operating capacity. Signal is the base quota, Vector is 10x Signal, and Atlas provides broader standard operating capacity with agreed scope and premium model limits.",
   ],
   [
     "Do we need all company data connected first?",
@@ -164,13 +194,13 @@ const faqs = [
   ],
   [
     "Can we expand beyond the first task?",
-    "Yes. Once one task works, Tactas can reuse the knowledge layer, connected tools, and task patterns across adjacent business tasks.",
+    "Yes. Once one workflow works, Tactas can reuse the knowledge layer, connected tools, and agent patterns across adjacent operational workflows.",
   ],
 ];
 
 const offerCatalog = {
   "@type": "OfferCatalog",
-  name: "Tactas AI pricing plans",
+  name: "Tactas AI pricing model",
   itemListElement: plans.map((plan) => ({
     "@type": "Offer",
     name: `${plan.name} plan`,
@@ -241,7 +271,7 @@ const jsonLd = {
   canonical="/pricing"
   currentPath="/pricing"
   navbarTheme="light"
-  navbarCtaLabel="Task review"
+  navbarCtaLabel="Book a review"
   navbarCtaHref="/contact"
   keywords={[
     "managed AI agent pricing",
@@ -258,10 +288,10 @@ const jsonLd = {
     type: "website",
     images: [
       {
-        url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png",
-        width: 1200,
-        height: 630,
-        alt: "Tactas AI managed AI agent pricing",
+        url: "/tactas-ai-managed-agent-systems-og.jpg",
+        width: 1734,
+        height: 907,
+        alt: "Tactas AI managed agent pricing",
       },
     ],
   }}
@@ -269,7 +299,7 @@ const jsonLd = {
     card: "summary_large_image",
     title,
     description,
-    images: ["/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"],
+    images: ["/tactas-ai-managed-agent-systems-og.jpg"],
   }}
   jsonLd={jsonLd}
 >
@@ -277,43 +307,21 @@ const jsonLd = {
     <main>
       <section class="relative overflow-hidden border-b border-[#D8E1EA] bg-[#F6F8FB]">
         <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,#06B6D4_24%,#D7A22A_72%,transparent)]"></div>
-        <div class="mx-auto grid w-full max-w-[1240px] items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.92fr_1.08fr] lg:px-10 lg:py-20">
+        <div class="mx-auto w-full max-w-[1240px] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
           <div>
-            <div class="mb-8 inline-flex items-center rounded-full bg-[#06AEEA] px-4 py-2 text-[14px] font-medium text-white shadow-[0_14px_32px_-24px_rgba(6,174,234,0.9)]">
-              Pricing
-            </div>
             <h1 class="max-w-[820px] text-[clamp(3.4rem,8vw,6.4rem)] font-semibold leading-[0.94] tracking-normal text-[#07324A]">
-              Pricing for managed AI agents at work.
+              Pricing for managed agent systems at work.
             </h1>
             <p class="mt-7 max-w-[44rem] text-[18px] leading-relaxed text-[#07324A]/78">
-              Start with one business task, connect the company knowledge and tools behind it, then expand into managed AI automation as the value becomes clear.
+              Pricing has two parts: setup for the agent system, data, workflow, and tool connections, then a monthly plan for usage quota, resources, monitoring, and improvement.
             </p>
             <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a href="/contact" class="inline-flex h-12 items-center justify-center rounded-[8px] bg-[#2F66FF] px-6 text-[14px] font-semibold text-white shadow-[0_16px_34px_-24px_rgba(47,102,255,0.85)] transition hover:bg-[#0EA5E9]">
-                Request task review
+                Book a review
               </a>
               <a href="#plans" class="inline-flex h-12 items-center justify-center rounded-[8px] border border-[#D9CFAE] bg-white/60 px-6 text-[14px] font-semibold text-[#07324A] transition hover:border-[#2F66FF] hover:text-[#2F66FF]">
-                See plans
+                See pricing model
               </a>
-            </div>
-          </div>
-
-          <div class="border border-[#D8E1EA] bg-white shadow-[0_34px_100px_-72px_rgba(7,50,74,0.42)]">
-            <div class="border-b border-[#E2E8F0] bg-[#F6F8FB] px-5 py-4">
-              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#64748B]">Pricing model</p>
-            </div>
-            <div class="grid gap-3 p-5">
-              {[
-                ["01", "Review one repeated task"],
-                ["02", "Scope knowledge and connected tools"],
-                ["03", "Deploy managed agent work"],
-                ["04", "Improve usage after launch"],
-              ].map(([number, label]) => (
-                <div class="flex items-center justify-between gap-4 border border-[#E2E8F0] bg-[#F6F8FB] px-4 py-3">
-                  <span class="font-mono text-[11px] text-[#0891B2]">{number}</span>
-                  <span class="text-[14px] font-semibold text-[#07324A]">{label}</span>
-                </div>
-              ))}
             </div>
           </div>
         </div>
@@ -358,11 +366,12 @@ const jsonLd = {
                       <p class="mt-2 min-h-[72px] text-[14px] leading-relaxed text-[#475569]">{plan.summary}</p>
 
                       <div class="mt-7 border border-[#D8E1EA] bg-[#F6F8FB] p-4">
-                        <p class="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#64748B]">{section.priceLabel}</p>
+                        <p class="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#64748B]">{plan.priceLabel ?? section.priceLabel}</p>
                         <div class="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
                           <p class="text-[32px] font-semibold leading-none tracking-normal text-[#07324A]">{plan.price}</p>
                           <p class="text-[13px] text-[#64748B]">{plan.suffix}</p>
                         </div>
+                        {plan.quota ? <p class="mt-2 text-[13px] font-semibold text-[#0891B2]">{plan.quota}</p> : null}
                       </div>
 
                       <a
@@ -392,6 +401,7 @@ const jsonLd = {
                   );
                 })}
               </div>
+              {section.note ? <p class="mt-5 max-w-[58rem] text-[13px] leading-relaxed text-[#64748B]">{section.note}</p> : null}
             </div>
           ))}
         </div>
@@ -402,10 +412,10 @@ const jsonLd = {
           <div>
             <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">How pricing scales</p>
             <h2 class="mt-4 max-w-[720px] text-[42px] font-semibold leading-[1.02] tracking-normal text-[#07324A] sm:text-[58px]">
-              Pay for the task pattern, context, and operation you actually need.
+              Pay for setup complexity first, then the monthly quota the system actually uses.
             </h2>
             <p class="mt-5 max-w-[36rem] text-[17px] leading-relaxed text-[#475569]">
-              Tactas starts narrow so the first managed agent has a real job. As the task proves useful, the same knowledge layer and connected tools can support more business tasks.
+              Tactas can start with one operational workflow, then scale the same knowledge layer and connected tools into more work. Higher model/runtime usage, larger indexed context, heavier retrieval, and more tool actions move the monthly quota up.
             </p>
           </div>
 
@@ -445,36 +455,27 @@ const jsonLd = {
         </div>
       </section>
 
-      <section class="bg-[#F6F8FB]">
-        <div class="mx-auto w-full max-w-[1240px] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
-          <div class="grid gap-8 border border-[#D8E1EA] bg-white p-7 shadow-[0_34px_100px_-72px_rgba(7,50,74,0.42)] sm:p-9 lg:grid-cols-[1fr_360px] lg:items-center">
+      <CTASection
+        eyebrow="Task review"
+        title="Map one business task before you commit to a build."
+        description="Share the repeated work, knowledge sources, current tools, and output you want an agent to prepare."
+      >
+        <div slot="aside" class="border border-[#D8E1EA] bg-[#F6F8FB] p-5">
+          <div class="flex items-start gap-3">
+            <Mail class="mt-1 h-5 w-5 shrink-0 text-[#06B6D4]" stroke-width={1.9} />
             <div>
-              <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Task review</p>
-              <h2 class="mt-4 max-w-[760px] text-[42px] font-semibold leading-[1.02] tracking-normal text-[#07324A] sm:text-[58px]">
-                Map one business task before you commit to a build.
-              </h2>
-              <p class="mt-5 max-w-[42rem] text-[17px] leading-relaxed text-[#475569]">
-                Share the repeated work, knowledge sources, current tools, and output you want an agent to prepare.
+              <h3 class="text-[18px] font-semibold tracking-normal text-[#07324A]">Prefer email?</h3>
+              <p class="mt-2 text-[14px] leading-relaxed text-[#475569]">
+                Send the business context to <a href={`mailto:${brandEmail}`} class="text-[#0891B2] hover:text-[#07324A]">{brandEmail}</a>.
               </p>
             </div>
-            <div class="border border-[#D8E1EA] bg-[#F6F8FB] p-5">
-              <div class="flex items-start gap-3">
-                <Mail class="mt-1 h-5 w-5 shrink-0 text-[#06B6D4]" stroke-width={1.9} />
-                <div>
-                  <h3 class="text-[18px] font-semibold tracking-normal text-[#07324A]">Prefer email?</h3>
-                  <p class="mt-2 text-[14px] leading-relaxed text-[#475569]">
-                    Send the business context to <a href={`mailto:${brandEmail}`} class="text-[#0891B2] hover:text-[#07324A]">{brandEmail}</a>.
-                  </p>
-                </div>
-              </div>
-              <a href="/contact" class="mt-6 inline-flex h-11 w-full items-center justify-center rounded-[8px] bg-[#2F66FF] px-4 text-[14px] font-semibold text-white transition hover:bg-[#0EA5E9]">
-                Request task review
-                <ArrowRight class="ml-2 h-4 w-4" stroke-width={2} />
-              </a>
-            </div>
           </div>
+          <a href="/contact" class="mt-6 inline-flex h-11 w-full items-center justify-center rounded-[8px] bg-[#2F66FF] px-4 text-[14px] font-semibold text-white transition hover:bg-[#0EA5E9]">
+            Book a review
+            <ArrowRight class="ml-2 h-4 w-4" stroke-width={2} />
+          </a>
         </div>
-      </section>
+      </CTASection>
     </main>
   </div>
 </BaseLayout>

@@ -60,7 +60,7 @@ interface Props {
   theme?: "dark" | "light";
 }
 
-const { currentPath = "/", ctaLabel = "Book demo", ctaHref = "/contact", theme = "light" } = Astro.props;
+const { currentPath = "/", ctaLabel = "Book a review", ctaHref = "/contact", theme = "light" } = Astro.props;
 const brandEmail = getBrandEmail();
 const CONTAINER = "mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10";
 const isDark = theme === "dark";
@@ -72,11 +72,11 @@ const navGroups: NavGroup[] = [
     columns: [],
   },
   {
-    label: "Tasks",
+    label: "Operations",
     href: "/#solutions",
     columns: [
       {
-        title: "Business Tasks",
+        title: "Task Outcomes",
         links: [
           { label: "Task Examples", href: "/use-cases", icon: Users },
           { label: "Summarize Changes", href: "/contact", icon: BarChart3 },
@@ -90,7 +90,7 @@ const navGroups: NavGroup[] = [
         ],
       },
       {
-        title: "Tool Context",
+        title: "Context & Tools",
         links: [
           { label: "Knowledge & Files", href: "/services/ai-knowledge-base", icon: FileText },
           { label: "Messages & Forms", href: "/contact", icon: Mail },
@@ -172,8 +172,8 @@ const navGroups: NavGroup[] = [
         links: [
           { label: "Privacy Policy", href: "/privacy" },
           { label: "Terms of Service", href: "/terms" },
+          { label: "Refund Policy", href: "/refund-policy" },
           { label: "Security Review", href: "/contact" },
-          { label: "Data Handling", href: "/privacy" },
         ],
       },
     ],
@@ -340,12 +340,12 @@ const isActive = (href: string) => {
                 </div>
               ) : (
               <div class={`grid ${
-                group.label === "Tasks" || group.label === "Resources" || group.label === "Company"
+                group.label === "Operations" || group.label === "Resources" || group.label === "Company"
                     ? "gap-x-16 gap-y-8 lg:grid-cols-[minmax(0,820px)_334px]"
                     : `gap-7 ${group.columns.length >= 4 ? "lg:grid-cols-4" : group.columns.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`
               }`}>
                 <div class={`grid ${
-                  group.label === "Tasks"
+                  group.label === "Operations"
                     ? "gap-x-16 gap-y-8 lg:grid-cols-2"
                     : group.label === "Resources" || group.label === "Company"
                       ? "gap-x-14 gap-y-8 lg:grid-cols-3"
@@ -353,17 +353,17 @@ const isActive = (href: string) => {
                 }`}>
                 {group.columns.map((column) => (
                   <div class:list={[
-                    group.label === "Tasks" || group.label === "Resources" || group.label === "Company" ? "" : "border-l border-black/10 pl-5 first:border-l-0 first:pl-0",
+                    group.label === "Operations" || group.label === "Resources" || group.label === "Company" ? "" : "border-l border-black/10 pl-5 first:border-l-0 first:pl-0",
                   ]}>
                     <p class:list={[
-                      group.label === "Tasks"
+                      group.label === "Operations"
                         ? "mb-6 text-[20px] font-bold uppercase tracking-[-0.02em] text-[#2b2b2b]"
                         : group.label === "Resources" || group.label === "Company"
                           ? "mb-6 text-[20px] font-bold uppercase tracking-[-0.02em] text-[#0F172A]"
                         : "mb-4 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#6d6d6d]",
                     ]}>{column.title}</p>
                     <ul class:list={[
-                      group.label === "Tasks" ? "grid gap-4" : group.label === "Resources" || group.label === "Company" ? "grid gap-4" : "grid gap-3",
+                      group.label === "Operations" ? "grid gap-4" : group.label === "Resources" || group.label === "Company" ? "grid gap-4" : "grid gap-3",
                     ]}>
                       {column.links.map((link) => {
                         const Icon = link.icon;
@@ -373,14 +373,14 @@ const isActive = (href: string) => {
                               href={link.href}
                               class:list={[
                                 "group/item text-[#151515] transition hover:text-[#06B6D4]",
-                                group.label === "Tasks"
+                                group.label === "Operations"
                                   ? "flex min-h-5 items-center gap-4 text-[16px] font-semibold leading-tight"
                                   : group.label === "Resources" || group.label === "Company"
                                     ? "block text-[15px] font-semibold leading-tight"
                                   : "block text-[14px] leading-snug",
                               ]}
                             >
-                              {group.label === "Tasks" ? (
+                              {group.label === "Operations" ? (
                                 Icon ? (
                                   <Icon class="h-4 w-4 shrink-0 text-[#8c8c8c] transition group-hover/item:text-[#06B6D4]" stroke-width={2} />
                                 ) : (
@@ -398,14 +398,14 @@ const isActive = (href: string) => {
                 ))}
                 </div>
 
-                {group.label === "Tasks" ? (
+                {group.label === "Operations" ? (
                   <div>
                     <a href="/services/ai-workflow-automation" class="block overflow-hidden rounded-[6px] bg-[#0F172A] transition hover:translate-y-[-1px]">
                       <div class="relative flex h-48 items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_22%_16%,rgba(234,250,106,0.72),transparent_34%),radial-gradient(circle_at_82%_74%,rgba(6,182,212,0.46),transparent_36%),linear-gradient(135deg,#F6F8FB_0%,#DFF7FB_44%,#0F172A_132%)]">
                         <div class="absolute inset-0 opacity-35 [background-image:linear-gradient(to_right,rgba(15,23,42,0.10)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.08)_1px,transparent_1px)] [background-size:28px_28px]"></div>
                         <div class="relative text-center text-[#0F172A]">
                           <p class="text-[30px] font-semibold leading-none tracking-[-0.04em]">Tactas AI</p>
-                          <p class="mt-2 font-mono text-[11px] uppercase tracking-[0.34em] text-[#0E7490]">Business Tasks</p>
+                          <p class="mt-2 font-mono text-[11px] uppercase tracking-[0.34em] text-[#0E7490]">Operations</p>
                         </div>
                       </div>
                     </a>
@@ -594,16 +594,16 @@ const isActive = (href: string) => {
                     isDark ? "text-[#A78BFA]" : "text-[#6d6d6d]",
                   ]}>{column.title}</p>
                   <div class:list={[
-                    group.label === "Tasks" ? "grid gap-3.5" : "grid gap-3",
+                    group.label === "Operations" ? "grid gap-3.5" : "grid gap-3",
                   ]}>
                     {column.links.map((link) => {
                       const Icon = link.icon;
                       return (
                         <a href={link.href} class:list={[
-                          group.label === "Tasks" ? "flex items-center gap-3 text-[15px] font-semibold" : "text-[14px] font-medium",
+                          group.label === "Operations" ? "flex items-center gap-3 text-[15px] font-semibold" : "text-[14px] font-medium",
                           isDark ? "text-white/78" : "text-[#222222]",
                         ]} data-mobile-link>
-                          {group.label === "Tasks" ? (
+                          {group.label === "Operations" ? (
                             Icon ? (
                               <Icon class="h-4 w-4 shrink-0 text-[#8c8c8c]" stroke-width={2} />
                             ) : (
@@ -629,7 +629,7 @@ const isActive = (href: string) => {
       ]}>
         <a href="/#solutions" class="inline-flex items-center gap-2" data-mobile-link>
           <Zap class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
-          Business tasks
+          Operations
         </a>
         <a href="/services/ai-knowledge-base" class="inline-flex items-center gap-2" data-mobile-link>
           <BrainCircuit class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
@@ -649,7 +649,7 @@ const isActive = (href: string) => {
         </a>
         <a href="/contact" class="inline-flex items-center gap-2" data-mobile-link>
           <Briefcase class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
-          Task review
+          Book a review
         </a>
         <a href="/pricing" class="inline-flex items-center gap-2" data-mobile-link>
           <Banknote class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />

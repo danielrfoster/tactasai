@@ -52,7 +52,7 @@ const {
   jsonLd,
   currentPath,
   navbarTheme = "light",
-  navbarCtaLabel = "Task review",
+  navbarCtaLabel = "Book a review",
   navbarCtaHref = "/contact",
   showNavbar = true,
 } = Astro.props;
@@ -60,7 +60,7 @@ const {
 const siteUrl = getSiteUrl();
 const absoluteCanonical = canonical ? new URL(canonical, siteUrl).toString() : undefined;
 const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
-const defaultOgImage = "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png";
+const defaultOgImage = "/tactas-ai-managed-agent-systems-og.jpg";
 ---
 
 <!doctype html>
@@ -91,7 +91,7 @@ const defaultOgImage = "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png";
     <meta property="og:type" content={openGraph?.type || "website"} />
     <meta property="og:locale" content={openGraph?.locale || "en_US"} />
     <meta property="og:url" content={openGraph?.url || absoluteCanonical || siteUrl} />
-    {(openGraph?.images || [{ url: defaultOgImage, width: 1200, height: 630, alt: title }]).map((image) => (
+    {(openGraph?.images || [{ url: defaultOgImage, width: 1734, height: 907, alt: title }]).map((image) => (
       <>
         <meta property="og:image" content={new URL(image.url, siteUrl).toString()} />
         {image.width ? <meta property="og:image:width" content={String(image.width)} /> : null}

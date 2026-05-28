@@ -25,6 +25,7 @@ export const GET = (() => {
     { path: "/use-cases/ai-crm-workflow-automation", changefreq: "weekly", priority: "0.82" },
     { path: "/privacy", changefreq: "yearly", priority: "0.4" },
     { path: "/terms", changefreq: "yearly", priority: "0.4" },
+    { path: "/refund-policy", changefreq: "yearly", priority: "0.4" },
   ];
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>

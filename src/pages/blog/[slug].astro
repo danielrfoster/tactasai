@@ -1,5 +1,6 @@
 ---
 import { ArrowLeft, CalendarDays, Clock } from "@lucide/astro";
+import CTASection from "../../components/CTASection.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { blogPosts, getBlogPostBySlug } from "../../lib/blog";
 import { getOrganization, getSiteUrl } from "../../lib/site";
@@ -77,7 +78,7 @@ const jsonLd = {
   canonical={`/blog/${post.slug}`}
   currentPath={`/blog/${post.slug}`}
   navbarTheme="light"
-  navbarCtaLabel="Task review"
+  navbarCtaLabel="Book a review"
   keywords={post.keywords}
   openGraph={{
     title: `${post.title} | Tactas AI Blog`,
@@ -86,14 +87,14 @@ const jsonLd = {
     type: "article",
     images: [
       {
-        url: "/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png",
-        width: 1536,
-        height: 1024,
+        url: "/tactas-ai-managed-agent-systems-og.jpg",
+        width: 1734,
+        height: 907,
         alt: post.title,
       },
     ],
   }}
-  twitter={{ card: "summary_large_image", title: post.title, description: post.description, images: ["/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"] }}
+  twitter={{ card: "summary_large_image", title: post.title, description: post.description, images: ["/tactas-ai-managed-agent-systems-og.jpg"] }}
   jsonLd={jsonLd}
 >
   <main class="min-h-screen bg-[#F6F8FB] text-[#0F172A] selection:bg-[#06B6D4]/20">
@@ -141,18 +142,17 @@ const jsonLd = {
           ))}
         </div>
 
-        <section class="mt-16 border border-[#D8E1EA] bg-[#F6F8FB] p-7 shadow-[0_24px_70px_-62px_rgba(7,50,74,0.28)] sm:p-8">
-          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Task review</p>
-          <h2 class="mt-4 text-[clamp(1.8rem,4vw,2.8rem)] font-semibold leading-tight tracking-[-0.02em] text-[#07324A]">
-            Map one business task into managed AI automation.
-          </h2>
-          <p class="mt-4 max-w-[38rem] text-[15px] leading-relaxed text-[#475569]">
-            Share a repeated task, the knowledge behind it, and the tools where work happens. Tactas AI can help turn that task into action-ready agent work.
-          </p>
-          <a href="/contact" class="mt-7 inline-flex h-12 items-center justify-center rounded-[8px] bg-[#2F66FF] px-6 text-[14px] font-semibold text-white shadow-[0_16px_34px_-24px_rgba(47,102,255,0.85)] transition hover:bg-[#0EA5E9]">
-            Request task review
-          </a>
-        </section>
+        <CTASection
+          contained={false}
+          sectionClass="mt-16"
+          cardClass="bg-[#F6F8FB] p-7 shadow-[0_24px_70px_-62px_rgba(7,50,74,0.28)] sm:p-8"
+          eyebrow="Task review"
+          title="Map one business task into managed AI automation."
+          description="Share a repeated task, the knowledge behind it, and the tools where work happens. Tactas AI can help turn that task into action-ready agent work."
+          descriptionClass="mt-4 max-w-[38rem] text-[15px] leading-relaxed text-[#475569]"
+          primaryLabel="Request task review"
+          primaryHref="/contact"
+        />
       </div>
     </article>
 
