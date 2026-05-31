@@ -1205,13 +1205,13 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
     <section id="platform" class="border-b border-[#D8E1EA] bg-[#F6F8FB]">
       <div class={`${CONTAINER} py-16 lg:py-20`}>
         <div class="border-b border-[#D8E1EA] pb-9">
-          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Reference architecture</p>
+          <p class="font-mono text-[11px] uppercase text-[#0891B2]">Business agent map</p>
           <div class="mt-4 grid gap-5 lg:grid-cols-[minmax(0,760px)_minmax(280px,420px)] lg:items-end lg:justify-between">
             <h2 class="max-w-[760px] text-4xl font-semibold leading-tight tracking-normal text-[#0F172A] sm:text-5xl lg:text-[52px]">
-              How delegated AI work moves through your business.
+              What your AI agent actually does for the business.
             </h2>
             <p class="max-w-[26rem] text-[17px] leading-relaxed text-[#475569] lg:pb-2">
-              A simple view of context, reasoning, review, and action.
+              It connects to company sources, understands the request, researches context, then answers, creates tasks, and runs the next step. Review stays optional.
             </p>
           </div>
         </div>
@@ -1224,171 +1224,161 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
             <div class="absolute bottom-[-7px] right-[-7px] h-3.5 w-3.5 rounded-[3px] border border-[#CBD5E1] bg-[#F6F8FB]"></div>
           </div>
 
-          <div class="relative min-h-[660px] overflow-x-auto overflow-y-hidden border-t bg-[#F1F5F9] font-mono md:border">
-            <div class="relative h-[660px] min-w-[1240px]">
-              <div class="absolute inset-0 [background-image:radial-gradient(circle,rgba(15,23,42,0.18)_1px,transparent_1px)] [background-size:20px_20px]"></div>
+          <div class="relative min-h-[700px] overflow-x-auto overflow-y-hidden border-t bg-[#F1F5F9] md:border">
+            <div class="relative h-[700px] min-w-[1240px] font-sans">
+              <div class="absolute inset-0 [background-image:radial-gradient(circle,rgba(15,23,42,0.16)_1px,transparent_1px)] [background-size:20px_20px]"></div>
 
-              <div class="absolute left-[214px] top-[226px] h-[296px] w-[172px] rounded-[2px] border border-[#06B6D4]/70 bg-[#06B6D4]/10">
-                <div class="absolute left-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#06B6D4]/70 bg-[#F6F8FB]"></div>
-                <div class="absolute right-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#06B6D4]/70 bg-[#F6F8FB]"></div>
-                <div class="absolute bottom-[-4px] left-[-4px] h-2 w-2 rounded-[1.5px] border border-[#06B6D4]/70 bg-[#F6F8FB]"></div>
-                <div class="absolute bottom-[-4px] right-[-4px] h-2 w-2 rounded-[1.5px] border border-[#06B6D4]/70 bg-[#F6F8FB]"></div>
-              </div>
-              <p class="absolute left-[300px] top-[200px] -translate-x-1/2 text-[12px] text-[#0E7490]">Business Data</p>
-
-              <div class="absolute left-[438px] top-[194px] h-[348px] w-[154px] rounded-[2px] border border-[#7C3AED]/60 bg-[#7C3AED]/10">
-                <div class="absolute left-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#7C3AED]/60 bg-[#F6F8FB]"></div>
-                <div class="absolute right-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#7C3AED]/60 bg-[#F6F8FB]"></div>
-                <div class="absolute bottom-[-4px] left-[-4px] h-2 w-2 rounded-[1.5px] border border-[#7C3AED]/60 bg-[#F6F8FB]"></div>
-                <div class="absolute bottom-[-4px] right-[-4px] h-2 w-2 rounded-[1.5px] border border-[#7C3AED]/60 bg-[#F6F8FB]"></div>
-              </div>
-              <p class="absolute left-[515px] top-[168px] -translate-x-1/2 text-[12px] text-[#6D28D9]">Operator Runtime</p>
-
-              <div class="absolute left-[650px] top-[194px] h-[348px] w-[166px] rounded-[2px] border border-[#14B8A6]/65 bg-[#14B8A6]/10">
-                <div class="absolute left-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#14B8A6]/65 bg-[#F6F8FB]"></div>
-                <div class="absolute right-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#14B8A6]/65 bg-[#F6F8FB]"></div>
-                <div class="absolute bottom-[-4px] left-[-4px] h-2 w-2 rounded-[1.5px] border border-[#14B8A6]/65 bg-[#F6F8FB]"></div>
-                <div class="absolute bottom-[-4px] right-[-4px] h-2 w-2 rounded-[1.5px] border border-[#14B8A6]/65 bg-[#F6F8FB]"></div>
-              </div>
-              <p class="absolute left-[733px] top-[168px] -translate-x-1/2 text-[12px] text-[#0F766E]">Control Layer</p>
-
-              <div class="absolute left-[872px] top-[194px] h-[348px] w-[158px] rounded-[2px] border border-[#F59E0B]/65 bg-[#F59E0B]/10">
-                <div class="absolute left-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#F59E0B]/65 bg-[#F6F8FB]"></div>
-                <div class="absolute right-[-4px] top-[-4px] h-2 w-2 rounded-[1.5px] border border-[#F59E0B]/65 bg-[#F6F8FB]"></div>
-                <div class="absolute bottom-[-4px] left-[-4px] h-2 w-2 rounded-[1.5px] border border-[#F59E0B]/65 bg-[#F6F8FB]"></div>
-                <div class="absolute bottom-[-4px] right-[-4px] h-2 w-2 rounded-[1.5px] border border-[#F59E0B]/65 bg-[#F6F8FB]"></div>
-              </div>
-              <p class="absolute left-[951px] top-[168px] -translate-x-1/2 text-[12px] text-[#B45309]">Business Actions</p>
-
-              <svg class="absolute inset-0 z-0 h-full w-full" viewBox="0 0 1240 660" fill="none">
-                <path class="tactas-flow-line" d="M126 188 C174 188 174 286 230 286" />
-                <path class="tactas-flow-line" d="M126 268 C174 268 174 358 230 358" />
-                <path class="tactas-flow-line" d="M126 348 C174 348 174 430 230 430" />
-                <path class="tactas-flow-line" d="M126 428 C174 428 174 430 230 430" />
-                <path class="tactas-flow-line" d="M126 508 C174 508 174 430 230 430" />
-                <path class="tactas-flow-line" d="M370 286 C410 286 410 234 450 234" />
-                <path class="tactas-flow-line" d="M370 358 C410 358 410 314 450 314" />
-                <path class="tactas-flow-line" d="M370 430 C410 430 410 394 450 394" />
-                <path class="tactas-flow-line" d="M370 430 C410 430 410 474 450 474" />
-                <path class="tactas-flow-line" d="M576 234 C620 234 620 234 664 234" />
-                <path class="tactas-flow-line" d="M576 314 C620 314 620 314 664 314" />
-                <path class="tactas-flow-line" d="M576 394 C620 394 620 394 664 394" />
-                <path class="tactas-flow-line" d="M576 474 C620 474 620 474 664 474" />
-                <path class="tactas-flow-line" d="M802 234 C844 234 844 234 886 234" />
-                <path class="tactas-flow-line" d="M802 314 C844 314 844 314 886 314" />
-                <path class="tactas-flow-line" d="M802 394 C844 394 844 394 886 394" />
-                <path class="tactas-flow-line" d="M802 474 C844 474 844 474 886 474" />
-                <path class="tactas-flow-line" d="M1018 234 C1062 234 1062 188 1106 188" />
-                <path class="tactas-flow-line" d="M1018 314 C1062 314 1062 314 1106 314" />
-                <path class="tactas-flow-line" d="M1018 394 C1062 394 1062 428 1106 428" />
-                <path class="tactas-flow-line" d="M1018 474 C1062 474 1062 508 1106 508" />
+              <svg class="absolute inset-0 z-0 h-full w-full" viewBox="0 0 1240 700" fill="none">
+                <path class="tactas-flow-line" d="M290 164 C330 164 326 152 366 152" />
+                <path class="tactas-flow-line" d="M290 236 C330 236 326 242 366 242" />
+                <path class="tactas-flow-line" d="M290 308 C330 308 326 332 366 332" />
+                <path class="tactas-flow-line" d="M290 380 C330 380 326 422 366 422" />
+                <path class="tactas-flow-line" d="M290 452 C330 452 326 512 366 512" />
+                <path class="tactas-flow-line" d="M290 524 C330 524 326 512 366 512" />
+                <path class="tactas-flow-line" d="M706 152 C748 152 748 116 790 116" />
+                <path class="tactas-flow-line" d="M706 242 C748 242 748 204 790 204" />
+                <path class="tactas-flow-line" d="M706 332 C748 332 748 292 790 292" />
+                <path class="tactas-flow-line" d="M706 422 C748 422 748 380 790 380" />
+                <path class="tactas-flow-line" d="M706 512 C748 512 748 468 790 468" />
+                <path class="tactas-flow-line" d="M706 512 C748 512 748 556 790 556" />
               </svg>
 
-              <div class="absolute left-[78px] top-[138px] flex flex-col items-center gap-2">
-                <p class="text-[13px] text-[#0E7490]">Email</p>
-                <div class="flex h-14 w-14 items-center justify-center border border-[#06B6D4] bg-white/80 text-[#06B6D4]">
-                  <Mail class="h-6 w-6" stroke-width={1.7} />
-                </div>
-              </div>
-              <div class="absolute left-[78px] top-[218px] flex flex-col items-center gap-2">
-                <p class="text-[13px] text-[#0E7490]">CRM</p>
-                <div class="flex h-14 w-14 items-center justify-center border border-[#06B6D4] bg-white/80 text-[#06B6D4]">
-                  <Network class="h-6 w-6" stroke-width={1.7} />
-                </div>
-              </div>
-              <div class="absolute left-[78px] top-[298px] flex flex-col items-center gap-2">
-                <p class="text-[13px] text-[#0E7490]">Tickets</p>
-                <div class="flex h-14 w-14 items-center justify-center border border-[#06B6D4] bg-white/80 text-[#06B6D4]">
-                  <Layers class="h-6 w-6" stroke-width={1.7} />
-                </div>
-              </div>
-              <div class="absolute left-[78px] top-[378px] flex flex-col items-center gap-2">
-                <p class="text-[13px] text-[#0E7490]">Docs</p>
-                <div class="flex h-14 w-14 items-center justify-center border border-[#06B6D4] bg-white/80 text-[#06B6D4]">
-                  <Globe class="h-6 w-6" stroke-width={1.7} />
-                </div>
-              </div>
-              <div class="absolute left-[78px] top-[458px] flex flex-col items-center gap-2">
-                <p class="text-[13px] text-[#0E7490]">Forms</p>
-                <div class="flex h-14 w-14 items-center justify-center border border-[#06B6D4] bg-white/80 text-[#06B6D4]">
-                  <Check class="h-6 w-6" stroke-width={1.7} />
+              <div class="absolute left-[38px] top-[42px] z-10 h-[584px] w-[252px] rounded-[6px] border border-[#BAE6FD] bg-white/88 p-4 shadow-[0_22px_70px_-54px_rgba(15,23,42,0.5)]">
+                <p class="font-mono text-[11px] uppercase text-[#0E7490]">Connect the business</p>
+                <h3 class="mt-2 text-[24px] font-semibold leading-tight text-[#0F172A]">Sources your team already works in</h3>
+                <div class="mt-5 grid gap-3">
+                  <div class="flex items-center gap-3 rounded-[4px] border border-[#D8E1EA] bg-[#F8FAFC] p-3">
+                    <Mail class="h-5 w-5 text-[#0891B2]" stroke-width={1.8} />
+                    <div>
+                      <p class="text-[13px] font-semibold text-[#0F172A]">Inbox & chat</p>
+                      <p class="text-[11px] text-[#64748B]">Requests, threads, follow-ups</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-3 rounded-[4px] border border-[#D8E1EA] bg-[#F8FAFC] p-3">
+                    <Network class="h-5 w-5 text-[#0891B2]" stroke-width={1.8} />
+                    <div>
+                      <p class="text-[13px] font-semibold text-[#0F172A]">CRM & customers</p>
+                      <p class="text-[11px] text-[#64748B]">Deals, accounts, history</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-3 rounded-[4px] border border-[#D8E1EA] bg-[#F8FAFC] p-3">
+                    <Globe class="h-5 w-5 text-[#0891B2]" stroke-width={1.8} />
+                    <div>
+                      <p class="text-[13px] font-semibold text-[#0F172A]">Docs & knowledge</p>
+                      <p class="text-[11px] text-[#64748B]">Policies, product notes, SOPs</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-3 rounded-[4px] border border-[#D8E1EA] bg-[#F8FAFC] p-3">
+                    <Layers class="h-5 w-5 text-[#0891B2]" stroke-width={1.8} />
+                    <div>
+                      <p class="text-[13px] font-semibold text-[#0F172A]">Tickets & tasks</p>
+                      <p class="text-[11px] text-[#64748B]">Queues, owners, open work</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-3 rounded-[4px] border border-[#D8E1EA] bg-[#F8FAFC] p-3">
+                    <Paperclip class="h-5 w-5 text-[#0891B2]" stroke-width={1.8} />
+                    <div>
+                      <p class="text-[13px] font-semibold text-[#0F172A]">Reports & files</p>
+                      <p class="text-[11px] text-[#64748B]">Sheets, PDFs, exports</p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <button type="button" class="absolute left-[242px] top-[258px] flex h-14 w-14 items-center justify-center rounded-sm border border-dashed border-[#06B6D4] bg-[#E6FBFF] text-[#06B6D4]" aria-label="Open data preparation layer">
-                <Globe class="h-7 w-7" stroke-width={1.7} />
-              </button>
-              <button type="button" class="absolute left-[304px] top-[258px] flex h-14 w-14 items-center justify-center rounded-sm border border-dashed border-[#06B6D4] bg-[#E6FBFF] text-[#06B6D4]" aria-label="Open knowledge indexing">
-                <Search class="h-7 w-7" stroke-width={1.7} />
-              </button>
-              <button type="button" class="absolute left-[242px] top-[386px] flex h-14 w-14 items-center justify-center rounded-sm border border-dashed border-[#06B6D4] bg-[#E6FBFF] text-[#06B6D4]" aria-label="Open profile enrichment">
-                <Network class="h-7 w-7" stroke-width={1.7} />
-              </button>
-              <button type="button" class="absolute left-[304px] top-[386px] flex h-14 w-14 items-center justify-center rounded-sm border border-dashed border-[#06B6D4] bg-[#E6FBFF] text-[#06B6D4]" aria-label="Open document normalization">
-                <Layers class="h-7 w-7" stroke-width={1.7} />
-              </button>
+              <div class="absolute left-[366px] top-[72px] z-10 h-[548px] w-[340px] rounded-[8px] border border-[#7C3AED]/35 bg-[#111827] p-5 text-white shadow-[0_36px_90px_-52px_rgba(15,23,42,0.88)]">
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <p class="font-mono text-[11px] uppercase text-[#C4B5FD]">Tactas AI Agent</p>
+                    <h3 class="mt-2 text-[30px] font-semibold leading-tight">Understands, researches, then moves work forward.</h3>
+                  </div>
+                  <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-[5px] border border-white/18 bg-white/10 text-[#C4B5FD]">
+                    <Bot class="h-6 w-6" stroke-width={1.8} />
+                  </div>
+                </div>
 
-              <button type="button" class="absolute left-[468px] top-[206px] flex h-14 w-14 items-center justify-center rounded-sm border border-dashed border-[#7C3AED] bg-[#F3E8FF] text-[#7C3AED]" aria-label="Open intake operator">
-                <Bot class="h-7 w-7" stroke-width={1.7} />
-              </button>
-              <button type="button" class="absolute left-[468px] top-[286px] flex h-14 w-14 items-center justify-center rounded-sm border border-dashed border-[#7C3AED] bg-[#F3E8FF] text-[#7C3AED]" aria-label="Open reasoning operator">
-                <ShieldCheck class="h-7 w-7" stroke-width={1.7} />
-              </button>
-              <button type="button" class="absolute left-[468px] top-[366px] flex h-14 w-14 items-center justify-center rounded-sm border border-dashed border-[#7C3AED] bg-[#F3E8FF] text-[#7C3AED]" aria-label="Open action operator">
-                <Zap class="h-7 w-7" stroke-width={1.7} />
-              </button>
-              <button type="button" class="absolute left-[468px] top-[446px] flex h-14 w-14 items-center justify-center rounded-sm border border-dashed border-[#7C3AED] bg-[#F3E8FF] text-[#7C3AED]" aria-label="Open operator memory">
-                <Sparkles class="h-7 w-7" stroke-width={1.7} />
-              </button>
-
-              <button type="button" class="absolute left-[678px] top-[206px] flex h-14 w-14 items-center justify-center rounded-sm border border-dashed border-[#14B8A6] bg-[#CCFBF1] text-[#0F766E]" aria-label="Open monitoring">
-                <Zap class="h-7 w-7" stroke-width={1.7} />
-              </button>
-              <button type="button" class="absolute left-[678px] top-[286px] flex h-14 w-14 items-center justify-center rounded-sm border border-dashed border-[#14B8A6] bg-[#CCFBF1] text-[#0F766E]" aria-label="Open decision explanation">
-                <ShieldCheck class="h-7 w-7" stroke-width={1.7} />
-              </button>
-              <button type="button" class="absolute left-[678px] top-[366px] flex h-14 w-14 items-center justify-center rounded-sm border border-dashed border-[#14B8A6] bg-[#CCFBF1] text-[#0F766E]" aria-label="Open approval gates">
-                <Check class="h-7 w-7" stroke-width={1.9} />
-              </button>
-              <button type="button" class="absolute left-[678px] top-[446px] flex h-14 w-14 items-center justify-center rounded-sm border border-dashed border-[#14B8A6] bg-[#CCFBF1] text-[#0F766E]" aria-label="Open audit log">
-                <MoreHorizontal class="h-7 w-7" stroke-width={1.7} />
-              </button>
-
-              <button type="button" class="absolute left-[904px] top-[206px] flex h-14 w-14 items-center justify-center rounded-sm border border-dashed border-[#F59E0B] bg-[#FEF3C7] text-[#B45309]" aria-label="Open system update action">
-                <Send class="h-7 w-7" stroke-width={1.7} />
-              </button>
-              <button type="button" class="absolute left-[904px] top-[286px] flex h-14 w-14 items-center justify-center rounded-sm border border-dashed border-[#F59E0B] bg-[#FEF3C7] text-[#B45309]" aria-label="Open task creation action">
-                <Layers class="h-7 w-7" stroke-width={1.7} />
-              </button>
-              <button type="button" class="absolute left-[904px] top-[366px] flex h-14 w-14 items-center justify-center rounded-sm border border-dashed border-[#F59E0B] bg-[#FEF3C7] text-[#B45309]" aria-label="Open escalation action">
-                <ArrowUpRight class="h-7 w-7" stroke-width={1.7} />
-              </button>
-              <button type="button" class="absolute left-[904px] top-[446px] flex h-14 w-14 items-center justify-center rounded-sm border border-dashed border-[#F59E0B] bg-[#FEF3C7] text-[#B45309]" aria-label="Open record logging action">
-                <CheckCheck class="h-7 w-7" stroke-width={1.7} />
-              </button>
-
-              <div class="absolute left-[1100px] top-[138px] flex flex-col items-center gap-2">
-                <p class="text-[13px] text-[#0E7490]">Systems</p>
-                <div class="flex h-14 w-14 items-center justify-center border border-[#06B6D4] bg-white/80 text-[#06B6D4]">
-                  <Network class="h-6 w-6" stroke-width={1.7} />
+                <div class="mt-6 grid gap-3">
+                  <div class="rounded-[5px] border border-white/12 bg-white/[0.07] p-4">
+                    <div class="flex items-center gap-2">
+                      <Search class="h-4 w-4 text-[#67E8F9]" stroke-width={1.8} />
+                      <p class="text-[14px] font-semibold">Analyze the request</p>
+                    </div>
+                    <p class="mt-2 text-[12px] leading-relaxed text-white/68">Detects what the person needs, the business object involved, and what output is useful.</p>
+                  </div>
+                  <div class="rounded-[5px] border border-white/12 bg-white/[0.07] p-4">
+                    <div class="flex items-center gap-2">
+                      <Globe class="h-4 w-4 text-[#99F6E4]" stroke-width={1.8} />
+                      <p class="text-[14px] font-semibold">Research across sources</p>
+                    </div>
+                    <p class="mt-2 text-[12px] leading-relaxed text-white/68">Pulls context from docs, CRM, tickets, spreadsheets, and prior work before responding.</p>
+                  </div>
+                  <div class="rounded-[5px] border border-white/12 bg-white/[0.07] p-4">
+                    <div class="flex items-center gap-2">
+                      <Sparkles class="h-4 w-4 text-[#FDE68A]" stroke-width={1.8} />
+                      <p class="text-[14px] font-semibold">Synthesize the answer</p>
+                    </div>
+                    <p class="mt-2 text-[12px] leading-relaxed text-white/68">Turns scattered data into a clear answer, summary, recommendation, or next-step plan.</p>
+                  </div>
+                  <div class="rounded-[5px] border border-white/12 bg-white/[0.07] p-4">
+                    <div class="flex items-center gap-2">
+                      <Zap class="h-4 w-4 text-[#FCA5A5]" stroke-width={1.8} />
+                      <p class="text-[14px] font-semibold">Take the next action</p>
+                    </div>
+                    <p class="mt-2 text-[12px] leading-relaxed text-white/68">Creates tasks, drafts replies, updates records, or starts the workflow when confidence is high.</p>
+                  </div>
                 </div>
               </div>
-              <div class="absolute left-[1100px] top-[264px] flex flex-col items-center gap-2">
-                <p class="text-[13px] text-[#0E7490]">Tasks</p>
-                <div class="flex h-14 w-14 items-center justify-center border border-[#06B6D4] bg-white/80 text-[#06B6D4]">
-                  <Layers class="h-6 w-6" stroke-width={1.7} />
+
+              <div class="absolute left-[790px] top-[42px] z-10 h-[584px] w-[410px] rounded-[6px] border border-[#FDE68A] bg-white/90 p-4 shadow-[0_22px_70px_-54px_rgba(15,23,42,0.5)]">
+                <p class="font-mono text-[11px] uppercase text-[#B45309]">Business output</p>
+                <h3 class="mt-2 text-[24px] font-semibold leading-tight text-[#0F172A]">Useful work, not technical plumbing</h3>
+                <div class="mt-5 grid grid-cols-2 gap-3">
+                  <div class="rounded-[5px] border border-[#BAE6FD] bg-[#E6FBFF] p-4">
+                    <Send class="h-5 w-5 text-[#0E7490]" stroke-width={1.8} />
+                    <p class="mt-3 text-[14px] font-semibold text-[#0F172A]">Answer questions</p>
+                    <p class="mt-1 text-[12px] leading-relaxed text-[#475569]">Respond with context from multiple data sources.</p>
+                  </div>
+                  <div class="rounded-[5px] border border-[#DDD6FE] bg-[#F3E8FF] p-4">
+                    <Sparkles class="h-5 w-5 text-[#7C3AED]" stroke-width={1.8} />
+                    <p class="mt-3 text-[14px] font-semibold text-[#0F172A]">Summarize changes</p>
+                    <p class="mt-1 text-[12px] leading-relaxed text-[#475569]">Explain what changed across customers, tasks, or docs.</p>
+                  </div>
+                  <div class="rounded-[5px] border border-[#FDE68A] bg-[#FEF3C7] p-4">
+                    <Layers class="h-5 w-5 text-[#B45309]" stroke-width={1.8} />
+                    <p class="mt-3 text-[14px] font-semibold text-[#0F172A]">Create tasks</p>
+                    <p class="mt-1 text-[12px] leading-relaxed text-[#475569]">Break work into owners, due dates, and next steps.</p>
+                  </div>
+                  <div class="rounded-[5px] border border-[#BBF7D0] bg-[#DCFCE7] p-4">
+                    <CheckCheck class="h-5 w-5 text-[#047857]" stroke-width={1.8} />
+                    <p class="mt-3 text-[14px] font-semibold text-[#0F172A]">Run workflows</p>
+                    <p class="mt-1 text-[12px] leading-relaxed text-[#475569]">Trigger follow-ups, handoffs, and record updates.</p>
+                  </div>
+                  <div class="rounded-[5px] border border-[#FED7AA] bg-[#FFF7ED] p-4">
+                    <Network class="h-5 w-5 text-[#C2410C]" stroke-width={1.8} />
+                    <p class="mt-3 text-[14px] font-semibold text-[#0F172A]">Manage business</p>
+                    <p class="mt-1 text-[12px] leading-relaxed text-[#475569]">Track open work, risks, and priorities across systems.</p>
+                  </div>
+                  <div class="rounded-[5px] border border-[#CBD5E1] bg-[#F8FAFC] p-4">
+                    <ArrowUpRight class="h-5 w-5 text-[#334155]" stroke-width={1.8} />
+                    <p class="mt-3 text-[14px] font-semibold text-[#0F172A]">Escalate smartly</p>
+                    <p class="mt-1 text-[12px] leading-relaxed text-[#475569]">Ask a person only when the work needs judgment.</p>
+                  </div>
                 </div>
               </div>
-              <div class="absolute left-[1100px] top-[390px] flex flex-col items-center gap-2">
-                <p class="text-[13px] text-[#0E7490]">Support</p>
-                <div class="flex h-14 w-14 items-center justify-center border border-[#06B6D4] bg-white/80 text-[#06B6D4]">
-                  <Mail class="h-6 w-6" stroke-width={1.7} />
+
+              <div class="absolute left-[366px] top-[640px] z-10 flex w-[834px] items-center justify-between gap-4 rounded-[5px] border border-[#14B8A6]/35 bg-white/92 px-5 py-4 shadow-[0_18px_50px_-36px_rgba(15,23,42,0.55)]">
+                <div class="flex items-center gap-3">
+                  <div class="flex h-11 w-11 items-center justify-center rounded-[4px] border border-[#14B8A6]/35 bg-[#CCFBF1] text-[#0F766E]">
+                    <ShieldCheck class="h-5 w-5" stroke-width={1.8} />
+                  </div>
+                  <div>
+                    <p class="text-[14px] font-semibold text-[#0F172A]">Human review is an option, not the product.</p>
+                    <p class="mt-1 text-[12px] leading-relaxed text-[#475569]">Sensitive work can be checked before it ships; routine work keeps moving automatically.</p>
+                  </div>
                 </div>
-              </div>
-              <div class="absolute left-[1100px] top-[496px] flex flex-col items-center gap-2">
-                <p class="text-[13px] text-[#0E7490]">Audit</p>
-                <div class="flex h-14 w-14 items-center justify-center border border-[#06B6D4] bg-white/80 text-[#06B6D4]">
-                  <ShieldCheck class="h-6 w-6" stroke-width={1.7} />
+                <div class="flex shrink-0 items-center gap-2 text-[12px] font-semibold text-[#0F766E]">
+                  <span class="rounded-full border border-[#99F6E4] bg-[#ECFDF5] px-3 py-1.5">Review</span>
+                  <span class="rounded-full border border-[#99F6E4] bg-[#ECFDF5] px-3 py-1.5">Approve</span>
+                  <span class="rounded-full border border-[#99F6E4] bg-[#ECFDF5] px-3 py-1.5">Adjust</span>
                 </div>
               </div>
             </div>
