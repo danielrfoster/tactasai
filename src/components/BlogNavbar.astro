@@ -1,0 +1,62 @@
+---
+import { ArrowRight, BookOpen, Home, PenLine } from "@lucide/astro";
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = "/blog" } = Astro.props;
+
+const links = [
+  { label: "Blog", href: "/blog" },
+  { label: "Comparison", href: "/blog/glean-vs-guru-vs-tactasai" },
+  { label: "Prompt Library", href: "/ai-agent-prompt-library" },
+];
+
+const isActive = (href: string) => {
+  if (href === "/blog") return currentPath === "/blog";
+  return currentPath === href || currentPath.startsWith(`${href}/`);
+};
+---
+
+<header id="blog-header" class="sticky top-0 z-[11111] border-b border-tactas-line bg-white/95 text-tactas-ink shadow-[0_1px_0_rgba(0,0,0,0.05)] backdrop-blur">
+  <div class="tactas-container flex min-h-[64px] flex-wrap items-center justify-between gap-x-5 gap-y-3 py-3 lg:min-h-[68px] lg:flex-nowrap lg:py-0">
+    <a href="/blog" class="flex min-w-0 items-center gap-3" aria-label="Tactas AI blog home">
+      <span class="flex h-9 w-9 shrink-0 items-center justify-center border border-tactas-line bg-tactas-bg-soft text-tactas-accent-strong">
+        <BookOpen class="h-[18px] w-[18px]" stroke-width={2} />
+      </span>
+      <span class="min-w-0">
+        <span class="block text-[18px] font-semibold leading-tight text-tactas-ink-strong">Tactas AI Blog</span>
+        <span class="hidden text-[12px] font-semibold uppercase tracking-[0.16em] text-tactas-muted-soft sm:block">AI operations resources</span>
+      </span>
+    </a>
+
+    <nav class="order-3 flex w-full gap-1 overflow-x-auto lg:order-none lg:w-auto lg:overflow-visible" aria-label="Blog navigation">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            "shrink-0 px-3 py-2 text-[13px] font-semibold transition",
+            isActive(link.href)
+              ? "bg-tactas-night-strong text-white"
+              : "text-tactas-muted hover:bg-tactas-bg-soft hover:text-tactas-ink-strong",
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex shrink-0 items-center gap-2">
+      <a href="/" class="hidden h-10 items-center justify-center gap-2 border border-tactas-line bg-white px-4 text-[13px] font-semibold text-tactas-ink-strong transition hover:border-tactas-line-strong sm:inline-flex">
+        <Home class="h-4 w-4" stroke-width={2} />
+        Main site
+      </a>
+      <a href="/contact" class="inline-flex h-10 items-center justify-center bg-tactas-night-strong px-4 text-[13px] font-semibold text-white transition hover:bg-tactas-accent-strong">
+        <PenLine class="mr-2 h-4 w-4" stroke-width={2} />
+        Task review
+        <ArrowRight class="ml-2 hidden h-4 w-4 sm:block" stroke-width={2} />
+      </a>
+    </div>
+  </div>
+</header>

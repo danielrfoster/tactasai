@@ -49,18 +49,18 @@ const jsonLd = {
   navbarCtaHref="/contact"
   jsonLd={jsonLd}
 >
-  <div class="min-h-screen bg-[#F6F8FB] text-[#0F172A]">
+  <div class="min-h-screen bg-tactas-bg text-tactas-ink">
 
     <main>
-      <section class="relative overflow-hidden border-b border-[#D8E1EA] bg-[#F6F8FB]">
-        <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,#06B6D4_24%,#D7A22A_72%,transparent)]"></div>
+      <section class="relative overflow-hidden border-b border-tactas-line bg-tactas-bg">
+        <div class="pointer-events-none absolute inset-x-0 top-0 h-px tactas-gradient-rule"></div>
         <div class="mx-auto grid w-full max-w-[1240px] gap-8 px-5 py-16 sm:px-8 lg:grid-cols-[minmax(0,0.88fr)_minmax(420px,1.12fr)] lg:gap-10 lg:px-10 lg:py-20">
           <div class="lg:pt-3">
-            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Task review</p>
-            <h1 class="mt-4 max-w-[42rem] text-[42px] font-semibold leading-[1.02] tracking-normal text-[#07324A] sm:text-[58px]">
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Task review</p>
+            <h1 class="mt-4 max-w-[42rem] text-[42px] font-semibold leading-[1.02] tracking-normal text-tactas-ink-strong sm:text-[58px]">
               Scope the first business task your team should automate.
             </h1>
-            <p class="mt-6 max-w-[36rem] text-[17px] leading-relaxed text-[#07324A]/78">
+            <p class="mt-6 max-w-[36rem] text-[17px] leading-relaxed text-tactas-ink-strong/78">
               Share the repeated work, knowledge sources, tools involved, and outputs you want prepared. We will map it into a concrete managed agent plan.
             </p>
 
@@ -70,48 +70,48 @@ const jsonLd = {
                 ["02", "Tools map"],
                 ["03", "Automation map"],
               ].map(([number, label]) => (
-                <div class="border border-[#E4D7B6] bg-white/70 px-4 py-3">
-                  <p class="font-mono text-[10px] text-[#94A3B8]">{number}</p>
-                  <p class="mt-1 text-[13px] font-semibold text-[#07324A]">{label}</p>
+                <div class="border border-tactas-line-strong bg-white/70 px-4 py-3">
+                  <p class="font-mono text-[10px] text-tactas-muted-soft">{number}</p>
+                  <p class="mt-1 text-[13px] font-semibold text-tactas-ink-strong">{label}</p>
                 </div>
               ))}
             </div>
 
-            <div class="mt-8 overflow-hidden border border-[#D8E1EA] bg-white shadow-[0_24px_70px_-62px_rgba(7,50,74,0.35)]">
-              <div class="border-b border-[#E2E8F0] bg-[#F6F8FB] px-5 py-4">
-                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#64748B]">What we review</p>
+            <div class="mt-8 overflow-hidden border border-tactas-line bg-white shadow-[0_24px_70px_-62px_rgba(7,50,74,0.35)]">
+              <div class="border-b border-tactas-line-soft bg-tactas-bg px-5 py-4">
+                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-muted-soft">What we review</p>
               </div>
-              <div class="divide-y divide-[#E2E8F0]">
+              <div class="divide-y divide-tactas-line-soft">
                 {workflowReviewPoints.map((point, index) => {
                   const icons = [CalendarCheck, Network, ShieldCheck];
                   const Icon = icons[index] || Check;
                   return (
                     <div class="flex items-start gap-3 px-5 py-4">
-                      <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-[7px] border border-[#BAE6FD] bg-[#E6FBFF] text-[#0E7490]">
+                      <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-[7px] border border-tactas-accent-line bg-tactas-accent-soft text-tactas-accent-strong">
                         <Icon class="h-4.5 w-4.5" stroke-width={2} />
                       </span>
-                      <p class="pt-1 text-[14px] leading-relaxed text-[#334155]">{point}</p>
+                      <p class="pt-1 text-[14px] leading-relaxed text-tactas-muted">{point}</p>
                     </div>
                   );
                 })}
               </div>
             </div>
 
-            <a href={`mailto:${brandEmail}`} class="mt-6 inline-flex items-center gap-2 text-[14px] font-semibold text-[#07324A] transition hover:text-[#0891B2]">
-              <Mail class="h-4 w-4 text-[#06B6D4]" stroke-width={1.9} />
+            <a href={`mailto:${brandEmail}`} class="mt-6 inline-flex items-center gap-2 text-[14px] font-semibold text-tactas-ink-strong transition hover:text-tactas-accent-strong">
+              <Mail class="h-4 w-4 text-tactas-accent" stroke-width={1.9} />
               <span>{brandEmail}</span>
               <ArrowUpRight class="h-3.5 w-3.5" stroke-width={2} />
             </a>
           </div>
 
-          <form id="workflow-inquiry-form" class="border border-[#D8E1EA] bg-white shadow-[0_34px_100px_-72px_rgba(7,50,74,0.42)]">
-            <div class="border-b border-[#D8E1EA] bg-[#07324A] px-5 py-5 text-white sm:px-6">
+          <form id="workflow-inquiry-form" class="border border-tactas-line bg-white shadow-[0_34px_100px_-72px_rgba(7,50,74,0.42)]">
+            <div class="border-b border-tactas-line bg-tactas-night-strong px-5 py-5 text-white sm:px-6">
               <div class="flex items-center justify-between gap-4">
                 <div>
-                  <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#A5F3FC]">Start with one task</p>
+                  <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-tactas-accent-line">Start with one task</p>
                   <h2 class="mt-2 text-[26px] font-semibold leading-tight tracking-normal">Request an task review</h2>
                 </div>
-                <span class="hidden h-10 w-10 items-center justify-center rounded-[8px] bg-white/[0.08] text-[#67E8F9] sm:flex">
+                <span class="hidden h-10 w-10 items-center justify-center rounded-[8px] bg-white/[0.08] text-tactas-accent sm:flex">
                   <Send class="h-5 w-5" stroke-width={1.9} />
                 </span>
               </div>
@@ -119,46 +119,46 @@ const jsonLd = {
 
             <div class="p-5 sm:p-6">
               <div class="grid gap-4 sm:grid-cols-2">
-                <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">
+                <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-tactas-muted-soft">
                   Name
-                  <input required name="name" class="h-11 rounded-[6px] border border-[#CBD5E1] bg-[#F6F8FB] px-3.5 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Your name" />
+                  <input required name="name" class="h-11 rounded-[6px] border border-tactas-line-strong bg-tactas-bg px-3.5 text-[14px] normal-case tracking-normal text-tactas-ink outline-none transition placeholder:text-tactas-muted-soft focus:border-tactas-accent focus:bg-white focus:ring-2 focus:ring-tactas-accent/15" placeholder="Your name" />
                 </label>
-                <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">
+                <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-tactas-muted-soft">
                   Work email
-                  <input required type="email" name="email" class="h-11 rounded-[6px] border border-[#CBD5E1] bg-[#F6F8FB] px-3.5 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="you@company.com" />
+                  <input required type="email" name="email" class="h-11 rounded-[6px] border border-tactas-line-strong bg-tactas-bg px-3.5 text-[14px] normal-case tracking-normal text-tactas-ink outline-none transition placeholder:text-tactas-muted-soft focus:border-tactas-accent focus:bg-white focus:ring-2 focus:ring-tactas-accent/15" placeholder="you@company.com" />
                 </label>
               </div>
 
               <div class="mt-4 grid gap-4 sm:grid-cols-2">
-                <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">
+                <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-tactas-muted-soft">
                   Company
-                  <input name="company" class="h-11 rounded-[6px] border border-[#CBD5E1] bg-[#F6F8FB] px-3.5 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Company name" />
+                  <input name="company" class="h-11 rounded-[6px] border border-tactas-line-strong bg-tactas-bg px-3.5 text-[14px] normal-case tracking-normal text-tactas-ink outline-none transition placeholder:text-tactas-muted-soft focus:border-tactas-accent focus:bg-white focus:ring-2 focus:ring-tactas-accent/15" placeholder="Company name" />
                 </label>
-                <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">
+                <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-tactas-muted-soft">
                   Systems involved
-                  <input name="systems" class="h-11 rounded-[6px] border border-[#CBD5E1] bg-[#F6F8FB] px-3.5 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Slack, Drive, HubSpot, Notion..." />
+                  <input name="systems" class="h-11 rounded-[6px] border border-tactas-line-strong bg-tactas-bg px-3.5 text-[14px] normal-case tracking-normal text-tactas-ink outline-none transition placeholder:text-tactas-muted-soft focus:border-tactas-accent focus:bg-white focus:ring-2 focus:ring-tactas-accent/15" placeholder="Slack, Drive, HubSpot, Notion..." />
                 </label>
               </div>
 
-              <label class="mt-4 grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">
+              <label class="mt-4 grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-tactas-muted-soft">
                 Business task
-                <textarea required name="workflow" class="min-h-36 rounded-[6px] border border-[#CBD5E1] bg-[#F6F8FB] px-3.5 py-3 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:bg-white focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Example: summarize updates, answer repeated requests, prepare next steps, track open work..."></textarea>
+                <textarea required name="workflow" class="min-h-36 rounded-[6px] border border-tactas-line-strong bg-tactas-bg px-3.5 py-3 text-[14px] normal-case tracking-normal text-tactas-ink outline-none transition placeholder:text-tactas-muted-soft focus:border-tactas-accent focus:bg-white focus:ring-2 focus:ring-tactas-accent/15" placeholder="Example: summarize updates, answer repeated requests, prepare next steps, track open work..."></textarea>
               </label>
 
-              <div class="mt-5 grid gap-2.5 border border-[#D8E1EA] bg-[#F6F8FB] p-4">
+              <div class="mt-5 grid gap-2.5 border border-tactas-line bg-tactas-bg p-4">
                 {["Task outputs stay reviewable before launch", "Tool access is scoped before launch", "Automation map focuses on one measurable workflow"].map((item) => (
-                  <div class="flex items-center gap-2 text-[13px] font-medium text-[#334155]">
-                    <Check class="h-4 w-4 shrink-0 text-[#06B6D4]" stroke-width={2.4} />
+                  <div class="flex items-center gap-2 text-[13px] font-medium text-tactas-muted">
+                    <Check class="h-4 w-4 shrink-0 text-tactas-accent" stroke-width={2.4} />
                     <span>{item}</span>
                   </div>
                 ))}
               </div>
 
-              <button type="submit" class="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-[6px] bg-[#2F66FF] px-6 text-[14px] font-semibold text-white shadow-[0_16px_34px_-24px_rgba(47,102,255,0.85)] transition hover:bg-[#0EA5E9]">
+              <button type="submit" class="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-[6px] bg-tactas-primary px-6 text-[14px] font-semibold text-white shadow-[0_16px_34px_-24px_rgba(47,102,255,0.85)] transition hover:bg-tactas-accent">
                 Request task review
                 <Send class="h-4 w-4" stroke-width={2} />
               </button>
-              <p id="workflow-form-status" class="mt-3 text-center text-[12px] text-[#64748B]">
+              <p id="workflow-form-status" class="mt-3 text-center text-[12px] text-tactas-muted-soft">
                 Prefer email? {brandEmail}
               </p>
             </div>

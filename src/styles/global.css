@@ -15,6 +15,50 @@
 @theme inline {
   --font-sans: var(--font-manrope);
   --font-mono: var(--font-ibm-plex-mono);
+  --color-tactas-bg: var(--bg);
+  --color-tactas-bg-soft: var(--bg-soft);
+  --color-tactas-bg-raised: var(--bg-raised);
+  --color-tactas-bg-elevated: var(--bg-elevated);
+  --color-tactas-line: var(--line);
+  --color-tactas-line-soft: var(--line-soft);
+  --color-tactas-line-strong: var(--line-strong);
+  --color-tactas-ink: var(--ink);
+  --color-tactas-ink-strong: var(--ink-2);
+  --color-tactas-muted: var(--ink-3);
+  --color-tactas-muted-soft: var(--ink-4);
+  --color-tactas-accent: var(--accent);
+  --color-tactas-accent-strong: var(--accent-deep);
+  --color-tactas-accent-soft: var(--accent-soft);
+  --color-tactas-accent-faint: var(--accent-faint);
+  --color-tactas-accent-line: var(--accent-line);
+  --color-tactas-primary: var(--accent-2);
+  --color-tactas-primary-strong: var(--accent-2-deep);
+  --color-tactas-primary-soft: var(--primary-soft);
+  --color-tactas-primary-line: var(--primary-line);
+  --color-tactas-warm: var(--accent-warm);
+  --color-tactas-warning: var(--signal-warn);
+  --color-tactas-warning-soft: var(--warning-soft);
+  --color-tactas-warning-line: var(--warning-line);
+  --color-tactas-warning-strong: var(--warning-strong);
+  --color-tactas-success: var(--signal-ok);
+  --color-tactas-success-soft: var(--success-soft);
+  --color-tactas-success-line: var(--success-line);
+  --color-tactas-success-strong: var(--success-strong);
+  --color-tactas-violet: var(--violet);
+  --color-tactas-violet-soft: var(--violet-soft);
+  --color-tactas-violet-line: var(--violet-line);
+  --color-tactas-night: var(--night);
+  --color-tactas-night-strong: var(--night-strong);
+  --color-tactas-deep: var(--deep);
+  --color-tactas-danger: var(--danger);
+  --color-tactas-danger-soft: var(--danger-soft);
+  --color-tactas-danger-line: var(--danger-line);
+  --radius-tactas-xs: var(--radius-xs);
+  --radius-tactas-sm: var(--radius-control);
+  --radius-tactas-md: var(--radius-panel);
+  --radius-tactas-lg: var(--radius-feature);
+  --shadow-tactas-card: var(--shadow-card);
+  --shadow-tactas-elevated: var(--shadow-elevated);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -48,21 +92,75 @@
 :root {
   --font-manrope: "Manrope", ui-sans-serif, system-ui, sans-serif;
   --font-ibm-plex-mono: "IBM Plex Mono", ui-monospace, monospace;
-  --bg: #07090f;
-  --bg-raised: #0c111c;
-  --bg-elevated: #111827;
-  --line: #1c2333;
-  --line-strong: #2a3346;
-  --ink: #f5f7fb;
-  --ink-2: #c8d0de;
-  --ink-3: #8a93a6;
-  --ink-4: #5e6678;
-  --accent: #67e8f9;
-  --accent-2: #22d3ee;
+  --bg: #f6f8fb;
+  --bg-soft: #f8fafc;
+  --bg-raised: #ffffff;
+  --bg-elevated: #eef6fb;
+  --line: #d8e1ea;
+  --line-soft: #e2e8f0;
+  --line-strong: #cbd5e1;
+  --ink: #0f172a;
+  --ink-2: #07324a;
+  --ink-3: #475569;
+  --ink-4: #64748b;
+  --accent: #06b6d4;
+  --accent-2: #2f66ff;
+  --accent-2-deep: #1d4ed8;
   --accent-deep: #0891b2;
+  --accent-soft: #e6fbff;
+  --accent-faint: #ecfeff;
+  --accent-line: #bae6fd;
+  --accent-warm: #d7a22a;
   --signal-ok: #34d399;
+  --success-soft: #ecfdf5;
+  --success-line: #a7f3d0;
+  --success-strong: #047857;
   --signal-warn: #fbbf24;
-  --radius: 0.5rem;
+  --warning-soft: #fef3c7;
+  --warning-line: #fde68a;
+  --warning-strong: #b45309;
+  --violet: #7c3aed;
+  --violet-soft: #f3e8ff;
+  --violet-line: #ddd6fe;
+  --primary-soft: #dbeafe;
+  --primary-line: #bfdbfe;
+  --night: #0f172a;
+  --night-strong: #07324a;
+  --deep: #05073b;
+  --danger: #b91c1c;
+  --danger-soft: #fee2e2;
+  --danger-line: #fecaca;
+  --background: var(--bg);
+  --foreground: var(--ink);
+  --card: var(--bg-raised);
+  --card-foreground: var(--ink);
+  --popover: var(--bg-raised);
+  --popover-foreground: var(--ink);
+  --primary: var(--accent-2);
+  --primary-foreground: #ffffff;
+  --secondary: var(--bg-elevated);
+  --secondary-foreground: var(--ink-2);
+  --muted: var(--bg-soft);
+  --muted-foreground: var(--ink-4);
+  --destructive: #b91c1c;
+  --destructive-foreground: #ffffff;
+  --border: var(--line);
+  --input: var(--line-strong);
+  --ring: var(--accent);
+  --chart-1: var(--accent);
+  --chart-2: var(--accent-2);
+  --chart-3: var(--accent-warm);
+  --chart-4: var(--signal-ok);
+  --chart-5: var(--violet);
+  --radius: 0.75rem;
+  --radius-xs: 0.375rem;
+  --radius-control: 0.5rem;
+  --radius-card: 0.5rem;
+  --radius-panel: 0.75rem;
+  --radius-feature: 1rem;
+  --radius-pill: 999px;
+  --shadow-card: 0 24px 70px -58px rgba(7, 50, 74, 0.36);
+  --shadow-elevated: 0 34px 100px -72px rgba(7, 50, 74, 0.42);
 }
 
 .wiring-diagram-theme {
@@ -105,20 +203,20 @@ html {
 
 body {
   background:
-    radial-gradient(1200px 600px at 50% -10%, rgba(34, 211, 238, 0.08), transparent 60%),
-    radial-gradient(900px 700px at 90% 10%, rgba(8, 145, 178, 0.05), transparent 60%),
+    radial-gradient(1200px 600px at 50% -10%, rgba(6, 182, 212, 0.08), transparent 60%),
+    radial-gradient(900px 700px at 90% 10%, rgba(215, 162, 42, 0.06), transparent 60%),
     var(--bg);
   color: var(--ink);
   font-family: var(--font-manrope);
   font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color-scheme: dark;
-  letter-spacing: -0.005em;
+  color-scheme: light;
+  letter-spacing: 0;
 }
 
 ::selection {
-  background: rgba(103, 232, 249, 0.28);
+  background: rgba(6, 182, 212, 0.22);
   color: var(--ink);
 }
 
@@ -132,12 +230,296 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1c2333;
+  background: #cbd5e1;
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2a3346;
+  background: #94a3b8;
+}
+
+.tactas-page {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.tactas-container {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .tactas-container {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tactas-container {
+    padding-inline: 2.5rem;
+  }
+}
+
+.tactas-container-narrow {
+  width: 100%;
+  max-width: 1040px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .tactas-container-narrow {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tactas-container-narrow {
+    padding-inline: 2.5rem;
+  }
+}
+
+.tactas-section {
+  border-color: var(--line);
+  background: var(--bg);
+}
+
+.tactas-section-soft {
+  border-color: var(--line);
+  background: var(--bg-soft);
+}
+
+.tactas-section-white {
+  border-color: var(--line);
+  background: var(--bg-raised);
+}
+
+.tactas-gradient-rule {
+  background: linear-gradient(90deg, transparent, var(--accent) 24%, var(--accent-warm) 72%, transparent);
+}
+
+.tactas-gradient-rule-primary {
+  background: linear-gradient(90deg, transparent, var(--accent-2) 22%, var(--accent-warm) 62%, transparent);
+}
+
+.tactas-kicker {
+  color: var(--accent-deep);
+  font-family: var(--font-ibm-plex-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.tactas-display {
+  color: var(--ink-2);
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.tactas-body {
+  color: var(--ink-3);
+  line-height: 1.68;
+}
+
+.tactas-lead {
+  max-width: 42rem;
+  color: var(--ink-3);
+  font-size: 1.0625rem;
+  line-height: 1.68;
+}
+
+.tactas-muted {
+  color: var(--ink-4);
+}
+
+.tactas-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: var(--shadow-card);
+}
+
+.tactas-card-strong {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  background: #ffffff;
+  box-shadow: var(--shadow-elevated);
+}
+
+.tactas-surface {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-card);
+}
+
+.tactas-surface-soft {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--bg-soft);
+}
+
+.tactas-chip {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  background: var(--bg-raised);
+  color: var(--ink-3);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.375rem 0.75rem;
+}
+
+.tactas-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--accent-line);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--accent-soft) 80%, transparent);
+  color: var(--accent-deep);
+  padding: 0.375rem 0.75rem;
+}
+
+.tactas-icon-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--accent-line);
+  border-radius: var(--radius-control);
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+}
+
+.tactas-link {
+  color: var(--accent-deep);
+  font-weight: 700;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease;
+}
+
+.tactas-link:hover {
+  color: var(--accent-2);
+}
+
+.legal-section-title {
+  color: var(--ink);
+}
+
+.legal-link {
+  color: var(--accent-deep);
+  font-weight: 600;
+}
+
+.legal-link:hover {
+  color: var(--accent);
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.tactas-button-primary,
+.tactas-button-secondary {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  padding-inline: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms ease,
+    background-color 220ms ease,
+    color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.tactas-button-primary {
+  background: var(--accent-2);
+  color: #ffffff;
+  box-shadow: 0 16px 34px -24px rgba(47, 102, 255, 0.85);
+}
+
+.tactas-button-primary:hover {
+  background: #0ea5e9;
+  transform: translateY(-1px);
+}
+
+.tactas-button-secondary {
+  border: 1px solid #d9cfae;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink-2);
+}
+
+.tactas-button-secondary:hover {
+  border-color: var(--accent-2);
+  color: var(--accent-2);
+  transform: translateY(-1px);
+}
+
+.tactas-panel-dark {
+  border: 1px solid rgba(6, 182, 212, 0.18);
+  border-radius: var(--radius-panel);
+  background: linear-gradient(180deg, var(--night-strong) 0%, #061e33 100%);
+  color: #ffffff;
+  box-shadow: 0 34px 100px -72px rgba(7, 50, 74, 0.58);
+}
+
+.tactas-panel-dark .tactas-body {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+:where(input, textarea, select) {
+  border-radius: var(--radius-control) !important;
+}
+
+:where(input, textarea, select):focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.14) !important;
+}
+
+main :where(article[class*="border"], form[class*="border"], details[class*="border"]) {
+  border-radius: var(--radius-card) !important;
+}
+
+main :where(article[class*="border"][class*="bg-white"], form[class*="border"][class*="bg-white"], details[class*="border"][class*="bg-white"]) {
+  box-shadow: var(--shadow-card) !important;
+}
+
+main :where(a, button)[class*="bg-[#2F66FF]"] {
+  border-radius: var(--radius-pill) !important;
+  color: #ffffff;
+}
+
+main :where(a, button)[class*="border"][class*="bg-white"][class*="text-[#07324A]"] {
+  border-radius: var(--radius-pill) !important;
+}
+
+main :where(a, button)[class*="bg-[#2F66FF]"]:hover {
+  transform: translateY(-1px);
+}
+
+main :where(a, button, article, details) {
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal {
@@ -188,8 +570,8 @@ body {
 
 .grid-faint {
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(7, 50, 74, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(7, 50, 74, 0.045) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 

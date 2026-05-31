@@ -1,5 +1,6 @@
 ---
 import { ArrowRight, CalendarDays, Clock } from "@lucide/astro";
+import BlogNavbar from "../../components/BlogNavbar.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { blogPosts } from "../../lib/blog";
 import { getOrganization, getSiteUrl } from "../../lib/site";
@@ -14,6 +15,13 @@ const description =
 const categories = ["All", ...new Set(blogPosts.map((post) => post.category))];
 const featuredPost = blogPosts[0];
 const latestPosts = blogPosts.slice(1);
+const defaultPostImage = {
+  src: "/tactas-ai-managed-agent-systems-og.jpg",
+  width: 1734,
+  height: 907,
+  alt: "Tactas AI managed agent systems",
+};
+const featuredImage = featuredPost.image ?? defaultPostImage;
 
 const formatDate = (date: string) =>
   new Date(`${date}T00:00:00`).toLocaleDateString("en-US", {
@@ -41,6 +49,7 @@ const jsonLd = {
         datePublished: post.publishedAt,
         dateModified: post.publishedAt,
         url: `${pageUrl}/${post.slug}`,
+        image: `${siteUrl}${post.image?.src ?? defaultPostImage.src}`,
         author: { "@id": `${siteUrl}/#organization` },
         publisher: { "@id": `${siteUrl}/#organization` },
       })),
@@ -61,8 +70,7 @@ const jsonLd = {
   description={description}
   canonical="/blog"
   currentPath="/blog"
-  navbarTheme="light"
-  navbarCtaLabel="Book a review"
+  showNavbar={false}
   keywords={[
     "managed AI agents blog",
     "business task automation",
@@ -88,48 +96,27 @@ const jsonLd = {
   twitter={{ card: "summary_large_image", title, description, images: ["/tactas-ai-managed-agent-systems-og.jpg"] }}
   jsonLd={jsonLd}
 >
-  <main class="min-h-screen bg-[#F7F8FA] text-[#111827] selection:bg-[#BAE6FD] selection:text-[#0F172A]">
-    <section class="border-b border-[#D8E1EA] bg-white">
-      <div class="mx-auto grid w-full max-w-[1240px] gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[minmax(0,760px)_320px] lg:px-10 lg:py-20">
+  <BlogNavbar currentPath="/blog" />
+  <main class="min-h-screen bg-tactas-bg text-tactas-ink selection:bg-tactas-accent-line selection:text-tactas-ink">
+    <section class="border-b border-tactas-line bg-white">
+      <div class="tactas-container py-10 lg:py-12">
         <div class="reveal">
-          <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-[#0891B2]">Tactas AI Blog</p>
-          <h1 class="mt-5 max-w-[760px] text-[clamp(2.4rem,6vw,4.6rem)] font-semibold leading-[1.03] tracking-normal text-[#07324A]">
-            Practical thinking for AI operations.
-          </h1>
-          <p class="mt-6 max-w-[680px] text-[18px] leading-relaxed text-[#475569]">
-            Guides for teams turning company knowledge, repeated tasks, and connected tools into managed AI agent workflows.
+          <p class="max-w-[760px] text-[16px] leading-relaxed text-tactas-muted sm:text-[18px]">
+            Explore expert insights and actionable strategies for navigating the evolving landscape of enterprise AI.
           </p>
         </div>
-
-        <aside class="border-t border-[#D8E1EA] pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-2 reveal" data-delay="1">
-          <p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">Editorial focus</p>
-          <dl class="mt-5 space-y-5">
-            <div>
-              <dt class="text-[13px] font-semibold text-[#07324A]">Operating context</dt>
-              <dd class="mt-1 text-[14px] leading-relaxed text-[#64748B]">How agents use business knowledge before taking action.</dd>
-            </div>
-            <div>
-              <dt class="text-[13px] font-semibold text-[#07324A]">Workflow selection</dt>
-              <dd class="mt-1 text-[14px] leading-relaxed text-[#64748B]">How to choose tasks with clear inputs, outputs, and ownership.</dd>
-            </div>
-            <div>
-              <dt class="text-[13px] font-semibold text-[#07324A]">Managed deployment</dt>
-              <dd class="mt-1 text-[14px] leading-relaxed text-[#64748B]">How to make automation reliable inside real business systems.</dd>
-            </div>
-          </dl>
-        </aside>
       </div>
     </section>
 
-    <section class="border-b border-[#D8E1EA] bg-[#F7F8FA]">
-      <div class="mx-auto w-full max-w-[1240px] px-5 py-5 sm:px-8 lg:px-10">
+    <section class="border-b border-tactas-line bg-tactas-bg">
+      <div class="tactas-container py-5">
         <nav class="flex gap-2 overflow-x-auto pb-1 scrollbar-none" aria-label="Blog categories">
           {categories.map((category) => (
             <button
               type="button"
               data-category-btn={category}
               data-active={category === "All" ? "true" : "false"}
-              class="category-btn shrink-0 border border-[#D8E1EA] bg-white px-4 py-2 text-[13px] font-semibold text-[#334155] transition hover:border-[#94A3B8] hover:text-[#07324A] data-[active=true]:border-[#07324A] data-[active=true]:bg-[#07324A] data-[active=true]:text-white"
+              class="category-btn shrink-0 border border-tactas-line bg-white px-4 py-2 text-[13px] font-semibold text-tactas-muted transition hover:border-tactas-line-strong hover:text-tactas-ink-strong data-[active=true]:border-tactas-night-strong data-[active=true]:bg-tactas-night-strong data-[active=true]:text-white"
             >
               {category}
             </button>
@@ -138,48 +125,49 @@ const jsonLd = {
       </div>
     </section>
 
-    <section class="mx-auto w-full max-w-[1240px] px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
+    <section class="tactas-container py-12 lg:py-16">
       <article data-post-card data-post-category={featuredPost.category} class="reveal">
         <a
           href={`/blog/${featuredPost.slug}`}
-          class="group grid overflow-hidden border border-[#D8E1EA] bg-white shadow-[0_24px_70px_-58px_rgba(7,50,74,0.4)] transition hover:border-[#A7B4C4] lg:grid-cols-[0.88fr_1.12fr]"
+          class="group block overflow-hidden border border-tactas-line bg-white shadow-[0_24px_70px_-58px_rgba(7,50,74,0.4)] transition hover:border-tactas-line-strong"
         >
-          <div class="relative min-h-[260px] border-b border-[#D8E1EA] bg-[#F8FAFC] lg:min-h-[460px] lg:border-b-0 lg:border-r">
+          <div class="relative flex items-center justify-center border-b border-tactas-line bg-tactas-bg-soft p-3 sm:p-4 lg:p-5">
             <img
-              src="/tactas-ai-managed-agent-systems-og.jpg"
-              alt="Tactas AI managed agent systems"
-              class="h-full w-full object-cover"
+              src={featuredImage.src}
+              alt={featuredImage.alt}
+              class="aspect-[3/2] w-full max-w-[980px] object-contain"
               loading="eager"
               decoding="async"
             />
           </div>
 
-          <div class="flex min-h-[420px] flex-col justify-between p-7 sm:p-9 lg:p-11">
+          <div class="p-7 sm:p-8 lg:p-9">
             <div>
-              <p class="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#0891B2]">Featured article</p>
-              <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] font-medium text-[#64748B]">
+              <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] font-medium text-tactas-muted-soft">
+                <span class="font-semibold uppercase tracking-[0.16em] text-tactas-accent-strong">Featured article</span>
+                <span class="h-1 w-1 rounded-full bg-tactas-line-strong" aria-hidden="true"></span>
                 <span class="inline-flex items-center gap-1.5">
-                  <CalendarDays class="h-4 w-4 text-[#64748B]" />
+                  <CalendarDays class="h-4 w-4 text-tactas-muted-soft" />
                   {formatDate(featuredPost.publishedAt)}
                 </span>
-                <span class="h-1 w-1 rounded-full bg-[#CBD5E1]" aria-hidden="true"></span>
+                <span class="h-1 w-1 rounded-full bg-tactas-line-strong" aria-hidden="true"></span>
                 <span class="inline-flex items-center gap-1.5">
-                  <Clock class="h-4 w-4 text-[#64748B]" />
+                  <Clock class="h-4 w-4 text-tactas-muted-soft" />
                   {featuredPost.readTime}
                 </span>
               </div>
-              <p class="mt-8 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#64748B]">
+              <p class="mt-6 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-tactas-muted-soft">
                 {featuredPost.category}
               </p>
-              <h2 class="mt-4 max-w-[720px] text-[clamp(2rem,4vw,3.3rem)] font-semibold leading-[1.06] tracking-normal text-[#07324A] transition group-hover:text-[#075985]">
+              <h2 class="mt-4 max-w-[900px] text-[clamp(1.8rem,3.2vw,2.8rem)] font-semibold leading-[1.08] tracking-normal text-tactas-ink-strong transition group-hover:text-tactas-accent-strong">
                 {featuredPost.title}
               </h2>
-              <p class="mt-5 max-w-[640px] text-[17px] leading-relaxed text-[#475569]">{featuredPost.summary}</p>
+              <p class="mt-4 max-w-[760px] text-[16px] leading-relaxed text-tactas-muted">{featuredPost.summary}</p>
             </div>
 
-            <div class="mt-10 flex items-center justify-between border-t border-[#E2E8F0] pt-6">
-              <span class="text-[13px] font-semibold text-[#64748B]">Tactas AI Editorial</span>
-              <span class="inline-flex items-center text-[14px] font-semibold text-[#07324A] transition group-hover:text-[#075985]">
+            <div class="mt-10 flex items-center justify-between border-t border-tactas-line-soft pt-6">
+              <span class="text-[13px] font-semibold text-tactas-muted-soft">tactas team</span>
+              <span class="inline-flex items-center text-[14px] font-semibold text-tactas-ink-strong transition group-hover:text-tactas-accent-strong">
                 Read article
                 <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-1" stroke-width={2} />
               </span>
@@ -188,12 +176,12 @@ const jsonLd = {
         </a>
       </article>
 
-      <div class="mt-16 flex flex-col gap-3 border-t border-[#D8E1EA] pt-10 sm:flex-row sm:items-end sm:justify-between reveal">
+      <div class="mt-16 flex flex-col gap-3 border-t border-tactas-line pt-10 sm:flex-row sm:items-end sm:justify-between reveal">
         <div>
-          <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-[#0891B2]">Latest analysis</p>
-          <h2 class="mt-3 text-[32px] font-semibold leading-tight tracking-normal text-[#07324A] sm:text-[42px]">More from Tactas AI</h2>
+          <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-tactas-accent-strong">Latest analysis</p>
+          <h2 class="mt-3 text-[32px] font-semibold leading-tight tracking-normal text-tactas-ink-strong sm:text-[42px]">More from Tactas AI</h2>
         </div>
-        <a href="/contact" class="inline-flex h-11 items-center justify-center border border-[#D8E1EA] bg-white px-5 text-[14px] font-semibold text-[#07324A] transition hover:border-[#94A3B8]">
+        <a href="/contact" class="inline-flex h-11 items-center justify-center border border-tactas-line bg-white px-5 text-[14px] font-semibold text-tactas-ink-strong transition hover:border-tactas-line-strong">
           Request a topic
         </a>
       </div>
@@ -203,21 +191,21 @@ const jsonLd = {
           <article data-post-card data-post-category={post.category} class="reveal" data-delay={String(idx + 1)}>
             <a
               href={`/blog/${post.slug}`}
-              class="group flex h-full min-h-[320px] flex-col justify-between border border-[#D8E1EA] bg-white p-7 transition hover:border-[#A7B4C4] sm:p-8"
+              class="group flex h-full min-h-[320px] flex-col justify-between border border-tactas-line bg-white p-7 transition hover:border-tactas-line-strong sm:p-8"
             >
               <div>
-                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] font-medium text-[#64748B]">
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] font-medium text-tactas-muted-soft">
                   <span>{formatDate(post.publishedAt)}</span>
-                  <span class="h-1 w-1 rounded-full bg-[#CBD5E1]" aria-hidden="true"></span>
+                  <span class="h-1 w-1 rounded-full bg-tactas-line-strong" aria-hidden="true"></span>
                   <span>{post.readTime}</span>
                 </div>
-                <p class="mt-7 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#64748B]">{post.category}</p>
-                <h3 class="mt-4 text-[26px] font-semibold leading-tight tracking-normal text-[#07324A] transition group-hover:text-[#075985]">
+                <p class="mt-7 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-tactas-muted-soft">{post.category}</p>
+                <h3 class="mt-4 text-[26px] font-semibold leading-tight tracking-normal text-tactas-ink-strong transition group-hover:text-tactas-accent-strong">
                   {post.title}
                 </h3>
-                <p class="mt-4 text-[15.5px] leading-relaxed text-[#475569]">{post.summary}</p>
+                <p class="mt-4 text-[15.5px] leading-relaxed text-tactas-muted">{post.summary}</p>
               </div>
-              <span class="mt-10 inline-flex items-center text-[14px] font-semibold text-[#07324A] transition group-hover:text-[#075985]">
+              <span class="mt-10 inline-flex items-center text-[14px] font-semibold text-tactas-ink-strong transition group-hover:text-tactas-accent-strong">
                 Read article
                 <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-1" stroke-width={2} />
               </span>
@@ -227,18 +215,18 @@ const jsonLd = {
       </div>
     </section>
 
-    <section class="border-y border-[#D8E1EA] bg-white">
+    <section class="border-y border-tactas-line bg-white">
       <div class="mx-auto grid w-full max-w-[1240px] gap-6 px-5 py-12 sm:px-8 lg:grid-cols-[1fr_auto] lg:items-center lg:px-10">
         <div>
-          <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-[#0891B2]">Task review</p>
-          <h2 class="mt-3 max-w-[720px] text-[30px] font-semibold leading-tight tracking-normal text-[#07324A] sm:text-[40px]">
+          <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-tactas-accent-strong">Task review</p>
+          <h2 class="mt-3 max-w-[720px] text-[30px] font-semibold leading-tight tracking-normal text-tactas-ink-strong sm:text-[40px]">
             Need help choosing the first workflow?
           </h2>
-          <p class="mt-4 max-w-[640px] text-[16px] leading-relaxed text-[#475569]">
+          <p class="mt-4 max-w-[640px] text-[16px] leading-relaxed text-tactas-muted">
             Share a repeated business task and the systems behind it. Tactas AI can map the context, outputs, and automation path.
           </p>
         </div>
-        <a href="/contact" class="inline-flex h-12 items-center justify-center bg-[#07324A] px-6 text-[14px] font-semibold text-white transition hover:bg-[#075985]">
+        <a href="/contact" class="inline-flex h-12 items-center justify-center bg-tactas-night-strong px-6 text-[14px] font-semibold text-white transition hover:bg-tactas-accent-strong">
           Request task review
           <ArrowRight class="ml-2 h-4 w-4" stroke-width={2} />
         </a>
@@ -277,14 +265,3 @@ const jsonLd = {
 
   document.addEventListener("astro:after-swap", initFilters);
 </script>
-
-<style>
-  .scrollbar-none::-webkit-scrollbar {
-    display: none;
-  }
-
-  .scrollbar-none {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-</style>

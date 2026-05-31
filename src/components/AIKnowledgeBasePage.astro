@@ -25,7 +25,6 @@ interface Props {
 
 const { currentPath = "/services/ai-knowledge-base" } = Astro.props;
 const brandEmail = getBrandEmail();
-const CONTAINER = "mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10";
 
 const trustPoints = [
   ["Company knowledge", "Context agents can use"],
@@ -104,19 +103,19 @@ const faqs = [
 ];
 ---
 
-<div class="min-h-screen overflow-x-hidden bg-[#F6F8FB] text-[#0F172A] selection:bg-[#06B6D4]/20">
+<div class="min-h-screen overflow-x-hidden bg-tactas-bg text-tactas-ink selection:bg-tactas-accent/20">
   <div class="pointer-events-none fixed inset-0 -z-20 grid-faint opacity-[0.24] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_10%,black_0%,transparent_75%)]"></div>
 
   <main>
-    <section class="relative overflow-hidden border-b border-[#D8E1EA]">
+    <section class="relative overflow-hidden border-b border-tactas-line">
       <div class="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(180deg,rgba(124,58,237,0.13)_0%,rgba(5,10,20,0)_58%)]"></div>
       <div class="pointer-events-none absolute inset-0 z-0 opacity-[0.32] [background-image:linear-gradient(to_right,rgba(255,255,255,0.055)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.045)_1px,transparent_1px)] [background-size:72px_72px]"></div>
 
-      <div class={`${CONTAINER} relative z-10 grid min-h-[720px] items-center gap-14 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:py-20`}>
+      <div class={`tactas-container relative z-10 grid min-h-[720px] items-center gap-14 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:py-20`}>
         <div class="reveal">
-          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-[#BAE6FD] bg-[#E6FBFF]/80 px-3 py-1.5">
-            <Sparkles class="h-3.5 w-3.5 text-[#0891B2]" stroke-width={1.8} />
-            <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#0891B2]">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-tactas-accent-line bg-tactas-accent-soft/80 px-3 py-1.5">
+            <Sparkles class="h-3.5 w-3.5 text-tactas-accent-strong" stroke-width={1.8} />
+            <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-tactas-accent-strong">
               Company knowledge layer
             </span>
           </div>
@@ -125,7 +124,7 @@ const faqs = [
             Turn company knowledge into action-ready work.
           </h1>
 
-          <p class="mt-7 max-w-[42rem] text-[17px] leading-relaxed text-[#475569]">
+          <p class="mt-7 max-w-[42rem] text-[17px] leading-relaxed text-tactas-muted">
             Tactas connects docs, files, business data, and source context so AI agents can answer questions, summarize information,
             prepare outputs, and support automated tasks.
           </p>
@@ -133,14 +132,14 @@ const faqs = [
           <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
               href="#contact"
-              class="group inline-flex h-12 items-center justify-center rounded-[6px] bg-[#2F66FF] px-6 text-[14px] font-semibold text-white shadow-[0_18px_48px_-24px_rgba(124,58,237,0.8)] transition hover:bg-[#0EA5E9]"
+              class="group inline-flex h-12 items-center justify-center rounded-[6px] bg-tactas-primary px-6 text-[14px] font-semibold text-white shadow-[0_18px_48px_-24px_rgba(124,58,237,0.8)] transition hover:bg-tactas-accent"
             >
               Start a knowledge review
               <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-0.5" stroke-width={1.9} />
             </a>
             <a
               href="#service"
-              class="inline-flex h-12 items-center justify-center rounded-[6px] border border-[#D8E1EA] bg-white px-6 text-[14px] font-semibold text-[#07324A] transition hover:border-[#06B6D4]/70 hover:text-[#0891B2]"
+              class="inline-flex h-12 items-center justify-center rounded-[6px] border border-tactas-line bg-white px-6 text-[14px] font-semibold text-tactas-ink-strong transition hover:border-tactas-accent/70 hover:text-tactas-accent-strong"
             >
               See knowledge layer
             </a>
@@ -148,9 +147,9 @@ const faqs = [
 
           <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {trustPoints.map(([title, body]) => (
-              <div class="border-l border-[#06B6D4]/50 pl-4">
-                <p class="text-[14px] font-semibold text-[#07324A]">{title}</p>
-                <p class="mt-1 text-[12px] leading-relaxed text-[#64748B]">{body}</p>
+              <div class="border-l border-tactas-accent/50 pl-4">
+                <p class="text-[14px] font-semibold text-tactas-ink-strong">{title}</p>
+                <p class="mt-1 text-[12px] leading-relaxed text-tactas-muted-soft">{body}</p>
               </div>
             ))}
           </div>
@@ -158,30 +157,30 @@ const faqs = [
 
         <div class="reveal" data-delay="2">
           <div class="relative mx-auto max-w-[640px]">
-            <div class="absolute inset-x-8 bottom-[-18px] h-12 rounded-full bg-[#2F66FF]/18 blur-2xl"></div>
-            <div class="relative overflow-hidden rounded-[12px] border border-[#D8E1EA] bg-white shadow-[0_40px_110px_-56px_rgba(0,0,0,0.95)]">
-              <div class="flex h-12 items-center justify-between border-b border-[#D8E1EA] bg-white px-4">
+            <div class="absolute inset-x-8 bottom-[-18px] h-12 rounded-full bg-tactas-primary/18 blur-2xl"></div>
+            <div class="relative overflow-hidden rounded-[12px] border border-tactas-line bg-white shadow-[0_40px_110px_-56px_rgba(0,0,0,0.95)]">
+              <div class="flex h-12 items-center justify-between border-b border-tactas-line bg-white px-4">
                 <div class="flex items-center gap-2">
-                  <span class="h-2.5 w-2.5 rounded-full bg-[#06B6D4]"></span>
+                  <span class="h-2.5 w-2.5 rounded-full bg-tactas-accent"></span>
                   <span class="h-2.5 w-2.5 rounded-full bg-white/24"></span>
                   <span class="h-2.5 w-2.5 rounded-full bg-white/24"></span>
                 </div>
-                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#0891B2]">Knowledge runtime</p>
+                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-accent-strong">Knowledge runtime</p>
               </div>
 
               <div class="grid lg:grid-cols-[185px_1fr]">
-                <aside class="border-b border-[#D8E1EA] bg-[#F6F8FB] p-4 lg:border-b-0 lg:border-r">
-                  <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#0891B2]">Sources</p>
+                <aside class="border-b border-tactas-line bg-tactas-bg p-4 lg:border-b-0 lg:border-r">
+                  <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-tactas-accent-strong">Sources</p>
                   <div class="mt-4 grid gap-2">
                     {sources.map((source, index) => (
                       <div class:list={[
                         "flex items-center justify-between rounded-[6px] border px-3 py-2 text-[12px]",
-                        index < 4 ? "border-[#BAE6FD] bg-[#E6FBFF] text-[#07324A]" : "border-[#D8E1EA] bg-white text-[#64748B]",
+                        index < 4 ? "border-tactas-accent-line bg-tactas-accent-soft text-tactas-ink-strong" : "border-tactas-line bg-white text-tactas-muted-soft",
                       ]}>
                         <span>{source}</span>
                         <span class:list={[
                           "h-1.5 w-1.5 rounded-full",
-                          index < 4 ? "bg-[#06B6D4]" : "bg-white/20",
+                          index < 4 ? "bg-tactas-accent" : "bg-white/20",
                         ]}></span>
                       </div>
                     ))}
@@ -189,37 +188,37 @@ const faqs = [
                 </aside>
 
                 <div class="p-5">
-                  <div class="rounded-[8px] border border-[#D8E1EA] bg-white p-4">
+                  <div class="rounded-[8px] border border-tactas-line bg-white p-4">
                     <div class="flex items-start gap-3">
-                      <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-[6px] bg-[#2F66FF] text-white">
+                      <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-[6px] bg-tactas-primary text-white">
                         <Search class="h-5 w-5" stroke-width={2} />
                       </span>
                       <div>
-                        <p class="text-[14px] font-semibold text-[#07324A]">What changed in the enterprise refund policy?</p>
-                        <p class="mt-1 text-[12px] leading-relaxed text-[#64748B]">
+                        <p class="text-[14px] font-semibold text-tactas-ink-strong">What changed in the enterprise refund policy?</p>
+                        <p class="mt-1 text-[12px] leading-relaxed text-tactas-muted-soft">
                           Searching source documents, business notes, and related context.
                         </p>
                       </div>
                     </div>
 
                     <div class="mt-4 h-1.5 overflow-hidden rounded-full bg-white/10">
-                      <div class="tactas-progress h-full rounded-full bg-[#06B6D4]"></div>
+                      <div class="tactas-progress h-full rounded-full bg-tactas-accent"></div>
                     </div>
                   </div>
 
-                  <div class="mt-4 rounded-[8px] border border-[#BAE6FD] bg-[#E6FBFF]/72 p-4">
+                  <div class="mt-4 rounded-[8px] border border-tactas-accent-line bg-tactas-accent-soft/72 p-4">
                     <div class="flex items-center justify-between gap-4">
-                      <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#0891B2]">Cited answer</p>
-                      <Check class="h-4 w-4 text-[#0891B2]" stroke-width={2.2} />
+                      <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-tactas-accent-strong">Cited answer</p>
+                      <Check class="h-4 w-4 text-tactas-accent-strong" stroke-width={2.2} />
                     </div>
-                    <p class="mt-3 text-[14px] leading-relaxed text-[#07324A]">
+                    <p class="mt-3 text-[14px] leading-relaxed text-tactas-ink-strong">
                       The policy changed this quarter. The next step is to prepare a customer-ready answer, attach the source,
                       and create a follow-up task for the account owner.
                     </p>
                     <div class="mt-4 grid gap-2 sm:grid-cols-2">
                       {["Policy-update.pdf p.12", "Account-notes.md sec.3", "Product-guide p.4", "Team-playbook p.9"].map((item) => (
-                        <div class="flex items-center gap-2 rounded-[5px] border border-[#D8E1EA] bg-[#F6F8FB] px-3 py-2 text-[11px] text-[#475569]">
-                          <FileText class="h-3.5 w-3.5 text-[#0891B2]" stroke-width={1.8} />
+                        <div class="flex items-center gap-2 rounded-[5px] border border-tactas-line bg-tactas-bg px-3 py-2 text-[11px] text-tactas-muted">
+                          <FileText class="h-3.5 w-3.5 text-tactas-accent-strong" stroke-width={1.8} />
                           {item}
                         </div>
                       ))}
@@ -232,9 +231,9 @@ const faqs = [
                       [Layers, "Hybrid index"],
                       [KeyRound, "Permissions"],
                     ].map(([Icon, label]) => (
-                      <div class="rounded-[8px] border border-[#D8E1EA] bg-white p-3">
-                        <Icon class="h-4 w-4 text-[#0891B2]" stroke-width={1.8} />
-                        <p class="mt-3 text-[12px] font-semibold text-[#07324A]">{label}</p>
+                      <div class="rounded-[8px] border border-tactas-line bg-white p-3">
+                        <Icon class="h-4 w-4 text-tactas-accent-strong" stroke-width={1.8} />
+                        <p class="mt-3 text-[12px] font-semibold text-tactas-ink-strong">{label}</p>
                       </div>
                     ))}
                   </div>
@@ -246,11 +245,11 @@ const faqs = [
       </div>
     </section>
 
-    <section class="border-b border-[#D8E1EA] bg-[#F6F8FB]">
-      <div class={`${CONTAINER} py-10`}>
+    <section class="border-b border-tactas-line bg-tactas-bg">
+      <div class={`tactas-container py-10`}>
         <div class="grid gap-3 text-center sm:grid-cols-2 lg:grid-cols-4">
           {["Company Knowledge Layer", "Source-Backed Answers", "Document Search", "Action-Ready Context"].map((term) => (
-            <div class="rounded-[8px] border border-[#D8E1EA] bg-white px-4 py-4 font-mono text-[11px] uppercase tracking-[0.18em] text-[#0891B2]">
+            <div class="rounded-[8px] border border-tactas-line bg-white px-4 py-4 font-mono text-[11px] uppercase tracking-[0.18em] text-tactas-accent-strong">
               {term}
             </div>
           ))}
@@ -258,14 +257,14 @@ const faqs = [
       </div>
     </section>
 
-    <section id="service" class="border-b border-[#D8E1EA] bg-[#F6F8FB]">
-      <div class={`${CONTAINER} py-18 lg:py-24`}>
+    <section id="service" class="border-b border-tactas-line bg-tactas-bg">
+      <div class={`tactas-container py-18 lg:py-24`}>
         <div class="mx-auto max-w-3xl text-center">
-          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Managed service</p>
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Managed service</p>
           <h2 class="mt-4 text-[clamp(2rem,4vw,3.2rem)] font-bold leading-tight tracking-[-0.025em]">
             Company knowledge for managed AI agents.
           </h2>
-          <p class="mt-5 text-[16px] leading-relaxed text-[#64748B]">
+          <p class="mt-5 text-[16px] leading-relaxed text-tactas-muted-soft">
             The value is not just search. It is the operating layer that turns documents, files, and source context into
             answers, summaries, task outputs, and automated work.
           </p>
@@ -275,12 +274,12 @@ const faqs = [
           {serviceLayers.map((item) => {
             const Icon = item.icon;
             return (
-              <article class="group min-h-[250px] rounded-[8px] border border-[#D8E1EA] bg-white p-6 transition hover:border-[#06B6D4]/50 hover:bg-white">
-                <span class="flex h-12 w-12 items-center justify-center rounded-[8px] border border-[#06B6D4]/25 bg-[#E6FBFF] text-[#0891B2]">
+              <article class="group min-h-[250px] rounded-[8px] border border-tactas-line bg-white p-6 transition hover:border-tactas-accent/50 hover:bg-white">
+                <span class="flex h-12 w-12 items-center justify-center rounded-[8px] border border-tactas-accent/25 bg-tactas-accent-soft text-tactas-accent-strong">
                   <Icon class="h-5 w-5" stroke-width={1.8} />
                 </span>
                 <h3 class="mt-7 text-[22px] font-semibold tracking-tight">{item.title}</h3>
-                <p class="mt-3 text-[14px] leading-relaxed text-[#64748B]">{item.body}</p>
+                <p class="mt-3 text-[14px] leading-relaxed text-tactas-muted-soft">{item.body}</p>
               </article>
             );
           })}
@@ -288,10 +287,10 @@ const faqs = [
       </div>
     </section>
 
-    <section id="architecture" class="border-b border-[#D8E1EA] bg-[#F6F8FB] text-[#0F172A]">
-      <div class={`${CONTAINER} py-16 lg:py-20`}>
+    <section id="architecture" class="border-b border-tactas-line bg-tactas-bg text-tactas-ink">
+      <div class={`tactas-container py-16 lg:py-20`}>
         <div class="mx-auto max-w-3xl text-center">
-          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#06B6D4]">Knowledge flow</p>
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent">Knowledge flow</p>
           <h2 class="mt-4 text-[clamp(2rem,4vw,3.1rem)] font-bold leading-tight tracking-[-0.025em]">
             From source material to action-ready context.
           </h2>
@@ -299,52 +298,52 @@ const faqs = [
 
         <div class="mt-12 grid gap-4 lg:grid-cols-5">
           {workflow.map(([step, title, body], index) => (
-            <article class="relative rounded-[8px] border border-[#D8E1EA] bg-white p-5 shadow-[0_20px_60px_-52px_rgba(15,23,42,0.28)]">
+            <article class="relative rounded-[8px] border border-tactas-line bg-white p-5 shadow-[0_20px_60px_-52px_rgba(15,23,42,0.28)]">
               {index < workflow.length - 1 ? (
-                <div class="absolute -right-3 top-10 hidden h-px w-6 bg-[#2F66FF]/45 lg:block"></div>
+                <div class="absolute -right-3 top-10 hidden h-px w-6 bg-tactas-primary/45 lg:block"></div>
               ) : null}
-              <p class="font-mono text-[11px] text-[#06B6D4]">{step}</p>
+              <p class="font-mono text-[11px] text-tactas-accent">{step}</p>
               <h3 class="mt-5 text-[17px] font-semibold">{title}</h3>
-              <p class="mt-3 text-[13px] leading-relaxed text-[#64748B]">{body}</p>
+              <p class="mt-3 text-[13px] leading-relaxed text-tactas-muted-soft">{body}</p>
             </article>
           ))}
         </div>
       </div>
     </section>
 
-    <section class="border-b border-[#D8E1EA] bg-[#F6F8FB]">
-      <div class={`${CONTAINER} grid gap-12 py-18 lg:grid-cols-[0.72fr_1.28fr] lg:py-24`}>
+    <section class="border-b border-tactas-line bg-tactas-bg">
+      <div class={`tactas-container grid gap-12 py-18 lg:grid-cols-[0.72fr_1.28fr] lg:py-24`}>
         <div>
-          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Task outcomes</p>
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Task outcomes</p>
           <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
             Knowledge outcomes where source-backed context matters.
           </h2>
-          <p class="mt-5 text-[16px] leading-relaxed text-[#64748B]">
+          <p class="mt-5 text-[16px] leading-relaxed text-tactas-muted-soft">
             Start with one knowledge source, prove answer quality, then expand the layer into business tasks and managed agents.
           </p>
         </div>
 
         <div class="grid gap-3 sm:grid-cols-2">
           {useCases.map((item) => (
-            <div class="flex items-center gap-3 rounded-[8px] border border-[#D8E1EA] bg-white p-4">
-              <BrainCircuit class="h-4.5 w-4.5 shrink-0 text-[#0891B2]" stroke-width={1.8} />
-              <p class="text-[15px] font-semibold text-[#07324A]">{item}</p>
+            <div class="flex items-center gap-3 rounded-[8px] border border-tactas-line bg-white p-4">
+              <BrainCircuit class="h-4.5 w-4.5 shrink-0 text-tactas-accent-strong" stroke-width={1.8} />
+              <p class="text-[15px] font-semibold text-tactas-ink-strong">{item}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <section class="border-b border-[#D8E1EA] bg-[#F6F8FB]">
-      <div class={`${CONTAINER} py-18 lg:py-24`}>
+    <section class="border-b border-tactas-line bg-tactas-bg">
+      <div class={`tactas-container py-18 lg:py-24`}>
         <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div class="max-w-3xl">
-            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Packages</p>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Packages</p>
             <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
               Start narrow. Prove source quality. Expand into action.
             </h2>
           </div>
-          <a href="#contact" class="inline-flex h-11 items-center justify-center rounded-[6px] border border-[#D8E1EA] px-4 text-[13px] font-semibold text-[#07324A] transition hover:border-[#06B6D4]/70 hover:text-[#0891B2]">
+          <a href="#contact" class="inline-flex h-11 items-center justify-center rounded-[6px] border border-tactas-line px-4 text-[13px] font-semibold text-tactas-ink-strong transition hover:border-tactas-accent/70 hover:text-tactas-accent-strong">
             Discuss scope
           </a>
         </div>
@@ -353,14 +352,14 @@ const faqs = [
           {packages.map((plan, index) => (
             <article class:list={[
               "rounded-[8px] border p-6",
-              index === 1 ? "border-[#06B6D4]/60 bg-[#E6FBFF]" : "border-[#D8E1EA] bg-[#F6F8FB]",
+              index === 1 ? "border-tactas-accent/60 bg-tactas-accent-soft" : "border-tactas-line bg-tactas-bg",
             ]}>
-              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#0891B2]">{plan.name}</p>
-              <p class="mt-5 min-h-[96px] text-[15px] leading-relaxed text-[#475569]">{plan.body}</p>
-              <ul class="mt-6 grid gap-3 border-t border-[#D8E1EA] pt-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-accent-strong">{plan.name}</p>
+              <p class="mt-5 min-h-[96px] text-[15px] leading-relaxed text-tactas-muted">{plan.body}</p>
+              <ul class="mt-6 grid gap-3 border-t border-tactas-line pt-5">
                 {plan.items.map((item) => (
-                  <li class="flex items-start gap-2.5 text-[14px] text-[#64748B]">
-                    <Check class="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#0891B2]" stroke-width={2.2} />
+                  <li class="flex items-start gap-2.5 text-[14px] text-tactas-muted-soft">
+                    <Check class="mt-0.5 h-3.5 w-3.5 shrink-0 text-tactas-accent-strong" stroke-width={2.2} />
                     {item}
                   </li>
                 ))}
@@ -371,22 +370,22 @@ const faqs = [
       </div>
     </section>
 
-    <section id="faq" class="border-b border-[#D8E1EA] bg-[#F6F8FB]">
-      <div class={`${CONTAINER} grid gap-12 py-18 lg:grid-cols-[0.72fr_1.28fr] lg:py-24`}>
+    <section id="faq" class="border-b border-tactas-line bg-tactas-bg">
+      <div class={`tactas-container grid gap-12 py-18 lg:grid-cols-[0.72fr_1.28fr] lg:py-24`}>
         <div>
-          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">FAQ</p>
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">FAQ</p>
           <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
             Common questions before launching a company knowledge layer.
           </h2>
         </div>
 
-        <div class="grid rounded-[8px] border border-[#D8E1EA] bg-white">
+        <div class="grid rounded-[8px] border border-tactas-line bg-white">
           {faqs.map(([question, answer], index) => (
-            <article class="grid gap-3 border-b border-[#D8E1EA] p-6 last:border-b-0 sm:grid-cols-[76px_1fr]">
-              <p class="font-mono text-[11px] text-[#0891B2]">{String(index + 1).padStart(2, "0")}</p>
+            <article class="grid gap-3 border-b border-tactas-line p-6 last:border-b-0 sm:grid-cols-[76px_1fr]">
+              <p class="font-mono text-[11px] text-tactas-accent-strong">{String(index + 1).padStart(2, "0")}</p>
               <div>
                 <h3 class="text-[20px] font-semibold tracking-tight">{question}</h3>
-                <p class="mt-3 text-[15px] leading-relaxed text-[#64748B]">{answer}</p>
+                <p class="mt-3 text-[15px] leading-relaxed text-tactas-muted-soft">{answer}</p>
               </div>
             </article>
           ))}
@@ -394,60 +393,60 @@ const faqs = [
       </div>
     </section>
 
-    <section id="contact" class="bg-[#F6F8FB]">
-      <div class={`${CONTAINER} py-18 lg:py-24`}>
-        <div class="grid overflow-hidden rounded-[12px] border border-[#BAE6FD] bg-white lg:grid-cols-[0.92fr_1.08fr]">
+    <section id="contact" class="bg-tactas-bg">
+      <div class={`tactas-container py-18 lg:py-24`}>
+        <div class="grid overflow-hidden rounded-[12px] border border-tactas-accent-line bg-white lg:grid-cols-[0.92fr_1.08fr]">
           <div class="p-7 sm:p-9 lg:p-10">
-            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Start a knowledge review</p>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Start a knowledge review</p>
             <h2 class="mt-4 text-[clamp(2rem,4vw,3.2rem)] font-bold leading-tight tracking-[-0.025em]">
               Turn one knowledge source into action-ready AI context.
             </h2>
-            <p class="mt-5 max-w-[34rem] text-[16px] leading-relaxed text-[#64748B]">
+            <p class="mt-5 max-w-[34rem] text-[16px] leading-relaxed text-tactas-muted-soft">
               Share the knowledge source, business questions, and task outputs your team wants AI agents to support first.
             </p>
 
-            <div class="mt-8 flex items-center gap-3 text-[14px] text-[#475569]">
-              <Mail class="h-4 w-4 text-[#0891B2]" stroke-width={1.8} />
-              <a href={`mailto:${brandEmail}`} class="border-b border-[#06B6D4]/50 pb-0.5 transition hover:border-[#06B6D4] hover:text-[#07324A]">
+            <div class="mt-8 flex items-center gap-3 text-[14px] text-tactas-muted">
+              <Mail class="h-4 w-4 text-tactas-accent-strong" stroke-width={1.8} />
+              <a href={`mailto:${brandEmail}`} class="border-b border-tactas-accent/50 pb-0.5 transition hover:border-tactas-accent hover:text-tactas-ink-strong">
                 {brandEmail}
               </a>
             </div>
           </div>
 
-          <form id="knowledge-inquiry-form" class="border-t border-[#D8E1EA] bg-[#F6F8FB] p-7 sm:p-9 lg:border-l lg:border-t-0">
-            <div class="flex items-center justify-between gap-4 border-b border-[#D8E1EA] pb-4">
+          <form id="knowledge-inquiry-form" class="border-t border-tactas-line bg-tactas-bg p-7 sm:p-9 lg:border-l lg:border-t-0">
+            <div class="flex items-center justify-between gap-4 border-b border-tactas-line pb-4">
               <div>
-                <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#0891B2]">Knowledge review</p>
+                <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-tactas-accent-strong">Knowledge review</p>
                 <h3 class="mt-2 text-[24px] font-semibold tracking-tight">What knowledge should AI use at work?</h3>
               </div>
-              <Send class="hidden h-5 w-5 text-[#0891B2] sm:block" stroke-width={1.8} />
+              <Send class="hidden h-5 w-5 text-tactas-accent-strong sm:block" stroke-width={1.8} />
             </div>
 
             <div class="mt-5 grid gap-4 sm:grid-cols-2">
-              <label class="grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#64748B]">
+              <label class="grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-tactas-muted-soft">
                 First name
-                <input required name="name" class="h-11 rounded-[6px] border border-[#D8E1EA] bg-white px-3.5 text-[14px] text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Your name" />
+                <input required name="name" class="h-11 rounded-[6px] border border-tactas-line bg-white px-3.5 text-[14px] text-tactas-ink outline-none transition placeholder:text-tactas-muted-soft focus:border-tactas-accent focus:ring-2 focus:ring-tactas-accent/15" placeholder="Your name" />
               </label>
-              <label class="grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#64748B]">
+              <label class="grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-tactas-muted-soft">
                 Work email
-                <input required type="email" name="email" class="h-11 rounded-[6px] border border-[#D8E1EA] bg-white px-3.5 text-[14px] text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="you@company.com" />
+                <input required type="email" name="email" class="h-11 rounded-[6px] border border-tactas-line bg-white px-3.5 text-[14px] text-tactas-ink outline-none transition placeholder:text-tactas-muted-soft focus:border-tactas-accent focus:ring-2 focus:ring-tactas-accent/15" placeholder="you@company.com" />
               </label>
             </div>
 
-            <label class="mt-4 grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#64748B]">
+            <label class="mt-4 grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-tactas-muted-soft">
               Company
-              <input name="company" class="h-11 rounded-[6px] border border-[#D8E1EA] bg-white px-3.5 text-[14px] text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Company name" />
+              <input name="company" class="h-11 rounded-[6px] border border-tactas-line bg-white px-3.5 text-[14px] text-tactas-ink outline-none transition placeholder:text-tactas-muted-soft focus:border-tactas-accent focus:ring-2 focus:ring-tactas-accent/15" placeholder="Company name" />
             </label>
 
-            <label class="mt-4 grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#64748B]">
+            <label class="mt-4 grid gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-tactas-muted-soft">
               Knowledge sources and task outputs
-              <textarea required name="knowledge" class="min-h-32 rounded-[6px] border border-[#D8E1EA] bg-white px-3.5 py-3 text-[14px] text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Example: product docs in Drive, company notes in Notion, contracts in S3, questions and summaries teams prepare every week..."></textarea>
+              <textarea required name="knowledge" class="min-h-32 rounded-[6px] border border-tactas-line bg-white px-3.5 py-3 text-[14px] text-tactas-ink outline-none transition placeholder:text-tactas-muted-soft focus:border-tactas-accent focus:ring-2 focus:ring-tactas-accent/15" placeholder="Example: product docs in Drive, company notes in Notion, contracts in S3, questions and summaries teams prepare every week..."></textarea>
             </label>
 
-            <button type="submit" class="mt-6 inline-flex h-12 w-full items-center justify-center rounded-[6px] bg-[#2F66FF] px-6 text-[14px] font-semibold text-white transition hover:bg-[#0EA5E9]">
+            <button type="submit" class="mt-6 inline-flex h-12 w-full items-center justify-center rounded-[6px] bg-tactas-primary px-6 text-[14px] font-semibold text-white transition hover:bg-tactas-accent">
               Request knowledge review
             </button>
-            <p id="knowledge-form-status" class="mt-3 text-center text-[12px] text-[#64748B]">
+            <p id="knowledge-form-status" class="mt-3 text-center text-[12px] text-tactas-muted-soft">
               Prefer email? {brandEmail}
             </p>
           </form>

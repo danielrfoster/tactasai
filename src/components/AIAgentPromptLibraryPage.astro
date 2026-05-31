@@ -1,0 +1,254 @@
+---
+import {
+  ArrowRight,
+  Bot,
+  Briefcase,
+  Clipboard,
+  Copy,
+  Database,
+  FileText,
+  Filter,
+  Headphones,
+  Mail,
+  Search,
+  ShieldCheck,
+  Sparkles,
+  Workflow,
+} from "@lucide/astro";
+import { promptCategories, promptDepartments, promptLibrary } from "../lib/promptLibrary";
+
+
+const iconMap: Record<string, typeof Sparkles> = {
+  Support: Headphones,
+  Sales: Briefcase,
+  Operations: Workflow,
+  "Professional Services": FileText,
+  Healthcare: ShieldCheck,
+  Ecommerce: Database,
+  Finance: Clipboard,
+  Security: ShieldCheck,
+  Marketing: Mail,
+  Engineering: Bot,
+  "All Teams": Sparkles,
+};
+---
+
+<div class="min-h-screen bg-tactas-bg text-tactas-ink selection:bg-tactas-accent/20">
+  <main>
+    <section class="relative overflow-hidden border-b border-tactas-line bg-tactas-bg">
+      <div class="pointer-events-none absolute inset-x-0 top-0 h-px tactas-gradient-rule-primary"></div>
+      <div class={`tactas-container py-10 lg:py-12`}>
+        <div class="reveal max-w-[820px]">
+          <p class="max-w-[760px] text-[16px] leading-relaxed text-tactas-muted sm:text-[18px]">
+            Reusable AI agent prompts for turning business context into clearer answers, summaries, decisions, and next steps.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="library" class="border-b border-tactas-line bg-white">
+      <div class={`tactas-container py-14 lg:py-18`}>
+        <div class="grid gap-8 lg:grid-cols-[0.76fr_1.24fr] lg:items-end">
+          <div>
+            <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.26em] text-tactas-accent-strong">Prompt collection</p>
+            <h2 class="mt-4 text-[clamp(2rem,4vw,3.3rem)] font-semibold leading-tight tracking-normal text-tactas-ink-strong">
+              Find a prompt by team or workflow type.
+            </h2>
+          </div>
+          <div class="grid gap-3 sm:grid-cols-[1fr_210px_190px]">
+            <label class="relative block">
+              <span class="sr-only">Search prompts</span>
+              <Search class="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-tactas-muted-soft" stroke-width={1.9} />
+              <input
+                id="prompt-search"
+                type="search"
+                class="h-12 w-full rounded-[8px] border border-tactas-line-strong bg-white pl-10 pr-3 text-[14px] text-tactas-ink outline-none transition placeholder:text-tactas-muted-soft focus:border-tactas-accent-strong focus:ring-2 focus:ring-tactas-accent/15"
+                placeholder="Search prompts"
+              />
+            </label>
+            <label class="relative block">
+              <span class="sr-only">Department</span>
+              <Filter class="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-tactas-muted-soft" stroke-width={1.9} />
+              <select id="department-filter" class="h-12 w-full appearance-none rounded-[8px] border border-tactas-line-strong bg-white pl-10 pr-9 text-[14px] font-medium text-tactas-ink outline-none transition focus:border-tactas-accent-strong focus:ring-2 focus:ring-tactas-accent/15">
+                <option value="">All departments</option>
+                {promptDepartments.map((department) => <option value={department}>{department}</option>)}
+              </select>
+            </label>
+            <label class="relative block">
+              <span class="sr-only">Category</span>
+              <Workflow class="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-tactas-muted-soft" stroke-width={1.9} />
+              <select id="category-filter" class="h-12 w-full appearance-none rounded-[8px] border border-tactas-line-strong bg-white pl-10 pr-9 text-[14px] font-medium text-tactas-ink outline-none transition focus:border-tactas-accent-strong focus:ring-2 focus:ring-tactas-accent/15">
+                <option value="">All categories</option>
+                {promptCategories.map((category) => <option value={category}>{category}</option>)}
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col justify-between gap-3 border-y border-tactas-line-soft py-4 sm:flex-row sm:items-center">
+          <p class="text-[14px] text-tactas-muted">
+            <span id="prompt-count" class="font-semibold text-tactas-ink-strong">{promptLibrary.length}</span> prompts for supervised AI agents and business task automation.
+          </p>
+          <a href="/services/ai-workflow-automation" class="inline-flex items-center text-[14px] font-semibold text-tactas-accent-strong transition hover:text-tactas-primary-strong">
+            See workflow automation service
+            <ArrowRight class="ml-1.5 h-3.5 w-3.5" />
+          </a>
+        </div>
+
+        <div id="prompt-grid" class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {promptLibrary.map((item, index) => {
+            const Icon = iconMap[item.department] || Sparkles;
+            return (
+              <article
+                class="group flex min-h-[320px] flex-col justify-between border border-tactas-line bg-tactas-bg-soft p-5 transition hover:-translate-y-0.5 hover:border-tactas-accent/55 hover:bg-white hover:shadow-[0_24px_70px_-62px_rgba(7,50,74,0.38)]"
+                data-prompt-card
+                data-title={item.title}
+                data-body={item.body}
+                data-department={item.department}
+                data-category={item.category}
+                data-tags={item.tags.join(" ")}
+                data-prompt={item.prompt}
+              >
+                <div>
+                  <div class="flex items-start justify-between gap-4">
+                    <span class="flex h-11 w-11 items-center justify-center rounded-[8px] border border-tactas-accent-line bg-tactas-accent-soft text-tactas-accent-strong">
+                      <Icon class="h-5 w-5" stroke-width={1.8} />
+                    </span>
+                    <span class="font-mono text-[11px] text-tactas-muted-soft">#{String(index + 1).padStart(2, "0")}</span>
+                  </div>
+                  <a href={`/ai-agent-prompt-library/${item.slug}`} class="mt-6 block text-[21px] font-semibold leading-tight tracking-normal text-tactas-ink-strong transition group-hover:text-tactas-accent-strong">
+                    {item.title}
+                  </a>
+                  <p class="mt-3 text-[14px] leading-relaxed text-tactas-muted">{item.body}</p>
+                  <div class="mt-5 flex flex-wrap gap-2">
+                    <span class="rounded-full border border-tactas-line-strong bg-white px-3 py-1 text-[11px] font-medium text-tactas-muted">{item.department}</span>
+                    <span class="rounded-full border border-tactas-accent-line bg-tactas-accent-faint px-3 py-1 text-[11px] font-medium text-tactas-accent-strong">{item.category}</span>
+                  </div>
+                </div>
+                <div class="mt-7 flex gap-2">
+                  <a href={`/ai-agent-prompt-library/${item.slug}`} class="inline-flex h-10 flex-1 items-center justify-center rounded-[7px] bg-tactas-night px-3 text-[13px] font-semibold text-white transition hover:bg-tactas-primary-strong">
+                    View prompt page
+                  </a>
+                  <button type="button" class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-[7px] border border-tactas-line-strong bg-white text-tactas-muted transition hover:border-tactas-accent hover:text-tactas-accent-strong" data-copy-prompt aria-label={`Copy ${item.title}`}>
+                    <Copy class="h-4 w-4" stroke-width={1.9} />
+                  </button>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        <div id="prompt-empty" class="mt-8 hidden border border-dashed border-tactas-line-strong bg-tactas-bg-soft px-6 py-12 text-center">
+          <p class="text-[18px] font-semibold text-tactas-ink-strong">No matching prompts.</p>
+          <p class="mt-2 text-[14px] text-tactas-muted-soft">Try another department, category, or keyword.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-tactas-bg">
+      <div class={`tactas-container py-16 lg:py-24`}>
+        <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+          <div>
+            <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.26em] text-tactas-accent-strong">From prompt to agent</p>
+            <h2 class="mt-4 text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-tight tracking-normal text-tactas-ink-strong">
+              A prompt is the draft. The workflow is where value compounds.
+            </h2>
+          </div>
+          <div class="grid gap-4 md:grid-cols-3">
+            {[
+              ["Map context", "Connect the documents, records, messages, and examples the agent needs."],
+              ["Add guardrails", "Define approval rules, exceptions, source requirements, and audit needs."],
+              ["Automate steps", "Let the agent prepare updates, tasks, replies, and summaries inside your tools."],
+            ].map(([title, body]) => (
+              <div class="border border-tactas-line bg-white p-5">
+                <h3 class="text-[17px] font-semibold tracking-normal text-tactas-ink-strong">{title}</h3>
+                <p class="mt-3 text-[14px] leading-relaxed text-tactas-muted">{body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="mt-10 flex flex-col gap-3 sm:flex-row">
+          <a href="/contact" class="inline-flex h-12 items-center justify-center rounded-[8px] bg-tactas-primary-strong px-6 text-[14px] font-semibold text-white transition hover:bg-tactas-accent-strong">
+            Build a workflow from a prompt
+          </a>
+          <a href="/use-cases" class="inline-flex h-12 items-center justify-center rounded-[8px] border border-tactas-line-strong bg-white px-6 text-[14px] font-semibold text-tactas-ink-strong transition hover:border-tactas-accent-strong hover:text-tactas-accent-strong">
+            Explore use cases
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script is:inline>
+  const cards = Array.from(document.querySelectorAll("[data-prompt-card]"));
+  const searchInput = document.getElementById("prompt-search");
+  const departmentFilter = document.getElementById("department-filter");
+  const categoryFilter = document.getElementById("category-filter");
+  const promptCount = document.getElementById("prompt-count");
+  const emptyState = document.getElementById("prompt-empty");
+
+  const normalize = (value) => String(value || "").toLowerCase().trim();
+
+  function updateFilters() {
+    const query = normalize(searchInput?.value);
+    const department = String(departmentFilter?.value || "");
+    const category = String(categoryFilter?.value || "");
+    let visible = 0;
+
+    cards.forEach((card) => {
+      const haystack = normalize([
+        card.dataset.title,
+        card.dataset.body,
+        card.dataset.department,
+        card.dataset.category,
+        card.dataset.tags,
+      ].join(" "));
+      const matchesQuery = !query || haystack.includes(query);
+      const matchesDepartment = !department || card.dataset.department === department;
+      const matchesCategory = !category || card.dataset.category === category;
+      const shouldShow = matchesQuery && matchesDepartment && matchesCategory;
+      card.classList.toggle("hidden", !shouldShow);
+      if (shouldShow) visible += 1;
+    });
+
+    if (promptCount) promptCount.textContent = String(visible);
+    emptyState?.classList.toggle("hidden", visible !== 0);
+  }
+
+  async function copyText(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      const ok = document.execCommand("copy");
+      textarea.remove();
+      return ok;
+    }
+  }
+
+  searchInput?.addEventListener("input", updateFilters);
+  departmentFilter?.addEventListener("change", updateFilters);
+  categoryFilter?.addEventListener("change", updateFilters);
+
+  document.addEventListener("click", async (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const copyButton = target.closest("[data-copy-prompt]");
+    if (copyButton) {
+      const card = copyButton.closest("[data-prompt-card]");
+      const copied = await copyText(card?.dataset.prompt || "");
+      copyButton.setAttribute("aria-label", copied ? "Prompt copied" : "Copy failed");
+    }
+  });
+
+  updateFilters();
+</script>

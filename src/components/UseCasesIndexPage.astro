@@ -9,7 +9,6 @@ interface Props {
 
 const { currentPath = "/use-cases" } = Astro.props;
 const brandEmail = getBrandEmail();
-const CONTAINER = "mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10";
 
 const useCases = [
   {
@@ -43,45 +42,45 @@ const evaluationPoints = [
 ];
 ---
 
-<div class="min-h-screen bg-[#F6F8FB] text-[#0F172A] selection:bg-[#06B6D4]/20">
+<div class="min-h-screen bg-tactas-bg text-tactas-ink selection:bg-tactas-accent/20">
   <main>
-    <section class="relative overflow-hidden border-b border-[#D8E1EA] bg-[#F6F8FB]">
-      <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,#06B6D4_24%,#D7A22A_72%,transparent)]"></div>
-      <div class={`${CONTAINER} grid min-h-[620px] items-center gap-12 py-16 lg:grid-cols-[0.92fr_1.08fr] lg:py-20`}>
+    <section class="relative overflow-hidden border-b border-tactas-line bg-tactas-bg">
+      <div class="pointer-events-none absolute inset-x-0 top-0 h-px tactas-gradient-rule"></div>
+      <div class={`tactas-container grid min-h-[620px] items-center gap-12 py-16 lg:grid-cols-[0.92fr_1.08fr] lg:py-20`}>
         <div class="reveal">
-          <div class="mb-8 inline-flex items-center rounded-full bg-[#06AEEA] px-4 py-2 text-[14px] font-medium text-white shadow-[0_14px_32px_-24px_rgba(6,174,234,0.9)]">
+          <div class="mb-8 inline-flex items-center rounded-full bg-tactas-accent px-4 py-2 text-[14px] font-medium text-white shadow-[0_14px_32px_-24px_rgba(6,174,234,0.9)]">
             Business task examples
           </div>
 
-          <h1 class="max-w-[860px] text-[clamp(3.4rem,8vw,6.6rem)] font-semibold leading-[0.94] tracking-normal text-[#07324A]">
+          <h1 class="max-w-[860px] text-[clamp(3.4rem,8vw,6.6rem)] font-semibold leading-[0.94] tracking-normal text-tactas-ink-strong">
             Where managed AI agents create useful work.
           </h1>
-          <p class="mt-7 max-w-[42rem] text-[18px] leading-relaxed text-[#07324A]/78">
+          <p class="mt-7 max-w-[42rem] text-[18px] leading-relaxed text-tactas-ink-strong/78">
             Explore practical ways Tactas AI turns company knowledge, business context, and connected tools into answers, outputs, updates, and automated actions.
           </p>
 
           <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="#use-cases" class="group inline-flex h-12 items-center justify-center rounded-[8px] bg-[#2F66FF] px-6 text-[14px] font-semibold text-white shadow-[0_16px_34px_-24px_rgba(47,102,255,0.85)] transition hover:bg-[#0EA5E9]">
+            <a href="#use-cases" class="group inline-flex h-12 items-center justify-center rounded-[8px] bg-tactas-primary px-6 text-[14px] font-semibold text-white shadow-[0_16px_34px_-24px_rgba(47,102,255,0.85)] transition hover:bg-tactas-accent">
               Explore tasks
               <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-0.5" stroke-width={1.9} />
             </a>
-            <a href="#contact" class="inline-flex h-12 items-center justify-center rounded-[8px] border border-[#D9CFAE] bg-white/60 px-6 text-[14px] font-semibold text-[#07324A] transition hover:border-[#2F66FF] hover:text-[#2F66FF]">
+            <a href="#contact" class="inline-flex h-12 items-center justify-center rounded-[8px] border border-tactas-line-strong bg-white/60 px-6 text-[14px] font-semibold text-tactas-ink-strong transition hover:border-tactas-primary hover:text-tactas-primary">
               Discuss a task
             </a>
           </div>
         </div>
 
         <div class="reveal" data-delay="2">
-          <div class="border border-[#D8E1EA] bg-white shadow-[0_34px_100px_-72px_rgba(7,50,74,0.42)]">
-            <div class="flex items-center justify-between border-b border-[#E2E8F0] bg-[#F6F8FB] px-5 py-4">
-              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#64748B]">Task fit</p>
-              <Briefcase class="h-5 w-5 text-[#06B6D4]" stroke-width={1.8} />
+          <div class="border border-tactas-line bg-white shadow-[0_34px_100px_-72px_rgba(7,50,74,0.42)]">
+            <div class="flex items-center justify-between border-b border-tactas-line-soft bg-tactas-bg px-5 py-4">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-muted-soft">Task fit</p>
+              <Briefcase class="h-5 w-5 text-tactas-accent" stroke-width={1.8} />
             </div>
             <div class="grid gap-3 p-5">
               {evaluationPoints.map((point, index) => (
-                <div class="flex items-start gap-3 border border-[#E2E8F0] bg-[#F6F8FB] p-4">
-                  <span class="font-mono text-[11px] text-[#0891B2]">{String(index + 1).padStart(2, "0")}</span>
-                  <p class="text-[14px] leading-relaxed text-[#334155]">{point}</p>
+                <div class="flex items-start gap-3 border border-tactas-line-soft bg-tactas-bg p-4">
+                  <span class="font-mono text-[11px] text-tactas-accent-strong">{String(index + 1).padStart(2, "0")}</span>
+                  <p class="text-[14px] leading-relaxed text-tactas-muted">{point}</p>
                 </div>
               ))}
             </div>
@@ -90,11 +89,11 @@ const evaluationPoints = [
       </div>
     </section>
 
-    <section id="use-cases" class="border-b border-[#D8E1EA] bg-[#F6F8FB]">
-      <div class={`${CONTAINER} py-18 lg:py-24`}>
+    <section id="use-cases" class="border-b border-tactas-line bg-tactas-bg">
+      <div class={`tactas-container py-18 lg:py-24`}>
         <div class="mx-auto max-w-3xl text-center">
-          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Use case library</p>
-          <h2 class="mt-4 text-[clamp(2rem,4vw,3.2rem)] font-semibold leading-tight tracking-normal text-[#07324A]">
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Use case library</p>
+          <h2 class="mt-4 text-[clamp(2rem,4vw,3.2rem)] font-semibold leading-tight tracking-normal text-tactas-ink-strong">
             Start with tasks where knowledge becomes action.
           </h2>
         </div>
@@ -103,20 +102,20 @@ const evaluationPoints = [
           {useCases.map((item) => {
             const Icon = item.icon;
             return (
-              <a href={item.href} class="group flex min-h-[330px] flex-col justify-between border border-[#D8E1EA] bg-white p-6 shadow-[0_24px_70px_-62px_rgba(7,50,74,0.3)] transition hover:-translate-y-0.5 hover:border-[#06B6D4]/50">
+              <a href={item.href} class="group flex min-h-[330px] flex-col justify-between border border-tactas-line bg-white p-6 shadow-[0_24px_70px_-62px_rgba(7,50,74,0.3)] transition hover:-translate-y-0.5 hover:border-tactas-accent/50">
                 <span>
-                  <span class="flex h-12 w-12 items-center justify-center rounded-[8px] border border-[#BAE6FD] bg-[#E6FBFF] text-[#0E7490]">
+                  <span class="flex h-12 w-12 items-center justify-center rounded-[8px] border border-tactas-accent-line bg-tactas-accent-soft text-tactas-accent-strong">
                     <Icon class="h-5 w-5" stroke-width={1.8} />
                   </span>
-                  <span class="mt-7 block text-[22px] font-semibold tracking-tight text-[#07324A]">{item.title}</span>
-                  <span class="mt-3 block text-[14px] leading-relaxed text-[#475569]">{item.body}</span>
+                  <span class="mt-7 block text-[22px] font-semibold tracking-tight text-tactas-ink-strong">{item.title}</span>
+                  <span class="mt-3 block text-[14px] leading-relaxed text-tactas-muted">{item.body}</span>
                   <span class="mt-6 flex flex-wrap gap-2">
                     {item.keywords.map((keyword) => (
-                      <span class="rounded-full border border-[#D8E1EA] bg-[#F6F8FB] px-3 py-1 text-[11px] text-[#334155]">{keyword}</span>
+                      <span class="rounded-full border border-tactas-line bg-tactas-bg px-3 py-1 text-[11px] text-tactas-muted">{keyword}</span>
                     ))}
                   </span>
                 </span>
-                <span class="mt-8 inline-flex items-center text-[13px] font-semibold text-[#0891B2]">
+                <span class="mt-8 inline-flex items-center text-[13px] font-semibold text-tactas-accent-strong">
                   View task
                   <ArrowRight class="ml-2 h-3.5 w-3.5 transition group-hover:translate-x-0.5" />
                 </span>
@@ -127,55 +126,55 @@ const evaluationPoints = [
       </div>
     </section>
 
-    <section id="contact" class="bg-[#F6F8FB]">
-      <div class={`${CONTAINER} py-18 lg:py-24`}>
-        <div class="grid overflow-hidden border border-[#D8E1EA] bg-white shadow-[0_34px_100px_-72px_rgba(7,50,74,0.42)] lg:grid-cols-[0.92fr_1.08fr]">
+    <section id="contact" class="bg-tactas-bg">
+      <div class={`tactas-container py-18 lg:py-24`}>
+        <div class="grid overflow-hidden border border-tactas-line bg-white shadow-[0_34px_100px_-72px_rgba(7,50,74,0.42)] lg:grid-cols-[0.92fr_1.08fr]">
           <div class="p-7 sm:p-9 lg:p-10">
-            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-[#0891B2]">Find the first use case</p>
-            <h2 class="mt-4 text-[clamp(2rem,4vw,3.2rem)] font-semibold leading-tight tracking-normal text-[#07324A]">
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Find the first use case</p>
+            <h2 class="mt-4 text-[clamp(2rem,4vw,3.2rem)] font-semibold leading-tight tracking-normal text-tactas-ink-strong">
               Not sure which business task to automate first?
             </h2>
-            <p class="mt-5 max-w-[34rem] text-[16px] leading-relaxed text-[#475569]">
+            <p class="mt-5 max-w-[34rem] text-[16px] leading-relaxed text-tactas-muted">
               Share the repeated work your team handles today. Tactas AI can help map the knowledge, tools, outputs, and automation steps behind a practical first task.
             </p>
 
-            <div class="mt-8 flex items-center gap-3 text-[14px] text-[#334155]">
-              <Mail class="h-4 w-4 text-[#06B6D4]" stroke-width={1.8} />
-              <a href={`mailto:${brandEmail}`} class="border-b border-[#06B6D4]/55 pb-0.5 transition hover:border-[#0891B2] hover:text-[#0891B2]">
+            <div class="mt-8 flex items-center gap-3 text-[14px] text-tactas-muted">
+              <Mail class="h-4 w-4 text-tactas-accent" stroke-width={1.8} />
+              <a href={`mailto:${brandEmail}`} class="border-b border-tactas-accent/55 pb-0.5 transition hover:border-tactas-accent-strong hover:text-tactas-accent-strong">
                 {brandEmail}
               </a>
             </div>
           </div>
 
-          <form id="use-case-form" class="border-t border-[#D8E1EA] bg-[#F6F8FB] p-7 sm:p-9 lg:border-l lg:border-t-0">
-            <div class="flex items-center justify-between gap-4 border-b border-[#D8E1EA] pb-4">
+          <form id="use-case-form" class="border-t border-tactas-line bg-tactas-bg p-7 sm:p-9 lg:border-l lg:border-t-0">
+            <div class="flex items-center justify-between gap-4 border-b border-tactas-line pb-4">
               <div>
-                <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#0891B2]">Task review</p>
-                <h3 class="mt-2 text-[24px] font-semibold tracking-tight text-[#07324A]">Describe the business task.</h3>
+                <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-tactas-accent-strong">Task review</p>
+                <h3 class="mt-2 text-[24px] font-semibold tracking-tight text-tactas-ink-strong">Describe the business task.</h3>
               </div>
-              <Send class="hidden h-5 w-5 text-[#06B6D4] sm:block" stroke-width={1.8} />
+              <Send class="hidden h-5 w-5 text-tactas-accent sm:block" stroke-width={1.8} />
             </div>
 
             <div class="mt-5 grid gap-4 sm:grid-cols-2">
-              <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">
+              <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-tactas-muted-soft">
                 First name
-                <input required name="name" class="h-11 rounded-[6px] border border-[#CBD5E1] bg-white px-3.5 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Your name" />
+                <input required name="name" class="h-11 rounded-[6px] border border-tactas-line-strong bg-white px-3.5 text-[14px] normal-case tracking-normal text-tactas-ink outline-none transition placeholder:text-tactas-muted-soft focus:border-tactas-accent focus:ring-2 focus:ring-tactas-accent/15" placeholder="Your name" />
               </label>
-              <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">
+              <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-tactas-muted-soft">
                 Work email
-                <input required type="email" name="email" class="h-11 rounded-[6px] border border-[#CBD5E1] bg-white px-3.5 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="you@company.com" />
+                <input required type="email" name="email" class="h-11 rounded-[6px] border border-tactas-line-strong bg-white px-3.5 text-[14px] normal-case tracking-normal text-tactas-ink outline-none transition placeholder:text-tactas-muted-soft focus:border-tactas-accent focus:ring-2 focus:ring-tactas-accent/15" placeholder="you@company.com" />
               </label>
             </div>
 
-            <label class="mt-4 grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">
+            <label class="mt-4 grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-tactas-muted-soft">
               Business task
-              <textarea required name="workflow" class="min-h-32 rounded-[6px] border border-[#CBD5E1] bg-white px-3.5 py-3 text-[14px] normal-case tracking-normal text-[#0F172A] outline-none transition placeholder:text-[#94A3B8] focus:border-[#06B6D4] focus:ring-2 focus:ring-[#06B6D4]/15" placeholder="Example: summarize updates, answer repeated requests, prepare next steps, track open work..."></textarea>
+              <textarea required name="workflow" class="min-h-32 rounded-[6px] border border-tactas-line-strong bg-white px-3.5 py-3 text-[14px] normal-case tracking-normal text-tactas-ink outline-none transition placeholder:text-tactas-muted-soft focus:border-tactas-accent focus:ring-2 focus:ring-tactas-accent/15" placeholder="Example: summarize updates, answer repeated requests, prepare next steps, track open work..."></textarea>
             </label>
 
-            <button type="submit" class="mt-6 inline-flex h-12 w-full items-center justify-center rounded-[8px] bg-[#2F66FF] px-6 text-[14px] font-semibold text-white transition hover:bg-[#0EA5E9]">
+            <button type="submit" class="mt-6 inline-flex h-12 w-full items-center justify-center rounded-[8px] bg-tactas-primary px-6 text-[14px] font-semibold text-white transition hover:bg-tactas-accent">
               Request task review
             </button>
-            <p id="use-case-status" class="mt-3 text-center text-[12px] text-[#64748B]">
+            <p id="use-case-status" class="mt-3 text-center text-[12px] text-tactas-muted-soft">
               Prefer email? {brandEmail}
             </p>
           </form>

@@ -1,5 +1,6 @@
 ---
 import { ArrowLeft, ArrowRight, CalendarDays, Check, Clock, Link2, Share2 } from "@lucide/astro";
+import BlogNavbar from "../../components/BlogNavbar.astro";
 import CTASection from "../../components/CTASection.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { blogPosts, getBlogPostBySlug } from "../../lib/blog";
@@ -26,6 +27,13 @@ if (!post) {
 const siteUrl = getSiteUrl();
 const organization = getOrganization();
 const pageUrl = `${siteUrl}/blog/${post.slug}`;
+const defaultPostImage = {
+  src: "/tactas-ai-managed-agent-systems-og.jpg",
+  width: 1734,
+  height: 907,
+  alt: post.title,
+};
+const postImage = post.image ?? defaultPostImage;
 const formattedDate = new Date(`${post.publishedAt}T00:00:00`).toLocaleDateString("en-US", {
   month: "long",
   day: "numeric",
@@ -57,6 +65,7 @@ const jsonLd = {
       publisher: { "@id": `${siteUrl}/#organization` },
       mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
       keywords: post.keywords,
+      image: `${siteUrl}${postImage.src}`,
     },
     {
       "@type": "WebPage",
@@ -83,8 +92,7 @@ const jsonLd = {
   description={post.description}
   canonical={`/blog/${post.slug}`}
   currentPath={`/blog/${post.slug}`}
-  navbarTheme="light"
-  navbarCtaLabel="Book a review"
+  showNavbar={false}
   keywords={post.keywords}
   openGraph={{
     title: `${post.title} | Tactas AI Blog`,
@@ -93,47 +101,48 @@ const jsonLd = {
     type: "article",
     images: [
       {
-        url: "/tactas-ai-managed-agent-systems-og.jpg",
-        width: 1734,
-        height: 907,
-        alt: post.title,
+        url: postImage.src,
+        width: postImage.width,
+        height: postImage.height,
+        alt: postImage.alt,
       },
     ],
   }}
-  twitter={{ card: "summary_large_image", title: post.title, description: post.description, images: ["/tactas-ai-managed-agent-systems-og.jpg"] }}
+  twitter={{ card: "summary_large_image", title: post.title, description: post.description, images: [postImage.src] }}
   jsonLd={jsonLd}
 >
+  <BlogNavbar currentPath={`/blog/${post.slug}`} />
   <div class="fixed left-0 right-0 top-0 z-[100] h-1 bg-transparent">
-    <div id="reading-progress" class="h-full w-0 bg-[#0891B2] transition-all duration-75"></div>
+    <div id="reading-progress" class="h-full w-0 bg-tactas-accent-strong transition-all duration-75"></div>
   </div>
 
-  <main class="min-h-screen bg-[#F7F8FA] text-[#111827] selection:bg-[#BAE6FD] selection:text-[#0F172A]">
+  <main class="min-h-screen bg-tactas-bg text-tactas-ink selection:bg-tactas-accent-line selection:text-tactas-ink">
     <article>
-      <header class="border-b border-[#D8E1EA] bg-white">
-        <div class="mx-auto w-full max-w-[1040px] px-5 py-14 sm:px-8 lg:px-10 lg:py-20 reveal">
-          <a href="/blog" class="inline-flex items-center gap-2 text-[14px] font-semibold text-[#475569] transition hover:text-[#07324A]">
+      <header class="border-b border-tactas-line bg-white">
+        <div class="tactas-container-narrow py-14 lg:py-20 reveal">
+          <a href="/blog" class="inline-flex items-center gap-2 text-[14px] font-semibold text-tactas-muted transition hover:text-tactas-ink-strong">
             <ArrowLeft class="h-4 w-4" stroke-width={2} />
             Back to blog
           </a>
 
           <div class="mt-10">
-            <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[#0891B2]">{post.category}</p>
-            <h1 class="mt-5 max-w-[920px] text-[clamp(2.2rem,5.2vw,4.5rem)] font-semibold leading-[1.04] tracking-normal text-[#07324A]">
+            <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-tactas-accent-strong">{post.category}</p>
+            <h1 class="mt-5 max-w-[920px] text-[clamp(2.2rem,5.2vw,4.5rem)] font-semibold leading-[1.04] tracking-normal text-tactas-ink-strong">
               {post.title}
             </h1>
-            <p class="mt-6 max-w-[760px] text-[18px] leading-relaxed text-[#475569] sm:text-[20px]">
+            <p class="mt-6 max-w-[760px] text-[18px] leading-relaxed text-tactas-muted sm:text-[20px]">
               {post.summary}
             </p>
           </div>
 
-          <div class="mt-10 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-[#E2E8F0] pt-6 text-[14px] text-[#64748B]">
-            <span class="font-semibold text-[#07324A]">Tactas AI Editorial</span>
-            <span class="hidden h-1 w-1 rounded-full bg-[#CBD5E1] sm:block" aria-hidden="true"></span>
+          <div class="mt-10 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-tactas-line-soft pt-6 text-[14px] text-tactas-muted-soft">
+            <span class="font-semibold text-tactas-ink-strong">tactas team</span>
+            <span class="hidden h-1 w-1 rounded-full bg-tactas-line-strong sm:block" aria-hidden="true"></span>
             <span class="inline-flex items-center gap-1.5">
               <CalendarDays class="h-4 w-4" />
               {formattedDate}
             </span>
-            <span class="hidden h-1 w-1 rounded-full bg-[#CBD5E1] sm:block" aria-hidden="true"></span>
+            <span class="hidden h-1 w-1 rounded-full bg-tactas-line-strong sm:block" aria-hidden="true"></span>
             <span class="inline-flex items-center gap-1.5">
               <Clock class="h-4 w-4" />
               {post.readTime}
@@ -145,8 +154,8 @@ const jsonLd = {
       <div class="mx-auto grid w-full max-w-[1120px] gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[240px_minmax(0,760px)] lg:px-10 lg:py-16">
         <aside class="hidden lg:block">
           <div class="sticky top-28 space-y-8">
-            <nav class="border-l border-[#D8E1EA] pl-5 reveal" data-delay="1" aria-label="Article outline">
-              <p class="mb-4 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">In this article</p>
+            <nav class="border-l border-tactas-line pl-5 reveal" data-delay="1" aria-label="Article outline">
+              <p class="mb-4 text-[12px] font-semibold uppercase tracking-[0.16em] text-tactas-muted-soft">In this article</p>
               <div class="space-y-3">
                 {post.sections.map((section) => {
                   const sectionId = slugify(section.heading);
@@ -154,7 +163,7 @@ const jsonLd = {
                     <a
                       href={`#${sectionId}`}
                       data-toc-link={sectionId}
-                      class="block text-[13px] font-medium leading-relaxed text-[#64748B] transition hover:text-[#07324A]"
+                      class="block text-[13px] font-medium leading-relaxed text-tactas-muted-soft transition hover:text-tactas-ink-strong"
                     >
                       {section.heading}
                     </a>
@@ -163,8 +172,8 @@ const jsonLd = {
               </div>
             </nav>
 
-            <div class="border-l border-[#D8E1EA] pl-5 reveal" data-delay="2">
-              <p class="mb-4 inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">
+            <div class="border-l border-tactas-line pl-5 reveal" data-delay="2">
+              <p class="mb-4 inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.16em] text-tactas-muted-soft">
                 <Share2 class="h-3.5 w-3.5" />
                 Share
               </p>
@@ -173,7 +182,7 @@ const jsonLd = {
                   type="button"
                   id="share-linkedin"
                   data-share-url={pageUrl}
-                  class="flex h-9 w-9 items-center justify-center border border-[#D8E1EA] bg-white text-[#475569] transition hover:border-[#94A3B8] hover:text-[#07324A]"
+                  class="flex h-9 w-9 items-center justify-center border border-tactas-line bg-white text-tactas-muted transition hover:border-tactas-line-strong hover:text-tactas-ink-strong"
                   title="Share on LinkedIn"
                 >
                   <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -184,24 +193,24 @@ const jsonLd = {
                   type="button"
                   id="copy-link"
                   data-copy-url={pageUrl}
-                  class="relative flex h-9 w-9 items-center justify-center border border-[#D8E1EA] bg-white text-[#475569] transition hover:border-[#94A3B8] hover:text-[#07324A]"
+                  class="relative flex h-9 w-9 items-center justify-center border border-tactas-line bg-white text-tactas-muted transition hover:border-tactas-line-strong hover:text-tactas-ink-strong"
                   title="Copy link"
                 >
                   <Link2 id="copy-icon" class="h-4 w-4" />
-                  <Check id="check-icon" class="absolute hidden h-4 w-4 text-[#059669]" />
+                  <Check id="check-icon" class="absolute hidden h-4 w-4 text-tactas-success-strong" />
                 </button>
               </div>
-              <p id="copy-toast" class="mt-3 hidden text-[12px] font-semibold text-[#059669]">Copied</p>
+              <p id="copy-toast" class="mt-3 hidden text-[12px] font-semibold text-tactas-success-strong">Copied</p>
             </div>
           </div>
         </aside>
 
         <div class="min-w-0 reveal" data-delay="1">
-          <details class="mb-10 border border-[#D8E1EA] bg-white p-5 lg:hidden">
-            <summary class="cursor-pointer text-[14px] font-semibold text-[#07324A]">Article outline</summary>
-            <nav class="mt-4 space-y-3 border-l border-[#D8E1EA] pl-4" aria-label="Mobile outline">
+          <details class="mb-10 border border-tactas-line bg-white p-5 lg:hidden">
+            <summary class="cursor-pointer text-[14px] font-semibold text-tactas-ink-strong">Article outline</summary>
+            <nav class="mt-4 space-y-3 border-l border-tactas-line pl-4" aria-label="Mobile outline">
               {post.sections.map((section) => (
-                <a href={`#${slugify(section.heading)}`} class="block text-[14px] font-medium text-[#64748B] hover:text-[#07324A]">
+                <a href={`#${slugify(section.heading)}`} class="block text-[14px] font-medium text-tactas-muted-soft hover:text-tactas-ink-strong">
                   {section.heading}
                 </a>
               ))}
@@ -213,7 +222,7 @@ const jsonLd = {
               const sectionId = slugify(section.heading);
               return (
                 <section id={sectionId} data-article-section={sectionId} class="scroll-mt-28">
-                  <h2 class="border-b border-[#D8E1EA] pb-4 text-[28px] font-semibold leading-tight tracking-normal text-[#07324A] sm:text-[34px]">
+                  <h2 class="border-b border-tactas-line pb-4 text-[28px] font-semibold leading-tight tracking-normal text-tactas-ink-strong sm:text-[34px]">
                     {section.heading}
                   </h2>
                   <div class="mt-6 space-y-6">
@@ -222,14 +231,73 @@ const jsonLd = {
 
                       if (isKeyPoint) {
                         return (
-                          <aside class="border-l-4 border-[#0891B2] bg-white px-6 py-5 shadow-[0_18px_55px_-48px_rgba(7,50,74,0.45)]">
-                            <p class="text-[17px] font-medium leading-relaxed text-[#07324A]">{paragraph}</p>
+                          <aside class="border-l-4 border-tactas-accent-strong bg-white px-6 py-5 shadow-[0_18px_55px_-48px_rgba(7,50,74,0.45)]">
+                            <p class="text-[17px] font-medium leading-relaxed text-tactas-ink-strong">{paragraph}</p>
                           </aside>
                         );
                       }
 
-                      return <p class="text-[17px] leading-[1.85] text-[#334155]">{paragraph}</p>;
+                      return <p class="text-[17px] leading-[1.85] text-tactas-muted">{paragraph}</p>;
                     })}
+
+                    {section.table && (
+                      <div class="overflow-x-auto border border-tactas-line bg-white">
+                        <table class="w-full min-w-[640px] border-collapse text-left">
+                          <thead class="bg-tactas-bg-soft">
+                            <tr>
+                              {section.table.columns.map((column) => (
+                                <th class="border-b border-tactas-line px-5 py-4 text-[12px] font-semibold uppercase tracking-[0.14em] text-tactas-muted">
+                                  {column}
+                                </th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {section.table.rows.map((row) => (
+                              <tr class="border-b border-tactas-line-soft last:border-b-0">
+                                {row.map((cell) => (
+                                  <td class="max-w-[360px] px-5 py-4 align-top text-[15px] leading-relaxed text-tactas-muted">
+                                    {cell}
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+
+                    {section.bullets && (
+                      <ul class="space-y-3 border-l-4 border-tactas-accent-strong bg-white px-6 py-5 shadow-[0_18px_55px_-48px_rgba(7,50,74,0.45)]">
+                        {section.bullets.map((item) => (
+                          <li class="flex gap-3 text-[16px] leading-relaxed text-tactas-muted">
+                            <Check class="mt-1 h-4 w-4 shrink-0 text-tactas-accent-strong" stroke-width={2.4} />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {section.links && (
+                      <div class="border border-tactas-line bg-white p-5">
+                        <p class="text-[12px] font-semibold uppercase tracking-[0.16em] text-tactas-muted-soft">Sources reviewed</p>
+                        <ul class="mt-4 space-y-3">
+                          {section.links.map((link) => (
+                            <li>
+                              <a
+                                href={link.href}
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                class="inline-flex items-center text-[15px] font-semibold text-tactas-ink-strong underline decoration-tactas-line-strong underline-offset-4 transition hover:text-tactas-accent-strong"
+                              >
+                                {link.label}
+                                <ArrowRight class="ml-2 h-4 w-4" stroke-width={2} />
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 </section>
               );
@@ -239,41 +307,41 @@ const jsonLd = {
           <CTASection
             contained={false}
             sectionClass="mt-16"
-            cardClass="border-[#D8E1EA] bg-white p-7 shadow-[0_24px_70px_-58px_rgba(7,50,74,0.42)] sm:p-9"
+            cardClass="border-tactas-line bg-white p-7 shadow-[0_24px_70px_-58px_rgba(7,50,74,0.42)] sm:p-9"
             eyebrow="Task review"
             title="Map one business task into managed AI automation."
             description="Share a repeated task, the knowledge behind it, and the tools where work happens. Tactas AI can help turn that task into action-ready agent work."
-            descriptionClass="mt-4 max-w-[42rem] text-[16px] leading-relaxed text-[#475569]"
+            descriptionClass="mt-4 max-w-[42rem] text-[16px] leading-relaxed text-tactas-muted"
             primaryLabel="Request task review"
             primaryHref="/contact"
-            primaryClass="inline-flex h-12 items-center justify-center bg-[#07324A] px-6 text-[14px] font-semibold text-white transition hover:bg-[#075985]"
+            primaryClass="inline-flex h-12 items-center justify-center bg-tactas-night-strong px-6 text-[14px] font-semibold text-white transition hover:bg-tactas-accent-strong"
             showPrimaryArrow
           />
         </div>
       </div>
     </article>
 
-    <section class="border-t border-[#D8E1EA] bg-white py-14">
-      <div class="mx-auto w-full max-w-[1040px] px-5 sm:px-8 lg:px-10 reveal">
+    <section class="border-t border-tactas-line bg-white py-14">
+      <div class="tactas-container-narrow reveal">
         <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-[#0891B2]">Related reads</p>
-            <h2 class="mt-3 text-[30px] font-semibold leading-tight tracking-normal text-[#07324A] sm:text-[38px]">Continue reading</h2>
+            <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-tactas-accent-strong">Related reads</p>
+            <h2 class="mt-3 text-[30px] font-semibold leading-tight tracking-normal text-tactas-ink-strong sm:text-[38px]">Continue reading</h2>
           </div>
-          <a href="/blog" class="inline-flex h-11 items-center justify-center border border-[#D8E1EA] px-5 text-[14px] font-semibold text-[#07324A] transition hover:border-[#94A3B8]">
+          <a href="/blog" class="inline-flex h-11 items-center justify-center border border-tactas-line px-5 text-[14px] font-semibold text-tactas-ink-strong transition hover:border-tactas-line-strong">
             View all
           </a>
         </div>
 
         <div class="mt-8 grid gap-5 sm:grid-cols-2">
           {relatedPosts.map((item) => (
-            <a href={`/blog/${item.slug}`} class="group flex min-h-[260px] flex-col justify-between border border-[#D8E1EA] bg-white p-7 transition hover:border-[#A7B4C4]">
+            <a href={`/blog/${item.slug}`} class="group flex min-h-[260px] flex-col justify-between border border-tactas-line bg-white p-7 transition hover:border-tactas-line-strong">
               <div>
-                <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#64748B]">{item.category}</p>
-                <h3 class="mt-4 text-[23px] font-semibold leading-tight tracking-normal text-[#07324A] transition group-hover:text-[#075985]">{item.title}</h3>
-                <p class="mt-4 text-[15px] leading-relaxed text-[#475569]">{item.summary}</p>
+                <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-tactas-muted-soft">{item.category}</p>
+                <h3 class="mt-4 text-[23px] font-semibold leading-tight tracking-normal text-tactas-ink-strong transition group-hover:text-tactas-accent-strong">{item.title}</h3>
+                <p class="mt-4 text-[15px] leading-relaxed text-tactas-muted">{item.summary}</p>
               </div>
-              <span class="mt-8 inline-flex items-center text-[14px] font-semibold text-[#07324A] transition group-hover:text-[#075985]">
+              <span class="mt-8 inline-flex items-center text-[14px] font-semibold text-tactas-ink-strong transition group-hover:text-tactas-accent-strong">
                 Read article
                 <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-1" stroke-width={2} />
               </span>
@@ -315,9 +383,9 @@ const jsonLd = {
 
       tocLinks.forEach((link) => {
         const isActive = link.getAttribute("data-toc-link") === currentSectionId;
-        link.classList.toggle("text-[#07324A]", isActive);
+        link.classList.toggle("text-tactas-ink-strong", isActive);
         link.classList.toggle("font-semibold", isActive);
-        link.classList.toggle("text-[#64748B]", !isActive);
+        link.classList.toggle("text-tactas-muted-soft", !isActive);
       });
     }
 

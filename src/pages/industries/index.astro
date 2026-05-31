@@ -5,7 +5,6 @@ import { getSiteUrl } from "../../lib/site";
 
 const siteUrl = getSiteUrl();
 const pageUrl = `${siteUrl}/industries`;
-const CONTAINER = "mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10";
 
 const industries = [
   {
@@ -77,44 +76,44 @@ const jsonLd = {
   navbarCtaLabel="Discuss workflow"
   jsonLd={jsonLd}
 >
-  <div class="min-h-screen overflow-x-hidden bg-[#F6F8FB] text-[#0F172A] selection:bg-[#06B6D4]/20">
+  <div class="min-h-screen overflow-x-hidden bg-tactas-bg text-tactas-ink selection:bg-tactas-accent/20">
     <div class="pointer-events-none fixed inset-0 -z-20 grid-faint opacity-[0.35] [mask-image:radial-gradient(ellipse_70%_55%_at_50%_15%,black_0%,transparent_75%)]"></div>
 
     <main>
       <section class="py-20 lg:py-28">
-        <div class={CONTAINER}>
+        <div class="tactas-container">
           <div class="max-w-3xl">
-            <p class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#0891B2]/85">Industries</p>
-            <h1 class="mt-4 text-[clamp(2.5rem,6vw,4.7rem)] font-bold leading-[0.96] tracking-[-0.045em] text-[#0F172A]">
+            <p class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-tactas-accent-strong/85">Industries</p>
+            <h1 class="mt-4 text-[clamp(2.5rem,6vw,4.7rem)] font-bold leading-[0.96] tracking-[-0.045em] text-tactas-ink">
               AI automation by industry.
             </h1>
-            <p class="mt-6 max-w-2xl text-[16px] leading-relaxed text-[#8a93a6] sm:text-[17px]">
+            <p class="mt-6 max-w-2xl text-[16px] leading-relaxed text-tactas-muted-soft sm:text-[17px]">
               Start with the workflow patterns where AI support agents, supervised automation, and human handoff can
               create clear operational value.
             </p>
           </div>
 
-          <div class="mt-14 grid border-y border-[#D8E1EA] sm:grid-cols-2 lg:grid-cols-3">
+          <div class="mt-14 grid border-y border-tactas-line sm:grid-cols-2 lg:grid-cols-3">
             {industries.map((industry) => {
               const Icon = industry.icon;
               return (
                 <a
                   href={industry.href}
-                  class="group flex min-h-[240px] flex-col justify-between border-t border-[#D8E1EA] px-0 py-8 transition hover:bg-white/50 sm:border-l sm:px-7 lg:[&:nth-child(3n+1)]:border-l-0"
+                  class="group flex min-h-[240px] flex-col justify-between border-t border-tactas-line px-0 py-8 transition hover:bg-white/50 sm:border-l sm:px-7 lg:[&:nth-child(3n+1)]:border-l-0"
                 >
                   <span>
                     <span class="flex items-center justify-between gap-4">
-                      <span class="flex h-10 w-10 items-center justify-center rounded-md border border-[#D8E1EA] bg-white text-[#0891B2] transition group-hover:border-[#06B6D4]/50">
+                      <span class="flex h-10 w-10 items-center justify-center rounded-md border border-tactas-line bg-white text-tactas-accent-strong transition group-hover:border-tactas-accent/50">
                         <Icon class="h-4 w-4" stroke-width={1.7} />
                       </span>
-                      <span class="rounded-full border border-[#D8E1EA] px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-[#8a93a6]">
+                      <span class="rounded-full border border-tactas-line px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-tactas-muted-soft">
                         {industry.status}
                       </span>
                     </span>
-                    <span class="mt-5 block text-[18px] font-semibold tracking-tight text-[#0F172A]">{industry.title}</span>
-                    <span class="mt-3 block text-[14px] leading-relaxed text-[#8a93a6]">{industry.body}</span>
+                    <span class="mt-5 block text-[18px] font-semibold tracking-tight text-tactas-ink">{industry.title}</span>
+                    <span class="mt-3 block text-[14px] leading-relaxed text-tactas-muted-soft">{industry.body}</span>
                   </span>
-                  <span class="mt-8 inline-flex items-center text-[13px] font-semibold text-[#0891B2]">
+                  <span class="mt-8 inline-flex items-center text-[13px] font-semibold text-tactas-accent-strong">
                     View workflow
                     <ArrowRight class="ml-2 h-3.5 w-3.5 transition group-hover:translate-x-0.5" />
                   </span>

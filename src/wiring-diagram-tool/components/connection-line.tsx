@@ -1,6 +1,7 @@
 "use client"
 
 import { useId } from "react"
+import { connectionTypeStyles, diagramSvgColors } from "@/lib/diagram-theme"
 
 interface ConnectionLineProps {
   fromX: number
@@ -13,19 +14,9 @@ interface ConnectionLineProps {
   isHighlighted: boolean
 }
 
-const typeColors = {
-  hdmi: { stroke: "#22d3ee", glow: "#22d3ee" },
-  sdi: { stroke: "#fb923c", glow: "#fb923c" },
-  usb: { stroke: "#4ade80", glow: "#4ade80" },
-  wireless: { stroke: "#f472b6", glow: "#f472b6" },
-  ethernet: { stroke: "#facc15", glow: "#facc15" },
-  stream: { stroke: "#a78bfa", glow: "#a78bfa" },
-  audio: { stroke: "#f87171", glow: "#f87171" },
-}
-
 export function ConnectionLine({ fromX, fromY, toX, toY, label, type, lineStyle = "solid", isHighlighted }: ConnectionLineProps) {
   const gradientId = useId()
-  const { stroke, glow } = typeColors[type]
+  const { stroke, glow } = connectionTypeStyles[type]
 
   // Determine stroke width based on lineStyle
   const baseStrokeWidth = lineStyle === "thick" ? 4 : 2
@@ -96,7 +87,7 @@ export function ConnectionLine({ fromX, fromY, toX, toY, label, type, lineStyle 
           <text
             textAnchor="middle"
             dominantBaseline="middle"
-            fill={isHighlighted ? stroke : "#888"}
+            fill={isHighlighted ? stroke : diagramSvgColors.muted}
             fontSize="9"
             fontFamily="var(--font-mono)"
             className="select-none"

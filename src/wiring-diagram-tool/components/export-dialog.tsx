@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Download, Copy, Check, ImageIcon, FileCode } from "lucide-react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { connectionTypeColors, diagramSvgColors, nodeTypeColors } from "@/lib/diagram-theme"
 
 interface Node {
   id: string
@@ -159,25 +160,6 @@ function generateSVG(nodes: Node[], connections: Connection[], subgraphs: Subgra
   const width = maxX - minX
   const height = maxY - minY
 
-  const typeColors: Record<string, string> = {
-    atem: "#6366f1",
-    pc: "#06b6d4",
-    device: "#71717a",
-    converter: "#f97316",
-    cloud: "#ef4444",
-    stream: "#22c55e",
-  }
-
-  const connectionColors: Record<string, string> = {
-    hdmi: "#22d3ee",
-    sdi: "#fb923c",
-    usb: "#4ade80",
-    wireless: "#f472b6",
-    ethernet: "#facc15",
-    stream: "#a78bfa",
-    audio: "#f87171",
-  }
-
   const svgParts: string[] = []
 
   svgParts.push(
@@ -185,20 +167,20 @@ function generateSVG(nodes: Node[], connections: Connection[], subgraphs: Subgra
   )
 
   // Background
-  svgParts.push(`<rect x="${minX}" y="${minY}" width="${width}" height="${height}" fill="#0a0a0a"/>`)
+  svgParts.push(`<rect x="${minX}" y="${minY}" width="${width}" height="${height}" fill="${diagramSvgColors.background}"/>`)
 
   // Grid pattern
   svgParts.push(`<defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#333" ${sw}="0.5"/>
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="${diagramSvgColors.grid}" ${sw}="0.5"/>
   </pattern></defs>`)
   svgParts.push(`<rect x="${minX}" y="${minY}" width="${width}" height="${height}" fill="url(#grid)" opacity="0.3"/>`)
 
   // Subgraphs
   subgraphs.forEach((sg) => {
     svgParts.push(`<rect x="${sg.x}" y="${sg.y}" width="${sg.width}" height="${sg.height}" 
-      fill="none" stroke="#6366f1" ${sw}="1" ${sda}="4 4" rx="8" opacity="0.5"/>`)
+      fill="none" stroke="${diagramSvgColors.subgraph}" ${sw}="1" ${sda}="4 4" rx="8" opacity="0.5"/>`)
     svgParts.push(
-      `<text x="${sg.x + 10}" y="${sg.y + 20}" fill="#6366f1" ${fs}="14" ${ff}="system-ui, sans-serif">${escapeXml(sg.title)}</text>`,
+      `<text x="${sg.x + 10}" y="${sg.y + 20}" fill="${diagramSvgColors.subgraph}" ${fs}="14" ${ff}="system-ui, sans-serif">${escapeXml(sg.title)}</text>`,
     )
   })
 
@@ -213,7 +195,7 @@ function generateSVG(nodes: Node[], connections: Connection[], subgraphs: Subgra
     const toX = toNode.x + NODE_WIDTH / 2
     const toY = toNode.y + NODE_HEIGHT / 2
 
-    const color = connectionColors[conn.type] || "#888"
+    const color = connectionTypeColors[conn.type] || diagramSvgColors.fallback
     const isDashed = conn.type === "wireless"
 
     const midX = (fromX + toX) / 2
@@ -230,14 +212,14 @@ function generateSVG(nodes: Node[], connections: Connection[], subgraphs: Subgra
 
     if (conn.label) {
       svgParts.push(
-        `<text x="${midX + perpX / 2}" y="${midY + perpY / 2 - 5}" fill="#888" ${fs}="10" ${ff}="system-ui, sans-serif" ${ta}="middle">${escapeXml(conn.label)}</text>`,
+        `<text x="${midX + perpX / 2}" y="${midY + perpY / 2 - 5}" fill="${diagramSvgColors.muted}" ${fs}="10" ${ff}="system-ui, sans-serif" ${ta}="middle">${escapeXml(conn.label)}</text>`,
       )
     }
   })
 
   // Nodes
   nodes.forEach((node) => {
-    const color = typeColors[node.type] || "#888"
+    const color = nodeTypeColors[node.type] || diagramSvgColors.fallback
     const iconScale = 1.5 // Increased from ~0.75 to 1.5
     const iconSize = 24 * iconScale // 36px icon
     const iconX = node.x + NODE_WIDTH / 2 - iconSize / 2
@@ -245,7 +227,7 @@ function generateSVG(nodes: Node[], connections: Connection[], subgraphs: Subgra
 
     // Node background
     svgParts.push(`<rect x="${node.x}" y="${node.y}" width="${NODE_WIDTH}" height="${NODE_HEIGHT}" 
-      fill="#1a1a1a" stroke="${color}" ${sw}="2" rx="8"/>`)
+      fill="${diagramSvgColors.nodeBackground}" stroke="${color}" ${sw}="2" rx="8"/>`)
 
     // Icon - centered horizontally
     svgParts.push(
@@ -255,10 +237,10 @@ function generateSVG(nodes: Node[], connections: Connection[], subgraphs: Subgra
     // Labels - centered using text-anchor middle
     const labelY = node.y + (node.sublabel ? 52 : 56)
     svgParts.push(`<text x="${node.x + NODE_WIDTH / 2}" y="${labelY}" 
-      fill="#fff" ${fs}="11" ${ff}="system-ui, sans-serif" ${ta}="middle" ${fw}="bold">${escapeXml(node.label)}</text>`)
+      fill="${diagramSvgColors.text}" ${fs}="11" ${ff}="system-ui, sans-serif" ${ta}="middle" ${fw}="bold">${escapeXml(node.label)}</text>`)
     if (node.sublabel) {
       svgParts.push(`<text x="${node.x + NODE_WIDTH / 2}" y="${node.y + 64}" 
-        fill="#888" ${fs}="9" ${ff}="system-ui, sans-serif" ${ta}="middle">${escapeXml(node.sublabel)}</text>`)
+        fill="${diagramSvgColors.muted}" ${fs}="9" ${ff}="system-ui, sans-serif" ${ta}="middle">${escapeXml(node.sublabel)}</text>`)
     }
   })
 
