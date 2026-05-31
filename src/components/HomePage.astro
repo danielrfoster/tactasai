@@ -17,6 +17,7 @@ import {
   Sparkles,
   Zap,
 } from "@lucide/astro";
+import WiringDiagramTool from "./WiringDiagramTool.astro";
 
 interface Props {
   siteUrl: string;
@@ -25,6 +26,18 @@ interface Props {
 
 const { currentPath = "/" } = Astro.props;
 const CONTAINER = "mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10";
+const heroEyebrowMessages = [
+  "AI that knows your business inside out",
+  "AI that keeps work moving",
+  "Agents that know what to do next",
+  "Work like your best operator",
+  "Plan smarter. Act sooner.",
+  "Turn knowledge into momentum",
+  "Daily operations on autopilot",
+  "Help every team move faster",
+  "Less chasing. More doing.",
+  "Make every team more capable",
+];
 
 const exampleOperators = [
   {
@@ -386,16 +399,21 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
     <section class="border-b border-[#E6E0D4] bg-[#F6F8FB]">
       <div class={`${CONTAINER} flex min-h-[620px] items-center justify-center py-20 sm:py-24 lg:min-h-[700px] lg:py-28`}>
         <div class="mx-auto max-w-[1020px] text-center">
-          <div class="mb-8 inline-flex items-center rounded-full bg-[#06AEEA] px-4 py-2 text-[14px] font-medium text-white shadow-[0_14px_32px_-24px_rgba(6,174,234,0.9)] sm:text-[16px]">
-            120+ models for every type of business task
+          <div class="hero-eyebrow mx-auto mb-8 flex h-12 w-[min(92vw,520px)] items-center justify-center overflow-hidden rounded-full border border-[#8DEBFF]/70 bg-[#07324A] px-4 text-white shadow-[0_22px_60px_-30px_rgba(6,174,234,0.95)] sm:h-[54px] sm:px-6">
+            <span class="hero-eyebrow-sheen" aria-hidden="true"></span>
+            <span class="hero-eyebrow-orb" aria-hidden="true"><span></span></span>
+            <span class="hero-eyebrow-text relative z-10 min-w-0 text-center text-[14px] font-extrabold leading-none tracking-normal text-white transition duration-300 ease-out sm:text-[17px]" data-hero-eyebrow data-messages={JSON.stringify(heroEyebrowMessages)}>
+              {heroEyebrowMessages[0]}
+            </span>
+            <span class="hero-eyebrow-progress" aria-hidden="true"></span>
           </div>
           <h1 class="mx-auto max-w-[960px] text-[54px] font-semibold leading-[0.94] tracking-normal text-[#07324A] sm:text-[76px] lg:text-[96px]">
-            <span class="block">Managed Agent Systems for</span>
-            <span class="block text-[#D7A22A]">Business Operations</span>
+            <span class="block">AI agents built for the way</span>
+            <span class="block text-[#D7A22A]">your business works.</span>
           </h1>
           <p class="mx-auto mt-9 max-w-[46rem] text-[18px] leading-[1.62] text-[#07324A] sm:text-[20px]">
-            Tactas AI deploys managed AI agents that learn how your business works, turn company knowledge
-            into action, and help employees and customers get work done faster.
+            TactasAI deploys managed AI agents that learn your company context, work with your team,
+            and turn business knowledge into useful outputs and action.
           </p>
 
           <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -423,6 +441,8 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
       </div>
     </section>
 
+    <WiringDiagramTool />
+
     <section id="solutions" class="relative overflow-hidden border-b border-[#D8E1EA] bg-[#F6F8FB]">
       <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,#06B6D4_24%,#D7A22A_72%,transparent)]"></div>
       <div class={`${CONTAINER} py-16 lg:py-20`}>
@@ -435,7 +455,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
           </div>
           <div class="grid gap-5 lg:justify-self-end lg:pb-1">
             <p class="max-w-[39rem] text-[16px] leading-relaxed text-[#07324A]/78">
-              Tactas agents learn how your business works, combine company knowledge with live business context, and turn everyday requests into useful work, prepared outputs, and automated actions.
+              TactasAI agents learn your company context, work with your team, and turn everyday requests into useful work, prepared outputs, and automated actions.
             </p>
             <div class="flex flex-wrap gap-2">
               {["Understand", "Create", "Automate", "Improve"].map((item) => (
@@ -1523,6 +1543,76 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
 </div>
 
 <style is:global>
+  .hero-eyebrow {
+    position: relative;
+    isolation: isolate;
+    background:
+      radial-gradient(circle at 12% 50%, rgba(103, 232, 249, 0.28), transparent 30%),
+      linear-gradient(135deg, #07324A 0%, #0B4562 48%, #071C32 100%);
+  }
+
+  .hero-eyebrow::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: -1;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.02), rgba(215, 162, 42, 0.18));
+  }
+
+  .hero-eyebrow-sheen {
+    position: absolute;
+    inset: -45% auto -45% -18%;
+    width: 38%;
+    transform: skewX(-18deg);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.32), transparent);
+    animation: tactas-hero-sheen 4.8s ease-in-out infinite;
+  }
+
+  .hero-eyebrow-orb {
+    position: relative;
+    z-index: 10;
+    display: inline-flex;
+    width: 12px;
+    height: 12px;
+    flex: 0 0 auto;
+    margin-right: 12px;
+    border-radius: 999px;
+    background: rgba(103, 232, 249, 0.18);
+    box-shadow: 0 0 0 6px rgba(103, 232, 249, 0.08);
+  }
+
+  .hero-eyebrow-orb span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: #67E8F9;
+    box-shadow: 0 0 18px rgba(103, 232, 249, 0.95);
+    animation: tactas-hero-orb 1.8s ease-in-out infinite;
+  }
+
+  .hero-eyebrow-progress {
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: 5px;
+    height: 2px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  .hero-eyebrow-progress::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform-origin: left;
+    background: linear-gradient(90deg, #67E8F9, #D7A22A);
+    animation: tactas-hero-progress 2.4s linear infinite;
+  }
+
   .example-conversation [class*="border-l-[#06B6D4]"] {
     background-image: linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
   }
@@ -1584,6 +1674,44 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
     30% { opacity: 1; transform: translateY(-2px); }
   }
 
+  @keyframes tactas-hero-sheen {
+    0%, 58% {
+      transform: translateX(0) skewX(-18deg);
+      opacity: 0;
+    }
+
+    68% {
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateX(360%) skewX(-18deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes tactas-hero-orb {
+    0%, 100% {
+      transform: scale(0.74);
+      opacity: 0.72;
+    }
+
+    50% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes tactas-hero-progress {
+    0% {
+      transform: scaleX(0);
+    }
+
+    88%, 100% {
+      transform: scaleX(1);
+    }
+  }
+
   @keyframes tactas-capability-panel {
     0% {
       opacity: 0;
@@ -1636,6 +1764,9 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .hero-eyebrow-sheen,
+    .hero-eyebrow-orb span,
+    .hero-eyebrow-progress::after,
     .example-panel.is-playing .example-conversation > *,
     .tactas-dot {
       animation: none;
@@ -1708,5 +1839,41 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
     }
 
     document.addEventListener("astro:page-load", syncExampleTabs);
+  })();
+
+  (() => {
+    const syncHeroEyebrow = () => {
+      const eyebrow = document.querySelector("[data-hero-eyebrow]");
+      if (!eyebrow || eyebrow.dataset.heroEyebrowBound === "true") return;
+
+      let messages = [];
+      try {
+        messages = JSON.parse(eyebrow.getAttribute("data-messages") || "[]");
+      } catch {
+        messages = [];
+      }
+
+      if (messages.length < 2) return;
+
+      eyebrow.dataset.heroEyebrowBound = "true";
+      let index = 0;
+
+      window.setInterval(() => {
+        index = (index + 1) % messages.length;
+        eyebrow.classList.add("opacity-0", "translate-y-1");
+        window.setTimeout(() => {
+          eyebrow.textContent = messages[index];
+          eyebrow.classList.remove("opacity-0", "translate-y-1");
+        }, 220);
+      }, 2400);
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", syncHeroEyebrow, { once: true });
+    } else {
+      syncHeroEyebrow();
+    }
+
+    document.addEventListener("astro:page-load", syncHeroEyebrow);
   })();
 </script>

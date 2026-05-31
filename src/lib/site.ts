@@ -43,10 +43,10 @@ export function getOrganization() {
   const organization: Record<string, unknown> = {
     "@type": "Organization",
     "@id": `${siteUrl}/#organization`,
-    name: "Tactas AI",
+    name: "TactasAI",
     url: siteUrl,
     description:
-      "Tactas AI deploys managed AI agents that learn how businesses work, turn company knowledge into action, improve work performance, and automate business tasks.",
+      "TactasAI deploys managed AI agents that learn company context, work with teams, and turn business knowledge into useful outputs and action.",
     email: brandEmail,
     areaServed: "Worldwide",
     logo: `${siteUrl}/android-icon-192x192.png`,

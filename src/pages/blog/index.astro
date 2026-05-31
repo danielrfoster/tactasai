@@ -11,7 +11,7 @@ const title = "Tactas AI Blog | Managed AI Agents for Business Operations";
 const description =
   "Read practical guides on managed AI agents, business task automation, company knowledge, connected tools, and turning context into action-ready work.";
 
-const categories = ["All", "Guides", "Business Tasks", "Company Knowledge", "Connected Tools", "Task Review"];
+const categories = ["All", ...new Set(blogPosts.map((post) => post.category))];
 const featuredPost = blogPosts[0];
 const latestPosts = blogPosts.slice(1);
 
@@ -88,124 +88,203 @@ const jsonLd = {
   twitter={{ card: "summary_large_image", title, description, images: ["/tactas-ai-managed-agent-systems-og.jpg"] }}
   jsonLd={jsonLd}
 >
-  <main class="min-h-screen bg-[#F6F8FB] text-[#07324A] selection:bg-[#06B6D4]/18">
-    <section class="border-b border-black/10 bg-[#F6F8FB]">
-      <div class="mx-auto w-full max-w-[1180px] px-5 pb-10 pt-16 sm:px-8 lg:px-10 lg:pb-12 lg:pt-22">
-        <div class="max-w-[760px]">
-          <p class="font-mono text-[12px] font-semibold uppercase tracking-[0.18em] text-[#0891B2]">Blog</p>
-          <h1 class="mt-5 text-[clamp(4rem,11vw,9.5rem)] font-semibold leading-[0.86] tracking-[-0.055em]">
-            Blog
+  <main class="min-h-screen bg-[#F7F8FA] text-[#111827] selection:bg-[#BAE6FD] selection:text-[#0F172A]">
+    <section class="border-b border-[#D8E1EA] bg-white">
+      <div class="mx-auto grid w-full max-w-[1240px] gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[minmax(0,760px)_320px] lg:px-10 lg:py-20">
+        <div class="reveal">
+          <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-[#0891B2]">Tactas AI Blog</p>
+          <h1 class="mt-5 max-w-[760px] text-[clamp(2.4rem,6vw,4.6rem)] font-semibold leading-[1.03] tracking-normal text-[#07324A]">
+            Practical thinking for AI operations.
           </h1>
-          <p class="mt-8 max-w-[620px] text-[20px] leading-relaxed text-[#475569]">
-            Practical ideas on managed AI agents, business task automation, company knowledge, and turning context into action-ready work.
+          <p class="mt-6 max-w-[680px] text-[18px] leading-relaxed text-[#475569]">
+            Guides for teams turning company knowledge, repeated tasks, and connected tools into managed AI agent workflows.
           </p>
         </div>
 
-        <nav class="mt-12 flex gap-2 overflow-x-auto pb-2" aria-label="Blog categories">
-          {categories.map((category, index) => (
-            <a
-              href="#articles"
-              class:list={[
-                "shrink-0 rounded-full border px-4 py-2 text-[14px] font-semibold transition",
-                index === 0
-                  ? "border-[#07324A] bg-[#07324A] text-white"
-                  : "border-black/12 bg-white/60 text-[#07324A] hover:border-[#06B6D4]/40 hover:text-[#0891B2]",
-              ]}
+        <aside class="border-t border-[#D8E1EA] pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-2 reveal" data-delay="1">
+          <p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#64748B]">Editorial focus</p>
+          <dl class="mt-5 space-y-5">
+            <div>
+              <dt class="text-[13px] font-semibold text-[#07324A]">Operating context</dt>
+              <dd class="mt-1 text-[14px] leading-relaxed text-[#64748B]">How agents use business knowledge before taking action.</dd>
+            </div>
+            <div>
+              <dt class="text-[13px] font-semibold text-[#07324A]">Workflow selection</dt>
+              <dd class="mt-1 text-[14px] leading-relaxed text-[#64748B]">How to choose tasks with clear inputs, outputs, and ownership.</dd>
+            </div>
+            <div>
+              <dt class="text-[13px] font-semibold text-[#07324A]">Managed deployment</dt>
+              <dd class="mt-1 text-[14px] leading-relaxed text-[#64748B]">How to make automation reliable inside real business systems.</dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section class="border-b border-[#D8E1EA] bg-[#F7F8FA]">
+      <div class="mx-auto w-full max-w-[1240px] px-5 py-5 sm:px-8 lg:px-10">
+        <nav class="flex gap-2 overflow-x-auto pb-1 scrollbar-none" aria-label="Blog categories">
+          {categories.map((category) => (
+            <button
+              type="button"
+              data-category-btn={category}
+              data-active={category === "All" ? "true" : "false"}
+              class="category-btn shrink-0 border border-[#D8E1EA] bg-white px-4 py-2 text-[13px] font-semibold text-[#334155] transition hover:border-[#94A3B8] hover:text-[#07324A] data-[active=true]:border-[#07324A] data-[active=true]:bg-[#07324A] data-[active=true]:text-white"
             >
               {category}
-            </a>
+            </button>
           ))}
         </nav>
       </div>
     </section>
 
-    <section id="articles" class="bg-[#F6F8FB]">
-      <div class="mx-auto w-full max-w-[1180px] px-5 py-10 sm:px-8 lg:px-10 lg:py-14">
-        <a href={`/blog/${featuredPost.slug}`} class="group grid overflow-hidden rounded-[18px] border border-black/10 bg-white shadow-[0_24px_70px_-58px_rgba(17,17,17,0.45)] transition hover:-translate-y-0.5 hover:border-[#06B6D4]/35 lg:grid-cols-[0.96fr_1.04fr]">
-          <div class="relative min-h-[300px] overflow-hidden bg-[#101322] lg:min-h-[420px]">
+    <section class="mx-auto w-full max-w-[1240px] px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
+      <article data-post-card data-post-category={featuredPost.category} class="reveal">
+        <a
+          href={`/blog/${featuredPost.slug}`}
+          class="group grid overflow-hidden border border-[#D8E1EA] bg-white shadow-[0_24px_70px_-58px_rgba(7,50,74,0.4)] transition hover:border-[#A7B4C4] lg:grid-cols-[0.88fr_1.12fr]"
+        >
+          <div class="relative min-h-[260px] border-b border-[#D8E1EA] bg-[#F8FAFC] lg:min-h-[460px] lg:border-b-0 lg:border-r">
             <img
-              src="/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"
-              alt=""
-              class="h-full w-full object-cover opacity-95 transition duration-500 group-hover:scale-[1.025]"
+              src="/tactas-ai-managed-agent-systems-og.jpg"
+              alt="Tactas AI managed agent systems"
+              class="h-full w-full object-cover"
               loading="eager"
               decoding="async"
             />
-            <div class="absolute left-5 top-5 rounded-full bg-white px-3 py-1.5 text-[12px] font-semibold text-[#07324A]">
-              Featured
-            </div>
           </div>
 
-          <div class="flex min-h-[360px] flex-col justify-between p-7 sm:p-9 lg:p-10">
+          <div class="flex min-h-[420px] flex-col justify-between p-7 sm:p-9 lg:p-11">
             <div>
-              <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] font-medium text-[#6B7280]">
-                <span>{formatDate(featuredPost.publishedAt)}</span>
-                <span class="h-1 w-1 rounded-full bg-[#9CA3AF]" aria-hidden="true"></span>
-                <span>{featuredPost.readTime}</span>
-              </div>
-              <p class="mt-8 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0891B2]">{featuredPost.category}</p>
-              <h2 class="mt-4 text-[clamp(2.2rem,4.2vw,4.2rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
-                {featuredPost.title}
-              </h2>
-              <p class="mt-6 max-w-[38rem] text-[17px] leading-relaxed text-[#475569]">{featuredPost.summary}</p>
-            </div>
-
-            <span class="mt-10 inline-flex items-center text-[15px] font-semibold text-[#07324A]">
-              Read article
-              <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-0.5" stroke-width={1.9} />
-            </span>
-          </div>
-        </a>
-
-        <div class="mt-16 flex items-end justify-between gap-5 border-t border-black/10 pt-10">
-          <div>
-            <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0891B2]">Latest</p>
-            <h2 class="mt-3 text-[clamp(2rem,4vw,3.4rem)] font-semibold leading-tight tracking-[-0.04em]">
-              More from Tactas AI
-            </h2>
-          </div>
-          <a href="/contact" class="hidden rounded-full border border-black/12 bg-white/65 px-4 py-2 text-[14px] font-semibold text-[#07324A] transition hover:border-[#06B6D4]/35 hover:text-[#0891B2] sm:inline-flex">
-            Request a topic
-          </a>
-        </div>
-
-        <div class="mt-8 grid gap-5 lg:grid-cols-2">
-          {latestPosts.map((post) => (
-            <a href={`/blog/${post.slug}`} class="group grid min-h-[310px] overflow-hidden rounded-[18px] border border-black/10 bg-white transition hover:-translate-y-0.5 hover:border-[#06B6D4]/35 sm:grid-cols-[180px_1fr]">
-              <div class="relative min-h-[170px] bg-[#141827] sm:min-h-full">
-                <div class="absolute inset-0 bg-[linear-gradient(135deg,#101322_0%,#2632B8_52%,#C7F7FF_140%)]"></div>
-                <div class="absolute inset-0 opacity-30 [background-image:linear-gradient(to_right,rgba(255,255,255,0.28)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.20)_1px,transparent_1px)] [background-size:26px_26px]"></div>
-                <div class="absolute bottom-5 left-5 right-5">
-                  <p class="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-white/78">{post.category}</p>
-                </div>
-              </div>
-
-              <div class="flex flex-col justify-between p-6">
-                <div>
-                  <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-[12px] font-medium text-[#6B7280]">
-                    <span class="inline-flex items-center gap-1.5">
-                      <CalendarDays class="h-3.5 w-3.5" stroke-width={1.8} />
-                      {formatDate(post.publishedAt)}
-                    </span>
-                    <span class="inline-flex items-center gap-1.5">
-                      <Clock class="h-3.5 w-3.5" stroke-width={1.8} />
-                      {post.readTime}
-                    </span>
-                  </div>
-                  <h3 class="mt-5 text-[26px] font-semibold leading-tight tracking-[-0.035em] text-[#07324A]">
-                    {post.title}
-                  </h3>
-                  <p class="mt-4 text-[15px] leading-relaxed text-[#475569]">{post.summary}</p>
-                </div>
-
-                <span class="mt-8 inline-flex items-center text-[14px] font-semibold text-[#07324A]">
-                  Read article
-                  <ArrowRight class="ml-2 h-3.5 w-3.5 transition group-hover:translate-x-0.5" stroke-width={1.9} />
+              <p class="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#0891B2]">Featured article</p>
+              <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] font-medium text-[#64748B]">
+                <span class="inline-flex items-center gap-1.5">
+                  <CalendarDays class="h-4 w-4 text-[#64748B]" />
+                  {formatDate(featuredPost.publishedAt)}
+                </span>
+                <span class="h-1 w-1 rounded-full bg-[#CBD5E1]" aria-hidden="true"></span>
+                <span class="inline-flex items-center gap-1.5">
+                  <Clock class="h-4 w-4 text-[#64748B]" />
+                  {featuredPost.readTime}
                 </span>
               </div>
-            </a>
-          ))}
+              <p class="mt-8 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#64748B]">
+                {featuredPost.category}
+              </p>
+              <h2 class="mt-4 max-w-[720px] text-[clamp(2rem,4vw,3.3rem)] font-semibold leading-[1.06] tracking-normal text-[#07324A] transition group-hover:text-[#075985]">
+                {featuredPost.title}
+              </h2>
+              <p class="mt-5 max-w-[640px] text-[17px] leading-relaxed text-[#475569]">{featuredPost.summary}</p>
+            </div>
+
+            <div class="mt-10 flex items-center justify-between border-t border-[#E2E8F0] pt-6">
+              <span class="text-[13px] font-semibold text-[#64748B]">Tactas AI Editorial</span>
+              <span class="inline-flex items-center text-[14px] font-semibold text-[#07324A] transition group-hover:text-[#075985]">
+                Read article
+                <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-1" stroke-width={2} />
+              </span>
+            </div>
+          </div>
+        </a>
+      </article>
+
+      <div class="mt-16 flex flex-col gap-3 border-t border-[#D8E1EA] pt-10 sm:flex-row sm:items-end sm:justify-between reveal">
+        <div>
+          <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-[#0891B2]">Latest analysis</p>
+          <h2 class="mt-3 text-[32px] font-semibold leading-tight tracking-normal text-[#07324A] sm:text-[42px]">More from Tactas AI</h2>
         </div>
+        <a href="/contact" class="inline-flex h-11 items-center justify-center border border-[#D8E1EA] bg-white px-5 text-[14px] font-semibold text-[#07324A] transition hover:border-[#94A3B8]">
+          Request a topic
+        </a>
+      </div>
+
+      <div class="mt-8 grid gap-5 lg:grid-cols-2">
+        {latestPosts.map((post, idx) => (
+          <article data-post-card data-post-category={post.category} class="reveal" data-delay={String(idx + 1)}>
+            <a
+              href={`/blog/${post.slug}`}
+              class="group flex h-full min-h-[320px] flex-col justify-between border border-[#D8E1EA] bg-white p-7 transition hover:border-[#A7B4C4] sm:p-8"
+            >
+              <div>
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] font-medium text-[#64748B]">
+                  <span>{formatDate(post.publishedAt)}</span>
+                  <span class="h-1 w-1 rounded-full bg-[#CBD5E1]" aria-hidden="true"></span>
+                  <span>{post.readTime}</span>
+                </div>
+                <p class="mt-7 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#64748B]">{post.category}</p>
+                <h3 class="mt-4 text-[26px] font-semibold leading-tight tracking-normal text-[#07324A] transition group-hover:text-[#075985]">
+                  {post.title}
+                </h3>
+                <p class="mt-4 text-[15.5px] leading-relaxed text-[#475569]">{post.summary}</p>
+              </div>
+              <span class="mt-10 inline-flex items-center text-[14px] font-semibold text-[#07324A] transition group-hover:text-[#075985]">
+                Read article
+                <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-1" stroke-width={2} />
+              </span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="border-y border-[#D8E1EA] bg-white">
+      <div class="mx-auto grid w-full max-w-[1240px] gap-6 px-5 py-12 sm:px-8 lg:grid-cols-[1fr_auto] lg:items-center lg:px-10">
+        <div>
+          <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-[#0891B2]">Task review</p>
+          <h2 class="mt-3 max-w-[720px] text-[30px] font-semibold leading-tight tracking-normal text-[#07324A] sm:text-[40px]">
+            Need help choosing the first workflow?
+          </h2>
+          <p class="mt-4 max-w-[640px] text-[16px] leading-relaxed text-[#475569]">
+            Share a repeated business task and the systems behind it. Tactas AI can map the context, outputs, and automation path.
+          </p>
+        </div>
+        <a href="/contact" class="inline-flex h-12 items-center justify-center bg-[#07324A] px-6 text-[14px] font-semibold text-white transition hover:bg-[#075985]">
+          Request task review
+          <ArrowRight class="ml-2 h-4 w-4" stroke-width={2} />
+        </a>
       </div>
     </section>
   </main>
 </BaseLayout>
+
+<script is:inline>
+  function initFilters() {
+    const buttons = document.querySelectorAll("[data-category-btn]");
+    const posts = document.querySelectorAll("[data-post-card]");
+
+    if (buttons.length === 0 || posts.length === 0) return;
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const category = btn.getAttribute("data-category-btn");
+
+        buttons.forEach((button) => button.setAttribute("data-active", "false"));
+        btn.setAttribute("data-active", "true");
+
+        posts.forEach((post) => {
+          const postCategory = post.getAttribute("data-post-category");
+          post.classList.toggle("hidden", category !== "All" && postCategory !== category);
+        });
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initFilters);
+  } else {
+    initFilters();
+  }
+
+  document.addEventListener("astro:after-swap", initFilters);
+</script>
+
+<style>
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
