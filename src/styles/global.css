@@ -19,6 +19,16 @@
   --color-tactas-bg-soft: var(--bg-soft);
   --color-tactas-bg-raised: var(--bg-raised);
   --color-tactas-bg-elevated: var(--bg-elevated);
+  --color-tactas-surface-main: var(--surface-main);
+  --color-tactas-surface-card: var(--surface-card);
+  --color-tactas-surface-muted: var(--surface-muted);
+  --color-tactas-border-soft: var(--border-soft);
+  --color-tactas-navy: var(--tactas-navy);
+  --color-tactas-blue: var(--tactas-blue);
+  --color-tactas-cyan: var(--tactas-cyan);
+  --color-tactas-text-primary: var(--text-primary);
+  --color-tactas-text-secondary: var(--text-secondary);
+  --color-tactas-text-muted: var(--text-muted);
   --color-tactas-line: var(--line);
   --color-tactas-line-soft: var(--line-soft);
   --color-tactas-line-strong: var(--line-strong);
@@ -92,44 +102,70 @@
 :root {
   --font-manrope: "Manrope", ui-sans-serif, system-ui, sans-serif;
   --font-ibm-plex-mono: "IBM Plex Mono", ui-monospace, monospace;
-  --bg: #f6f8fb;
-  --bg-soft: #f8fafc;
-  --bg-raised: #ffffff;
-  --bg-elevated: #eef6fb;
-  --line: #d8e1ea;
-  --line-soft: #e2e8f0;
-  --line-strong: #cbd5e1;
-  --ink: #0f172a;
-  --ink-2: #07324a;
-  --ink-3: #475569;
-  --ink-4: #64748b;
-  --accent: #06b6d4;
-  --accent-2: #2f66ff;
-  --accent-2-deep: #1d4ed8;
-  --accent-deep: #0891b2;
-  --accent-soft: #e6fbff;
-  --accent-faint: #ecfeff;
-  --accent-line: #bae6fd;
-  --accent-warm: #d7a22a;
-  --signal-ok: #34d399;
-  --success-soft: #ecfdf5;
-  --success-line: #a7f3d0;
-  --success-strong: #047857;
-  --signal-warn: #fbbf24;
-  --warning-soft: #fef3c7;
-  --warning-line: #fde68a;
-  --warning-strong: #b45309;
-  --violet: #7c3aed;
-  --violet-soft: #f3e8ff;
-  --violet-line: #ddd6fe;
-  --primary-soft: #dbeafe;
-  --primary-line: #bfdbfe;
-  --night: #0f172a;
-  --night-strong: #07324a;
-  --deep: #05073b;
-  --danger: #b91c1c;
-  --danger-soft: #fee2e2;
-  --danger-line: #fecaca;
+  /* Brand role colors */
+  --authority-navy: #07111f;
+  --enterprise-ink: #0f172a;
+  --primary-blue: #2563eb;
+  --signal-cyan: #06b6d4;
+  --agent-violet: #7c3aed;
+  --operating-surface: #f7f9fc;
+  --card-white: #ffffff;
+  --muted-surface: #f1f5f9;
+  --soft-border: #e2e8f0;
+
+  /* Backward-compatible Tactas tokens */
+  --tactas-navy: var(--authority-navy);
+  --tactas-ink: var(--enterprise-ink);
+  --tactas-blue: var(--primary-blue);
+  --tactas-cyan: var(--signal-cyan);
+  --tactas-violet: var(--agent-violet);
+  --surface-main: var(--operating-surface);
+  --surface-card: var(--card-white);
+  --surface-muted: var(--muted-surface);
+  --border-soft: var(--soft-border);
+  --text-primary: var(--enterprise-ink);
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --bg: var(--surface-main);
+  --bg-soft: var(--surface-muted);
+  --bg-raised: var(--surface-card);
+  --bg-elevated: var(--surface-muted);
+  --line: var(--border-soft);
+  --line-soft: var(--border-soft);
+  --line-strong: var(--border-soft);
+  --ink: var(--text-primary);
+  --ink-2: var(--tactas-navy);
+  --ink-3: var(--text-secondary);
+  --ink-4: var(--text-muted);
+  --accent: var(--tactas-cyan);
+  --accent-2: var(--tactas-blue);
+  --accent-2-deep: var(--tactas-blue);
+  --accent-deep: var(--tactas-cyan);
+  --accent-soft: color-mix(in srgb, var(--tactas-cyan) 10%, var(--surface-card));
+  --accent-faint: color-mix(in srgb, var(--tactas-cyan) 6%, var(--surface-card));
+  --accent-line: color-mix(in srgb, var(--tactas-cyan) 28%, var(--border-soft));
+  --accent-warm: var(--warning);
+  --signal-ok: var(--success);
+  --success-soft: color-mix(in srgb, var(--success) 10%, var(--surface-card));
+  --success-line: color-mix(in srgb, var(--success) 32%, var(--border-soft));
+  --success-strong: var(--success);
+  --signal-warn: var(--warning);
+  --warning-soft: color-mix(in srgb, var(--warning) 12%, var(--surface-card));
+  --warning-line: color-mix(in srgb, var(--warning) 34%, var(--border-soft));
+  --warning-strong: var(--warning);
+  --violet: var(--tactas-violet);
+  --violet-soft: color-mix(in srgb, var(--tactas-violet) 10%, var(--surface-card));
+  --violet-line: color-mix(in srgb, var(--tactas-violet) 28%, var(--border-soft));
+  --primary-soft: color-mix(in srgb, var(--tactas-blue) 10%, var(--surface-card));
+  --primary-line: color-mix(in srgb, var(--tactas-blue) 28%, var(--border-soft));
+  --night: var(--tactas-navy);
+  --night-strong: var(--tactas-navy);
+  --deep: var(--tactas-navy);
+  --danger-soft: color-mix(in srgb, var(--danger) 10%, var(--surface-card));
+  --danger-line: color-mix(in srgb, var(--danger) 30%, var(--border-soft));
   --background: var(--bg);
   --foreground: var(--ink);
   --card: var(--bg-raised);
@@ -142,7 +178,7 @@
   --secondary-foreground: var(--ink-2);
   --muted: var(--bg-soft);
   --muted-foreground: var(--ink-4);
-  --destructive: #b91c1c;
+  --destructive: var(--danger);
   --destructive-foreground: #ffffff;
   --border: var(--line);
   --input: var(--line-strong);
@@ -456,11 +492,11 @@ body {
 .tactas-button-primary {
   background: var(--accent-2);
   color: #ffffff;
-  box-shadow: 0 16px 34px -24px rgba(47, 102, 255, 0.85);
+  box-shadow: 0 16px 34px -24px rgba(37, 99, 235, 0.85);
 }
 
 .tactas-button-primary:hover {
-  background: #0ea5e9;
+  background: var(--accent-2-deep);
   transform: translateY(-1px);
 }
 
@@ -479,9 +515,9 @@ body {
 .tactas-panel-dark {
   border: 1px solid rgba(6, 182, 212, 0.18);
   border-radius: var(--radius-panel);
-  background: linear-gradient(180deg, var(--night-strong) 0%, #061e33 100%);
+  background: linear-gradient(180deg, var(--night-strong) 0%, #0f172a 100%);
   color: #ffffff;
-  box-shadow: 0 34px 100px -72px rgba(7, 50, 74, 0.58);
+  box-shadow: 0 34px 100px -72px rgba(7, 17, 31, 0.58);
 }
 
 .tactas-panel-dark .tactas-body {
@@ -505,16 +541,16 @@ main :where(article[class*="border"][class*="bg-white"], form[class*="border"][c
   box-shadow: var(--shadow-card) !important;
 }
 
-main :where(a, button)[class*="bg-[#2F66FF]"] {
+main :where(a, button)[class*="bg-[#2563EB]"] {
   border-radius: var(--radius-pill) !important;
   color: #ffffff;
 }
 
-main :where(a, button)[class*="border"][class*="bg-white"][class*="text-[#07324A]"] {
+main :where(a, button)[class*="border"][class*="bg-white"][class*="text-[#07111F]"] {
   border-radius: var(--radius-pill) !important;
 }
 
-main :where(a, button)[class*="bg-[#2F66FF]"]:hover {
+main :where(a, button)[class*="bg-[#2563EB]"]:hover {
   transform: translateY(-1px);
 }
 

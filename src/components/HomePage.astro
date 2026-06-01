@@ -17,6 +17,7 @@ import {
   Sparkles,
   Zap,
 } from "@lucide/astro";
+import AskAIReviewSection from "./AskAIReviewSection.astro";
 
 interface Props {
   siteUrl: string;
@@ -430,17 +431,19 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
     <section class="tactas-hero-section border-b border-tactas-line-strong bg-tactas-bg">
       <div class={`tactas-container flex min-h-[620px] items-center justify-center py-20 sm:py-24 lg:min-h-[700px] lg:py-28`}>
         <div class="mx-auto max-w-[1020px] text-center">
-          <div class="hero-eyebrow mx-auto mb-8 flex h-12 w-[min(92vw,520px)] items-center justify-center overflow-hidden rounded-full border border-tactas-accent-line/70 bg-tactas-night-strong px-4 text-white shadow-[0_22px_60px_-30px_rgba(6,174,234,0.95)] sm:h-[54px] sm:px-6">
-            <span class="hero-eyebrow-sheen" aria-hidden="true"></span>
-            <span class="hero-eyebrow-orb" aria-hidden="true"><span></span></span>
-            <span class="hero-eyebrow-text relative z-10 min-w-0 text-center text-[14px] font-extrabold leading-none tracking-normal text-white transition duration-300 ease-out sm:text-[17px]" data-hero-eyebrow data-messages={JSON.stringify(heroEyebrowMessages)}>
+          <div class="hero-eyebrow mx-auto mb-8 inline-flex max-w-full items-center gap-3 border border-tactas-border-soft bg-white px-4 py-2.5 shadow-[0_18px_44px_-36px_rgba(7,17,31,0.28)]">
+            <span class="hero-eyebrow-mark" aria-hidden="true"></span>
+            <span
+              class="hero-eyebrow-text min-w-0 text-[12px] font-bold uppercase leading-none tracking-[0.16em] text-tactas-navy transition-opacity duration-150 sm:text-[13px]"
+              data-hero-eyebrow
+              data-messages={JSON.stringify(heroEyebrowMessages)}
+            >
               {heroEyebrowMessages[0]}
             </span>
-            <span class="hero-eyebrow-progress" aria-hidden="true"></span>
           </div>
           <h1 class="tactas-hero-title mx-auto max-w-[960px] text-[54px] font-semibold leading-[0.94] tracking-normal text-tactas-ink-strong sm:text-[76px] lg:text-[96px]">
             <span class="block">AI agents built for the way</span>
-            <span class="block text-tactas-warm">your business works.</span>
+            <span class="block text-tactas-primary">your business works.</span>
           </h1>
           <p class="mx-auto mt-9 max-w-[46rem] text-[18px] leading-[1.62] text-tactas-ink-strong sm:text-[20px]">
             TactasAI deploys managed AI agents that learn your company context, work with your team,
@@ -448,7 +451,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
           </p>
 
           <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a href="/contact" class="tactas-primary-action inline-flex h-12 items-center justify-center rounded-[8px] bg-tactas-primary px-6 text-[14px] font-semibold text-white shadow-[0_16px_34px_-24px_rgba(47,102,255,0.85)] transition hover:bg-tactas-accent">
+            <a href="/contact" class="tactas-primary-action inline-flex h-12 items-center justify-center rounded-[8px] bg-tactas-primary px-6 text-[14px] font-semibold text-white shadow-[0_16px_34px_-24px_rgba(37,99,235,0.85)] transition hover:bg-tactas-primary-strong">
               Book an operator review
             </a>
             <a href="#platform" class="tactas-secondary-action inline-flex h-12 items-center justify-center rounded-[8px] border border-tactas-line-strong bg-white/60 px-6 text-[14px] font-semibold text-tactas-ink-strong transition hover:border-tactas-primary hover:text-tactas-primary">
@@ -456,7 +459,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
             </a>
           </div>
 
-          <div class="tactas-proof-strip mx-auto mt-7 grid max-w-[720px] overflow-hidden rounded-[8px] border border-tactas-line-strong bg-white/65 text-left shadow-[0_18px_44px_-36px_rgba(7,50,74,0.35)] backdrop-blur sm:grid-cols-3">
+          <div class="tactas-proof-strip mx-auto mt-7 grid max-w-[720px] overflow-hidden rounded-[8px] border border-tactas-line-strong bg-white/65 text-left shadow-[0_18px_44px_-36px_rgba(7,17,31,0.35)] backdrop-blur sm:grid-cols-3">
             {[
               ["Integrations", Network],
               ["Approval gates", ShieldCheck],
@@ -1003,7 +1006,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                 </div>
 
                 <div class="border-t border-tactas-line-soft bg-white p-3 sm:px-4 sm:py-3.5">
-                  <div class="rounded-[10px] border border-tactas-line-strong bg-tactas-bg-soft shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition focus-within:border-tactas-accent focus-within:bg-white focus-within:shadow-[0_0_0_3px_rgba(103,232,249,0.2)]">
+                  <div class="rounded-[10px] border border-tactas-line-strong bg-tactas-bg-soft shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition focus-within:border-tactas-accent focus-within:bg-white focus-within:shadow-[0_0_0_3px_rgba(6,182,212,0.2)]">
                     <div class="flex items-center gap-2 px-3.5 py-2.5">
                       <p class="flex-1 text-[13.5px] text-tactas-muted-soft">Ask Tactas to handle work&hellip;</p>
                     </div>
@@ -1114,7 +1117,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
           </div>
         </div>
 
-        <div class="capability-carousel relative mt-10 overflow-hidden border border-tactas-line bg-white shadow-[0_34px_100px_-68px_rgba(7,50,74,0.38)]">
+        <div class="capability-carousel relative mt-10 overflow-hidden border border-tactas-line bg-white shadow-[0_34px_100px_-68px_rgba(7,17,31,0.38)]">
           <div class="grid grid-cols-2 border-b border-tactas-line-soft bg-tactas-bg sm:grid-cols-4">
             {capabilitySlices.map((slice, index) => (
               <div class="border-r border-tactas-line-soft px-4 py-3 last:border-r-0">
@@ -1284,8 +1287,8 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
               <svg class="pointer-events-none absolute inset-0 hidden h-full w-full lg:block" viewBox="0 0 1240 640" fill="none" aria-hidden="true">
                 <defs>
                   <linearGradient id="integrationSignal" x1="320" y1="120" x2="1000" y2="540" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#2F66FF" />
-                    <stop offset="0.48" stop-color="#D946EF" />
+                    <stop stop-color="#2563EB" />
+                    <stop offset="0.48" stop-color="#7C3AED" />
                     <stop offset="1" stop-color="#F59E0B" />
                   </linearGradient>
                 </defs>
@@ -1326,7 +1329,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
 
               {integrationFeatureNodes.map((node) => (
                 <div
-                  class="absolute z-20 hidden rounded-[10px] bg-[linear-gradient(135deg,#2F66FF_0%,#D946EF_50%,#F59E0B_100%)] p-[1px] shadow-[0_22px_54px_-42px_rgba(15,23,42,0.55)] lg:block"
+                  class="absolute z-20 hidden rounded-[10px] bg-[linear-gradient(135deg,#2563EB_0%,#7C3AED_50%,#F59E0B_100%)] p-[1px] shadow-[0_22px_54px_-42px_rgba(15,23,42,0.55)] lg:block"
                   style={`left: ${node.x - node.width / 2}px; top: ${node.y - 34}px; width: ${node.width}px;`}
                 >
                   <div class="flex h-[68px] items-center justify-center rounded-[9px] bg-white px-5 text-[24px] font-semibold tracking-normal text-tactas-primary-strong">
@@ -1379,7 +1382,15 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
 
     <section class="border-b border-tactas-line bg-tactas-bg">
       <div class={`tactas-container py-12 lg:py-14`}>
-        <div class="tactas-final-cta overflow-hidden border border-tactas-accent-strong/35 bg-tactas-night-strong text-white shadow-[0_34px_100px_-72px_rgba(7,50,74,0.58)]">
+        <AskAIReviewSection
+          heading="Ask an AI what TactasAI does."
+        />
+      </div>
+    </section>
+
+    <section class="border-b border-tactas-line bg-tactas-bg">
+      <div class={`tactas-container py-12 lg:py-14`}>
+        <div class="tactas-final-cta overflow-hidden border border-tactas-accent-strong/35 bg-tactas-night-strong text-white shadow-[0_34px_100px_-72px_rgba(7,17,31,0.58)]">
           <div class="grid gap-6 px-5 py-7 sm:px-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:py-8">
             <div>
               <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-tactas-accent-line">Task automation review</p>
@@ -1447,7 +1458,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
     width: min(820px, 86vw);
     height: 360px;
     transform: translateX(-50%);
-    background: rgba(103, 232, 249, 0.16);
+    background: rgba(6, 182, 212, 0.14);
   }
 
   .tactas-hero-section::after {
@@ -1455,7 +1466,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
     bottom: 3%;
     width: min(520px, 68vw);
     height: 260px;
-    background: rgba(215, 162, 42, 0.14);
+    background: rgba(124, 58, 237, 0.12);
   }
 
   .tactas-hero-title {
@@ -1599,66 +1610,34 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
     isolation: isolate;
     width: auto !important;
     min-width: 0;
-    height: 46px !important;
-    padding: 0 18px !important;
-    border-color: rgba(6, 182, 212, 0.22) !important;
-    background: rgba(255, 255, 255, 0.64);
-    box-shadow: 0 18px 44px -34px rgba(7, 50, 74, 0.36) !important;
-    backdrop-filter: blur(12px);
+    border-radius: 999px !important;
+    background: color-mix(in srgb, var(--surface-card) 86%, var(--signal-cyan));
+    box-shadow: 0 18px 44px -36px rgba(7, 17, 31, 0.28) !important;
   }
 
   .hero-eyebrow::before {
     content: "";
     position: absolute;
-    inset: 1px;
+    inset: -1px;
     z-index: -1;
     border-radius: 999px;
-    background: linear-gradient(90deg, rgba(103, 232, 249, 0.08), rgba(255, 255, 255, 0.38), rgba(215, 162, 42, 0.06));
+    background: linear-gradient(90deg, rgba(6, 182, 212, 0.34), rgba(37, 99, 235, 0.12), rgba(124, 58, 237, 0.22));
   }
 
   .hero-eyebrow-text {
-    color: var(--ink-2) !important;
+    color: var(--authority-navy) !important;
   }
 
-  .hero-eyebrow-sheen {
-    display: none;
-  }
-
-  .hero-eyebrow-orb {
+  .hero-eyebrow-mark {
     position: relative;
     z-index: 10;
     display: inline-flex;
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
     flex: 0 0 auto;
-    margin-right: 10px;
     border-radius: 999px;
-    background: rgba(6, 182, 212, 0.12);
-    box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.07);
-  }
-
-  .hero-eyebrow-orb span {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
-    background: var(--accent);
-    opacity: 0.9;
-    box-shadow: 0 0 10px rgba(6, 182, 212, 0.36);
-  }
-
-  .hero-eyebrow-progress {
-    display: none;
-  }
-
-  .hero-eyebrow-progress::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    transform-origin: left;
-    background: linear-gradient(90deg, var(--accent-line), var(--accent-warm));
-    animation: tactas-hero-progress 2.4s linear infinite;
+    background: var(--signal-cyan);
+    box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.12);
   }
 
   .example-conversation [class*="border-l-tactas-accent"] {
@@ -1815,9 +1794,6 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
     .tactas-hero-title > span,
     .tactas-primary-action::before,
     .tactas-final-cta a::before,
-    .hero-eyebrow-sheen,
-    .hero-eyebrow-orb span,
-    .hero-eyebrow-progress::after,
     .example-panel.is-playing .example-conversation > *,
     .tactas-dot {
       animation: none;
@@ -1915,8 +1891,8 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
         window.setTimeout(() => {
           eyebrow.textContent = messages[index];
           eyebrow.classList.remove("opacity-0");
-        }, 260);
-      }, 4200);
+        }, 150);
+      }, 2600);
     };
 
     if (document.readyState === "loading") {

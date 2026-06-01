@@ -1,0 +1,126 @@
+---
+import { ArrowUpRight } from "@lucide/astro";
+import { getSiteUrl } from "../lib/site";
+
+interface Props {
+  class?: string;
+  heading?: string;
+  description?: string;
+}
+
+const {
+  class: className = "",
+  heading = "What do AIs think about TactasAI?",
+  description = "",
+} = Astro.props;
+
+const siteUrl = getSiteUrl();
+const aiReviewPrompt = `Analyze TactasAI using its public website (${siteUrl}). Write a practical, strengths-focused assessment for a business team evaluating managed AI agents. Explain what TactasAI offers, who it is best for, the strongest use cases, why the managed-service approach may be valuable, and how it differs from generic AI chatbots, AI search, or unmanaged automation tools. Highlight the clearest reasons a company should consider TactasAI for business operations, company knowledge, connected tools, workflow automation, and action-ready outputs. Include only reasonable buying questions that help confirm fit, not generic skepticism. Keep the tone confident, useful, and evidence-based, and cite what you can infer from the website.`;
+const encodedPrompt = encodeURIComponent(aiReviewPrompt);
+
+const aiLinks = [
+  {
+    label: "ChatGPT",
+    href: `https://chatgpt.com/?q=${encodedPrompt}`,
+    logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg",
+    brandColor: "#10A37F",
+  },
+  {
+    label: "Gemini",
+    href: `https://gemini.google.com/app?prompt=${encodedPrompt}`,
+    logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googlegemini.svg",
+    brandColor: "#8E75B2",
+  },
+  {
+    label: "Claude",
+    href: `https://claude.ai/new?q=${encodedPrompt}`,
+    logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/claude.svg",
+    brandColor: "#D97757",
+  },
+  {
+    label: "Perplexity",
+    href: `https://www.perplexity.ai/search?q=${encodedPrompt}`,
+    logoSrc: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/perplexity.svg",
+    brandColor: "#1FB8CD",
+  },
+];
+---
+
+<section class:list={["reveal relative isolate overflow-hidden border-y border-tactas-line py-7 sm:py-8", className]} data-ai-review-section>
+  <div class="absolute left-0 top-0 h-px w-28 bg-tactas-accent-strong" aria-hidden="true"></div>
+  <div class="absolute bottom-0 right-0 h-px w-40 bg-tactas-primary-line" aria-hidden="true"></div>
+
+  <div class="grid gap-7 lg:grid-cols-[minmax(0,1fr)_minmax(300px,0.72fr)] lg:items-center">
+    <div class="flex gap-4">
+      <div class="mt-1 hidden h-20 w-px shrink-0 bg-tactas-line-strong sm:block" aria-hidden="true"></div>
+      <div>
+        <div class="flex items-center gap-3">
+          <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-tactas-accent-strong">Ask AI</p>
+          <div class="flex -space-x-2" aria-hidden="true">
+            {
+              aiLinks.map(({ label, logoSrc, brandColor }) => (
+                <span
+                  class="flex h-7 w-7 items-center justify-center border border-white bg-white shadow-[0_10px_24px_-18px_rgba(15,23,42,0.5)]"
+                  style={`box-shadow: inset 0 0 0 1px color-mix(in srgb, ${brandColor} 22%, transparent), 0 10px 24px -18px rgba(15,23,42,0.5);`}
+                  title={label}
+                >
+                  <img src={logoSrc} alt="" class="h-3.5 w-3.5 object-contain opacity-80" loading="lazy" decoding="async" />
+                </span>
+              ))
+            }
+          </div>
+        </div>
+        <h2 class="mt-3 max-w-[48rem] text-[26px] font-semibold leading-tight tracking-normal text-tactas-ink-strong sm:text-[32px]">{heading}</h2>
+        {description && <p class="mt-4 max-w-[46rem] text-[15.5px] leading-relaxed text-tactas-muted">{description}</p>}
+      </div>
+    </div>
+
+    <div class="grid gap-2 sm:grid-cols-2">
+      {
+        aiLinks.map(({ label, href, logoSrc, brandColor }) => (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-ai-review-link
+            data-ai-prompt={aiReviewPrompt}
+            class="group relative flex h-[54px] items-center justify-between overflow-hidden border border-tactas-line bg-white/72 px-3.5 text-[14px] font-semibold text-tactas-ink-strong shadow-[0_18px_44px_-38px_rgba(7,17,31,0.32)] transition hover:-translate-y-0.5 hover:border-tactas-line-strong hover:bg-white hover:text-tactas-accent-strong"
+            style={`--ai-brand: ${brandColor};`}
+            aria-label={`Ask ${label} to analyze TactasAI`}
+          >
+            <span class="absolute inset-y-0 left-0 w-1 bg-[var(--ai-brand)] opacity-70 transition group-hover:opacity-100" aria-hidden="true"></span>
+            <span class="inline-flex min-w-0 items-center gap-2.5">
+              <span
+                class="flex h-8 w-8 shrink-0 items-center justify-center border bg-white transition group-hover:scale-105"
+                style={`border-color: color-mix(in srgb, ${brandColor} 24%, var(--line)); background: color-mix(in srgb, ${brandColor} 8%, white);`}
+                aria-hidden="true"
+              >
+                <img src={logoSrc} alt="" class="h-[18px] w-[18px] object-contain opacity-85 transition group-hover:opacity-100" loading="lazy" decoding="async" />
+              </span>
+              <span class="truncate">{label}</span>
+            </span>
+            <ArrowUpRight class="h-4 w-4 shrink-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" stroke-width={2} />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  if (!window.__tactasAiReviewLinksBound) {
+    window.__tactasAiReviewLinksBound = true;
+
+    document.addEventListener("click", (event) => {
+      const target = event.target instanceof Element ? event.target : null;
+      const link = target?.closest("[data-ai-review-link]");
+      const prompt = link?.getAttribute("data-ai-prompt");
+
+      if (!prompt || !navigator.clipboard) {
+        return;
+      }
+
+      navigator.clipboard.writeText(prompt).catch(() => {});
+    });
+  }
+</script>
