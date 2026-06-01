@@ -145,8 +145,7 @@ const pricingSections = [
     eyebrow: "Setup and build",
     phaseIndex: "01",
     phaseTitle: "Setup & Implementation",
-    title: "One-time build work before monthly usage.",
-    summary: "Tactas requires implementation work before the monthly quota starts: workflow mapping, company data preparation, tool connections, agent configuration, testing, and launch.",
+    title: "AI agent design",
     priceLabel: "One-time fee",
     plans: buildPlans,
     themeColor: "text-tactas-accent-strong bg-tactas-accent-soft border-tactas-accent/20",
@@ -157,7 +156,6 @@ const pricingSections = [
     phaseIndex: "02",
     phaseTitle: "Monthly Operating Quota",
     title: "Monthly Operating Quota",
-    summary: "All monthly plans run on the same managed agent system. Plans do not unlock or remove core features. They define monthly operating capacity: model/runtime usage, indexed context capacity, retrieval volume, connected tool actions, monitoring volume, and improvement allocation.",
     priceLabel: "Monthly plan",
     note: "Subject to fair use, agreed operating scope, system safety limits, and premium model quota.",
     plans: ongoingPlans,
@@ -166,29 +164,6 @@ const pricingSections = [
 ];
 
 const plans = [...buildPlans, ...ongoingPlans];
-
-const securityItems = [
-  {
-    label: "Setup scope",
-    body: "Pay for the data preparation, tool connections, and workflow configuration the system needs.",
-    icon: ShieldCheck,
-  },
-  {
-    label: "Usage quota",
-    body: "Choose a monthly plan around agent usage, model/runtime resources, context, and tool actions.",
-    icon: Zap,
-  },
-  {
-    label: "Managed operation",
-    body: "Keep monitoring, support, and improvement cycles aligned with production usage.",
-    icon: ShieldCheck,
-  },
-  {
-    label: "Expansion path",
-    body: "Start with one operational workflow and expand once the system pattern is proven.",
-    icon: Zap,
-  },
-];
 
 const faqs = [
   [
@@ -359,9 +334,11 @@ const jsonLd = {
                   <h2 class="max-w-[760px] text-[36px] font-semibold leading-[1.04] tracking-normal text-tactas-ink-strong sm:text-[48px]">
                     {section.title}
                   </h2>
-                  <p class="mt-4 max-w-[720px] text-[15.5px] leading-relaxed text-tactas-muted">
-                    {section.summary}
-                  </p>
+                  {section.summary && (
+                    <p class="mt-4 max-w-[720px] text-[15.5px] leading-relaxed text-tactas-muted">
+                      {section.summary}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -447,35 +424,6 @@ const jsonLd = {
             </div>
           ))}
         </div>
-        </div>
-      </section>
-
-      <section class="border-b border-tactas-line bg-white">
-        <div class="tactas-container grid gap-12 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:py-20 reveal">
-          <div>
-            <p class="font-mono text-[10.5px] uppercase tracking-[0.24em] text-tactas-accent-strong">Lifecycle</p>
-            <h2 class="mt-4 max-w-[720px] text-[36px] font-semibold leading-[1.04] tracking-normal text-tactas-ink-strong sm:text-[48px]">
-              Pay for setup complexity first, then the monthly quota you use.
-            </h2>
-            <p class="mt-5 text-[15.5px] leading-relaxed text-tactas-muted">
-              Tactas builds are designed around reuse. Start by automating a single workflow using your existing company knowledge and business tools, and expand only as the system pattern proves its value. As your team grows, adjust quota limits around model capacity and tool volumes.
-            </p>
-          </div>
-
-          <div class="grid gap-4 sm:grid-cols-2">
-            {securityItems.map((item) => {
-              const Icon = item.icon;
-              return (
-                <article class="group border border-tactas-line bg-tactas-bg p-5 transition duration-300 hover:-translate-y-0.5 hover:border-tactas-accent/50">
-                  <div class="flex h-11 w-11 items-center justify-center rounded-[8px] border border-tactas-accent-line bg-tactas-accent-soft text-tactas-accent-strong">
-                    <Icon class="h-5 w-5" stroke-width={1.9} />
-                  </div>
-                  <h3 class="mt-5 text-[18px] font-semibold tracking-normal text-tactas-ink-strong">{item.label}</h3>
-                  <p class="mt-2 text-[14px] leading-relaxed text-tactas-muted">{item.body}</p>
-                </article>
-              );
-            })}
-          </div>
         </div>
       </section>
 

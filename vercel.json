@@ -3,5 +3,17 @@
   "framework": "astro",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "installCommand": "npm install"
+  "installCommand": "npm install",
+  "redirects": [
+    {
+      "source": "/industries/ai-assistant-for-ecommerce",
+      "destination": "/industries/ecommerce",
+      "permanent": true
+    },
+    {
+      "source": "/industries/ai-assistant-for-healthcare-clinics",
+      "destination": "/industries/healthcare",
+      "permanent": true
+    }
+  ]
 }

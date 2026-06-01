@@ -1,0 +1,217 @@
+---
+interface HeroAction {
+  label: string;
+  href: string;
+}
+
+interface HeroProofItem {
+  label: string;
+  icon: any;
+}
+
+interface Props {
+  eyebrow: string;
+  eyebrowMessages?: string[];
+  eyebrowIcon?: any;
+  titleLines: [string, string];
+  body: string;
+  primaryAction: HeroAction;
+  secondaryAction: HeroAction;
+  proofItems: HeroProofItem[];
+}
+
+const {
+  eyebrow,
+  eyebrowMessages,
+  eyebrowIcon: EyebrowIcon,
+  titleLines,
+  body,
+  primaryAction,
+  secondaryAction,
+  proofItems,
+} = Astro.props;
+
+const activeEyebrow = eyebrowMessages?.[0] ?? eyebrow;
+const proofGridClass = proofItems.length === 4 ? "sm:grid-cols-4" : proofItems.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2";
+---
+
+<section class="shared-hero-section relative border-b border-tactas-line-strong bg-tactas-bg">
+  <div class="tactas-container relative flex min-h-[620px] items-center justify-center py-20 sm:py-24 lg:min-h-[700px] lg:py-28">
+    <div class="mx-auto max-w-[1020px] text-center">
+      <div class="shared-hero-eyebrow mx-auto mb-8 inline-flex max-w-full items-center gap-3 border border-tactas-border-soft bg-white px-4 py-2.5 shadow-[0_18px_44px_-36px_rgba(7,17,31,0.28)]">
+        <span class="shared-hero-eyebrow-mark" aria-hidden="true"></span>
+        {EyebrowIcon ? <EyebrowIcon class="h-3.5 w-3.5 text-tactas-accent-strong" stroke-width={1.8} /> : null}
+        <span
+          class="shared-hero-eyebrow-text min-w-0 text-[12px] font-bold uppercase leading-none tracking-[0.16em] text-tactas-navy transition-opacity duration-150 sm:text-[13px]"
+          data-hero-eyebrow={eyebrowMessages?.length ? true : undefined}
+          data-messages={eyebrowMessages?.length ? JSON.stringify(eyebrowMessages) : undefined}
+        >
+          {activeEyebrow}
+        </span>
+      </div>
+
+      <h1 class="shared-hero-title mx-auto max-w-[960px] text-[54px] font-semibold leading-[0.94] tracking-normal text-tactas-ink-strong sm:text-[76px] lg:text-[96px]">
+        <span class="block">{titleLines[0]}</span>
+        <span class="block text-tactas-primary">{titleLines[1]}</span>
+      </h1>
+
+      <p class="mx-auto mt-9 max-w-[46rem] text-[18px] leading-[1.62] text-tactas-ink-strong sm:text-[20px]">
+        {body}
+      </p>
+
+      <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href={primaryAction.href} class="shared-primary-action inline-flex h-12 items-center justify-center rounded-[8px] bg-tactas-primary px-6 text-[14px] font-semibold text-white shadow-[0_16px_34px_-24px_rgba(37,99,235,0.85)] transition hover:bg-tactas-primary-strong">
+          {primaryAction.label}
+        </a>
+        <a href={secondaryAction.href} class="shared-secondary-action inline-flex h-12 items-center justify-center rounded-[8px] border border-tactas-line-strong bg-white/60 px-6 text-[14px] font-semibold text-tactas-ink-strong transition hover:border-tactas-primary hover:text-tactas-primary">
+          {secondaryAction.label}
+        </a>
+      </div>
+
+      <div class:list={["shared-proof-strip mx-auto mt-7 grid max-w-[820px] overflow-hidden rounded-[8px] border border-tactas-line-strong bg-white/65 text-left shadow-[0_18px_44px_-36px_rgba(7,17,31,0.35)] backdrop-blur", proofGridClass]}>
+        {proofItems.map((item) => {
+          const Icon = item.icon;
+          return (
+            <div class="flex items-center justify-center gap-2.5 border-b border-tactas-line-strong px-4 py-3 text-[13px] font-semibold text-tactas-ink-strong last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0">
+              <Icon class="h-4 w-4 text-tactas-accent" stroke-width={2} />
+              <span>{item.label}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .shared-hero-section {
+    overflow: hidden;
+  }
+
+  .shared-hero-section::before,
+  .shared-hero-section::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 999px;
+    filter: blur(64px);
+  }
+
+  .shared-hero-section::before {
+    top: 7%;
+    left: 50%;
+    width: min(820px, 86vw);
+    height: 360px;
+    transform: translateX(-50%);
+    background: rgba(6, 182, 212, 0.14);
+  }
+
+  .shared-hero-section::after {
+    right: -18%;
+    bottom: 3%;
+    width: min(520px, 68vw);
+    height: 260px;
+    background: rgba(124, 58, 237, 0.12);
+  }
+
+  .shared-hero-title {
+    text-wrap: balance;
+  }
+
+  .shared-hero-title > span {
+    animation: shared-title-reveal 760ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .shared-hero-title > span:nth-child(2) {
+    animation-delay: 100ms;
+  }
+
+  .shared-primary-action,
+  .shared-secondary-action {
+    position: relative;
+    overflow: hidden;
+    border-radius: 999px !important;
+    transition:
+      transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 240ms cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 240ms ease,
+      border-color 240ms ease,
+      color 240ms ease;
+  }
+
+  .shared-primary-action:hover,
+  .shared-secondary-action:hover {
+    transform: translateY(-1px);
+  }
+
+  .shared-primary-action::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.22) 50%, transparent 100%);
+    background-size: 220% 100%;
+    animation: shared-shimmer 3.4s ease-in-out infinite;
+  }
+
+  .shared-hero-eyebrow {
+    position: relative;
+    isolation: isolate;
+    width: auto !important;
+    min-width: 0;
+    border-radius: 999px !important;
+    background: color-mix(in srgb, var(--surface-card) 86%, var(--signal-cyan));
+    box-shadow: 0 18px 44px -36px rgba(7, 17, 31, 0.28) !important;
+  }
+
+  .shared-hero-eyebrow::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(6, 182, 212, 0.34), rgba(37, 99, 235, 0.12), rgba(124, 58, 237, 0.22));
+  }
+
+  .shared-hero-eyebrow-text {
+    color: var(--authority-navy) !important;
+  }
+
+  .shared-hero-eyebrow-mark {
+    position: relative;
+    z-index: 10;
+    display: inline-flex;
+    width: 8px;
+    height: 8px;
+    flex: 0 0 auto;
+    border-radius: 999px;
+    background: var(--signal-cyan);
+    box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.12);
+  }
+
+  .shared-proof-strip {
+    border-radius: 18px !important;
+  }
+
+  @keyframes shared-title-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes shared-shimmer {
+    0% {
+      background-position: -220% 0;
+    }
+
+    100% {
+      background-position: 220% 0;
+    }
+  }
+</style>

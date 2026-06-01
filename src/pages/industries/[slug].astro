@@ -1,0 +1,124 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import IndustryLandingPage from "../../components/IndustryLandingPage.astro";
+import { getBrandEmail, getSiteUrl } from "../../lib/site";
+import { getIndustryLandingPage, industryLandingPages } from "../../lib/industryLandingPages";
+
+export function getStaticPaths() {
+  const redirectedIndustrySlugs = ["ai-assistant-for-ecommerce", "ai-assistant-for-healthcare-clinics"];
+
+  return industryLandingPages
+    .filter((industry) => !redirectedIndustrySlugs.includes(industry.slug))
+    .map((industry) => ({
+      params: { slug: industry.slug },
+    }));
+}
+
+const { slug } = Astro.params;
+const industry = getIndustryLandingPage(slug || "");
+
+if (!industry) {
+  return Astro.redirect("/industries");
+}
+
+const siteUrl = getSiteUrl();
+const brandEmail = getBrandEmail();
+const canonical = `/industries/${industry.slug}`;
+const pageUrl = `${siteUrl}${canonical}`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      name: industry.name,
+      url: pageUrl,
+      description: industry.description,
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      about: { "@id": `${siteUrl}/#organization` },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
+      name: industry.name,
+      serviceType: industry.keywords,
+      url: pageUrl,
+      description: industry.description,
+      provider: { "@id": `${siteUrl}/#organization` },
+      areaServed: "Worldwide",
+      audience: {
+        "@type": "BusinessAudience",
+        audienceType: `${industry.shortName} teams evaluating AI assistant workflows`,
+      },
+      offers: {
+        "@type": "Offer",
+        availability: "https://schema.org/InStock",
+        url: pageUrl,
+        category: `${industry.shortName} AI assistant workflow design`,
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: industry.faq.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.a,
+        },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "Industries", item: `${siteUrl}/industries` },
+        { "@type": "ListItem", position: 3, name: industry.shortName, item: pageUrl },
+      ],
+    },
+    {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      email: brandEmail,
+      areaServed: "Worldwide",
+      availableLanguage: ["en", "vi"],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={industry.title}
+  description={industry.description}
+  canonical={canonical}
+  currentPath={canonical}
+  navbarTheme="light"
+  navbarCtaLabel="Book a review"
+  keywords={industry.keywords}
+  openGraph={{
+    title: industry.title,
+    description: industry.description,
+    url: pageUrl,
+    type: "website",
+    images: [
+      {
+        url: "/tactas-ai-managed-agent-systems-og.jpg",
+        width: 1734,
+        height: 907,
+        alt: `${industry.name} workflow automation`,
+      },
+    ],
+  }}
+  twitter={{
+    card: "summary_large_image",
+    title: industry.title,
+    description: industry.description,
+    images: ["/tactas-ai-managed-agent-systems-og.jpg"],
+  }}
+  jsonLd={jsonLd}
+>
+  <IndustryLandingPage industry={industry} />
+</BaseLayout>

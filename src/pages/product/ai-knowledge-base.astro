@@ -1,0 +1,157 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AIKnowledgeBasePage from "../../components/AIKnowledgeBasePage.astro";
+import { getBrandEmail, getSiteUrl } from "../../lib/site";
+
+const siteUrl = getSiteUrl();
+const pageUrl = `${siteUrl}/product/ai-knowledge-base`;
+const brandEmail = getBrandEmail();
+
+const title = "Company Knowledge Layer for Managed AI Agents | Tactas AI";
+const description =
+  "Connect company documents, business context, and source-backed knowledge so AI agents can answer, summarize, prepare outputs, and automate work.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      name: "Company Knowledge Layer for Managed AI Agents",
+      url: pageUrl,
+      description,
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      about: { "@id": `${siteUrl}/#organization` },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
+      name: "Company Knowledge Layer for Managed AI Agents",
+      serviceType: [
+        "Company knowledge layer",
+        "Company knowledge automation",
+        "Knowledge layer for AI agents",
+        "Managed AI agents",
+        "Business context automation",
+        "Source-backed answers",
+        "Document search",
+        "RAG implementation",
+        "Semantic search",
+        "Hybrid search",
+        "Business task automation",
+        "AI operating layer",
+      ],
+      url: pageUrl,
+      description:
+        "Company knowledge layer for managed AI agents, including document connection, source-backed answers, summaries, business context, prepared outputs, and reusable knowledge for automated work.",
+      provider: { "@id": `${siteUrl}/#organization` },
+      areaServed: "Worldwide",
+      audience: {
+        "@type": "BusinessAudience",
+        audienceType: "Business teams that want AI agents to use company knowledge in everyday work",
+      },
+      offers: {
+        "@type": "Offer",
+        availability: "https://schema.org/InStock",
+        url: pageUrl,
+        category: "Company Knowledge Layer",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Is this self-serve software?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. It is a managed product layer. Tactas AI connects knowledge sources, builds source-backed retrieval, and turns company knowledge into context AI agents can use for answers, summaries, outputs, and automated work.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can it use our existing document storage?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. The knowledge layer can connect to existing document storage, shared files, databases, work tools, and internal repositories.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How do you reduce hallucinations?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The system retrieves source passages before generating an answer, attaches citations, limits unsupported claims, and uses evaluation questions to improve retrieval quality.",
+          },
+        },
+      ],
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "Company Knowledge Layer", item: pageUrl },
+      ],
+    },
+    {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      email: brandEmail,
+      areaServed: "Worldwide",
+      availableLanguage: ["en", "vi"],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/product/ai-knowledge-base"
+  currentPath="/product/ai-knowledge-base"
+  navbarTheme="light"
+  navbarCtaLabel="Book a review"
+  keywords={[
+    "company knowledge layer",
+    "company knowledge automation",
+    "knowledge layer for AI agents",
+    "managed AI agents",
+    "business context automation",
+    "source-backed answers",
+    "document search",
+    "RAG implementation",
+    "semantic search",
+    "hybrid search",
+    "business task automation",
+    "AI operating layer",
+    "company knowledge into action",
+    "AI agents for company knowledge",
+    "document search for AI agents",
+    "knowledge base for AI agents",
+  ]}
+  openGraph={{
+    title,
+    description,
+    url: pageUrl,
+    type: "website",
+    images: [
+      {
+        url: "/tactas-ai-managed-agent-systems-og.jpg",
+        width: 1734,
+        height: 907,
+        alt: "Tactas AI company knowledge layer for managed AI agents",
+      },
+    ],
+  }}
+  twitter={{
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/tactas-ai-managed-agent-systems-og.jpg"],
+  }}
+  jsonLd={jsonLd}
+>
+  <AIKnowledgeBasePage siteUrl={siteUrl} currentPath="/product/ai-knowledge-base" />
+</BaseLayout>

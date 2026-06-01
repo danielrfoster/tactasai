@@ -23,7 +23,7 @@ interface Props {
   currentPath?: string;
 }
 
-const { currentPath = "/services/ai-knowledge-base" } = Astro.props;
+const { currentPath = "/product/ai-knowledge-base" } = Astro.props;
 const brandEmail = getBrandEmail();
 
 const trustPoints = [
@@ -68,6 +68,7 @@ const workflow = [
 
 const useCases = [
   "Answer questions with source context",
+  "Run deep research from company knowledge",
   "Summarize documents into useful briefs",
   "Prepare next steps from company knowledge",
   "Reuse source context in business tasks",
@@ -96,10 +97,16 @@ const packages = [
 ];
 
 const faqs = [
-  ["Is this a product or service?", "It is a managed capability layer. Tactas AI connects knowledge sources, builds source-backed retrieval, and turns company knowledge into context agents can use for answers, summaries, outputs, and automated work."],
+  ["Is this self-serve software?", "No. It is a managed product layer. Tactas AI connects knowledge sources, builds source-backed retrieval, and turns company knowledge into context agents can use for answers, summaries, outputs, and automated work."],
   ["Can it use our current document storage?", "Yes. We can connect to existing document storage, shared files, databases, work tools, and internal repositories."],
   ["How do you reduce unsupported answers?", "Answers are generated from retrieved source passages, include citations, and are tested with evaluation questions so weak retrieval paths can be improved."],
   ["Is this still RAG?", "RAG and search are technical proof points. The business value is a company knowledge layer that managed AI agents can use to produce action-ready work."],
+];
+
+const researchFlow = [
+  ["01", "Frame the question", "Start from a broad business question and identify the subtopics, signals, and unknowns worth checking."],
+  ["02", "Gather evidence", "Pull source material from company documents, business records, and approved external sources."],
+  ["03", "Draft findings", "Prepare a cited brief with findings, comparisons, open questions, and suggested next steps."],
 ];
 ---
 
@@ -138,7 +145,7 @@ const faqs = [
               <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-0.5" stroke-width={1.9} />
             </a>
             <a
-              href="#service"
+              href="#product"
               class="inline-flex h-12 items-center justify-center rounded-[6px] border border-tactas-line bg-white px-6 text-[14px] font-semibold text-tactas-ink-strong transition hover:border-tactas-accent/70 hover:text-tactas-accent-strong"
             >
               See knowledge layer
@@ -257,10 +264,10 @@ const faqs = [
       </div>
     </section>
 
-    <section id="service" class="border-b border-tactas-line bg-tactas-bg">
+    <section id="product" class="border-b border-tactas-line bg-tactas-bg">
       <div class={`tactas-container py-18 lg:py-24`}>
         <div class="mx-auto max-w-3xl text-center">
-          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Managed service</p>
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Managed product</p>
           <h2 class="mt-4 text-[clamp(2rem,4vw,3.2rem)] font-bold leading-tight tracking-[-0.025em]">
             Company knowledge for managed AI agents.
           </h2>
@@ -305,6 +312,30 @@ const faqs = [
               <p class="font-mono text-[11px] text-tactas-accent">{step}</p>
               <h3 class="mt-5 text-[17px] font-semibold">{title}</h3>
               <p class="mt-3 text-[13px] leading-relaxed text-tactas-muted-soft">{body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="deep-research" class="scroll-mt-24 border-b border-tactas-line bg-white">
+      <div class={`tactas-container grid gap-12 py-18 lg:grid-cols-[0.72fr_1.28fr] lg:py-24`}>
+        <div>
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Deep research</p>
+          <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+            Turn broader business questions into cited research briefs.
+          </h2>
+          <p class="mt-5 text-[16px] leading-relaxed text-tactas-muted-soft">
+            This layer is not only for direct answers. It can also gather source material, compare signals, and prepare a research-grade brief for decisions that need more than a quick lookup.
+          </p>
+        </div>
+
+        <div class="grid gap-4 lg:grid-cols-3">
+          {researchFlow.map(([step, title, body]) => (
+            <article class="rounded-[8px] border border-tactas-line bg-tactas-bg p-6">
+              <p class="font-mono text-[11px] text-tactas-accent-strong">{step}</p>
+              <h3 class="mt-5 text-[19px] font-semibold tracking-tight text-tactas-ink-strong">{title}</h3>
+              <p class="mt-3 text-[14px] leading-relaxed text-tactas-muted-soft">{body}</p>
             </article>
           ))}
         </div>

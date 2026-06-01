@@ -1,7 +1,12 @@
 import type { APIRoute } from "astro";
 import { blogPosts } from "../lib/blog";
+import { industryLandingPages } from "../lib/industryLandingPages";
 import { promptLibrary } from "../lib/promptLibrary";
 import { getSiteUrl } from "../lib/site";
+
+const canonicalIndustryLandingPages = industryLandingPages.filter(
+  (industry) => !["ai-assistant-for-ecommerce", "ai-assistant-for-healthcare-clinics"].includes(industry.slug),
+);
 
 export const GET = (() => {
   const siteUrl = getSiteUrl();
@@ -22,8 +27,18 @@ export const GET = (() => {
     { path: "/industries/ecommerce", changefreq: "weekly", priority: "0.85" },
     { path: "/industries/healthcare", changefreq: "weekly", priority: "0.85" },
     { path: "/industries/professional-services", changefreq: "weekly", priority: "0.85" },
-    { path: "/services/ai-workflow-automation", changefreq: "weekly", priority: "0.9" },
-    { path: "/services/ai-knowledge-base", changefreq: "weekly", priority: "0.9" },
+    ...canonicalIndustryLandingPages.map((industry) => ({
+      path: `/industries/${industry.slug}`,
+      changefreq: "weekly",
+      priority: industry.slug === "ai-assistant-for-vps-hosting-providers" ? "0.82" : "0.84",
+    })),
+    { path: "/product", changefreq: "weekly", priority: "0.92" },
+    { path: "/product/data-readiness", changefreq: "weekly", priority: "0.9" },
+    { path: "/product/agent-system-design", changefreq: "weekly", priority: "0.9" },
+    { path: "/product/ai-workflow-automation", changefreq: "weekly", priority: "0.9" },
+    { path: "/product/assistant", changefreq: "weekly", priority: "0.78" },
+    { path: "/product/deep-research", changefreq: "weekly", priority: "0.9" },
+    { path: "/product/ai-knowledge-base", changefreq: "weekly", priority: "0.9" },
     { path: "/use-cases", changefreq: "weekly", priority: "0.85" },
     { path: "/use-cases/ai-customer-support-automation", changefreq: "weekly", priority: "0.82" },
     { path: "/use-cases/ai-back-office-automation", changefreq: "weekly", priority: "0.82" },

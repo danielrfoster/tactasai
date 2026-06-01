@@ -24,7 +24,7 @@ interface Props {
   currentPath?: string;
 }
 
-const { currentPath = "/services/ai-workflow-automation" } = Astro.props;
+const { currentPath = "/product/ai-workflow-automation" } = Astro.props;
 const brandEmail = getBrandEmail();
 
 const trustPoints = [
@@ -99,7 +99,7 @@ const faqs = [
   ["What is business task automation with AI agents?", "Business task automation uses managed AI agents to understand company context, prepare useful outputs, update work, and automate repeated steps across connected tools."],
   ["Can agents take actions in our systems?", "Yes. Managed AI agents can prepare updates, create tasks, organize follow-ups, and automate repeated steps across tools your business already uses."],
   ["Which business task should we automate first?", "Start with a frequent task that has available context, a clear output, connected tools, and repeated manual effort."],
-  ["Is this a managed service?", "Yes. Tactas AI helps map, build, connect, launch, and improve the business task after it goes live."],
+  ["Is this self-serve software?", "No. Tactas AI is a managed product layer. We help map, build, connect, launch, and improve the business task after it goes live."],
 ];
 ---
 
@@ -138,7 +138,7 @@ const faqs = [
               <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-0.5" stroke-width={1.9} />
             </a>
             <a
-              href="#service"
+              href="#product"
               class="inline-flex h-12 items-center justify-center rounded-[6px] border border-tactas-line bg-white px-6 text-[14px] font-semibold text-tactas-ink-strong transition hover:border-tactas-accent/70 hover:text-tactas-accent-strong"
             >
               See automation model
@@ -233,10 +233,10 @@ const faqs = [
       </div>
     </section>
 
-    <section id="service" class="border-b border-tactas-line bg-tactas-bg">
+    <section id="product" class="border-b border-tactas-line bg-tactas-bg">
       <div class={`tactas-container py-18 lg:py-24`}>
         <div class="mx-auto max-w-3xl text-center">
-          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Managed service</p>
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Managed product</p>
           <h2 class="mt-4 text-[clamp(2rem,4vw,3.2rem)] font-bold leading-tight tracking-[-0.025em]">
             Business task automation with managed AI agents, built end to end.
           </h2>
@@ -244,6 +244,10 @@ const faqs = [
             Tactas AI handles the operating layer around AI agents: task mapping, company knowledge, connected tools,
             prepared outputs, automated steps, and ongoing improvement.
           </p>
+          <a href="/product/assistant" class="mt-6 inline-flex items-center text-[14px] font-semibold text-tactas-accent-strong transition hover:text-tactas-accent">
+            Explore the assistant experience
+            <ArrowRight class="ml-2 h-4 w-4" stroke-width={1.9} />
+          </a>
         </div>
 
         <div class="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">

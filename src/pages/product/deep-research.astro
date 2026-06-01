@@ -1,0 +1,230 @@
+---
+import {
+  Check,
+  FileSearch,
+  Mail,
+  Search,
+  Sparkles,
+  Table2,
+  Waypoints,
+} from "@lucide/astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SharedHero from "../../components/SharedHero.astro";
+import { getBrandEmail, getSiteUrl } from "../../lib/site";
+
+const siteUrl = getSiteUrl();
+const brandEmail = getBrandEmail();
+const pageUrl = `${siteUrl}/product/deep-research`;
+
+const title = "Deep Research for Business Questions | TactasAI";
+const description =
+  "Turn complex business questions into clear, cited research briefs by combining company knowledge, business records, and approved external sources.";
+
+const outcomes = [
+  {
+    title: "Get to the right answer faster",
+    body: "Tactas breaks large questions into a research path, gathers the relevant source material, and reduces the manual search work needed before decisions.",
+    icon: Search,
+  },
+  {
+    title: "Start even without full context",
+    body: "Research can begin from a broad business question. The system identifies missing angles, subtopics, and the next sources worth checking.",
+    icon: Waypoints,
+  },
+  {
+    title: "Produce cited work product",
+    body: "Outputs are prepared as referenced briefs, summaries, tables, and findings your team can review, share, and act on.",
+    icon: Table2,
+  },
+];
+
+const workflow = [
+  ["01", "Ask", "Turn a broad business question into a scoped research plan with themes, sub-questions, and decision angles."],
+  ["02", "Retrieve", "Pull evidence from company documents, business records, prior work, and approved external sources."],
+  ["03", "Analyze", "Compare signals, surface patterns, flag gaps, and separate strong evidence from assumptions."],
+  ["04", "Draft", "Create a clear, cited report with findings, options, risks, and next steps for the team."],
+];
+
+const researchTypes = [
+  ["Account research", "Prepare expansion, renewal, risk, or strategic account context from CRM, support history, usage, and recent signals."],
+  ["Market and competitor scans", "Compare external shifts with internal priorities, customer feedback, and operating constraints."],
+  ["Operational investigations", "Trace issues across teams, documents, tasks, and records to produce a current status brief with owners and next actions."],
+  ["Decision support briefs", "Compile cited options, tradeoffs, evidence, and open questions for managers and operators."],
+];
+
+const trustPoints = [
+  ["Company context first", "Research starts from your internal knowledge, records, and workflow context."],
+  ["Source-backed outputs", "Findings are tied to sources so reviewers can verify what matters."],
+  ["Human review ready", "Reports are designed for decision support, not blind automation."],
+  ["Managed setup", "Tactas configures the research flow, sources, and output format around your business."],
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      name: "Deep Research for Business Questions",
+      url: pageUrl,
+      description,
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
+      name: "Deep Research for Business Questions",
+      serviceType: [
+        "Deep research",
+        "Business research automation",
+        "Cited research briefs",
+        "Company knowledge research",
+        "Decision support research",
+      ],
+      url: pageUrl,
+      description,
+      provider: { "@id": `${siteUrl}/#organization` },
+      areaServed: "Worldwide",
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/product/deep-research"
+  currentPath="/product/deep-research"
+  navbarTheme="light"
+  navbarCtaLabel="Book a review"
+  keywords={[
+    "deep research for business",
+    "business research automation",
+    "cited research briefs",
+    "AI deep research",
+    "company knowledge research",
+    "decision support AI",
+  ]}
+  openGraph={{
+    title,
+    description,
+    url: pageUrl,
+    type: "website",
+    images: [
+      {
+        url: "/tactas-ai-managed-agent-systems-og.jpg",
+        width: 1734,
+        height: 907,
+        alt: "TactasAI deep research for business questions",
+      },
+    ],
+  }}
+  twitter={{
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/tactas-ai-managed-agent-systems-og.jpg"],
+  }}
+  jsonLd={jsonLd}
+>
+  <main class="min-h-screen overflow-x-hidden bg-tactas-bg text-tactas-ink">
+    <SharedHero
+      eyebrow="Deep Research"
+      eyebrowIcon={Sparkles}
+      titleLines={["Comprehensive research,", "without the manual chase."]}
+      body="TactasAI turns complex business questions into cited research briefs by combining company knowledge, business records, prior work, and approved external sources."
+      primaryAction={{ label: "Start a research review", href: "/contact" }}
+      secondaryAction={{ label: "See knowledge layer", href: "/product/ai-knowledge-base" }}
+      proofItems={trustPoints.map(([label]) => ({ label, icon: FileSearch }))}
+    />
+
+    <section class="border-b border-tactas-line bg-tactas-bg">
+      <div class="tactas-container py-16 lg:py-20">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Research outcomes</p>
+          <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+            Deeper insight for business decisions.
+          </h2>
+        </div>
+
+        <div class="mt-12 grid gap-4 md:grid-cols-3">
+          {outcomes.map((item) => {
+            const Icon = item.icon;
+            return (
+              <article class="min-h-[220px] rounded-[8px] border border-tactas-line bg-white p-6">
+                <Icon class="h-5 w-5 text-tactas-primary-strong" stroke-width={1.9} />
+                <h3 class="mt-5 text-[22px] font-semibold tracking-tight text-tactas-ink-strong">{item.title}</h3>
+                <p class="mt-3 text-[14px] leading-relaxed text-tactas-muted-soft">{item.body}</p>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <section id="research-flow" class="scroll-mt-24 border-b border-tactas-line bg-white">
+      <div class="tactas-container py-16 lg:py-20">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">How it works</p>
+          <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+            Ask, retrieve, analyze, draft.
+          </h2>
+        </div>
+        <div class="mt-12 grid gap-4 lg:grid-cols-4">
+          {workflow.map(([step, title, body]) => (
+            <article class="rounded-[8px] border border-tactas-line bg-tactas-bg p-6">
+              <p class="font-mono text-[11px] text-tactas-accent-strong">{step}</p>
+              <h3 class="mt-5 text-[20px] font-semibold tracking-tight text-tactas-ink-strong">{title}</h3>
+              <p class="mt-3 text-[14px] leading-relaxed text-tactas-muted-soft">{body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="research-types" class="scroll-mt-24 border-b border-tactas-line bg-tactas-bg">
+      <div class="tactas-container grid gap-10 py-16 lg:grid-cols-[0.72fr_1.28fr] lg:py-20">
+        <div>
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Use cases</p>
+          <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+            Research work that normally burns operator time.
+          </h2>
+          <p class="mt-5 text-[16px] leading-relaxed text-tactas-muted-soft">
+            Deep Research fits work that spans multiple systems, needs source-backed synthesis, and ends with a decision or next-step brief.
+          </p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          {researchTypes.map(([title, body]) => (
+            <article class="rounded-[8px] border border-tactas-line bg-white p-6">
+              <Check class="h-5 w-5 text-tactas-accent-strong" stroke-width={2.2} />
+              <h3 class="mt-5 text-[20px] font-semibold tracking-tight text-tactas-ink-strong">{title}</h3>
+              <p class="mt-3 text-[14px] leading-relaxed text-tactas-muted-soft">{body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-tactas-night text-white">
+      <div class="tactas-container py-16 lg:py-20">
+        <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-line">Research review</p>
+            <h2 class="mt-4 max-w-3xl text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+              Bring one strategic question and let’s shape the research workflow around it.
+            </h2>
+            <p class="mt-5 max-w-2xl text-[16px] leading-relaxed text-white/72">
+              Share the question, the sources that matter, and the kind of output your team needs to review and act on.
+            </p>
+          </div>
+          <a href={`mailto:${brandEmail}`} class="inline-flex h-12 items-center justify-center rounded-[6px] bg-white px-6 text-[14px] font-semibold text-tactas-ink transition hover:bg-tactas-accent-line">
+            <Mail class="mr-2 h-4 w-4" stroke-width={1.8} />
+            Email TactasAI
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

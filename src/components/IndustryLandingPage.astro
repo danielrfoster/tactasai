@@ -1,0 +1,368 @@
+---
+import {
+  ArrowRight,
+  BriefcaseBusiness,
+  Building2,
+  Check,
+  Cloud,
+  Gavel,
+  HeartPulse,
+  Home,
+  Server,
+  ShieldCheck,
+  ShoppingCart,
+} from "@lucide/astro";
+import SharedHero from "./SharedHero.astro";
+import type { IndustryIcon, IndustryLandingPage } from "../lib/industryLandingPages";
+
+interface Props {
+  industry: IndustryLandingPage;
+}
+
+const { industry } = Astro.props;
+
+const iconMap: Record<IndustryIcon, typeof BriefcaseBusiness> = {
+  briefcase: BriefcaseBusiness,
+  building: Building2,
+  cart: ShoppingCart,
+  cloud: Cloud,
+  gavel: Gavel,
+  heart: HeartPulse,
+  home: Home,
+  server: Server,
+};
+
+const HeroIcon = iconMap[industry.icon];
+const heroTitleLinesBySlug: Record<string, [string, string]> = {
+  "ai-assistant-for-saas-companies": ["AI assistant for", "SaaS teams."],
+  "ai-assistant-for-ecommerce": ["AI assistant for", "ecommerce stores."],
+  "ai-assistant-for-law-firms": ["AI assistant for", "law firms."],
+  "ai-assistant-for-healthcare-clinics": ["AI assistant for", "healthcare clinics."],
+  "ai-assistant-for-real-estate": ["AI assistant for", "real estate teams."],
+  "ai-assistant-for-vps-hosting-providers": ["AI assistant for", "VPS hosting."],
+};
+
+const heroTitleLines = heroTitleLinesBySlug[industry.slug] || ["AI assistant for", `${industry.shortName}.`];
+const heroProofIcons = [HeroIcon, ShieldCheck, Check];
+const heroProofItems = industry.proof.slice(0, 3).map((item, index) => ({
+  label: item.value,
+  icon: heroProofIcons[index] || HeroIcon,
+}));
+---
+
+<div class="min-h-screen overflow-x-hidden bg-tactas-bg text-tactas-ink selection:bg-tactas-accent/20">
+  <div class="pointer-events-none fixed inset-0 -z-20 grid-faint opacity-[0.35] [mask-image:radial-gradient(ellipse_70%_55%_at_50%_15%,black_0%,transparent_75%)]"></div>
+  <div class="pointer-events-none fixed inset-x-0 top-0 -z-20 h-[680px] bg-[radial-gradient(ellipse_72%_52%_at_50%_0%,rgba(37,99,235,0.09),transparent_64%)]"></div>
+
+  <main>
+    <SharedHero
+      eyebrow={industry.eyebrow}
+      eyebrowIcon={HeroIcon}
+      titleLines={heroTitleLines}
+      body={industry.subheadline}
+      primaryAction={{ label: industry.ctaLabel, href: "#contact" }}
+      secondaryAction={{ label: industry.secondaryCtaLabel, href: "#workflows" }}
+      proofItems={heroProofItems}
+    />
+
+    <section class="relative pb-20 pt-12 lg:pb-28 lg:pt-20">
+      <div class="tactas-container grid items-center gap-12 lg:grid-cols-[0.98fr_1.02fr] lg:gap-16">
+        <div>
+          <p class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-tactas-accent-strong/85">
+            Execution pattern
+          </p>
+          <h2 class="mt-4 max-w-[12ch] text-[clamp(2.15rem,4.5vw,3.75rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-tactas-ink">
+            A controlled workflow for {industry.shortName.toLowerCase()}.
+          </h2>
+          <p class="mt-6 max-w-[42ch] text-[16px] leading-relaxed text-tactas-muted-soft sm:text-[17px]">
+            {industry.workflowBody}
+          </p>
+        </div>
+
+        <div class="relative">
+          <div class="pointer-events-none absolute -inset-10 -z-10 bg-[radial-gradient(60%_60%_at_50%_40%,rgba(6,182,212,0.17),transparent_72%)] blur-3xl"></div>
+          <div class="overflow-hidden rounded-2xl border border-tactas-line bg-white shadow-[0_50px_120px_-72px_rgba(7,17,31,0.72)]">
+            <div class="flex items-center justify-between border-b border-tactas-line px-5 py-4">
+              <div class="flex items-center gap-2.5">
+                <span class="flex h-9 w-9 items-center justify-center rounded-md border border-tactas-line bg-tactas-bg text-tactas-accent-strong">
+                  <HeroIcon class="h-4 w-4" stroke-width={1.7} />
+                </span>
+                <span>
+                  <span class="block font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-tactas-muted-soft">
+                    workflow runtime
+                  </span>
+                  <span class="mt-1 block text-[13px] font-semibold text-tactas-ink">{industry.shortName}</span>
+                </span>
+              </div>
+              <span class="rounded-full border border-tactas-success-line bg-tactas-success-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-tactas-success-strong">
+                supervised
+              </span>
+            </div>
+
+            <div class="grid gap-0 lg:grid-cols-[1fr_220px]">
+              <div class="p-5 sm:p-6">
+                <div class="grid gap-3 sm:grid-cols-3">
+                  {industry.proof.slice(0, 3).map((item) => (
+                    <div class="rounded-md border border-tactas-line bg-tactas-bg px-4 py-3">
+                      <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-tactas-muted-soft">{item.label}</p>
+                      <p class="mt-2 text-[14px] font-semibold text-tactas-ink">{item.value}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div class="mt-5 rounded-xl border border-tactas-line bg-white p-4">
+                  <div class="mb-4 flex items-center gap-2 text-[12px] text-tactas-muted-soft">
+                    <ShieldCheck class="h-4 w-4 text-tactas-accent-strong" stroke-width={1.7} />
+                    assistant trace
+                  </div>
+                  <div class="grid gap-3 font-mono text-[12px] leading-relaxed">
+                    {industry.workflow.slice(0, 4).map((item, index) => (
+                      <div class="grid grid-cols-[28px_86px_1fr] gap-3 text-tactas-muted">
+                        <span class="text-tactas-muted-soft">{String(index + 1).padStart(2, "0")}</span>
+                        <span class={index === 3 ? "text-tactas-warning" : "text-tactas-accent-strong"}>{item.title.toLowerCase().split(" ").slice(0, 2).join(" ")}</span>
+                        <span>{item.body}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div class="mt-5 overflow-hidden rounded-md border border-tactas-line bg-tactas-bg">
+                  <img
+                    src="/ef4e97cc-14e2-4157-a55f-42bfa62ad8a3.png"
+                    alt="Tactas AI workflow execution blueprint"
+                    width="1536"
+                    height="1024"
+                    class="aspect-[2.8/1] w-full object-cover object-top"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+
+              <aside class="border-t border-tactas-line px-5 py-5 lg:border-l lg:border-t-0">
+                <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-tactas-muted-soft">connected context</p>
+                <div class="mt-4 grid gap-2.5">
+                  {industry.integrations.slice(0, 6).map((tool) => (
+                    <div class="flex items-center justify-between rounded-md border border-tactas-line bg-tactas-bg px-3 py-2.5">
+                      <span class="text-[12.5px] text-tactas-muted">{tool}</span>
+                      <Check class="h-3.5 w-3.5 text-tactas-success" stroke-width={2.5} />
+                    </div>
+                  ))}
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tactas-container mt-20 lg:mt-28">
+        <div class="grid divide-y divide-tactas-line border-y border-tactas-line sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
+          {industry.proof.map((item, idx) => (
+            <div class="px-5 py-7 lg:px-7">
+              <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-tactas-muted-soft">
+                {String(idx + 1).padStart(2, "0")} / {item.label}
+              </span>
+              <p class="mt-3 text-[14px] font-medium text-tactas-ink">{item.value}</p>
+              <p class="mt-2 text-[13.5px] leading-relaxed text-tactas-muted-soft">{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-y border-tactas-line bg-white py-24 lg:py-32">
+      <div class="tactas-container grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+        <div>
+          <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-tactas-accent-strong/85">
+            Why {industry.shortName}
+          </span>
+          <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-tactas-ink">
+            The best first assistant is built around repeated work with clear handoff rules.
+          </h2>
+          <p class="mt-5 max-w-md text-[15px] leading-relaxed text-tactas-muted-soft">
+            These are the workflow moments where Tactas AI can reduce waiting, collect better context, and preserve human review for decisions that matter.
+          </p>
+        </div>
+
+        <div>
+          <div class="hairline mb-8"></div>
+          <ul class="grid gap-0">
+            {industry.problems.map((item, idx) => (
+              <li class="grid gap-3 border-b border-tactas-line py-7 last:border-b-0 sm:grid-cols-[120px_1fr] sm:gap-8">
+                <span class="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-tactas-muted-soft">
+                  Case {String(idx + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h3 class="text-[16px] font-medium tracking-tight text-tactas-ink">{item.title}</h3>
+                  <p class="mt-2 text-[14.5px] leading-relaxed text-tactas-muted-soft">{item.body}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflows" class="py-24 lg:py-32">
+      <div class="tactas-container">
+        <div class="max-w-3xl">
+          <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-tactas-accent-strong/85">Workflows</span>
+          <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-tactas-ink">
+            Start with the {industry.shortName.toLowerCase()} workflows closest to support cost, revenue, or response speed.
+          </h2>
+          <p class="mt-5 max-w-xl text-[15px] leading-relaxed text-tactas-muted-soft">
+            Each assistant is designed around your context sources, approval rules, and the systems where the work continues.
+          </p>
+        </div>
+
+        <div class="mt-12 grid border-y border-tactas-line sm:grid-cols-2 lg:grid-cols-3">
+          {industry.useCases.map((item, idx) => {
+            const Icon = iconMap[item.icon];
+            return (
+              <article class="group flex min-h-[230px] flex-col gap-4 border-t border-tactas-line px-0 py-8 transition duration-300 hover:-translate-y-0.5 hover:bg-white/45 sm:border-t-0 sm:border-l sm:px-7 sm:py-9 sm:[&:nth-child(odd)]:border-l-0 lg:[&:nth-child(odd)]:border-l lg:[&:nth-child(3n+1)]:border-l-0">
+                <div class="flex items-center justify-between">
+                  <span class="flex h-10 w-10 items-center justify-center rounded-md border border-tactas-line bg-white text-tactas-accent-strong transition group-hover:border-tactas-accent/50">
+                    <Icon class="h-4 w-4" stroke-width={1.6} />
+                  </span>
+                  <span class="font-mono text-[10px] uppercase tracking-[0.24em] text-tactas-muted-soft">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <h3 class="text-[16px] font-medium tracking-tight text-tactas-ink">{item.title}</h3>
+                <p class="text-[14px] leading-relaxed text-tactas-muted-soft">{item.body}</p>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-y border-tactas-line bg-white py-24 lg:py-32">
+      <div class="tactas-container grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+        <div>
+          <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-tactas-accent-strong/85">Example workflow</span>
+          <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-tactas-ink">
+            {industry.workflowTitle}
+          </h2>
+          <p class="mt-5 max-w-md text-[15px] leading-relaxed text-tactas-muted-soft">
+            {industry.workflowBody}
+          </p>
+        </div>
+
+        <div class="overflow-hidden rounded-2xl border border-tactas-line bg-tactas-bg">
+          {industry.workflow.map((item) => (
+            <div class="grid gap-3 border-b border-tactas-line px-6 py-5 last:border-b-0 sm:grid-cols-[76px_0.75fr_1.25fr] sm:items-start">
+              <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-tactas-accent-strong/85">{item.step}</p>
+              <h3 class="text-[15px] font-medium tracking-tight text-tactas-ink">{item.title}</h3>
+              <p class="text-[14.5px] leading-relaxed text-tactas-muted-soft">{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 lg:py-32">
+      <div class="tactas-container grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+        <div>
+          <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-tactas-accent-strong/85">Guardrails</span>
+          <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-tactas-ink">
+            {industry.guardrailTitle}
+          </h2>
+          <p class="mt-5 max-w-md text-[15px] leading-relaxed text-tactas-muted-soft">
+            {industry.guardrailBody}
+          </p>
+        </div>
+
+        <div class="grid gap-10">
+          <div class="grid gap-0 border-y border-tactas-line sm:grid-cols-2">
+            {industry.guardrails.map((item, idx) => (
+              <div class="flex min-h-[110px] items-start gap-3 border-b border-tactas-line py-5 sm:border-l sm:px-6 sm:[&:nth-child(odd)]:border-l-0 sm:[&:nth-last-child(-n+2)]:border-b-0">
+                <Check class="mt-1 h-4 w-4 shrink-0 text-tactas-success" stroke-width={2.5} />
+                <span class="text-[14.5px] leading-relaxed text-tactas-ink">{item}</span>
+              </div>
+            ))}
+          </div>
+
+          <div>
+            <p class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-tactas-muted-soft">Common context sources</p>
+            <div class="mt-4 grid grid-cols-2 gap-x-10 gap-y-0 sm:grid-cols-3">
+              {industry.integrations.map((item) => (
+                <div class="group flex items-baseline gap-3 border-b border-tactas-line py-5 text-[14.5px] text-tactas-muted transition-colors duration-300 hover:border-tactas-line-strong hover:text-tactas-ink">
+                  <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-tactas-success transition-transform duration-300 group-hover:scale-125" aria-hidden="true"></span>
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-y border-tactas-line bg-white py-24 lg:py-32">
+      <div class="tactas-container">
+        <div class="max-w-3xl">
+          <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-tactas-accent-strong/85">Prompt patterns</span>
+          <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-tactas-ink">
+            Example prompts become repeatable operating workflows.
+          </h2>
+          <p class="mt-5 max-w-xl text-[15px] leading-relaxed text-tactas-muted-soft">
+            Tactas AI turns common questions into reusable assistant behaviors with source context, review rules, and follow-through.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-4 lg:grid-cols-3">
+          {industry.prompts.map((item) => (
+            <article class="rounded-lg border border-tactas-line bg-tactas-bg p-5">
+              <p class="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-tactas-muted-soft">{item.label}</p>
+              <p class="mt-4 text-[15px] leading-relaxed text-tactas-ink">"{item.prompt}"</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 lg:py-32">
+      <div class="tactas-container grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+        <div>
+          <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-tactas-accent-strong/85">FAQ</span>
+          <h2 class="mt-4 text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-tactas-ink">
+            Questions about {industry.shortName.toLowerCase()} AI assistants.
+          </h2>
+        </div>
+
+        <div class="divide-y divide-tactas-line border-y border-tactas-line">
+          {industry.faq.map((item) => (
+            <details class="group py-6">
+              <summary class="flex cursor-pointer list-none items-start justify-between gap-5 text-[16px] font-medium tracking-tight text-tactas-ink">
+                {item.q}
+                <span class="mt-1 text-tactas-accent-strong transition group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-3 max-w-2xl text-[14.5px] leading-relaxed text-tactas-muted-soft">{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="border-t border-tactas-line bg-tactas-night py-20 text-white lg:py-24">
+      <div class="tactas-container grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+        <div>
+          <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-tactas-accent">Next step</span>
+          <h2 class="mt-4 max-w-3xl text-[clamp(2rem,4vw,3.2rem)] font-semibold leading-[1.02] tracking-[-0.035em]">
+            Pick one {industry.shortName.toLowerCase()} workflow and design the assistant around real operating context.
+          </h2>
+          <p class="mt-5 max-w-2xl text-[15px] leading-relaxed text-white/65">
+            In a short review, we map the first workflow, required context sources, approval rules, and the handoff path your team needs.
+          </p>
+        </div>
+        <a
+          href="/contact"
+          class="group inline-flex h-12 items-center justify-center rounded-md bg-white px-6 text-[13px] font-semibold text-tactas-night transition hover:bg-tactas-accent hover:text-white"
+        >
+          {industry.ctaLabel}
+          <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-0.5" />
+        </a>
+      </div>
+    </section>
+  </main>
+</div>

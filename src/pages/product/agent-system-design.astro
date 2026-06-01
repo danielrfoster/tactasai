@@ -1,0 +1,258 @@
+---
+import {
+  ArrowRight,
+  Bot,
+  Check,
+  Layers,
+  Mail,
+  Network,
+  Settings,
+  ShieldCheck,
+  Sparkles,
+  Workflow,
+} from "@lucide/astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getBrandEmail, getSiteUrl } from "../../lib/site";
+
+const siteUrl = getSiteUrl();
+const brandEmail = getBrandEmail();
+const pageUrl = `${siteUrl}/product/agent-system-design`;
+
+const title = "Agent System Design for Business Workflows | TactasAI";
+const description =
+  "Design AI agent systems around your company's workflows, tools, rules, approvals, data conditions, and operating model.";
+
+const designAreas = [
+  {
+    title: "Workflow Fit",
+    body: "Map how the business actually works: triggers, owners, handoffs, exceptions, outputs, and where the agent should or should not act.",
+    icon: Workflow,
+    items: ["Triggers", "Owners", "Handoffs", "Exceptions"],
+  },
+  {
+    title: "Workspace Isolation",
+    body: "Separate data, tools, context, permissions, memory, and agent behavior by workflow inside one business so workspaces do not use the wrong context.",
+    icon: Layers,
+    items: ["Data scope", "Tool scope", "Agent memory", "Workspace rules"],
+  },
+  {
+    title: "Agent Behavior",
+    body: "Define how agents interpret context, ask for missing details, draft outputs, cite sources, escalate uncertainty, and prepare next steps.",
+    icon: Bot,
+    items: ["Instructions", "Context rules", "Output format", "Escalation logic"],
+  },
+  {
+    title: "Tools and Actions",
+    body: "Connect the agent to the right destinations with controlled actions across tasks, records, inboxes, documents, and reports.",
+    icon: Network,
+    items: ["Tool paths", "Write actions", "Review gates", "Audit trail"],
+  },
+];
+
+const principles = [
+  ["Business-specific", "Designed around your workflow, roles, terminology, and decision rules."],
+  ["Supervised by default", "Human review, approval points, and escalation rules are built into the operating model."],
+  ["Tool-aware", "Agents understand which systems are sources, which are destinations, and which actions need approval."],
+  ["Improves over time", "Usage patterns, exceptions, and weak outputs become inputs for system improvement."],
+];
+
+const steps = [
+  ["01", "Model the work", "Turn the target workflow into triggers, required context, outputs, owners, and edge cases."],
+  ["02", "Design behavior", "Define instructions, source rules, response style, uncertainty handling, and approval boundaries."],
+  ["03", "Connect actions", "Map where the agent can draft, update, assign, notify, summarize, or prepare handoffs."],
+  ["04", "Launch and tune", "Review real outputs, capture failure modes, and improve the system with business feedback."],
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      name: "Agent System Design for Business Workflows",
+      url: pageUrl,
+      description,
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
+      name: "Agent System Design",
+      serviceType: [
+        "AI agent system design",
+        "AI workflow design",
+        "Agent guardrails",
+        "Business workflow automation design",
+        "Tool action design",
+      ],
+      url: pageUrl,
+      description,
+      provider: { "@id": `${siteUrl}/#organization` },
+      areaServed: "Worldwide",
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/product/agent-system-design"
+  currentPath="/product/agent-system-design"
+  navbarTheme="light"
+  navbarCtaLabel="Book a review"
+  keywords={[
+    "agent system design",
+    "AI agent workflow design",
+    "AI agent guardrails",
+    "business workflow AI agents",
+    "AI agent tool actions",
+    "managed AI agent system",
+  ]}
+  openGraph={{
+    title,
+    description,
+    url: pageUrl,
+    type: "website",
+    images: [
+      {
+        url: "/tactas-ai-managed-agent-systems-og.jpg",
+        width: 1734,
+        height: 907,
+        alt: "TactasAI agent system design for business workflows",
+      },
+    ],
+  }}
+  twitter={{
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/tactas-ai-managed-agent-systems-og.jpg"],
+  }}
+  jsonLd={jsonLd}
+>
+  <main class="min-h-screen overflow-x-hidden bg-tactas-bg text-tactas-ink">
+    <section class="relative overflow-hidden border-b border-tactas-line bg-white">
+      <div class="pointer-events-none absolute inset-0 opacity-[0.32] [background-image:linear-gradient(to_right,rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.05)_1px,transparent_1px)] [background-size:72px_72px]"></div>
+      <div class="tactas-container relative grid min-h-[680px] items-center gap-12 py-16 lg:grid-cols-[0.92fr_1.08fr] lg:py-20">
+        <div>
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-tactas-accent-line bg-tactas-accent-soft px-3 py-1.5">
+            <Settings class="h-3.5 w-3.5 text-tactas-accent-strong" stroke-width={1.8} />
+            <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-tactas-accent-strong">Agent System Design</span>
+          </div>
+          <h1 class="max-w-[12ch] text-[clamp(3rem,7vw,5.8rem)] font-extrabold leading-[0.94] tracking-[-0.045em]">
+            Design AI agents around how your business works.
+          </h1>
+          <p class="mt-7 max-w-[42rem] text-[17px] leading-relaxed text-tactas-muted">
+            TactasAI shapes agent systems around your workflows, tools, business rules, approvals, data conditions, and operating model so automation fits the way your team actually works.
+          </p>
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a href="/contact" class="group inline-flex h-12 items-center justify-center rounded-[6px] bg-tactas-primary px-6 text-[14px] font-semibold text-white transition hover:bg-tactas-accent">
+              Start a system review
+              <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-0.5" stroke-width={1.9} />
+            </a>
+            <a href="/product/data-readiness" class="inline-flex h-12 items-center justify-center rounded-[6px] border border-tactas-line bg-white px-6 text-[14px] font-semibold text-tactas-ink-strong transition hover:border-tactas-accent/70 hover:text-tactas-accent-strong">
+              See data readiness
+            </a>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute inset-x-8 bottom-[-18px] h-12 rounded-full bg-tactas-primary/18 blur-2xl"></div>
+          <div class="relative overflow-hidden rounded-[12px] border border-tactas-line bg-tactas-bg shadow-[0_40px_110px_-62px_rgba(15,23,42,0.58)]">
+            <div class="flex h-12 items-center justify-between border-b border-tactas-line bg-white px-4">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-accent-strong">System design map</p>
+              <Sparkles class="h-4 w-4 text-tactas-accent-strong" stroke-width={1.8} />
+            </div>
+            <div class="grid gap-4 p-5 lg:grid-cols-3">
+              {designAreas.map((area) => {
+                const Icon = area.icon;
+                return (
+                  <article id={area.title === "Workflow Fit" ? "workflow-fit" : area.title === "Workspace Isolation" ? "workspace-isolation" : area.title === "Agent Behavior" ? "agent-behavior" : "tools-and-actions"} class="scroll-mt-28 rounded-[8px] border border-tactas-line bg-white p-5">
+                    <Icon class="h-5 w-5 text-tactas-primary-strong" stroke-width={1.9} />
+                    <h2 class="mt-5 text-[21px] font-semibold tracking-tight text-tactas-ink-strong">{area.title}</h2>
+                    <p class="mt-3 text-[14px] leading-relaxed text-tactas-muted-soft">{area.body}</p>
+                    <div class="mt-5 grid gap-2 border-t border-tactas-line pt-4">
+                      {area.items.map((item) => (
+                        <div class="flex items-center gap-2 text-[13px] font-semibold text-tactas-ink">
+                          <Check class="h-3.5 w-3.5 text-tactas-accent-strong" stroke-width={2.2} />
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="design-principles" class="scroll-mt-24 border-b border-tactas-line bg-tactas-bg">
+      <div class="tactas-container py-16 lg:py-20">
+        <div class="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Design principles</p>
+            <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+              The system should fit the business, not the other way around.
+            </h2>
+            <p class="mt-5 text-[16px] leading-relaxed text-tactas-muted-soft">
+              The same model can behave very differently depending on workflow design, source rules, approval paths, and tool action limits.
+            </p>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            {principles.map(([title, body]) => (
+              <article class="rounded-[8px] border border-tactas-line bg-white p-6">
+                <ShieldCheck class="h-5 w-5 text-tactas-accent-strong" stroke-width={1.9} />
+                <h3 class="mt-5 text-[20px] font-semibold tracking-tight text-tactas-ink-strong">{title}</h3>
+                <p class="mt-3 text-[14px] leading-relaxed text-tactas-muted-soft">{body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-tactas-line bg-white">
+      <div class="tactas-container py-16 lg:py-20">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Design flow</p>
+          <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+            From business workflow to supervised agent system.
+          </h2>
+        </div>
+        <div class="mt-12 grid gap-4 lg:grid-cols-4">
+          {steps.map(([step, title, body]) => (
+            <article class="rounded-[8px] border border-tactas-line bg-tactas-bg p-6">
+              <p class="font-mono text-[11px] text-tactas-accent-strong">{step}</p>
+              <h3 class="mt-5 text-[20px] font-semibold tracking-tight text-tactas-ink-strong">{title}</h3>
+              <p class="mt-3 text-[14px] leading-relaxed text-tactas-muted-soft">{body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-tactas-night text-white">
+      <div class="tactas-container py-16 lg:py-20">
+        <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-line">System review</p>
+            <h2 class="mt-4 max-w-3xl text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+              Design the agent system around your first real workflow.
+            </h2>
+            <p class="mt-5 max-w-2xl text-[16px] leading-relaxed text-white/72">
+              Share the task, business rules, tools, approvals, and exceptions that make the workflow specific to your company.
+            </p>
+          </div>
+          <a href={`mailto:${brandEmail}`} class="inline-flex h-12 items-center justify-center rounded-[6px] bg-white px-6 text-[14px] font-semibold text-tactas-ink transition hover:bg-tactas-accent-line">
+            <Mail class="mr-2 h-4 w-4" stroke-width={1.8} />
+            Email TactasAI
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

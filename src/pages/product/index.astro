@@ -1,0 +1,398 @@
+---
+import {
+  ArrowRight,
+  BarChart3,
+  Bot,
+  BrainCircuit,
+  ClipboardCheck,
+  Database,
+  FileSearch,
+  GitBranch,
+  Layers,
+  Mail,
+  Network,
+  Search,
+  Settings,
+  ShieldCheck,
+  Sparkles,
+} from "@lucide/astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getBrandEmail, getSiteUrl } from "../../lib/site";
+
+const siteUrl = getSiteUrl();
+const brandEmail = getBrandEmail();
+const pageUrl = `${siteUrl}/product`;
+
+const title = "TactasAI Product Overview | Managed AI Agent System";
+const description =
+  "TactasAI is a managed AI agent system for business work: data readiness, agent system design, deep research, company knowledge, task automation, guardrails, and ongoing improvement.";
+
+const productClusters = [
+  {
+    title: "Foundation",
+    body: "Prepare data and context so agents can retrieve, reason, and work from the right business material.",
+    items: [
+      {
+        title: "Data Readiness",
+        subtitle: "Prepare company data for reliable AI agents",
+        href: "/product/data-readiness",
+        icon: Database,
+        links: [
+          ["Agent data handling", "/product/data-readiness#agent-data-handling"],
+          ["Expert data preparation", "/product/data-readiness#expert-data-preparation"],
+          ["Large data sets", "/product/data-readiness#data-sources"],
+          ["Specialized sources", "/product/data-readiness#data-sources"],
+        ],
+      },
+      {
+        title: "Knowledge Layer",
+        subtitle: "Company context for agent work",
+        href: "/product/ai-knowledge-base",
+        icon: Search,
+        links: [
+          ["Source-backed answers", "/product/ai-knowledge-base#product"],
+          ["Document context", "/product/ai-knowledge-base#architecture"],
+          ["Deep research", "/product/deep-research"],
+          ["Quality tuning", "/product/ai-knowledge-base#faq"],
+        ],
+      },
+    ],
+  },
+  {
+    title: "Execution",
+    body: "Define how agents behave, where they act, and how work moves through business systems with guardrails.",
+    items: [
+      {
+        title: "Agent System Design",
+        subtitle: "Shape agents around how your business works",
+        href: "/product/agent-system-design",
+        icon: Settings,
+        links: [
+          ["Workflow design", "/product/agent-system-design#workflow-fit"],
+          ["Business rules", "/product/agent-system-design#agent-behavior"],
+          ["Approval paths", "/product/agent-system-design#design-principles"],
+          ["Tool actions", "/product/agent-system-design#tools-and-actions"],
+        ],
+      },
+      {
+        title: "Managed AI Agents",
+        subtitle: "Automate repeated business tasks",
+        href: "/product/ai-workflow-automation",
+        icon: Bot,
+        links: [
+          ["Task mapping", "/product/ai-workflow-automation#product"],
+          ["Assistant experience", "/product/assistant"],
+          ["Prepared outputs", "/product/ai-workflow-automation#architecture"],
+          ["Human review", "/product/ai-workflow-automation#faq"],
+        ],
+      },
+    ],
+  },
+];
+
+const capabilities = [
+  ["Task Review", "Pick one workflow with clear value, context, output, and ownership.", ClipboardCheck],
+  ["Data Preparation", "Make company data usable for agent retrieval, reasoning, and action.", Database],
+  ["System Design", "Fit agent behavior to your workflows, rules, tools, and operating model.", Settings],
+  ["Workspace Isolation", "Separate data, tools, context, permissions, and agent behavior by workflow inside one business.", Layers],
+  ["Deep Research", "Use company knowledge and approved sources to prepare cited briefs for harder business questions.", FileSearch],
+  ["Connectors & Actions", "Use existing apps as inputs, destinations, and controlled action paths.", GitBranch],
+  ["Workflow Actions", "Move approved outputs into tasks, records, messages, and reports.", Network],
+  ["Guardrails", "Define approvals, escalation rules, limits, and review points before launch.", ShieldCheck],
+  ["Monitoring", "Track output quality, usage patterns, exceptions, and improvement opportunities.", BarChart3],
+  ["Knowledge Quality", "Tune retrieval, citations, source freshness, and answer usefulness.", BrainCircuit],
+  ["Managed Improvement", "Improve prompts, context, actions, and workflow rules as real work changes.", Sparkles],
+];
+
+const launchSteps = [
+  ["01", "Review", "Choose one repeated business task and define what useful output should look like."],
+  ["02", "Connect", "Bring in the documents, records, messages, and tools the agent needs."],
+  ["03", "Launch", "Ship a supervised agent with approvals, outputs, and action paths."],
+  ["04", "Improve", "Tune the system with real usage, edge cases, and changing business context."],
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      name: "TactasAI Product Overview",
+      url: pageUrl,
+      description,
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
+      name: "TactasAI Managed AI Agent System",
+      serviceType: [
+        "Managed AI agents",
+        "Business task automation",
+        "Data readiness for AI agents",
+        "Agent system design",
+        "AI assistant for business work",
+        "Company knowledge layer",
+        "Connected workflows",
+        "AI agent guardrails",
+        "Managed AI implementation",
+      ],
+      url: pageUrl,
+      description,
+      provider: { "@id": `${siteUrl}/#organization` },
+      areaServed: "Worldwide",
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "Product", item: pageUrl },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/product"
+  currentPath="/product"
+  navbarTheme="light"
+  navbarCtaLabel="Book a review"
+  keywords={[
+    "TactasAI product",
+    "managed AI agent system",
+    "managed AI agents",
+    "data readiness for AI agents",
+    "workspace isolation for AI agents",
+    "agent system design",
+    "business AI assistant",
+    "business task automation",
+    "company knowledge layer",
+    "connected AI workflows",
+    "AI agent guardrails",
+  ]}
+  openGraph={{
+    title,
+    description,
+    url: pageUrl,
+    type: "website",
+    images: [
+      {
+        url: "/tactas-ai-managed-agent-systems-og.jpg",
+        width: 1734,
+        height: 907,
+        alt: "TactasAI managed AI agent system product overview",
+      },
+    ],
+  }}
+  twitter={{
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/tactas-ai-managed-agent-systems-og.jpg"],
+  }}
+  jsonLd={jsonLd}
+>
+  <main class="min-h-screen overflow-x-hidden bg-tactas-bg text-tactas-ink selection:bg-tactas-accent/20">
+    <section class="relative overflow-hidden border-b border-tactas-line bg-white">
+      <div class="pointer-events-none absolute inset-0 opacity-[0.36] [background-image:linear-gradient(to_right,rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.05)_1px,transparent_1px)] [background-size:72px_72px]"></div>
+      <div class="tactas-container relative grid min-h-[680px] items-center gap-12 py-16 lg:grid-cols-[0.92fr_1.08fr] lg:py-20">
+        <div>
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-tactas-accent-line bg-tactas-accent-soft px-3 py-1.5">
+            <Sparkles class="h-3.5 w-3.5 text-tactas-accent-strong" stroke-width={1.8} />
+            <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-tactas-accent-strong">Product overview</span>
+          </div>
+
+          <h1 class="max-w-[13ch] text-[clamp(3rem,7vw,5.8rem)] font-extrabold leading-[0.94] tracking-[-0.045em]">
+            A managed AI agent system for business work.
+          </h1>
+          <p class="mt-7 max-w-[42rem] text-[17px] leading-relaxed text-tactas-muted">
+            TactasAI combines data readiness, system design, workspace isolation, company knowledge, research-grade context, supervised AI agents, connected workflows, guardrails, and ongoing improvement so repeated business tasks become useful outputs and controlled action.
+          </p>
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a href="/contact" class="group inline-flex h-12 items-center justify-center rounded-[6px] bg-tactas-primary px-6 text-[14px] font-semibold text-white shadow-[0_18px_48px_-24px_rgba(37,99,235,0.8)] transition hover:bg-tactas-accent">
+              Book a product review
+              <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-0.5" stroke-width={1.9} />
+            </a>
+            <a href="/product/ai-workflow-automation" class="inline-flex h-12 items-center justify-center rounded-[6px] border border-tactas-line bg-white px-6 text-[14px] font-semibold text-tactas-ink-strong transition hover:border-tactas-accent/70 hover:text-tactas-accent-strong">
+              Explore AI agents
+            </a>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute inset-x-10 bottom-[-18px] h-12 rounded-full bg-tactas-primary/18 blur-2xl"></div>
+          <div class="relative overflow-hidden rounded-[12px] border border-tactas-line bg-tactas-bg shadow-[0_40px_110px_-62px_rgba(15,23,42,0.58)]">
+            <div class="flex h-12 items-center justify-between border-b border-tactas-line bg-white px-4">
+              <div class="flex items-center gap-2">
+                <span class="h-2.5 w-2.5 rounded-full bg-tactas-accent"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-tactas-primary"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-tactas-warning"></span>
+              </div>
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-accent-strong">Tactas product map</p>
+            </div>
+
+            <div class="p-5">
+              <a href="/product" class="flex min-h-16 items-center justify-between rounded-[10px] border border-tactas-accent-line bg-[linear-gradient(90deg,#D9F8FF_0%,#EAF0FF_50%,#F0EAFF_100%)] px-5 text-[20px] font-bold text-tactas-ink-strong">
+                Product Overview
+                <ArrowRight class="h-5 w-5" stroke-width={1.8} />
+              </a>
+
+              <div class="mt-6 grid gap-4 lg:grid-cols-2">
+                {productClusters.map((cluster) => (
+                  <div class="rounded-[8px] border border-tactas-line bg-white p-5">
+                    <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-accent-strong">{cluster.title}</p>
+                    <p class="mt-3 text-[13px] leading-relaxed text-tactas-muted-soft">{cluster.body}</p>
+                    <div class="mt-5 grid gap-4 border-t border-tactas-line pt-4">
+                      {cluster.items.map((item) => {
+                        const Icon = item.icon;
+                        return (
+                          <article class="rounded-[8px] border border-tactas-line bg-tactas-bg p-4 transition hover:border-tactas-accent/60">
+                            <a href={item.href} class="group/item block">
+                              <Icon class="h-5 w-5 text-tactas-primary-strong" stroke-width={1.9} />
+                              <h2 class="mt-4 text-[18px] font-bold leading-tight text-tactas-primary-strong group-hover/item:text-tactas-accent">{item.title}</h2>
+                              <p class="mt-1 text-[13px] leading-relaxed text-tactas-muted-soft">{item.subtitle}</p>
+                            </a>
+                            <div class="mt-4 grid gap-2 text-[12px] font-semibold text-tactas-ink">
+                              {item.links.map(([label, href]) => (
+                                <a href={href} class="transition hover:text-tactas-accent">{label}</a>
+                              ))}
+                            </div>
+                          </article>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div class="mt-6 grid gap-3 border-t border-tactas-line pt-5 sm:grid-cols-2">
+                {capabilities.slice(0, 4).map(([name, body, Icon]) => (
+                  <div class="flex gap-3 rounded-[8px] border border-tactas-line bg-white p-4">
+                    <Icon class="mt-1 h-4 w-4 shrink-0 text-tactas-accent-strong" stroke-width={1.9} />
+                    <div>
+                      <p class="text-[14px] font-bold text-tactas-ink">{name}</p>
+                      <p class="mt-1 text-[12px] leading-relaxed text-tactas-muted-soft">{body}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-tactas-line bg-tactas-bg">
+      <div class="tactas-container py-16 lg:py-20">
+        <div class="grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Product clusters</p>
+            <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+              Two clusters, one managed system.
+            </h2>
+            <p class="mt-5 text-[16px] leading-relaxed text-tactas-muted-soft">
+              The product is not a chatbot or connector list. It is the operating layer that turns trusted context into supervised work.
+            </p>
+          </div>
+
+          <div class="grid gap-4">
+            {productClusters.map((cluster) => (
+              <div class="rounded-[8px] border border-tactas-line bg-white p-6">
+                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-accent-strong">{cluster.title}</p>
+                <p class="mt-3 text-[14px] leading-relaxed text-tactas-muted-soft">{cluster.body}</p>
+                <div class="mt-5 grid gap-4">
+                  {cluster.items.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <a href={item.href} class="grid gap-5 rounded-[8px] border border-tactas-line bg-tactas-bg p-5 transition hover:border-tactas-accent/60 sm:grid-cols-[56px_1fr_auto] sm:items-center">
+                        <span class="flex h-12 w-12 items-center justify-center rounded-[8px] border border-tactas-accent-line bg-white text-tactas-accent-strong">
+                          <Icon class="h-5 w-5" stroke-width={1.9} />
+                        </span>
+                        <span>
+                          <span class="block text-[20px] font-semibold tracking-tight text-tactas-ink-strong">{item.title}</span>
+                          <span class="mt-1 block text-[14px] leading-relaxed text-tactas-muted-soft">{item.subtitle}</span>
+                        </span>
+                        <ArrowRight class="hidden h-5 w-5 text-tactas-accent-strong sm:block" stroke-width={1.8} />
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="capabilities" class="scroll-mt-24 border-b border-tactas-line bg-white">
+      <div class="tactas-container py-16 lg:py-20">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Capabilities</p>
+          <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+            The pieces that make agents usable in real operations.
+          </h2>
+        </div>
+
+        <div class="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {capabilities.map(([name, body, Icon]) => (
+            <article class="min-h-[190px] rounded-[8px] border border-tactas-line bg-tactas-bg p-6">
+              <Icon class="h-5 w-5 text-tactas-accent-strong" stroke-width={1.9} />
+              <h3 class="mt-5 text-[20px] font-semibold tracking-tight text-tactas-ink-strong">{name}</h3>
+              <p class="mt-3 text-[14px] leading-relaxed text-tactas-muted-soft">{body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="launch-model" class="scroll-mt-24 border-b border-tactas-line bg-tactas-bg">
+      <div class="tactas-container grid gap-12 py-16 lg:grid-cols-[0.72fr_1.28fr] lg:py-20">
+        <div>
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Launch model</p>
+          <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+            Start with one task. Expand after it works.
+          </h2>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          {launchSteps.map(([step, title, body]) => (
+            <article class="rounded-[8px] border border-tactas-line bg-white p-6">
+              <p class="font-mono text-[11px] text-tactas-accent-strong">{step}</p>
+              <h3 class="mt-5 text-[20px] font-semibold tracking-tight text-tactas-ink-strong">{title}</h3>
+              <p class="mt-3 text-[14px] leading-relaxed text-tactas-muted-soft">{body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-tactas-night text-white">
+      <div class="tactas-container py-16 lg:py-20">
+        <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-line">Product review</p>
+            <h2 class="mt-4 max-w-3xl text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+              Define the first AI agent your business should trust in production.
+            </h2>
+            <p class="mt-5 max-w-2xl text-[16px] leading-relaxed text-white/72">
+              Share one repeated task, the sources it depends on, and the tools where work should move next.
+            </p>
+          </div>
+          <div class="flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <a href="/contact" class="inline-flex h-12 items-center justify-center rounded-[6px] bg-white px-6 text-[14px] font-semibold text-tactas-ink transition hover:bg-tactas-accent-line">
+              Book a review
+            </a>
+            <a href={`mailto:${brandEmail}`} class="inline-flex h-12 items-center justify-center rounded-[6px] border border-white/15 px-6 text-[14px] font-semibold text-white transition hover:border-tactas-accent-line hover:text-tactas-accent-line">
+              <Mail class="mr-2 h-4 w-4" stroke-width={1.8} />
+              Email TactasAI
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

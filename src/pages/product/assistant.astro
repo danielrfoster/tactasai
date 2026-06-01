@@ -1,0 +1,719 @@
+---
+import {
+  ArrowRight,
+  Bell,
+  Bot,
+  BrainCircuit,
+  Building2,
+  Check,
+  FileSearch,
+  Gavel,
+  HeartPulse,
+  Home,
+  Layers,
+  Mail,
+  MessageSquareText,
+  Network,
+  Server,
+  ShoppingBag,
+  Sparkles,
+  Table2,
+} from "@lucide/astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SharedHero from "../../components/SharedHero.astro";
+import { getBrandEmail, getSiteUrl } from "../../lib/site";
+
+const siteUrl = getSiteUrl();
+const brandEmail = getBrandEmail();
+const pageUrl = `${siteUrl}/product/assistant`;
+
+const title = "Tactas Assistant for Business Work | TactasAI";
+const description =
+  "A business-ready AI assistant that carries company context across systems, helps teams research, draft, prioritize, and move work forward.";
+
+const outcomeCards = [
+  {
+    title: "Make better decisions faster",
+    body: "Start with the right context, trusted signals, and a clearer next step before work branches into five tabs and three meetings.",
+    icon: BrainCircuit,
+  },
+  {
+    title: "Go from idea to useful output",
+    body: "Turn a rough ask into a stronger first draft, action brief, summary, or research memo that already reflects company context.",
+    icon: Sparkles,
+  },
+  {
+    title: "Delegate work and stay in control",
+    body: "Hand off research, prep, and follow-through while keeping approvals, tools, and business rules inside the right lane.",
+    icon: Network,
+  },
+];
+
+const capabilityGroups = [
+  {
+    title: "Find what matters",
+    items: [
+      "Search company knowledge and current work context",
+      "Pull together records, docs, and notes",
+      "Pinpoint the source behind an answer",
+    ],
+  },
+  {
+    title: "Understand the situation",
+    items: [
+      "Compare structured and unstructured inputs",
+      "Surface blockers, risks, and changes",
+      "Turn scattered context into a clear brief",
+    ],
+  },
+  {
+    title: "Create useful outputs",
+    items: [
+      "Draft updates, replies, and decision support",
+      "Prepare reports, summaries, and working pages",
+      "Tailor outputs to team workflows and standards",
+    ],
+  },
+  {
+    title: "Move work forward",
+    items: [
+      "Create tasks and follow-ups across tools",
+      "Update records with review gates",
+      "Keep human approval where it matters",
+    ],
+  },
+];
+
+const featureSections = [
+  {
+    id: "unified-context",
+    eyebrow: "AI assistant · Unified context",
+    title: "Get complete context for any task.",
+    body: "Tactas Assistant brings together company knowledge, records, notes, and current workflow state so answers and outputs begin from the right business picture.",
+    cta: "Explore knowledge layer",
+    ctaHref: "/product/ai-knowledge-base",
+    points: [
+      "Knowledge base and SOPs",
+      "Operational records and task history",
+      "Recent conversations and notes",
+      "Role-specific workflow context",
+    ],
+    icon: Layers,
+    badge: "Context map",
+    panel: [
+      ["Sources", "Knowledge base, CRM, tickets, notes"],
+      ["Prompt", "Summarize onboarding friction for enterprise accounts"],
+      ["Assistant", "Faster time-to-value and setup clarity appear in support notes, sales calls, and activation data."],
+    ],
+  },
+  {
+    id: "proactive",
+    eyebrow: "AI assistant · Proactive intelligence",
+    title: "Stay ahead of what needs attention.",
+    body: "Instead of waiting for a perfect prompt, the assistant can surface important changes, stale follow-ups, and high-signal context around the work already on your plate.",
+    cta: "See agent system design",
+    ctaHref: "/product/agent-system-design",
+    points: [
+      "Priority updates and blockers",
+      "Suggested next steps",
+      "What changed since last review",
+      "Context tied to the current workflow",
+    ],
+    icon: Bell,
+    badge: "Priority feed",
+    panel: [
+      ["Alert", "Three renewal accounts mention delayed onboarding this week."],
+      ["Why it matters", "Support threads, CRM notes, and implementation tasks point to the same handoff gap."],
+      ["Next step", "Prepare a brief and create follow-ups for CS and onboarding ops."],
+    ],
+  },
+  {
+    id: "visual-outputs",
+    eyebrow: "AI assistant · Working outputs",
+    title: "Create polished briefs, pages, and working artifacts.",
+    body: "The assistant can shape information into deliverables your team can actually use: summaries, action briefs, internal pages, research drafts, and update packets.",
+    cta: "Review managed agents",
+    ctaHref: "/product/ai-workflow-automation",
+    points: [
+      "Research summaries",
+      "Decision support briefs",
+      "Internal pages and handoff notes",
+      "Prepared updates for review",
+    ],
+    icon: Table2,
+    badge: "Output studio",
+    panel: [
+      ["Output", "Q2 onboarding friction brief"],
+      ["Includes", "Findings, affected accounts, timeline, recommended actions"],
+      ["Ready for", "Leadership review, team handoff, task creation"],
+    ],
+  },
+  {
+    id: "deep-research",
+    eyebrow: "AI assistant · Deep research",
+    title: "Work through broader questions with sourced evidence.",
+    body: "For harder problems, the assistant can break the question down, gather evidence across systems and approved external sources, and return a cited brief for review.",
+    cta: "Explore deep research",
+    ctaHref: "/product/deep-research",
+    points: [
+      "Research plan before synthesis",
+      "Multi-source comparison",
+      "Cited findings and open questions",
+      "Decision-ready brief structure",
+    ],
+    icon: FileSearch,
+    badge: "Research run",
+    panel: [
+      ["Question", "Why are enterprise pilots taking longer to reach first value?"],
+      ["Evidence", "Project notes, support tickets, call transcripts, implementation tasks"],
+      ["Result", "A sourced brief with patterns, outliers, and recommended next actions"],
+    ],
+  },
+  {
+    id: "task-execution",
+    eyebrow: "AI assistant · Task execution",
+    title: "Delegate work and take action across your tools.",
+    body: "Once the context is right and the output is reviewed, the assistant can create tasks, update records, prepare messages, and push approved work into the next system.",
+    cta: "Explore workflow automation",
+    ctaHref: "/product/ai-workflow-automation",
+    points: [
+      "Task creation and routing",
+      "Draft follow-ups and status updates",
+      "Controlled record changes",
+      "Review gates before action",
+    ],
+    icon: Bot,
+    badge: "Action path",
+    panel: [
+      ["Action set", "Create onboarding follow-ups, draft a leadership update, sync account notes"],
+      ["Systems", "Asana, HubSpot, Notion, Gmail"],
+      ["Control", "Human review before outbound changes"],
+    ],
+  },
+];
+
+const howItWorks = [
+  {
+    title: "Find",
+    body: "Assistant collects the most relevant company context across tools, records, docs, notes, and approved external sources.",
+  },
+  {
+    title: "Plan",
+    body: "It breaks the request into steps and decides what needs retrieval, comparison, synthesis, or action.",
+  },
+  {
+    title: "Research",
+    body: "For broader questions, it goes deeper, checks additional signals, and closes context gaps before writing.",
+  },
+  {
+    title: "Refine",
+    body: "It structures the output, checks the evidence, and keeps the result aligned to the workflow and audience.",
+  },
+  {
+    title: "Deliver",
+    body: "The final brief, draft, or action package is returned for review, with follow-through steps ready when needed.",
+  },
+];
+
+const connectorStrip = [
+  "Docs and SOPs",
+  "CRM records",
+  "Tickets and support threads",
+  "Project tasks",
+  "Meeting notes",
+  "Approved web research",
+];
+
+const industryAssistantLinks = [
+  {
+    title: "SaaS companies",
+    body: "Product docs Q&A, onboarding support, ticket triage, customer success summaries, and sales qualification.",
+    href: "/industries/ai-assistant-for-saas-companies",
+    icon: Building2,
+  },
+  {
+    title: "Ecommerce stores",
+    body: "Product questions, order status, returns intake, support triage, and revenue recovery workflows.",
+    href: "/industries/ecommerce",
+    icon: ShoppingBag,
+  },
+  {
+    title: "Law firms",
+    body: "Client intake, lead qualification, document checklists, consultation prep, and controlled legal handoff.",
+    href: "/industries/ai-assistant-for-law-firms",
+    icon: Gavel,
+  },
+  {
+    title: "Healthcare clinics",
+    body: "Patient intake, appointment preparation, forms, billing routing, non-clinical FAQs, and staff escalation.",
+    href: "/industries/healthcare",
+    icon: HeartPulse,
+  },
+  {
+    title: "Real estate teams",
+    body: "Property inquiry qualification, listing Q&A, showing prep, buyer follow-up, and CRM updates.",
+    href: "/industries/ai-assistant-for-real-estate",
+    icon: Home,
+  },
+  {
+    title: "VPS hosting providers",
+    body: "SSH, DNS, SSL, billing, migration prep, incident triage, docs Q&A, and safety escalations.",
+    href: "/industries/ai-assistant-for-vps-hosting-providers",
+    icon: Server,
+  },
+];
+
+const zigMask = "polygon(0 0,100% 7%,76% 18%,100% 31%,74% 44%,100% 57%,76% 70%,100% 83%,74% 94%,100% 100%,0 100%)";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      name: "Tactas Assistant for Business Work",
+      url: pageUrl,
+      description,
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
+      name: "Tactas Assistant",
+      serviceType: [
+        "AI assistant for business work",
+        "Context-aware AI assistant",
+        "Deep research assistant",
+        "Business workflow assistant",
+        "Task execution assistant",
+      ],
+      url: pageUrl,
+      description,
+      provider: { "@id": `${siteUrl}/#organization` },
+      areaServed: "Worldwide",
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/product/assistant"
+  currentPath="/product/assistant"
+  navbarTheme="light"
+  navbarCtaLabel="Book a review"
+  keywords={[
+    "business AI assistant",
+    "AI assistant for work",
+    "context-aware AI assistant",
+    "deep research assistant",
+    "company knowledge assistant",
+    "task execution assistant",
+  ]}
+  openGraph={{
+    title,
+    description,
+    url: pageUrl,
+    type: "website",
+    images: [
+      {
+        url: "/tactas-ai-managed-agent-systems-og.jpg",
+        width: 1734,
+        height: 907,
+        alt: "Tactas Assistant for business work",
+      },
+    ],
+  }}
+  twitter={{
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/tactas-ai-managed-agent-systems-og.jpg"],
+  }}
+  jsonLd={jsonLd}
+>
+  <main class="min-h-screen overflow-x-hidden bg-tactas-bg text-tactas-ink selection:bg-tactas-accent/20">
+    <SharedHero
+      eyebrow="Tactas Assistant"
+      eyebrowIcon={MessageSquareText}
+      titleLines={["Your business-ready AI", "coworker."]}
+      body="Delegate research, drafting, prioritization, and follow-through to an assistant that understands your business, carries context across systems, and helps teams move faster with better judgment."
+      primaryAction={{ label: "Book an assistant review", href: "/contact" }}
+      secondaryAction={{ label: "Take a tour", href: "#capabilities" }}
+      proofItems={[
+        { label: "Unified context", icon: Layers },
+        { label: "Deep research", icon: FileSearch },
+        { label: "Task follow-through", icon: Network },
+        { label: "Working outputs", icon: Table2 },
+      ]}
+    />
+
+    <section class="border-b border-tactas-line bg-tactas-bg">
+      <div class="tactas-container py-16 lg:py-20">
+        <div class="max-w-3xl">
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Everyday leverage</p>
+          <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+            Turn company context into better work across the business.
+          </h2>
+        </div>
+
+        <div class="mt-12 grid gap-4 md:grid-cols-3">
+          {outcomeCards.map((card) => {
+            const Icon = card.icon;
+            return (
+              <article class="min-h-[240px] rounded-[8px] border border-tactas-line bg-white p-6">
+                <Icon class="h-5 w-5 text-tactas-primary-strong" stroke-width={1.9} />
+                <h3 class="mt-5 text-[24px] font-semibold tracking-tight text-tactas-ink-strong">{card.title}</h3>
+                <p class="mt-3 text-[14px] leading-relaxed text-tactas-muted-soft">{card.body}</p>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-tactas-line bg-white">
+      <div class="tactas-container py-16 lg:py-20">
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,0.82fr)_minmax(360px,0.72fr)] lg:items-end lg:justify-between">
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Industry workflows</p>
+            <h2 class="mt-4 max-w-[760px] text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+              Apply the assistant pattern to the workflows buyers already understand.
+            </h2>
+          </div>
+          <p class="max-w-[38rem] text-[15.5px] leading-relaxed text-tactas-muted-soft lg:justify-self-end">
+            Start with a specific market so the assistant can use the right language, source context, integrations, and human review boundaries from day one.
+          </p>
+        </div>
+
+        <div class="mt-12 grid border-y border-tactas-line sm:grid-cols-2 lg:grid-cols-3">
+          {industryAssistantLinks.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <a
+                href={item.href}
+                class="group flex min-h-[220px] flex-col justify-between border-t border-tactas-line px-0 py-8 transition hover:bg-tactas-bg sm:border-l sm:px-7 sm:[&:nth-child(odd)]:border-l-0 lg:[&:nth-child(odd)]:border-l lg:[&:nth-child(3n+1)]:border-l-0"
+              >
+                <span>
+                  <span class="flex items-center justify-between gap-4">
+                    <span class="flex h-10 w-10 items-center justify-center rounded-md border border-tactas-line bg-tactas-bg text-tactas-accent-strong transition group-hover:border-tactas-accent/50">
+                      <Icon class="h-4 w-4" stroke-width={1.7} />
+                    </span>
+                    <span class="font-mono text-[10px] uppercase tracking-[0.24em] text-tactas-muted-soft">
+                      {String(idx + 1).padStart(2, "0")}
+                    </span>
+                  </span>
+                  <span class="mt-5 block text-[18px] font-semibold tracking-tight text-tactas-ink-strong">{item.title}</span>
+                  <span class="mt-3 block text-[14px] leading-relaxed text-tactas-muted-soft">{item.body}</span>
+                </span>
+                <span class="mt-8 inline-flex items-center text-[13px] font-semibold text-tactas-accent-strong">
+                  View industry workflow
+                  <ArrowRight class="ml-2 h-3.5 w-3.5 transition group-hover:translate-x-0.5" />
+                </span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <section id="capabilities" class="scroll-mt-24 border-b border-tactas-line bg-white">
+      <div class="tactas-container py-16 lg:py-20">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">One assistant for business work</p>
+          <h2 class="mt-4 text-[clamp(2rem,4vw,3.1rem)] font-bold leading-tight tracking-[-0.025em]">
+            One assistant for the work that usually scatters across systems.
+          </h2>
+        </div>
+
+        <div class="mt-12 grid gap-x-8 gap-y-8 md:grid-cols-2 xl:grid-cols-4">
+          {capabilityGroups.map((group) => (
+            <div>
+              <h3 class="text-[20px] font-semibold tracking-tight text-tactas-ink-strong">{group.title}</h3>
+              <div class="mt-5 grid gap-3">
+                {group.items.map((item) => (
+                  <div class="flex items-start gap-3">
+                    <Check class="mt-0.5 h-4 w-4 shrink-0 text-tactas-accent-strong" stroke-width={2.1} />
+                    <p class="text-[15px] font-medium leading-relaxed text-tactas-ink">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {featureSections.map((section, index) => {
+      const Icon = section.icon;
+      const reversed = index % 2 === 1;
+      return (
+        <section id={section.id} class:list={["scroll-mt-24 relative overflow-hidden border-b border-tactas-line", index % 2 === 0 ? "bg-tactas-bg" : "bg-white"]}>
+          <div
+            class:list={[
+              "pointer-events-none absolute top-1/2 hidden h-[250px] w-[190px] -translate-y-1/2 bg-[linear-gradient(180deg,#ede9fe_0%,#d8b4fe_35%,#8b5cf6_100%)] opacity-85 blur-[0.2px] lg:block",
+              reversed ? "left-[-46px] scale-x-[-1]" : "right-[-46px]",
+            ]}
+            style={`clip-path:${zigMask}`}
+          ></div>
+
+          <div class="tactas-container grid gap-12 py-18 lg:grid-cols-[0.72fr_1.28fr] lg:items-center lg:gap-16 lg:py-24">
+            <div class:list={[reversed ? "lg:order-2" : "", "max-w-[36rem]"]}>
+              <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">{section.eyebrow}</p>
+              <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+                {section.title}
+              </h2>
+              <p class="mt-5 text-[16px] leading-relaxed text-tactas-muted-soft">{section.body}</p>
+
+              <div class="mt-7 grid gap-3 sm:grid-cols-2">
+                {section.points.map((point) => (
+                  <div class="rounded-[8px] border border-tactas-line bg-white px-4 py-3 text-[14px] font-semibold text-tactas-ink">
+                    {point}
+                  </div>
+                ))}
+              </div>
+
+              <a href={section.ctaHref} class="mt-7 inline-flex items-center text-[14px] font-semibold text-tactas-accent-strong transition hover:text-tactas-accent">
+                {section.cta}
+                <ArrowRight class="ml-2 h-4 w-4" stroke-width={1.9} />
+              </a>
+            </div>
+
+            <div class:list={[reversed ? "lg:order-1" : "", "relative rounded-[14px] border border-tactas-line bg-[linear-gradient(180deg,#f8fafc_0%,#eef2ff_100%)] p-6 shadow-[0_34px_90px_-60px_rgba(15,23,42,0.48)]"]}>
+              <div class="absolute inset-0 opacity-35 [background-image:linear-gradient(to_right,rgba(15,23,42,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.06)_1px,transparent_1px)] [background-size:26px_26px]"></div>
+              <div class="relative flex items-center justify-between border-b border-tactas-line/80 pb-4">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-11 w-11 items-center justify-center rounded-[8px] border border-tactas-accent-line bg-white text-tactas-accent-strong shadow-[0_12px_28px_-20px_rgba(124,58,237,0.55)]">
+                    <Icon class="h-5 w-5" stroke-width={1.9} />
+                  </span>
+                  <div>
+                    <p class="text-[15px] font-semibold text-tactas-ink-strong">{section.title}</p>
+                    <p class="mt-1 text-[12px] font-medium uppercase tracking-[0.2em] text-tactas-muted-soft">{section.badge}</p>
+                  </div>
+                </div>
+                <span class="rounded-full border border-tactas-line bg-white px-3 py-1 text-[11px] font-semibold text-tactas-muted-soft">
+                  Tactas
+                </span>
+              </div>
+
+              {section.id === "unified-context" ? (
+                <div class="relative mt-6 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+                  <div class="rounded-[10px] border border-tactas-line bg-white p-5">
+                    <div class="flex flex-wrap gap-2">
+                      {["Last 6 months", "CRM", "Support", "Meeting notes"].map((tag) => (
+                        <span class="rounded-full border border-tactas-line bg-tactas-bg px-3 py-1 text-[11px] font-semibold text-tactas-muted-soft">{tag}</span>
+                      ))}
+                    </div>
+                    <h3 class="mt-4 text-[24px] font-semibold leading-tight tracking-tight text-tactas-ink-strong">
+                      Customers want faster onboarding and a shorter path to value.
+                    </h3>
+                    <p class="mt-3 text-[14px] leading-relaxed text-tactas-muted-soft">
+                      Context from tickets, CRM notes, and onboarding calls points to the same setup friction across enterprise accounts.
+                    </p>
+                  </div>
+
+                  <div class="grid gap-3">
+                    {section.panel.map(([label, value]) => (
+                      <div class="rounded-[10px] border border-tactas-line bg-white p-4">
+                        <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-accent-strong">{label}</p>
+                        <p class="mt-2 text-[14px] leading-relaxed text-tactas-ink">{value}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+
+              {section.id === "proactive" ? (
+                <div class="relative mt-6 min-h-[360px]">
+                  <div class="absolute left-8 top-10 w-[72%] rounded-[12px] border border-tactas-line bg-white p-4 shadow-[0_22px_50px_-36px_rgba(15,23,42,0.55)]">
+                    <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-accent-strong">New activity</p>
+                    <p class="mt-3 text-[15px] font-semibold text-tactas-ink-strong">
+                      Three renewal accounts mention delayed onboarding this week.
+                    </p>
+                    <div class="mt-4 flex items-center justify-between">
+                      <span class="text-[12px] text-tactas-muted-soft">6 hours ago · CS + Sales</span>
+                      <span class="rounded-full border border-tactas-line bg-tactas-bg px-3 py-1 text-[11px] font-semibold text-tactas-ink">
+                        Get context
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="absolute right-5 top-28 w-[56%] rounded-[12px] border border-tactas-line bg-[linear-gradient(180deg,#f5f3ff_0%,#ede9fe_100%)] p-4 shadow-[0_20px_45px_-34px_rgba(124,58,237,0.42)]">
+                    <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-accent-strong">Why it matters</p>
+                    <p class="mt-2 text-[14px] leading-relaxed text-tactas-ink">
+                      Support threads, CRM notes, and implementation tasks point to the same handoff gap.
+                    </p>
+                  </div>
+
+                  <div class="absolute bottom-5 left-12 w-[62%] rounded-[12px] border border-tactas-line bg-white p-4 shadow-[0_20px_45px_-34px_rgba(15,23,42,0.35)]">
+                    <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-accent-strong">Suggested next step</p>
+                    <p class="mt-2 text-[14px] leading-relaxed text-tactas-ink">
+                      Prepare a brief and create follow-ups for customer success and onboarding operations.
+                    </p>
+                  </div>
+                </div>
+              ) : null}
+
+              {section.id === "visual-outputs" ? (
+                <div class="relative mt-6 grid gap-4 lg:grid-cols-[0.88fr_1.12fr]">
+                  <div class="rounded-[10px] border border-tactas-line bg-[linear-gradient(180deg,#0f172a_0%,#1f2937_100%)] p-4 text-white">
+                    <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-accent-line">Output</p>
+                    <h3 class="mt-3 text-[20px] font-semibold leading-tight">Q2 onboarding friction brief</h3>
+                    <div class="mt-5 grid gap-3">
+                      {["Findings", "Affected accounts", "Recommended actions", "Owner handoff"].map((row) => (
+                        <div class="rounded-[8px] border border-white/10 bg-white/5 px-3 py-2 text-[13px] font-medium text-white/86">{row}</div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div class="rounded-[10px] border border-tactas-line bg-white p-5">
+                    {section.panel.map(([label, value]) => (
+                      <div class="border-b border-tactas-line py-3 last:border-b-0 first:pt-0 last:pb-0">
+                        <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-accent-strong">{label}</p>
+                        <p class="mt-2 text-[14px] leading-relaxed text-tactas-ink">{value}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+
+              {section.id === "deep-research" ? (
+                <div class="relative mt-6 grid gap-4 lg:grid-cols-[0.92fr_1.08fr]">
+                  <div class="rounded-[10px] border border-tactas-line bg-white p-5">
+                    <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-accent-strong">Research brief</p>
+                    <h3 class="mt-3 text-[20px] font-semibold leading-tight text-tactas-ink-strong">
+                      Why are enterprise pilots taking longer to reach first value?
+                    </h3>
+                    <div class="mt-4 grid gap-3">
+                      {["Project notes", "Support tickets", "Call transcripts", "Implementation tasks"].map((row) => (
+                        <div class="flex items-center justify-between rounded-[8px] border border-tactas-line bg-tactas-bg px-3 py-2">
+                          <span class="text-[13px] font-medium text-tactas-ink">{row}</span>
+                          <span class="text-[11px] font-semibold text-tactas-muted-soft">Evidence</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div class="grid gap-3">
+                    {section.panel.map(([label, value]) => (
+                      <div class="rounded-[10px] border border-tactas-line bg-white p-4">
+                        <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-accent-strong">{label}</p>
+                        <p class="mt-2 text-[14px] leading-relaxed text-tactas-ink">{value}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+
+              {section.id === "task-execution" ? (
+                <div class="relative mt-6 grid gap-4 lg:grid-cols-[1.02fr_0.98fr]">
+                  <div class="rounded-[10px] border border-tactas-line bg-white p-5">
+                    <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-accent-strong">Action set</p>
+                    <div class="mt-4 grid gap-3">
+                      {[
+                        "Create onboarding follow-ups",
+                        "Draft leadership update",
+                        "Sync account notes to CRM",
+                        "Open implementation tasks",
+                      ].map((row, rowIndex) => (
+                        <div class="flex items-center gap-3 rounded-[8px] border border-tactas-line bg-tactas-bg px-3 py-3">
+                          <span class:list={["flex h-5 w-5 items-center justify-center rounded-[5px] border text-[11px] font-bold", rowIndex < 3 ? "border-tactas-accent-line bg-tactas-accent-soft text-tactas-accent-strong" : "border-tactas-line bg-white text-tactas-muted-soft"]}>
+                            {rowIndex < 3 ? "✓" : ""}
+                          </span>
+                          <span class="text-[14px] font-medium text-tactas-ink">{row}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div class="rounded-[10px] border border-tactas-line bg-[linear-gradient(180deg,#ede9fe_0%,#faf5ff_100%)] p-5">
+                    {section.panel.map(([label, value]) => (
+                      <div class="border-b border-tactas-line py-3 last:border-b-0 first:pt-0 last:pb-0">
+                        <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-accent-strong">{label}</p>
+                        <p class="mt-2 text-[14px] leading-relaxed text-tactas-ink">{value}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </section>
+      );
+    })}
+
+    <section class="border-b border-tactas-line bg-white">
+      <div class="tactas-container py-16 lg:py-20">
+        <div class="max-w-3xl">
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">How Assistant works</p>
+          <h2 class="mt-4 text-[clamp(2rem,4vw,3.1rem)] font-bold leading-tight tracking-[-0.025em]">
+            How Tactas Assistant moves from question to finished work.
+          </h2>
+        </div>
+
+        <div class="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+          {howItWorks.map((step, index) => (
+            <article class="overflow-hidden rounded-[10px] border border-tactas-line bg-white">
+              <div class="relative h-36 border-b border-tactas-line bg-[linear-gradient(180deg,#eef2ff_0%,#f8fafc_100%)]">
+                <div class="absolute inset-0 opacity-35 [background-image:linear-gradient(to_right,rgba(15,23,42,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.06)_1px,transparent_1px)] [background-size:24px_24px]"></div>
+                <div class="relative flex h-full items-end p-5">
+                  <span class="rounded-full border border-tactas-line bg-white px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-accent-strong">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+              </div>
+              <div class="p-5">
+                <h3 class="text-[20px] font-semibold tracking-tight text-tactas-ink-strong">{step.title}</h3>
+                <p class="mt-3 text-[14px] leading-relaxed text-tactas-muted-soft">{step.body}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-tactas-line bg-tactas-bg">
+      <div class="tactas-container py-12 lg:py-14">
+        <div class="grid gap-4 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Connected context</p>
+            <h2 class="mt-3 text-[clamp(1.8rem,3.8vw,2.8rem)] font-bold leading-tight tracking-[-0.025em]">
+              Tactas works across the systems where business context already lives.
+            </h2>
+          </div>
+
+          <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            {connectorStrip.map((item) => (
+              <div class="rounded-[8px] border border-tactas-line bg-white px-4 py-3 text-[14px] font-semibold text-tactas-ink">
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="output" class="scroll-mt-24 bg-tactas-night text-white">
+      <div class="tactas-container py-16 lg:py-20">
+        <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-line">Assistant review</p>
+            <h2 class="mt-4 max-w-3xl text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+              Shape one assistant experience around the work your team repeats every day.
+            </h2>
+            <p class="mt-5 max-w-2xl text-[16px] leading-relaxed text-white/72">
+              Bring one workflow, one set of tools, and one output your team wants to prepare faster and more consistently.
+            </p>
+          </div>
+
+          <a href={`mailto:${brandEmail}`} class="inline-flex h-12 items-center justify-center rounded-[6px] bg-white px-6 text-[14px] font-semibold text-tactas-ink transition hover:bg-tactas-accent-line">
+            <Mail class="mr-2 h-4 w-4" stroke-width={1.8} />
+            Email TactasAI
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

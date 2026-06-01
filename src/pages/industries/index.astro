@@ -1,46 +1,79 @@
 ---
-import { ArrowRight, Briefcase, GraduationCap, HeartPulse, Home, ShoppingBag } from "@lucide/astro";
+import {
+  ArrowRight,
+  BriefcaseBusiness,
+  Building2,
+  Cloud,
+  Gavel,
+  HeartPulse,
+  Home,
+  Server,
+  ShoppingCart,
+} from "@lucide/astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { industryLandingPages, type IndustryIcon } from "../../lib/industryLandingPages";
 import { getSiteUrl } from "../../lib/site";
 
 const siteUrl = getSiteUrl();
 const pageUrl = `${siteUrl}/industries`;
 
+const iconMap: Record<IndustryIcon, typeof BriefcaseBusiness> = {
+  briefcase: BriefcaseBusiness,
+  building: Building2,
+  cart: ShoppingCart,
+  cloud: Cloud,
+  gavel: Gavel,
+  heart: HeartPulse,
+  home: Home,
+  server: Server,
+};
+
+const patternIndustryPages = industryLandingPages.filter(
+  (industry) => !["ai-assistant-for-ecommerce", "ai-assistant-for-healthcare-clinics"].includes(industry.slug),
+);
+
 const industries = [
+  ...patternIndustryPages.slice(0, 1).map((industry) => ({
+    title: industry.shortName,
+    href: `/industries/${industry.slug}`,
+    body: industry.description,
+    icon: iconMap[industry.icon],
+    status: "Pattern",
+  })),
   {
     title: "Ecommerce",
     href: "/industries/ecommerce",
     body: "AI customer support for ecommerce stores, including product questions, order status, returns, and revenue recovery.",
-    icon: ShoppingBag,
-    status: "Live",
+    icon: ShoppingCart,
+    status: "Deep dive",
   },
-  {
-    title: "Real estate",
-    href: "/contact",
-    body: "Lead qualification, property questions, appointment routing, and follow-up workflows.",
-    icon: Home,
-    status: "Planned",
-  },
-  {
-    title: "Education",
-    href: "/contact",
-    body: "Admissions intake, course questions, student support, reminders, and enrollment workflows.",
-    icon: GraduationCap,
-    status: "Planned",
-  },
+  ...patternIndustryPages.slice(1, 2).map((industry) => ({
+    title: industry.shortName,
+    href: `/industries/${industry.slug}`,
+    body: industry.description,
+    icon: iconMap[industry.icon],
+    status: "Pattern",
+  })),
   {
     title: "Healthcare",
     href: "/industries/healthcare",
     body: "Patient intake, appointment support, forms, reminders, billing questions, and clinical handoff boundaries.",
     icon: HeartPulse,
-    status: "Live",
+    status: "Deep dive",
   },
+  ...patternIndustryPages.slice(2).map((industry) => ({
+    title: industry.shortName,
+    href: `/industries/${industry.slug}`,
+    body: industry.description,
+    icon: iconMap[industry.icon],
+    status: "Pattern",
+  })),
   {
     title: "Professional services",
     href: "/industries/professional-services",
     body: "Client intake, lead qualification, document collection, proposal prep, CRM updates, and follow-up workflows.",
-    icon: Briefcase,
-    status: "Live",
+    icon: BriefcaseBusiness,
+    status: "Deep dive",
   },
 ];
 
@@ -53,7 +86,7 @@ const jsonLd = {
       name: "AI Automation by Industry",
       url: pageUrl,
       description:
-        "Tactas AI industry landing pages for ecommerce, healthcare, real estate, education, and professional services workflow automation.",
+        "Tactas AI industry landing pages for SaaS, ecommerce, law firms, healthcare clinics, real estate, VPS hosting, and professional services workflow automation.",
       isPartOf: { "@id": `${siteUrl}/#website` },
     },
     {
@@ -69,7 +102,7 @@ const jsonLd = {
 
 <BaseLayout
   title="AI Automation by Industry"
-  description="Explore Tactas AI industry landing pages for ecommerce, healthcare, real estate, education, and professional services workflow automation."
+  description="Explore Tactas AI industry landing pages for SaaS, ecommerce, law firms, healthcare clinics, real estate, VPS hosting, and professional services workflow automation."
   canonical="/industries"
   currentPath="/industries"
   navbarTheme="light"

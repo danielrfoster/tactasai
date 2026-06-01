@@ -1,0 +1,244 @@
+---
+import {
+  ArrowRight,
+  Bot,
+  Check,
+  Database,
+  FileSearch,
+  Mail,
+  Sparkles,
+  Users,
+} from "@lucide/astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getBrandEmail, getSiteUrl } from "../../lib/site";
+
+const siteUrl = getSiteUrl();
+const brandEmail = getBrandEmail();
+const pageUrl = `${siteUrl}/product/data-readiness`;
+
+const title = "Data Readiness for AI Agents | TactasAI";
+const description =
+  "Prepare company knowledge, business records, large data sets, and specialized sources so AI agents can retrieve, reason, cite, and act reliably.";
+
+const readinessTracks = [
+  {
+    title: "Agent Data Handling",
+    body: "Tactas agents classify, retrieve, summarize, cite, and package company data so repeated tasks have the right context at the right time.",
+    icon: Bot,
+    items: ["Source routing", "Retrieval patterns", "Cited context", "Task-ready summaries"],
+  },
+  {
+    title: "Expert Data Preparation",
+    body: "For specialized, messy, sensitive, or high-volume data, researchers and data specialists prepare the structure, labels, examples, and review rules before agents use it.",
+    icon: Users,
+    items: ["Large data sets", "Domain-specific sources", "Messy documents", "Human review sets"],
+  },
+];
+
+const sourceTypes = [
+  ["Documents and PDFs", "Policies, guides, contracts, reports, SOPs, and internal notes."],
+  ["Business records", "CRM records, account data, project status, ticket history, and operational tables."],
+  ["Specialized data", "Industry-specific source material, research sets, technical archives, and edge-case examples."],
+  ["High-volume inputs", "Large collections that need grouping, sampling, metadata, evaluation, and review."],
+];
+
+const steps = [
+  ["01", "Inventory", "Identify what sources matter for the first agent workflow and where the gaps are."],
+  ["02", "Prepare", "Clean, group, label, index, and structure data so agents can use it with less ambiguity."],
+  ["03", "Evaluate", "Test retrieval, citations, summaries, and edge cases against real business questions."],
+  ["04", "Operate", "Refresh sources, monitor weak answers, and improve the data layer as work changes."],
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      name: "Data Readiness for AI Agents",
+      url: pageUrl,
+      description,
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
+      name: "Data Readiness for AI Agents",
+      serviceType: [
+        "AI data readiness",
+        "Agent data handling",
+        "Expert data preparation",
+        "Company knowledge preparation",
+        "Large data set preparation",
+      ],
+      url: pageUrl,
+      description,
+      provider: { "@id": `${siteUrl}/#organization` },
+      areaServed: "Worldwide",
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/product/data-readiness"
+  currentPath="/product/data-readiness"
+  navbarTheme="light"
+  navbarCtaLabel="Book a review"
+  keywords={[
+    "data readiness for AI agents",
+    "agent data handling",
+    "expert data preparation",
+    "company data for AI agents",
+    "large data sets for AI agents",
+    "AI knowledge preparation",
+  ]}
+  openGraph={{
+    title,
+    description,
+    url: pageUrl,
+    type: "website",
+    images: [
+      {
+        url: "/tactas-ai-managed-agent-systems-og.jpg",
+        width: 1734,
+        height: 907,
+        alt: "TactasAI data readiness for AI agents",
+      },
+    ],
+  }}
+  twitter={{
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/tactas-ai-managed-agent-systems-og.jpg"],
+  }}
+  jsonLd={jsonLd}
+>
+  <main class="min-h-screen overflow-x-hidden bg-tactas-bg text-tactas-ink">
+    <section class="relative overflow-hidden border-b border-tactas-line bg-white">
+      <div class="pointer-events-none absolute inset-0 opacity-[0.32] [background-image:linear-gradient(to_right,rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.05)_1px,transparent_1px)] [background-size:72px_72px]"></div>
+      <div class="tactas-container relative grid min-h-[680px] items-center gap-12 py-16 lg:grid-cols-[0.94fr_1.06fr] lg:py-20">
+        <div>
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-tactas-accent-line bg-tactas-accent-soft px-3 py-1.5">
+            <Database class="h-3.5 w-3.5 text-tactas-accent-strong" stroke-width={1.8} />
+            <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-tactas-accent-strong">Data Readiness</span>
+          </div>
+          <h1 class="max-w-[12ch] text-[clamp(3rem,7vw,5.8rem)] font-extrabold leading-[0.94] tracking-[-0.045em]">
+            Prepare company data for reliable AI agents.
+          </h1>
+          <p class="mt-7 max-w-[42rem] text-[17px] leading-relaxed text-tactas-muted">
+            TactasAI helps make company knowledge, business records, specialized sources, and large data sets usable for agent work: retrieval, reasoning, citations, summaries, and controlled actions.
+          </p>
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a href="/contact" class="group inline-flex h-12 items-center justify-center rounded-[6px] bg-tactas-primary px-6 text-[14px] font-semibold text-white transition hover:bg-tactas-accent">
+              Start a data review
+              <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-0.5" stroke-width={1.9} />
+            </a>
+            <a href="/product/agent-system-design" class="inline-flex h-12 items-center justify-center rounded-[6px] border border-tactas-line bg-white px-6 text-[14px] font-semibold text-tactas-ink-strong transition hover:border-tactas-accent/70 hover:text-tactas-accent-strong">
+              See system design
+            </a>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute inset-x-8 bottom-[-18px] h-12 rounded-full bg-tactas-primary/18 blur-2xl"></div>
+          <div class="relative overflow-hidden rounded-[12px] border border-tactas-line bg-tactas-bg shadow-[0_40px_110px_-62px_rgba(15,23,42,0.58)]">
+            <div class="flex h-12 items-center justify-between border-b border-tactas-line bg-white px-4">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-accent-strong">Data readiness map</p>
+              <Sparkles class="h-4 w-4 text-tactas-accent-strong" stroke-width={1.8} />
+            </div>
+            <div class="grid gap-4 p-5 md:grid-cols-2">
+              {readinessTracks.map((track) => {
+                const Icon = track.icon;
+                return (
+                  <article id={track.title === "Agent Data Handling" ? "agent-data-handling" : "expert-data-preparation"} class="scroll-mt-28 rounded-[8px] border border-tactas-line bg-white p-5">
+                    <Icon class="h-5 w-5 text-tactas-primary-strong" stroke-width={1.9} />
+                    <h2 class="mt-5 text-[22px] font-semibold tracking-tight text-tactas-ink-strong">{track.title}</h2>
+                    <p class="mt-3 text-[14px] leading-relaxed text-tactas-muted-soft">{track.body}</p>
+                    <div class="mt-5 grid gap-2 border-t border-tactas-line pt-4">
+                      {track.items.map((item) => (
+                        <div class="flex items-center gap-2 text-[13px] font-semibold text-tactas-ink">
+                          <Check class="h-3.5 w-3.5 text-tactas-accent-strong" stroke-width={2.2} />
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="data-sources" class="scroll-mt-24 border-b border-tactas-line bg-tactas-bg">
+      <div class="tactas-container py-16 lg:py-20">
+        <div class="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">What gets prepared</p>
+            <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+              Agent-ready data is more than storage.
+            </h2>
+            <p class="mt-5 text-[16px] leading-relaxed text-tactas-muted-soft">
+              The goal is not only to connect documents. The goal is to make the right data findable, trusted, permission-aware, and useful inside each agent task.
+            </p>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            {sourceTypes.map(([title, body]) => (
+              <article class="rounded-[8px] border border-tactas-line bg-white p-6">
+                <FileSearch class="h-5 w-5 text-tactas-accent-strong" stroke-width={1.9} />
+                <h3 class="mt-5 text-[20px] font-semibold tracking-tight text-tactas-ink-strong">{title}</h3>
+                <p class="mt-3 text-[14px] leading-relaxed text-tactas-muted-soft">{body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-tactas-line bg-white">
+      <div class="tactas-container py-16 lg:py-20">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Readiness flow</p>
+          <h2 class="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+            From raw company data to agent-ready context.
+          </h2>
+        </div>
+        <div class="mt-12 grid gap-4 lg:grid-cols-4">
+          {steps.map(([step, title, body]) => (
+            <article class="rounded-[8px] border border-tactas-line bg-tactas-bg p-6">
+              <p class="font-mono text-[11px] text-tactas-accent-strong">{step}</p>
+              <h3 class="mt-5 text-[20px] font-semibold tracking-tight text-tactas-ink-strong">{title}</h3>
+              <p class="mt-3 text-[14px] leading-relaxed text-tactas-muted-soft">{body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-tactas-night text-white">
+      <div class="tactas-container py-16 lg:py-20">
+        <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-line">Data review</p>
+            <h2 class="mt-4 max-w-3xl text-[clamp(2rem,4vw,3.15rem)] font-bold leading-tight tracking-[-0.025em]">
+              Show us the data your first agent needs to understand.
+            </h2>
+            <p class="mt-5 max-w-2xl text-[16px] leading-relaxed text-white/72">
+              We will help identify what can be handled by the agent layer and what needs expert preparation first.
+            </p>
+          </div>
+          <a href={`mailto:${brandEmail}`} class="inline-flex h-12 items-center justify-center rounded-[6px] bg-white px-6 text-[14px] font-semibold text-tactas-ink transition hover:bg-tactas-accent-line">
+            <Mail class="mr-2 h-4 w-4" stroke-width={1.8} />
+            Email TactasAI
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

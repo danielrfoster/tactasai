@@ -7,15 +7,19 @@ import {
   Briefcase,
   BrainCircuit,
   ChevronDown,
+  ClipboardCheck,
   Code2,
   Database,
   Factory,
   FileText,
+  FileSearch,
   GraduationCap,
   HeartPulse,
   Headphones,
+  Home,
   KeyRound,
   Landmark,
+  Layers,
   Mail,
   Menu,
   Megaphone,
@@ -67,31 +71,28 @@ const isDark = theme === "dark";
 const navGroups: NavGroup[] = [
   {
     label: "Product",
-    href: "/#platform",
+    href: "/product",
     columns: [],
   },
   {
-    label: "Operations",
+    label: "Solutions",
     href: "/#solutions",
     columns: [
       {
-        title: "Task Outcomes",
+        title: "Industries",
         links: [
-          { label: "Task Examples", href: "/use-cases", icon: Users },
-          { label: "Summarize Changes", href: "/contact", icon: BarChart3 },
-          { label: "Answer with Context", href: "/use-cases/ai-customer-support-automation", icon: Headphones },
-          { label: "Prepare Next Steps", href: "/use-cases/ai-crm-workflow-automation", icon: Sparkles },
-          { label: "Track Open Work", href: "/contact", icon: Search },
-          { label: "Create Follow-ups", href: "/contact", nested: true },
-          { label: "Update Work Status", href: "/contact", nested: true },
-          { label: "Find Business Context", href: "/services/ai-knowledge-base", icon: BrainCircuit },
-          { label: "Automate Repeated Tasks", href: "/services/ai-workflow-automation", icon: Zap },
+          { label: "SaaS Companies", href: "/industries/ai-assistant-for-saas-companies", icon: Factory },
+          { label: "Ecommerce Stores", href: "/industries/ecommerce", icon: ShoppingBag },
+          { label: "Law Firms", href: "/industries/ai-assistant-for-law-firms", icon: Landmark },
+          { label: "Healthcare Clinics", href: "/industries/healthcare", icon: HeartPulse },
+          { label: "Real Estate Teams", href: "/industries/ai-assistant-for-real-estate", icon: Home },
+          { label: "VPS Hosting Providers", href: "/industries/ai-assistant-for-vps-hosting-providers", icon: Server },
         ],
       },
       {
         title: "Context & Tools",
         links: [
-          { label: "Knowledge & Files", href: "/services/ai-knowledge-base", icon: FileText },
+          { label: "Knowledge & Files", href: "/product/ai-knowledge-base", icon: FileText },
           { label: "Messages & Forms", href: "/contact", icon: Mail },
           { label: "Tasks & Projects", href: "/contact", icon: Briefcase },
           { label: "Business Data", href: "/#platform", icon: Database },
@@ -117,7 +118,7 @@ const navGroups: NavGroup[] = [
           { label: "Blog", href: "/blog" },
           { label: "AI Agent Prompt Library", href: "/ai-agent-prompt-library" },
           { label: "Task Examples", href: "/use-cases" },
-          { label: "Automation Guide", href: "/services/ai-workflow-automation" },
+          { label: "Automation Guide", href: "/product/ai-workflow-automation" },
           { label: "AI Operating Layer", href: "/#platform" },
           { label: "Connected Tools", href: "/#platform" },
           { label: "Contact", href: "/contact" },
@@ -128,7 +129,7 @@ const navGroups: NavGroup[] = [
         links: [
           { label: "Task Review", href: "/contact" },
           { label: "Automation Map", href: "/contact" },
-          { label: "Company Knowledge Review", href: "/services/ai-knowledge-base" },
+          { label: "Company Knowledge Review", href: "/product/ai-knowledge-base" },
           { label: "Tool Connection Review", href: "/contact" },
           { label: "Partner Inquiry", href: "/contact" },
         ],
@@ -136,9 +137,9 @@ const navGroups: NavGroup[] = [
       {
         title: "Core Areas",
         links: [
-          { label: "Managed AI Agents", href: "/services/ai-workflow-automation" },
+          { label: "Managed AI Agents", href: "/product/ai-workflow-automation" },
           { label: "Business Task Automation", href: "/use-cases" },
-          { label: "Company Knowledge", href: "/services/ai-knowledge-base" },
+          { label: "Company Knowledge", href: "/product/ai-knowledge-base" },
           { label: "Connected Business Tools", href: "/#platform" },
           { label: "Work Performance", href: "/#solutions" },
         ],
@@ -163,7 +164,7 @@ const navGroups: NavGroup[] = [
         links: [
           { label: "Task Examples", href: "/use-cases" },
           { label: "Connected Tools", href: "/#platform" },
-          { label: "Company Knowledge", href: "/services/ai-knowledge-base" },
+          { label: "Company Knowledge", href: "/product/ai-knowledge-base" },
           { label: "Pricing", href: "/pricing" },
         ],
       },
@@ -242,36 +243,67 @@ const isActive = (href: string) => {
               {group.label === "Product" ? (
                 <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
                   <div>
-                    <div class="grid gap-8 lg:grid-cols-[250px_1fr] lg:items-start">
-                      <p class="text-[20px] font-bold uppercase tracking-[-0.02em] text-tactas-ink">Tactas AI Platform</p>
-                      <a href="/#platform" class="flex h-14 items-center justify-between rounded-[10px] bg-[linear-gradient(90deg,#EAFA6A_0%,#F7E7FF_48%,#F4F1B4_100%)] px-5 text-[20px] font-bold text-tactas-ink transition hover:brightness-[0.98]">
-                        Platform Overview
+                    <div class="grid gap-8 lg:grid-cols-[270px_1fr] lg:items-start">
+                      <p class="text-[20px] font-bold uppercase tracking-[-0.02em] text-tactas-ink">Managed AI Agent System</p>
+                      <a href="/product" class="flex h-14 items-center justify-between rounded-[10px] border border-tactas-accent-line bg-[linear-gradient(90deg,#D9F8FF_0%,#EAF0FF_50%,#F0EAFF_100%)] px-5 text-[20px] font-bold text-tactas-ink-strong transition hover:brightness-[0.98]">
+                        Product Overview
                         <ArrowRight class="h-5 w-5" stroke-width={1.8} />
                       </a>
                     </div>
 
-                    <div class="mt-7 grid gap-8 lg:grid-cols-3">
+                    <div class="mt-7 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
                       {[
                         {
-                          title: "Work Console",
-                          description: "Turn requests into useful work",
-                          href: "/#platform",
-                          icon: Sparkles,
-                          links: ["Requests", "Outputs", "Next steps"],
+                          cluster: "Foundation",
+                          title: "Data Readiness",
+                          description: "Prepare data for reliable agents",
+                          href: "/product/data-readiness",
+                          icon: Database,
+                          links: [
+                            ["Agent data handling", "/product/data-readiness#agent-data-handling"],
+                            ["Expert preparation", "/product/data-readiness#expert-data-preparation"],
+                            ["Large data sets", "/product/data-readiness#data-sources"],
+                            ["Specialized sources", "/product/data-readiness#data-sources"],
+                          ],
                         },
                         {
-                          title: "AI Agents",
-                          description: "Automate business tasks",
-                          href: "/services/ai-workflow-automation",
+                          cluster: "Execution",
+                          title: "Agent System Design",
+                          description: "Fit agents to your business",
+                          href: "/product/agent-system-design",
+                          icon: Settings,
+                          links: [
+                            ["Workflow design", "/product/agent-system-design#workflow-fit"],
+                            ["Workspace isolation", "/product/agent-system-design#workspace-isolation"],
+                            ["Business rules", "/product/agent-system-design#agent-behavior"],
+                            ["Approval paths", "/product/agent-system-design#design-principles"],
+                          ],
+                        },
+                        {
+                          cluster: "Execution",
+                          title: "Managed AI Agents",
+                          description: "Automate repeated business tasks",
+                          href: "/product/ai-workflow-automation",
                           icon: Bot,
-                          links: ["Task setup", "Automation steps", "Connected tools", "Agent library"],
+                          links: [
+                            ["Task mapping", "/product/ai-workflow-automation#product"],
+                            ["Assistant", "/product/assistant"],
+                            ["Prepared outputs", "/product/ai-workflow-automation#architecture"],
+                            ["Human review", "/product/ai-workflow-automation#faq"],
+                          ],
                         },
                         {
+                          cluster: "Foundation",
                           title: "Knowledge Layer",
-                          description: "Context for business tasks",
-                          href: "/services/ai-knowledge-base",
+                          description: "Company context for agent work",
+                          href: "/product/ai-knowledge-base",
                           icon: Search,
-                          links: ["Company knowledge", "Business context", "Source context", "Document search"],
+                          links: [
+                            ["Source-backed answers", "/product/ai-knowledge-base#product"],
+                            ["Document context", "/product/ai-knowledge-base#architecture"],
+                            ["Deep research", "/product/deep-research"],
+                            ["Quality tuning", "/product/ai-knowledge-base#faq"],
+                          ],
                         },
                       ].map((item) => {
                         const Icon = item.icon;
@@ -280,13 +312,14 @@ const isActive = (href: string) => {
                             <a href={item.href} class="group/item flex items-start gap-3">
                               <Icon class="mt-0.5 h-5 w-5 shrink-0 text-tactas-primary-strong" stroke-width={1.9} />
                               <span>
-                                <span class="block text-[20px] font-bold leading-tight text-tactas-primary-strong group-hover/item:text-tactas-accent">{item.title}</span>
+                                <span class="block font-mono text-[10px] uppercase tracking-[0.2em] text-tactas-accent-strong">{item.cluster}</span>
+                                <span class="mt-1 block text-[20px] font-bold leading-tight text-tactas-primary-strong group-hover/item:text-tactas-accent">{item.title}</span>
                                 <span class="mt-1 block text-[14px] leading-relaxed text-tactas-muted-soft">{item.description}</span>
                               </span>
                             </a>
                             <div class="mt-5 grid gap-3 text-[15px] font-semibold text-tactas-ink">
-                              {item.links.map((link) => (
-                                <a href={item.href} class="transition hover:text-tactas-accent">{link}</a>
+                              {item.links.map(([label, href]) => (
+                                <a href={href} class="transition hover:text-tactas-accent">{label}</a>
                               ))}
                             </div>
                           </div>
@@ -296,13 +329,17 @@ const isActive = (href: string) => {
 
                     <div class="mt-10 grid gap-6 border-t border-black/12 pt-8 sm:grid-cols-2 lg:grid-cols-3">
                       {[
-                        ["Connectors & Actions", "Connect to your apps", Puzzle],
-                        ["Model Hub", "Use the right model for each task", BrainCircuit],
-                        ["APIs", "Build AI task experiences", Server],
-                        ["Security", "Safely scale AI at work", KeyRound],
-                        ["Agentic Engine", "Plan and adapt over company context", Network],
-                      ].map(([title, body, Icon]) => (
-                        <a href="/#platform" class="group/item flex gap-3">
+                        ["Task Review", "Pick the first workflow to automate", ClipboardCheck, "/contact"],
+                        ["Data Preparation", "Make company data usable by agents", Database, "/product/data-readiness"],
+                        ["Workspace Isolation", "Keep workflow context and tools separate", Layers, "/product/agent-system-design#workspace-isolation"],
+                        ["Deep Research", "Turn broad questions into cited briefs", FileSearch, "/product/deep-research"],
+                        ["Connectors & Actions", "Use existing apps as inputs and destinations", Puzzle, "/#platform"],
+                        ["Guardrails", "Define approvals, limits, and escalation paths", ShieldCheck, "/product/agent-system-design#design-principles"],
+                        ["Monitoring", "Track output quality and operational usage", BarChart3, "/product#capabilities"],
+                        ["Implementation", "Launch one managed workflow end to end", Sparkles, "/product#launch-model"],
+                        ["Managed Improvement", "Tune context, prompts, and actions over time", Sparkles, "/product#launch-model"],
+                      ].map(([title, body, Icon, href]) => (
+                        <a href={href} class="group/item flex gap-3">
                           <Icon class="mt-1 h-4 w-4 shrink-0 text-tactas-ink" stroke-width={1.9} />
                           <span>
                             <span class="block text-[15px] font-bold text-tactas-ink group-hover/item:text-tactas-accent">{title}</span>
@@ -314,38 +351,34 @@ const isActive = (href: string) => {
                   </div>
 
                   <aside class="border-l border-black/12 bg-tactas-bg-soft px-8 py-5">
-                    <p class="text-[20px] font-bold uppercase tracking-[-0.02em] text-tactas-ink">Tactas where you work</p>
-                    <div class="mt-8 grid gap-6">
+                    <p class="text-[20px] font-bold uppercase tracking-[-0.02em] text-tactas-ink">How Tactas ships</p>
+                    <div class="mt-8 grid gap-5">
                       {[
-                        ["Tactas in Slack", "slack"],
-                        ["Tactas in Microsoft Teams", "microsoftteams"],
-                        ["Tactas in Zoom", "zoom"],
-                        ["Tactas in Salesforce", "salesforce"],
-                        ["Tactas in ServiceNow", "servicenow"],
-                        ["Tactas in Zendesk", "zendesk"],
-                        ["Tactas in GitHub", "github"],
-                        ["Tactas in Miro", "miro"],
-                      ].map(([label, slug]) => (
+                        ["01", "Review one task"],
+                        ["02", "Connect sources and tools"],
+                        ["03", "Launch a supervised agent"],
+                        ["04", "Improve with real work"],
+                      ].map(([step, label]) => (
                         <a href="/contact" class="flex items-center gap-3 text-[15px] font-semibold text-tactas-ink transition hover:text-tactas-accent">
-                          <img src={`https://cdn.simpleicons.org/${slug}`} alt="" loading="lazy" class="h-4 w-4 object-contain" />
-                          {label}
+                          <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-[6px] border border-tactas-accent-line bg-white font-mono text-[10px] text-tactas-accent-strong">{step}</span>
+                          <span>{label}</span>
                         </a>
                       ))}
                       <a href="/contact" class="flex items-center gap-3 text-[15px] font-semibold text-tactas-ink transition hover:text-tactas-accent">
-                        <Puzzle class="h-4 w-4 text-tactas-ink" stroke-width={1.8} />
-                        Browser Extension
+                        <Mail class="h-4 w-4 text-tactas-ink" stroke-width={1.8} />
+                        Book a product review
                       </a>
                     </div>
                   </aside>
                 </div>
               ) : (
               <div class={`grid ${
-                group.label === "Operations" || group.label === "Resources" || group.label === "Company"
+                group.label === "Solutions" || group.label === "Resources" || group.label === "Company"
                     ? "gap-x-16 gap-y-8 lg:grid-cols-[minmax(0,820px)_334px]"
                     : `gap-7 ${group.columns.length >= 4 ? "lg:grid-cols-4" : group.columns.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`
               }`}>
                 <div class={`grid ${
-                  group.label === "Operations"
+                  group.label === "Solutions"
                     ? "gap-x-16 gap-y-8 lg:grid-cols-2"
                     : group.label === "Resources" || group.label === "Company"
                       ? "gap-x-14 gap-y-8 lg:grid-cols-3"
@@ -353,17 +386,17 @@ const isActive = (href: string) => {
                 }`}>
                 {group.columns.map((column) => (
                   <div class:list={[
-                    group.label === "Operations" || group.label === "Resources" || group.label === "Company" ? "" : "border-l border-black/10 pl-5 first:border-l-0 first:pl-0",
+                    group.label === "Solutions" || group.label === "Resources" || group.label === "Company" ? "" : "border-l border-black/10 pl-5 first:border-l-0 first:pl-0",
                   ]}>
                     <p class:list={[
-                      group.label === "Operations"
+                      group.label === "Solutions"
                         ? "mb-6 text-[20px] font-bold uppercase tracking-[-0.02em] text-tactas-ink"
                         : group.label === "Resources" || group.label === "Company"
                           ? "mb-6 text-[20px] font-bold uppercase tracking-[-0.02em] text-tactas-ink"
                         : "mb-4 text-[12px] font-semibold uppercase tracking-[0.18em] text-tactas-muted",
                     ]}>{column.title}</p>
                     <ul class:list={[
-                      group.label === "Operations" ? "grid gap-4" : group.label === "Resources" || group.label === "Company" ? "grid gap-4" : "grid gap-3",
+                      group.label === "Solutions" ? "grid gap-4" : group.label === "Resources" || group.label === "Company" ? "grid gap-4" : "grid gap-3",
                     ]}>
                       {column.links.map((link) => {
                         const Icon = link.icon;
@@ -373,14 +406,14 @@ const isActive = (href: string) => {
                               href={link.href}
                               class:list={[
                                 "group/item text-tactas-ink transition hover:text-tactas-accent",
-                                group.label === "Operations"
+                                group.label === "Solutions"
                                   ? "flex min-h-5 items-center gap-4 text-[16px] font-semibold leading-tight"
                                   : group.label === "Resources" || group.label === "Company"
                                     ? "block text-[15px] font-semibold leading-tight"
                                   : "block text-[14px] leading-snug",
                               ]}
                             >
-                              {group.label === "Operations" ? (
+                              {group.label === "Solutions" ? (
                                 Icon ? (
                                   <Icon class="h-4 w-4 shrink-0 text-tactas-muted-soft transition group-hover/item:text-tactas-accent" stroke-width={2} />
                                 ) : (
@@ -398,24 +431,24 @@ const isActive = (href: string) => {
                 ))}
                 </div>
 
-                {group.label === "Operations" ? (
+                {group.label === "Solutions" ? (
                   <div>
-                    <a href="/services/ai-workflow-automation" class="block overflow-hidden rounded-[6px] bg-tactas-night transition hover:translate-y-[-1px]">
+                    <a href="/industries" class="block overflow-hidden rounded-[6px] bg-tactas-night transition hover:translate-y-[-1px]">
                       <div class="relative flex h-48 items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_22%_16%,rgba(234,250,106,0.72),transparent_34%),radial-gradient(circle_at_82%_74%,rgba(6,182,212,0.46),transparent_36%),linear-gradient(135deg,#F6F8FB_0%,#DFF7FB_44%,#0F172A_132%)]">
                         <div class="absolute inset-0 opacity-35 [background-image:linear-gradient(to_right,rgba(15,23,42,0.10)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.08)_1px,transparent_1px)] [background-size:28px_28px]"></div>
                         <div class="relative text-center text-tactas-ink">
                           <p class="text-[30px] font-semibold leading-none tracking-[-0.04em]">Tactas AI</p>
-                          <p class="mt-2 font-mono text-[11px] uppercase tracking-[0.34em] text-tactas-accent-strong">Operations</p>
+                          <p class="mt-2 font-mono text-[11px] uppercase tracking-[0.34em] text-tactas-accent-strong">Solutions</p>
                         </div>
                       </div>
                     </a>
                     <div class="mt-5">
-                      <h3 class="text-[19px] font-semibold leading-tight text-tactas-ink">Business Task Automation</h3>
+                      <h3 class="text-[19px] font-semibold leading-tight text-tactas-ink">AI assistants by industry</h3>
                       <p class="mt-2 text-[15px] leading-relaxed text-tactas-muted">
-                        Agents that use company knowledge, connected tools, and business context to turn requests into useful work.
+                        Start with the buyer workflow your market already understands: SaaS, ecommerce, legal, healthcare, real estate, or hosting.
                       </p>
-                      <a href="/services/ai-workflow-automation" class="mt-5 inline-flex items-center text-[15px] font-semibold text-tactas-primary-strong transition hover:text-tactas-accent">
-                        Explore automation
+                      <a href="/industries" class="mt-5 inline-flex items-center text-[15px] font-semibold text-tactas-primary-strong transition hover:text-tactas-accent">
+                        Explore industries
                         <ArrowRight class="ml-1.5 h-3.5 w-3.5" />
                       </a>
                     </div>
@@ -424,7 +457,7 @@ const isActive = (href: string) => {
 
                 {group.label === "Resources" ? (
                   <div>
-                    <a href="/services/ai-workflow-automation" class="block overflow-hidden rounded-[6px] bg-tactas-night transition hover:translate-y-[-1px]">
+                    <a href="/product/ai-workflow-automation" class="block overflow-hidden rounded-[6px] bg-tactas-night transition hover:translate-y-[-1px]">
                       <div class="relative flex h-48 items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_20%_10%,rgba(6,182,212,0.55),transparent_35%),radial-gradient(circle_at_80%_70%,rgba(124,58,237,0.42),transparent_34%),linear-gradient(135deg,#0F172A_0%,#111827_48%,#E6FBFF_140%)]">
                         <div class="absolute inset-0 opacity-25 [background-image:radial-gradient(circle,rgba(255,255,255,0.8)_1px,transparent_1px)] [background-size:18px_18px]"></div>
                         <div class="relative text-center text-white">
@@ -438,7 +471,7 @@ const isActive = (href: string) => {
                       <p class="mt-2 text-[15px] leading-relaxed text-tactas-muted">
                         Explore how managed AI agents turn company knowledge, context, and connected tools into automated work.
                       </p>
-                      <a href="/services/ai-workflow-automation" class="mt-5 inline-flex items-center text-[15px] font-semibold text-tactas-primary-strong transition hover:text-tactas-accent">
+                      <a href="/product/ai-workflow-automation" class="mt-5 inline-flex items-center text-[15px] font-semibold text-tactas-primary-strong transition hover:text-tactas-accent">
                         Read the guide
                         <ArrowRight class="ml-1.5 h-3.5 w-3.5" />
                       </a>
@@ -544,26 +577,28 @@ const isActive = (href: string) => {
             <div class="grid gap-5 pb-5">
               {group.label === "Product" ? (
                 <div class="grid gap-5">
-                  <a href="/#platform" class:list={[
+                  <a href="/product" class:list={[
                     "rounded-lg p-4",
                     isDark ? "border border-white/10 bg-white/[0.04]" : "bg-tactas-bg",
                   ]} data-mobile-link>
                     <span class:list={[
                       "block text-[15px] font-semibold",
                       isDark ? "text-white" : "text-tactas-ink",
-                    ]}>Platform Overview</span>
+                    ]}>Product Overview</span>
                     <span class:list={[
                       "mt-1 block text-[13px] leading-relaxed",
                       isDark ? "text-white/62" : "text-tactas-muted",
                     ]}>Agents, knowledge, context, outputs, and automated actions in one operating layer.</span>
                   </a>
                   {[
-                    ["Work Console", "/#platform"],
-                    ["AI Agents", "/services/ai-workflow-automation"],
-                    ["Knowledge Layer", "/services/ai-knowledge-base"],
+                    ["Data Readiness", "/product/data-readiness"],
+                    ["Agent System Design", "/product/agent-system-design"],
+                    ["Managed AI Agents", "/product/ai-workflow-automation"],
+                    ["Knowledge Layer", "/product/ai-knowledge-base"],
+                    ["Workflows & Actions", "/#platform"],
+                    ["Task Review", "/contact"],
                     ["Connectors & Actions", "/#platform"],
-                    ["Security", "/#platform"],
-                    ["APIs", "/#platform"],
+                    ["Guardrails", "/product"],
                   ].map(([label, href]) => (
                     <a href={href} class:list={[
                       "text-[14px] font-medium",
@@ -594,16 +629,16 @@ const isActive = (href: string) => {
                     isDark ? "text-tactas-violet" : "text-tactas-muted",
                   ]}>{column.title}</p>
                   <div class:list={[
-                    group.label === "Operations" ? "grid gap-3.5" : "grid gap-3",
+                    group.label === "Solutions" ? "grid gap-3.5" : "grid gap-3",
                   ]}>
                     {column.links.map((link) => {
                       const Icon = link.icon;
                       return (
                         <a href={link.href} class:list={[
-                          group.label === "Operations" ? "flex items-center gap-3 text-[15px] font-semibold" : "text-[14px] font-medium",
+                          group.label === "Solutions" ? "flex items-center gap-3 text-[15px] font-semibold" : "text-[14px] font-medium",
                           isDark ? "text-white/78" : "text-tactas-ink",
                         ]} data-mobile-link>
-                          {group.label === "Operations" ? (
+                          {group.label === "Solutions" ? (
                             Icon ? (
                               <Icon class="h-4 w-4 shrink-0 text-tactas-muted-soft" stroke-width={2} />
                             ) : (
@@ -629,9 +664,9 @@ const isActive = (href: string) => {
       ]}>
         <a href="/#solutions" class="inline-flex items-center gap-2" data-mobile-link>
           <Zap class="h-4 w-4 text-tactas-accent" stroke-width={1.8} />
-          Operations
+          Solutions
         </a>
-        <a href="/services/ai-knowledge-base" class="inline-flex items-center gap-2" data-mobile-link>
+        <a href="/product/ai-knowledge-base" class="inline-flex items-center gap-2" data-mobile-link>
           <BrainCircuit class="h-4 w-4 text-tactas-accent" stroke-width={1.8} />
           Company knowledge
         </a>

@@ -17,7 +17,7 @@ import {
   Sparkles,
   Zap,
 } from "@lucide/astro";
-import AskAIReviewSection from "./AskAIReviewSection.astro";
+import SharedHero from "./SharedHero.astro";
 
 interface Props {
   siteUrl: string;
@@ -41,73 +41,73 @@ const heroEyebrowMessages = [
 const exampleOperators = [
   {
     id: "analysis",
-    name: "Summarize changes",
-    role: "Business task · Brief",
+    name: "Business change brief",
+    role: "Repeated task · Reporting",
     initials: "SC",
     avatar: "bg-tactas-accent-faint text-tactas-accent-strong",
     statusColor: "bg-tactas-success",
     statusLabel: "Online",
     time: "10:24",
-    preview: "Monthly change brief prepared",
+    preview: "Executive-ready change brief prepared",
     badge: "Brief",
     badgeClass: "bg-tactas-primary-soft text-tactas-primary-strong border-tactas-primary-line",
-    intent: "Summarize what changed this month",
-    sources: "Sheets, projects, notes, updates",
-    nextAction: "Use brief",
+    intent: "Turn scattered monthly updates into a business change brief",
+    sources: "Sheets, CRM, projects, team notes",
+    nextAction: "Review brief",
     connectors: 4,
     responds: "~12s",
   },
   {
     id: "client",
-    name: "Answer with context",
-    role: "Business task · Knowledge",
+    name: "Source-backed answer",
+    role: "Repeated task · Customer reply",
     initials: "AC",
     avatar: "bg-tactas-accent-soft text-tactas-accent-strong",
     statusColor: "bg-tactas-success",
     statusLabel: "Online",
     time: "11:02",
-    preview: "Answer and next steps prepared",
+    preview: "Reply, sources, and follow-up prepared",
     badge: "Answer",
     badgeClass: "bg-tactas-warning-soft text-tactas-warning-strong border-tactas-warning-line",
-    intent: "Answer a business question with company context",
-    sources: "Knowledge base, pricing, product notes",
-    nextAction: "Send answer",
+    intent: "Answer a customer question with trusted company context",
+    sources: "Knowledge base, account data, product notes",
+    nextAction: "Review reply",
     connectors: 3,
     responds: "~8s",
   },
   {
     id: "employee",
-    name: "Prepare next steps",
-    role: "Business task · Action plan",
+    name: "Update to action plan",
+    role: "Repeated task · Handoff",
     initials: "NS",
     avatar: "bg-tactas-violet-soft text-tactas-violet",
     statusColor: "bg-tactas-success",
     statusLabel: "Online",
     time: "9:48",
-    preview: "Update turned into next steps",
-    badge: "Steps",
+    preview: "Checklist, owner, and deadline prepared",
+    badge: "Plan",
     badgeClass: "bg-tactas-violet-soft text-tactas-violet border-tactas-violet-line",
-    intent: "Turn an update into clear next steps",
-    sources: "Docs, project board, manager note",
-    nextAction: "Use checklist",
+    intent: "Turn a project update into clear next steps",
+    sources: "Project board, meeting notes, SOPs",
+    nextAction: "Assign owner",
     connectors: 3,
     responds: "~6s",
   },
   {
     id: "workspace",
-    name: "Track open work",
-    role: "Business task · Follow-up",
+    name: "Follow-up queue",
+    role: "Repeated task · Open work",
     initials: "TW",
     avatar: "bg-tactas-warning-soft text-tactas-warning-strong",
     statusColor: "bg-tactas-muted-soft",
     statusLabel: "Idle",
     time: "Yesterday",
-    preview: "Follow-up queue prepared for Friday",
+    preview: "Priority follow-up queue prepared",
     badge: "Queue",
     badgeClass: "bg-tactas-success-soft text-tactas-success-strong border-tactas-success-line",
-    intent: "Find open work that needs follow-up",
-    sources: "Inbox, tasks, calendar, workspace",
-    nextAction: "Assign owners",
+    intent: "Find open requests before work stalls",
+    sources: "Inbox, tasks, CRM, calendar",
+    nextAction: "Draft follow-ups",
     connectors: 5,
     responds: "~14s",
   },
@@ -228,6 +228,30 @@ const capabilitySlices = [
     tint: "bg-tactas-success-soft",
     textAccent: "text-tactas-success-strong",
     borderAccent: "border-tactas-success-line",
+  },
+];
+
+const optimizationCards = [
+  {
+    title: "Prompt systems",
+    body: "Technical operators tune instructions, output formats, review rules, and fallback behavior around the way your team actually works.",
+    detail: "Better answers, cleaner outputs, fewer vague handoffs.",
+    icon: Bot,
+    tone: "border-tactas-accent-line bg-tactas-accent-soft text-tactas-accent-strong",
+  },
+  {
+    title: "Data context",
+    body: "Large knowledge bases, records, documents, and tool data are organized so agents retrieve the right context instead of guessing from noisy inputs.",
+    detail: "Cleaner retrieval across large or messy company data.",
+    icon: Network,
+    tone: "border-tactas-violet-line bg-tactas-violet-soft text-tactas-violet",
+  },
+  {
+    title: "Workflow fit",
+    body: "Complex workflows are mapped into clear triggers, owners, approval points, outputs, and tool actions before automation is trusted in production.",
+    detail: "Automation that matches your real operating rules.",
+    icon: ShieldCheck,
+    tone: "border-tactas-warning-line bg-tactas-warning-soft text-tactas-warning-strong",
   },
 ];
 
@@ -428,52 +452,19 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
 <div class="tactas-home-style min-h-screen bg-tactas-bg text-tactas-ink">
 
   <main>
-    <section class="tactas-hero-section border-b border-tactas-line-strong bg-tactas-bg">
-      <div class={`tactas-container flex min-h-[620px] items-center justify-center py-20 sm:py-24 lg:min-h-[700px] lg:py-28`}>
-        <div class="mx-auto max-w-[1020px] text-center">
-          <div class="hero-eyebrow mx-auto mb-8 inline-flex max-w-full items-center gap-3 border border-tactas-border-soft bg-white px-4 py-2.5 shadow-[0_18px_44px_-36px_rgba(7,17,31,0.28)]">
-            <span class="hero-eyebrow-mark" aria-hidden="true"></span>
-            <span
-              class="hero-eyebrow-text min-w-0 text-[12px] font-bold uppercase leading-none tracking-[0.16em] text-tactas-navy transition-opacity duration-150 sm:text-[13px]"
-              data-hero-eyebrow
-              data-messages={JSON.stringify(heroEyebrowMessages)}
-            >
-              {heroEyebrowMessages[0]}
-            </span>
-          </div>
-          <h1 class="tactas-hero-title mx-auto max-w-[960px] text-[54px] font-semibold leading-[0.94] tracking-normal text-tactas-ink-strong sm:text-[76px] lg:text-[96px]">
-            <span class="block">AI agents built for the way</span>
-            <span class="block text-tactas-primary">your business works.</span>
-          </h1>
-          <p class="mx-auto mt-9 max-w-[46rem] text-[18px] leading-[1.62] text-tactas-ink-strong sm:text-[20px]">
-            TactasAI deploys managed AI agents that learn your company context, work with your team,
-            and turn business knowledge into useful outputs and action.
-          </p>
-
-          <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a href="/contact" class="tactas-primary-action inline-flex h-12 items-center justify-center rounded-[8px] bg-tactas-primary px-6 text-[14px] font-semibold text-white shadow-[0_16px_34px_-24px_rgba(37,99,235,0.85)] transition hover:bg-tactas-primary-strong">
-              Book an operator review
-            </a>
-            <a href="#platform" class="tactas-secondary-action inline-flex h-12 items-center justify-center rounded-[8px] border border-tactas-line-strong bg-white/60 px-6 text-[14px] font-semibold text-tactas-ink-strong transition hover:border-tactas-primary hover:text-tactas-primary">
-              Explore the operating layer
-            </a>
-          </div>
-
-          <div class="tactas-proof-strip mx-auto mt-7 grid max-w-[720px] overflow-hidden rounded-[8px] border border-tactas-line-strong bg-white/65 text-left shadow-[0_18px_44px_-36px_rgba(7,17,31,0.35)] backdrop-blur sm:grid-cols-3">
-            {[
-              ["Integrations", Network],
-              ["Approval gates", ShieldCheck],
-              ["Monitoring", Zap],
-            ].map(([label, Icon]) => (
-              <div class="flex items-center justify-center gap-2.5 border-b border-tactas-line-strong px-4 py-3 text-[13px] font-semibold text-tactas-ink-strong last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0">
-                <Icon class="h-4 w-4 text-tactas-accent" stroke-width={2} />
-                <span>{label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+    <SharedHero
+      eyebrow="AI that knows your business inside out"
+      eyebrowMessages={heroEyebrowMessages}
+      titleLines={["AI agents built for the way", "your business works."]}
+      body="TactasAI deploys managed AI agents that learn your company context, work with your team, and turn business knowledge into useful outputs and action."
+      primaryAction={{ label: "Book an operator review", href: "/contact" }}
+      secondaryAction={{ label: "Explore the operating layer", href: "#platform" }}
+      proofItems={[
+        { label: "Company context", icon: Network },
+        { label: "Team workflow", icon: ShieldCheck },
+        { label: "Action-ready outputs", icon: Zap },
+      ]}
+    />
 
     <section class="border-b border-tactas-line bg-tactas-bg">
       <div class={`tactas-container py-16 lg:py-20`}>
@@ -481,8 +472,11 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
           <div class="max-w-none">
             <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Business task examples</p>
             <h2 class="mt-4 max-w-[760px] text-4xl font-semibold leading-[1.05] tracking-[-0.015em] text-tactas-ink sm:text-5xl">
-              Four examples of the work console in motion.
+              Four repeated business tasks your team can stop handling manually.
             </h2>
+            <p class="mt-5 max-w-[48rem] text-[16px] leading-relaxed text-tactas-muted">
+              Start with one recurring request, update, ticket, handoff, or follow-up that currently takes too much time to collect context, write the output, and move the next step.
+            </p>
           </div>
 
           <div class="tactas-work-console overflow-hidden rounded-[14px] border border-tactas-line-strong/80 bg-white shadow-[0_48px_120px_-64px_rgba(15,23,42,0.45)] ring-1 ring-tactas-night/[0.04]">
@@ -563,10 +557,10 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                       <p class="font-mono text-[9.5px] uppercase tracking-[0.2em] text-tactas-accent-strong">Work queue</p>
                       <span class="rounded-full bg-tactas-warning-soft px-1.5 py-0.5 text-[9.5px] font-semibold text-tactas-warning-strong">3</span>
                     </div>
-                    <p class="mt-2 text-[12px] font-semibold leading-snug text-tactas-ink">3 tasks ready to move</p>
-                    <p class="mt-1 text-[11px] leading-relaxed text-tactas-muted-soft">Brief, answer, and follow-up work prepared from company context.</p>
+                    <p class="mt-2 text-[12px] font-semibold leading-snug text-tactas-ink">3 workflows ready to review</p>
+                    <p class="mt-1 text-[11px] leading-relaxed text-tactas-muted-soft">Scattered context turned into prepared outputs, owners, and follow-ups.</p>
                     <a href="/contact" class="mt-2.5 inline-flex items-center gap-1 text-[11px] font-semibold text-tactas-accent hover:text-tactas-accent-strong">
-                      View tasks
+                      Map this workflow
                       <ArrowUpRight class="h-3 w-3" stroke-width={2} />
                     </a>
                   </div>
@@ -630,7 +624,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                             <div class="flex justify-end">
                               <div class="flex max-w-[80%] flex-col items-end gap-1">
                                 <div class="rounded-[12px] rounded-br-[3px] bg-tactas-accent px-3.5 py-2.5 text-[14px] leading-relaxed text-white shadow-[0_8px_20px_-16px_rgba(15,23,42,0.5)]">
-                                  This month, what changed in the business?
+                                  Prepare the monthly business change brief from our scattered updates.
                                 </div>
                                 <p class="flex items-center gap-1 pr-1 text-[10px] text-tactas-muted-soft">
                                   <span>You &middot; 10:24 AM</span>
@@ -649,9 +643,9 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   <p class="text-[10px] text-tactas-muted-soft">10:24 AM</p>
                                 </div>
                                 <div class="rounded-[12px] rounded-bl-[3px] border border-tactas-line-soft border-l-[3px] border-l-tactas-accent bg-white px-3.5 py-3 text-[14px] leading-relaxed text-tactas-muted shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
-                                  <p>Pulling live context across your business sources to summarize what changed.</p>
+                                  <p>Pulling sales, delivery, support, and project context into one review-ready brief.</p>
                                   <div class="mt-2.5 flex flex-wrap gap-1.5 border-t border-tactas-line-soft pt-2.5">
-                                    {["Business data", "Project updates", "Team notes", "Market signals"].map((source) => (
+                                    {["Business data", "Project updates", "Support trends", "Team notes"].map((source) => (
                                       <span class="inline-flex items-center gap-1 rounded-full border border-tactas-accent-line bg-tactas-accent-soft px-2 py-0.5 text-[10.5px] font-semibold text-tactas-accent-strong">
                                         <Check class="h-2.5 w-2.5" stroke-width={2.8} />
                                         {source}
@@ -669,7 +663,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-tactas-muted-soft [animation-delay:120ms]"></span>
                                   <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-tactas-muted-soft [animation-delay:240ms]"></span>
                                 </span>
-                                <span>Summarizing progress, customer growth, and demand signals</span>
+                                <span>Finding changes, risks, blockers, and owner-ready next steps</span>
                               </div>
                             </div>
 
@@ -679,15 +673,15 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                               </span>
                               <div class="flex max-w-[92%] flex-1 flex-col gap-1.5">
                                 <div class="flex items-baseline gap-2">
-                                  <p class="text-[11.5px] font-semibold text-tactas-ink">Draft &middot; Monthly brief</p>
+                                  <p class="text-[11.5px] font-semibold text-tactas-ink">Draft &middot; Change brief</p>
                                   <p class="text-[10px] text-tactas-muted-soft">10:25 AM</p>
                                 </div>
                                 <div class="rounded-[12px] rounded-bl-[3px] border border-tactas-line-soft border-l-[3px] border-l-tactas-accent bg-white px-4 py-3.5 shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
                                   <div class="grid gap-2.5">
                                     {[
-                                      ["Project X", "about 80% complete, with handoff tasks still open."],
-                                      ["Marketing", "campaigns brought in 20% more new customers."],
-                                      ["Demand", "recent interest is trending toward Product A."],
+                                      ["Delivery", "Project X is on track, but two handoff tasks still need owners."],
+                                      ["Customer ops", "support volume rose around onboarding and setup questions."],
+                                      ["Revenue", "new demand is trending toward Product A in mid-market accounts."],
                                     ].map(([label, value]) => (
                                       <div class="flex gap-2.5">
                                         <Check class="mt-0.5 h-3.5 w-3.5 shrink-0 text-tactas-accent" stroke-width={2.6} />
@@ -700,13 +694,13 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   <div class="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-tactas-line-soft pt-3">
                                     <div class="flex items-center gap-1.5 text-[10.5px] text-tactas-muted-soft">
                                       <Sparkles class="h-3 w-3 text-tactas-accent" stroke-width={2} />
-                                      Generated from 4 sources &middot; source context attached
+                                      Generated from 4 sources &middot; risks and next steps attached
                                     </div>
                                     <div class="flex gap-2">
                                       <button type="button" class="rounded-[4px] border border-tactas-line-soft bg-white px-2.5 py-1 text-[11px] font-semibold text-tactas-muted transition hover:border-tactas-accent hover:text-tactas-accent">Edit</button>
                                       <button type="button" class="inline-flex items-center gap-1 rounded-[4px] bg-tactas-accent px-2.5 py-1 text-[11px] font-semibold text-white transition hover:bg-tactas-accent">
                                         <Check class="h-3 w-3" stroke-width={2.4} />
-                                        Use brief
+                                        Review brief
                                       </button>
                                     </div>
                                   </div>
@@ -721,7 +715,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                             <div class="flex justify-end">
                               <div class="flex max-w-[80%] flex-col items-end gap-1">
                                 <div class="rounded-[12px] rounded-br-[3px] bg-tactas-accent px-3.5 py-2.5 text-[14px] leading-relaxed text-white shadow-[0_8px_20px_-16px_rgba(15,23,42,0.5)]">
-                                  Can Product A be used by multiple teams?
+                                  A customer asked if Product A supports multiple teams. Draft a sourced reply.
                                 </div>
                                 <p class="flex items-center gap-1 pr-1 text-[10px] text-tactas-muted-soft">
                                   <span>Team &middot; 11:02 AM</span>
@@ -756,7 +750,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                             <div class="flex justify-end">
                               <div class="flex max-w-[82%] flex-col items-end gap-1">
                                 <div class="rounded-[12px] rounded-br-[3px] bg-tactas-accent px-3.5 py-2.5 text-[14px] leading-relaxed text-white shadow-[0_8px_20px_-16px_rgba(15,23,42,0.5)]">
-                                  Great. Prepare a short reply and the next steps for the account owner.
+                                  Add the source context and create the account-owner follow-up.
                                 </div>
                                 <p class="flex items-center gap-1 pr-1 text-[10px] text-tactas-muted-soft">
                                   <span>Team &middot; 11:03 AM</span>
@@ -772,7 +766,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-tactas-muted-soft [animation-delay:120ms]"></span>
                                   <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-tactas-muted-soft [animation-delay:240ms]"></span>
                                 </span>
-                                <span>Checking product details, prior notes, and workspace context</span>
+                                <span>Checking product notes, account context, pricing rules, and prior messages</span>
                               </div>
                             </div>
 
@@ -782,15 +776,15 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                               </span>
                               <div class="flex max-w-[92%] flex-1 flex-col gap-1.5">
                                 <div class="flex items-baseline gap-2">
-                                  <p class="text-[11.5px] font-semibold text-tactas-ink">Prepared work</p>
+                                  <p class="text-[11.5px] font-semibold text-tactas-ink">Prepared reply package</p>
                                   <p class="text-[10px] text-tactas-muted-soft">11:03 AM</p>
                                 </div>
                                 <div class="rounded-[12px] rounded-bl-[3px] border border-tactas-line-soft border-l-[3px] border-l-tactas-accent bg-white px-4 py-3.5 shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
                                   <div class="grid gap-2.5">
                                     {[
-                                      ["Answer", "drafted a clear reply using company knowledge.", "Knowledge"],
-                                      ["Next step", "prepared owner follow-up with the right account context.", "Task"],
-                                      ["Update", "captured the answer and next action for the workspace.", "Record"],
+                                      ["Reply", "drafted a source-backed answer using approved product context.", "Knowledge"],
+                                      ["Follow-up", "prepared the account-owner task with customer context attached.", "Task"],
+                                      ["Record", "captured the answer, source notes, and next action in the workspace.", "Record"],
                                     ].map(([label, value, system]) => (
                                       <div class="flex items-start gap-2.5">
                                         <Check class="mt-0.5 h-3.5 w-3.5 shrink-0 text-tactas-accent" stroke-width={2.6} />
@@ -808,13 +802,13 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   <div class="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-tactas-line-soft pt-3">
                                     <span class="inline-flex items-center gap-1 rounded-full bg-tactas-warning-soft px-2 py-0.5 text-[10.5px] font-semibold text-tactas-warning-strong">
                                       <ShieldCheck class="h-3 w-3" stroke-width={2} />
-                                      Ready to use
+                                      Review-ready
                                     </span>
                                     <div class="flex gap-2">
                                       <button type="button" class="rounded-[4px] border border-tactas-line-soft bg-white px-2.5 py-1 text-[11px] font-semibold text-tactas-muted transition hover:border-tactas-line-strong">Edit</button>
                                       <button type="button" class="inline-flex items-center gap-1 rounded-[4px] bg-tactas-accent px-2.5 py-1 text-[11px] font-semibold text-white transition hover:bg-tactas-accent">
                                         <Check class="h-3 w-3" stroke-width={2.4} />
-                                        Apply steps
+                                        Use package
                                       </button>
                                     </div>
                                   </div>
@@ -836,7 +830,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   <p class="text-[10px] text-tactas-muted-soft">9:48 AM</p>
                                 </div>
                                 <div class="rounded-[12px] rounded-bl-[3px] border border-tactas-line-soft border-l-[3px] border-l-tactas-accent bg-white px-3.5 py-3 text-[14px] leading-relaxed text-tactas-muted shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
-                                  <p>A new project update arrived for <span class="font-semibold text-tactas-ink">Project Z</span>. The team needs the next steps before tomorrow's standup.</p>
+                                  <p>A new project update arrived for <span class="font-semibold text-tactas-ink">Project Z</span>. The next owner, deadline, and missing details are unclear.</p>
                                 </div>
                               </div>
                             </div>
@@ -844,7 +838,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                             <div class="flex justify-end">
                               <div class="flex max-w-[80%] flex-col items-end gap-1">
                                 <div class="rounded-[12px] rounded-br-[3px] bg-tactas-accent px-3.5 py-2.5 text-[14px] leading-relaxed text-white shadow-[0_8px_20px_-16px_rgba(15,23,42,0.5)]">
-                                  What changed in Project Z, and what should I do next?
+                                  Turn this update into an action plan before tomorrow's standup.
                                 </div>
                                 <p class="flex items-center gap-1 pr-1 text-[10px] text-tactas-muted-soft">
                                   <span>Team &middot; 9:50 AM</span>
@@ -860,7 +854,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-tactas-muted-soft [animation-delay:120ms]"></span>
                                   <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-tactas-muted-soft [animation-delay:240ms]"></span>
                                 </span>
-                                <span>Reading project notes, company docs, and manager comments</span>
+                                <span>Reading project notes, SOPs, task status, and manager comments</span>
                               </div>
                             </div>
 
@@ -876,9 +870,9 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                 <div class="rounded-[12px] rounded-bl-[3px] border border-tactas-line-soft border-l-[3px] border-l-tactas-accent bg-white px-4 py-3.5 shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
                                   <div class="grid gap-2.5">
                                     {[
-                                      ["Update", "Project Z now needs the new checklist before handoff."],
-                                      ["Next step", "confirm the owner, review the checklist, and update status by 4 PM."],
-                                      ["Context", "use the company playbook for the required handoff steps."],
+                                      ["Change", "Project Z needs the new handoff checklist before the next milestone."],
+                                      ["Owner", "assign the checklist review to the implementation lead by 4 PM."],
+                                      ["Missing info", "confirm the final approval note before updating the project status."],
                                     ].map(([label, value]) => (
                                       <div class="flex gap-2.5">
                                         <Check class="mt-0.5 h-3.5 w-3.5 shrink-0 text-tactas-accent" stroke-width={2.6} />
@@ -891,7 +885,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   <div class="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-tactas-line-soft pt-3">
                                     <div class="flex items-center gap-1.5 text-[10.5px] text-tactas-muted-soft">
                                       <Sparkles class="h-3 w-3 text-tactas-accent" stroke-width={2} />
-                                      Built from docs &middot; project board &middot; manager note
+                                      Built from SOPs &middot; project board &middot; manager note
                                     </div>
                                     <button type="button" class="inline-flex items-center gap-1 rounded-[4px] border border-tactas-line-soft bg-white px-2.5 py-1 text-[11px] font-semibold text-tactas-muted transition hover:border-tactas-accent hover:text-tactas-accent">
                                       View sources
@@ -905,7 +899,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                             <div class="flex justify-end">
                               <div class="flex max-w-[78%] flex-col items-end gap-1">
                                 <div class="rounded-[12px] rounded-br-[3px] bg-tactas-accent px-3.5 py-2.5 text-[14px] leading-relaxed text-white shadow-[0_8px_20px_-16px_rgba(15,23,42,0.5)]">
-                                  Add this to my task list and remind me tomorrow morning if it is still open.
+                                  Assign the owner and create a reminder if the checklist is still open tomorrow.
                                 </div>
                                 <p class="flex items-center gap-1 pr-1 text-[10px] text-tactas-muted-soft">
                                   <span>You &middot; 9:51 AM</span>
@@ -921,7 +915,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                             <div class="flex justify-end">
                               <div class="flex max-w-[82%] flex-col items-end gap-1">
                                 <div class="rounded-[12px] rounded-br-[3px] bg-tactas-accent px-3.5 py-2.5 text-[14px] leading-relaxed text-white shadow-[0_8px_20px_-16px_rgba(15,23,42,0.5)]">
-                                  Which open requests need follow-up before Friday?
+                                  Which open requests are likely to stall before Friday?
                                 </div>
                                 <p class="flex items-center gap-1 pr-1 text-[10px] text-tactas-muted-soft">
                                   <span>Team &middot; 4:18 PM</span>
@@ -940,9 +934,9 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                   <p class="text-[10px] text-tactas-muted-soft">4:18 PM</p>
                                 </div>
                                 <div class="rounded-[12px] rounded-bl-[3px] border border-tactas-line-soft border-l-[3px] border-l-tactas-accent bg-white px-3.5 py-3 text-[14px] leading-relaxed text-tactas-muted shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
-                                  <p>Reviewing inboxes, task lists, shared notes, and owner assignments.</p>
+                                  <p>Reviewing inboxes, task lists, CRM notes, calendar deadlines, and owner assignments.</p>
                                   <div class="mt-2.5 flex flex-wrap gap-1.5 border-t border-tactas-line-soft pt-2.5">
-                                    {["Inbox", "Tasks", "Calendar", "Workspace"].map((source) => (
+                                    {["Inbox", "Tasks", "CRM", "Calendar"].map((source) => (
                                       <span class="inline-flex items-center gap-1 rounded-full border border-tactas-accent-line bg-tactas-accent-soft px-2 py-0.5 text-[10.5px] font-semibold text-tactas-accent-strong">
                                         <Check class="h-2.5 w-2.5" stroke-width={2.8} />
                                         {source}
@@ -965,8 +959,8 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                                 <div class="rounded-[12px] rounded-bl-[3px] border border-tactas-line-soft border-l-[3px] border-l-tactas-accent bg-white px-4 py-3.5 shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
                                   <div class="grid gap-2.5">
                                     {[
-                                      ["Customer reply", "waiting on owner input before it can be sent.", "High"],
-                                      ["Setup task", "missing one detail before the workspace can be finished.", "Med"],
+                                      ["Customer reply", "waiting on owner input before the response can be sent.", "High"],
+                                      ["Setup request", "missing one detail before onboarding can continue.", "Med"],
                                       ["Project handoff", "needs a status update before the end of day.", "High"],
                                     ].map(([label, value, prio]) => (
                                       <div class="flex items-start gap-2.5">
@@ -990,7 +984,7 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
                             <div class="flex justify-end">
                               <div class="flex max-w-[78%] flex-col items-end gap-1">
                                 <div class="rounded-[12px] rounded-br-[3px] bg-tactas-accent px-3.5 py-2.5 text-[14px] leading-relaxed text-white shadow-[0_8px_20px_-16px_rgba(15,23,42,0.5)]">
-                                  Create follow-up drafts and assign owners?
+                                  Draft the follow-ups and assign the owners.
                                 </div>
                                 <p class="flex items-center gap-1 pr-1 text-[10px] text-tactas-muted-soft">
                                   <span>Team &middot; 4:20 PM</span>
@@ -1206,6 +1200,66 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
 
     <section class="border-b border-tactas-line bg-white">
       <div class={`tactas-container py-16 lg:py-20`}>
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,0.64fr)] lg:items-end lg:justify-between">
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Managed optimization</p>
+            <h2 class="mt-4 max-w-[780px] text-[36px] font-semibold leading-[1.04] tracking-normal text-tactas-ink-strong sm:text-[50px]">
+              Human technical tuning when your data and workflows get complex.
+            </h2>
+          </div>
+          <p class="max-w-[38rem] text-[15.5px] leading-relaxed text-tactas-muted lg:justify-self-end">
+            Routine workflows can improve through feedback, monitoring, and repeated usage patterns. When the data is large, messy, or the workflow has many edge cases, TactasAI brings technical operators to tune the prompt system, data layer, and automation path around your business.
+          </p>
+        </div>
+
+        <div class="mt-9 grid gap-4 lg:grid-cols-[1fr_1fr_1fr]">
+          {optimizationCards.map((card) => {
+            const CardIcon = card.icon;
+            return (
+              <article class="border border-tactas-line bg-tactas-bg p-5 shadow-[0_22px_70px_-60px_rgba(15,23,42,0.32)]">
+                <div class="flex items-start justify-between gap-5">
+                  <div>
+                    <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-tactas-muted-soft">Operator layer</p>
+                    <h3 class="mt-4 text-[23px] font-semibold leading-tight tracking-normal text-tactas-ink-strong">{card.title}</h3>
+                  </div>
+                  <span class:list={["flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] border", card.tone]}>
+                    <CardIcon class="h-5 w-5" stroke-width={1.9} />
+                  </span>
+                </div>
+                <p class="mt-4 text-[14px] leading-relaxed text-tactas-muted">{card.body}</p>
+                <div class="mt-5 border-t border-tactas-line-soft pt-4">
+                  <p class="text-[13px] font-semibold leading-relaxed text-tactas-ink-strong">{card.detail}</p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        <div class="mt-4 grid gap-4 border border-tactas-line bg-tactas-night-strong p-5 text-white shadow-[0_30px_90px_-70px_rgba(7,17,31,0.7)] lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1fr)] lg:items-center lg:p-6">
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-tactas-accent-line">Managed when needed</p>
+            <h3 class="mt-3 max-w-[30rem] text-[26px] font-semibold leading-tight tracking-normal">
+              Not every workflow needs heavy engineering. The complicated ones do.
+            </h3>
+          </div>
+          <div class="grid gap-3 sm:grid-cols-3">
+            {[
+              "Normal tasks improve through feedback loops and monitored usage.",
+              "Large data sets get retrieval, source, and context tuning.",
+              "Complex workflows get human-designed rules, approvals, and action paths.",
+            ].map((item) => (
+              <div class="border border-white/12 bg-white/[0.06] p-4">
+                <Check class="h-4 w-4 text-tactas-accent-line" stroke-width={2.4} />
+                <p class="mt-3 text-[13px] leading-relaxed text-white/76">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-tactas-line bg-white">
+      <div class={`tactas-container py-16 lg:py-20`}>
         <div class="grid gap-7 lg:grid-cols-[minmax(0,0.82fr)_minmax(340px,0.72fr)] lg:items-end lg:justify-between">
           <div>
             <p class="font-mono text-[10.5px] uppercase tracking-[0.24em] text-tactas-accent-strong">Customer proof</p>
@@ -1382,14 +1436,6 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
 
     <section class="border-b border-tactas-line bg-tactas-bg">
       <div class={`tactas-container py-12 lg:py-14`}>
-        <AskAIReviewSection
-          heading="Ask an AI what TactasAI does."
-        />
-      </div>
-    </section>
-
-    <section class="border-b border-tactas-line bg-tactas-bg">
-      <div class={`tactas-container py-12 lg:py-14`}>
         <div class="tactas-final-cta overflow-hidden border border-tactas-accent-strong/35 bg-tactas-night-strong text-white shadow-[0_34px_100px_-72px_rgba(7,17,31,0.58)]">
           <div class="grid gap-6 px-5 py-7 sm:px-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:py-8">
             <div>
@@ -1438,51 +1484,6 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
     isolation: isolate;
   }
 
-  .tactas-hero-section {
-    overflow: hidden;
-  }
-
-  .tactas-hero-section::before,
-  .tactas-hero-section::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    pointer-events: none;
-    border-radius: 999px;
-    filter: blur(64px);
-  }
-
-  .tactas-hero-section::before {
-    top: 7%;
-    left: 50%;
-    width: min(820px, 86vw);
-    height: 360px;
-    transform: translateX(-50%);
-    background: rgba(6, 182, 212, 0.14);
-  }
-
-  .tactas-hero-section::after {
-    right: -18%;
-    bottom: 3%;
-    width: min(520px, 68vw);
-    height: 260px;
-    background: rgba(124, 58, 237, 0.12);
-  }
-
-  .tactas-hero-title {
-    text-wrap: balance;
-  }
-
-  .tactas-hero-title > span {
-    animation: tactas-title-reveal 760ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-
-  .tactas-hero-title > span:nth-child(2) {
-    animation-delay: 100ms;
-  }
-
-  .tactas-primary-action,
-  .tactas-secondary-action,
   .tactas-final-cta a {
     position: relative;
     overflow: hidden;
@@ -1495,13 +1496,10 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
       color 240ms ease;
   }
 
-  .tactas-primary-action:hover,
-  .tactas-secondary-action:hover,
   .tactas-final-cta a:hover {
     transform: translateY(-1px);
   }
 
-  .tactas-primary-action::before,
   .tactas-final-cta a::before {
     content: "";
     position: absolute;
@@ -1511,7 +1509,6 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
     animation: tactas-shimmer 3.4s ease-in-out infinite;
   }
 
-  .tactas-proof-strip,
   .capability-carousel,
   .tactas-work-console,
   .tactas-customer-panel,
@@ -1583,18 +1580,6 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
     transform: translateY(-1px);
   }
 
-  @keyframes tactas-title-reveal {
-    from {
-      opacity: 0;
-      transform: translateY(28px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
   @keyframes tactas-shimmer {
     0% {
       background-position: -220% 0;
@@ -1603,41 +1588,6 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
     100% {
       background-position: 220% 0;
     }
-  }
-
-  .hero-eyebrow {
-    position: relative;
-    isolation: isolate;
-    width: auto !important;
-    min-width: 0;
-    border-radius: 999px !important;
-    background: color-mix(in srgb, var(--surface-card) 86%, var(--signal-cyan));
-    box-shadow: 0 18px 44px -36px rgba(7, 17, 31, 0.28) !important;
-  }
-
-  .hero-eyebrow::before {
-    content: "";
-    position: absolute;
-    inset: -1px;
-    z-index: -1;
-    border-radius: 999px;
-    background: linear-gradient(90deg, rgba(6, 182, 212, 0.34), rgba(37, 99, 235, 0.12), rgba(124, 58, 237, 0.22));
-  }
-
-  .hero-eyebrow-text {
-    color: var(--authority-navy) !important;
-  }
-
-  .hero-eyebrow-mark {
-    position: relative;
-    z-index: 10;
-    display: inline-flex;
-    width: 8px;
-    height: 8px;
-    flex: 0 0 auto;
-    border-radius: 999px;
-    background: var(--signal-cyan);
-    box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.12);
   }
 
   .example-conversation [class*="border-l-tactas-accent"] {
@@ -1791,8 +1741,6 @@ const integrationNodes = rawIntegrationNodes.map((node) => {
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .tactas-hero-title > span,
-    .tactas-primary-action::before,
     .tactas-final-cta a::before,
     .example-panel.is-playing .example-conversation > *,
     .tactas-dot {
