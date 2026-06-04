@@ -1,0 +1,1015 @@
+---
+import {
+  ArrowUpRight,
+  Bot,
+  Check,
+  CheckCheck,
+  MoreHorizontal,
+  Network,
+  Paperclip,
+  Plus,
+  Search,
+  Send,
+  ShieldCheck,
+  Sparkles,
+} from "@lucide/astro";
+
+const exampleOperators = [
+  {
+    id: "analysis",
+    name: "Business change brief",
+    role: "Repeated task · Reporting",
+    initials: "SC",
+    avatar: "bg-tactas-accent-faint text-tactas-accent-strong",
+    statusColor: "bg-tactas-success",
+    statusLabel: "Online",
+    time: "10:24",
+    preview: "Executive-ready change brief prepared",
+    badge: "Brief",
+    badgeClass: "bg-tactas-primary-soft text-tactas-primary-strong border-tactas-primary-line",
+    intent: "Turn scattered monthly updates into a business change brief",
+    sources: "Sheets, CRM, projects, team notes",
+    nextAction: "Review brief",
+    connectors: 4,
+    responds: "~12s",
+  },
+  {
+    id: "client",
+    name: "Source-backed answer",
+    role: "Repeated task · Customer reply",
+    initials: "AC",
+    avatar: "bg-tactas-accent-soft text-tactas-accent-strong",
+    statusColor: "bg-tactas-success",
+    statusLabel: "Online",
+    time: "11:02",
+    preview: "Reply, sources, and follow-up prepared",
+    badge: "Answer",
+    badgeClass: "bg-tactas-warning-soft text-tactas-warning-strong border-tactas-warning-line",
+    intent: "Answer a customer question with trusted company context",
+    sources: "Knowledge base, account data, product notes",
+    nextAction: "Review reply",
+    connectors: 3,
+    responds: "~8s",
+  },
+  {
+    id: "employee",
+    name: "Update to action plan",
+    role: "Repeated task · Handoff",
+    initials: "NS",
+    avatar: "bg-tactas-violet-soft text-tactas-violet",
+    statusColor: "bg-tactas-success",
+    statusLabel: "Online",
+    time: "9:48",
+    preview: "Checklist, owner, and deadline prepared",
+    badge: "Plan",
+    badgeClass: "bg-tactas-violet-soft text-tactas-violet border-tactas-violet-line",
+    intent: "Turn a project update into clear next steps",
+    sources: "Project board, meeting notes, SOPs",
+    nextAction: "Assign owner",
+    connectors: 3,
+    responds: "~6s",
+  },
+  {
+    id: "research",
+    name: "Market intelligence run",
+    role: "Marketing operator · tactasai.com",
+    initials: "MR",
+    avatar: "bg-tactas-primary-soft text-tactas-primary-strong",
+    statusColor: "bg-tactas-success",
+    statusLabel: "Online",
+    time: "2:16",
+    preview: "SEO position, competitors, and next pages mapped",
+    badge: "Research",
+    badgeClass: "bg-tactas-primary-soft text-tactas-primary-strong border-tactas-primary-line",
+    intent: "Audit SEO position, compare competing AI agent platforms, and recommend next pages",
+    sources: "Google Search Console, tactasai.com sitemap, existing pages, keyword clusters, Google SERPs, competitor websites, review pages",
+    nextAction: "Create content briefs",
+    connectors: 7,
+    responds: "~18s",
+  },
+  {
+    id: "workspace",
+    name: "Follow-up queue",
+    role: "Repeated task · Open work",
+    initials: "TW",
+    avatar: "bg-tactas-warning-soft text-tactas-warning-strong",
+    statusColor: "bg-tactas-muted-soft",
+    statusLabel: "Idle",
+    time: "Yesterday",
+    preview: "Priority follow-up queue prepared",
+    badge: "Queue",
+    badgeClass: "bg-tactas-success-soft text-tactas-success-strong border-tactas-success-line",
+    intent: "Find open requests before work stalls",
+    sources: "Inbox, tasks, CRM, calendar",
+    nextAction: "Draft follow-ups",
+    connectors: 5,
+    responds: "~14s",
+  },
+];
+
+---
+
+<section class="relative overflow-hidden border-b border-tactas-line bg-white">
+      <div class="pointer-events-none absolute inset-x-0 top-0 h-px tactas-gradient-rule"></div>
+      <div class={`tactas-container py-16 lg:py-20`}>
+        <div class="grid gap-9">
+          <div class="grid gap-8">
+            <div>
+              <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Business task examples</p>
+              <h2 class="mt-4 max-w-[820px] text-[40px] font-semibold leading-[1.02] tracking-normal text-tactas-ink-strong sm:text-[56px]">
+                Start with the work your team repeats every week.
+              </h2>
+              <p class="mt-5 max-w-[52rem] text-[17px] leading-relaxed text-tactas-muted">
+                The best first agent is not a vague assistant. It is a recurring workflow where context is scattered, output quality matters, and the next action needs to move through the right owner.
+              </p>
+            </div>
+          </div>
+
+          <div class="tactas-work-console overflow-hidden rounded-[14px] border border-tactas-line-strong/80 bg-white shadow-[0_48px_120px_-64px_rgba(15,23,42,0.45)] ring-1 ring-tactas-night/[0.04] xl:-mx-10 2xl:-mx-16">
+            <div class="flex h-11 items-center justify-between gap-3 border-b border-tactas-line-soft bg-tactas-bg px-4">
+              <div class="flex min-w-0 items-center gap-3">
+                <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-[6px] bg-tactas-accent text-white">
+                  <Bot class="h-4 w-4" stroke-width={1.9} />
+                </span>
+                <div class="min-w-0">
+                  <p class="truncate text-[13px] font-semibold text-tactas-ink">Tactas Work Console</p>
+                  <p class="truncate font-mono text-[10px] uppercase tracking-[0.18em] text-tactas-muted-soft">Acme Corp workspace</p>
+                </div>
+              </div>
+              <div class="flex shrink-0 items-center gap-2">
+                <span class="hidden items-center gap-1.5 rounded-full border border-tactas-success-line bg-tactas-success-soft px-2.5 py-1 text-[10px] font-medium text-tactas-success-strong sm:inline-flex">
+                  <span class="h-1.5 w-1.5 rounded-full bg-tactas-success"></span>
+                  Automation ready
+                </span>
+                <div class="hidden h-7 items-center gap-1.5 rounded-[5px] border border-tactas-line-soft bg-white px-2 text-[11px] text-tactas-muted-soft md:flex md:w-40">
+                  <Search class="h-3.5 w-3.5" stroke-width={1.8} />
+                  <span class="truncate">Search</span>
+                  <span class="ml-auto font-mono text-[9px] text-tactas-muted-soft">⌘K</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-[236px_minmax(0,1fr)_180px] xl:grid-cols-[248px_minmax(0,1fr)_200px]">
+              <aside class="border-b border-tactas-line-soft bg-tactas-bg lg:border-b-0 lg:border-r" role="tablist" aria-label="Example business task conversations">
+                <div class="flex items-center justify-between px-3.5 pt-3.5 pb-2">
+                  <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-muted-soft">Task types</p>
+                  <button type="button" class="flex h-6 w-6 items-center justify-center rounded-[4px] text-tactas-muted-soft transition hover:bg-white hover:text-tactas-ink" aria-label="New conversation">
+                    <Plus class="h-3.5 w-3.5" stroke-width={2} />
+                  </button>
+                </div>
+
+                <div class="flex gap-2 overflow-x-auto px-2 pb-2 lg:grid lg:gap-1 lg:overflow-visible lg:px-2 lg:pb-2">
+                  {exampleOperators.map((op, idx) => (
+                    <button
+                      type="button"
+                      id={`example-tab-${op.id}`}
+                      data-example-tab={op.id}
+                      aria-selected={idx === 0 ? "true" : "false"}
+                      aria-controls={`example-panel-${op.id}`}
+                      role="tab"
+                      class:list={[
+                        "example-tab group flex w-[232px] shrink-0 items-start gap-3 rounded-[8px] border px-3 py-2.5 text-left transition lg:w-auto lg:shrink",
+                        idx === 0
+                          ? "border-tactas-accent-line bg-white shadow-[inset_3px_0_0_0_var(--accent),0_12px_26px_-22px_rgba(8,145,178,0.45)]"
+                          : "border-transparent hover:border-tactas-line-soft hover:bg-white",
+                      ]}
+                    >
+                      <span class="relative mt-0.5 flex shrink-0">
+                        <span class:list={["flex h-9 w-9 items-center justify-center rounded-[8px] font-mono text-[11px] font-semibold tracking-wide ring-1 ring-white/70", op.avatar]}>
+                          {op.initials}
+                        </span>
+                        <span class:list={["absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full ring-2 ring-tactas-bg", op.statusColor]}></span>
+                      </span>
+                      <span class="min-w-0 flex-1">
+                        <span class="flex items-center justify-between gap-2">
+                          <span class="truncate text-[12.5px] font-semibold text-tactas-ink">{op.name}</span>
+                          <span class="shrink-0 font-mono text-[10px] text-tactas-muted-soft">{op.time}</span>
+                        </span>
+                        <span class="mt-1 line-clamp-2 block text-[11.5px] leading-snug text-tactas-muted-soft">{op.preview}</span>
+                        <span class="mt-2 flex items-center justify-between gap-2">
+                          <span class:list={["rounded-full border px-1.5 py-0.5 text-[9.5px] font-semibold leading-none", op.badgeClass]}>
+                            {op.badge}
+                          </span>
+                          <span class="font-mono text-[9px] uppercase tracking-[0.14em] text-tactas-muted-soft">{op.responds}</span>
+                        </span>
+                      </span>
+                    </button>
+                  ))}
+                </div>
+
+                <div class="hidden px-3 pb-3.5 pt-1 lg:block">
+                  <div class="rounded-[8px] border border-tactas-line-soft bg-white p-3">
+                    <div class="flex items-center justify-between">
+                      <p class="font-mono text-[9.5px] uppercase tracking-[0.2em] text-tactas-accent-strong">Work queue</p>
+                      <span class="rounded-full bg-tactas-warning-soft px-1.5 py-0.5 text-[9.5px] font-semibold text-tactas-warning-strong">5</span>
+                    </div>
+                    <p class="mt-2 text-[12px] font-semibold leading-snug text-tactas-ink">5 task patterns ready to review</p>
+                    <p class="mt-1 text-[11px] leading-relaxed text-tactas-muted-soft">Scattered context turned into briefs, replies, research, owners, and follow-ups.</p>
+                    <a href="/contact" class="mt-2.5 inline-flex items-center gap-1 text-[11px] font-semibold text-tactas-accent hover:text-tactas-accent-strong">
+                      Map this workflow
+                      <ArrowUpRight class="h-3 w-3" stroke-width={2} />
+                    </a>
+                  </div>
+                </div>
+              </aside>
+
+              <div class="flex min-h-[700px] flex-col border-b border-tactas-line-soft lg:min-h-[780px] lg:border-b-0 xl:min-h-[840px]">
+                <div class="relative flex-1">
+                  {exampleOperators.map((op, idx) => (
+                    <div
+                      id={`example-panel-${op.id}`}
+                      class:list={[
+                        "example-panel absolute inset-0 flex flex-col",
+                        idx === 0 ? "" : "hidden",
+                      ]}
+                      role="tabpanel"
+                      aria-labelledby={`example-tab-${op.id}`}
+                    >
+                      <div class="flex items-center justify-between gap-3 border-b border-tactas-line-soft bg-white px-4 py-3 sm:px-5">
+                        <div class="flex min-w-0 items-center gap-3">
+                          <span class="relative shrink-0">
+                            <span class="flex h-9 w-9 items-center justify-center rounded-[8px] bg-tactas-accent-soft text-tactas-accent ring-1 ring-tactas-accent-line">
+                              <Bot class="h-4.5 w-4.5" stroke-width={1.8} />
+                            </span>
+                            <span class:list={["absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full ring-2 ring-white", op.statusColor]}></span>
+                          </span>
+                          <div class="min-w-0">
+                            <div class="flex flex-wrap items-center gap-2">
+                              <p class="truncate text-[14px] font-semibold text-tactas-ink">{op.name}</p>
+                              <span class="inline-flex items-center gap-1 rounded-full border border-tactas-accent-line bg-tactas-accent-soft px-1.5 py-0.5 text-[10px] font-semibold text-tactas-accent-strong">
+                                AI task
+                              </span>
+                              <span class="hidden items-center gap-1 rounded-full bg-tactas-success-soft px-1.5 py-0.5 text-[10px] font-semibold text-tactas-success-strong sm:inline-flex">
+                                <span class="h-1 w-1 rounded-full bg-tactas-success"></span>
+                                {op.statusLabel}
+                              </span>
+                            </div>
+                            <p class="mt-0.5 truncate text-[11.5px] text-tactas-muted-soft">{op.role} &middot; {op.responds} avg response</p>
+                          </div>
+                        </div>
+                        <div class="flex shrink-0 items-center gap-1.5">
+                          <div class="hidden items-center gap-1 rounded-full border border-tactas-line-soft bg-tactas-bg px-2 py-1 text-[10px] font-medium text-tactas-muted md:flex">
+                            <Network class="h-3 w-3 text-tactas-accent" stroke-width={2} />
+                            <span>{op.connectors} connected</span>
+                          </div>
+                          <button type="button" class="flex h-7 w-7 items-center justify-center rounded-[4px] text-tactas-muted-soft transition hover:bg-tactas-bg-soft hover:text-tactas-ink" aria-label="Conversation menu">
+                            <MoreHorizontal class="h-4 w-4" stroke-width={1.8} />
+                          </button>
+                        </div>
+                      </div>
+
+                      <div class="example-conversation flex-1 space-y-3 overflow-y-auto bg-[linear-gradient(180deg,var(--bg-soft)_0%,var(--bg)_100%)] px-3.5 py-4 sm:px-5 lg:space-y-3.5 lg:py-[1.125rem]">
+                        <div class="flex items-center gap-3 text-[10px] font-medium uppercase tracking-[0.2em] text-tactas-muted-soft">
+                          <span class="h-px flex-1 bg-tactas-line-soft"></span>
+                          <span>Today &middot; {op.time}</span>
+                          <span class="h-px flex-1 bg-tactas-line-soft"></span>
+                        </div>
+
+                        {op.id === "analysis" && (
+                          <>
+                            <div class="flex justify-end">
+                              <div class="flex max-w-[80%] flex-col items-end gap-1">
+                                <div class="rounded-[12px] rounded-br-[3px] bg-tactas-accent px-3.5 py-2.5 text-[14px] leading-relaxed text-white shadow-[0_8px_20px_-16px_rgba(15,23,42,0.5)]">
+                                  Prepare the monthly business change brief from our scattered updates.
+                                </div>
+                                <p class="flex items-center gap-1 pr-1 text-[10px] text-tactas-muted-soft">
+                                  <span>You &middot; 10:24 AM</span>
+                                  <CheckCheck class="h-3 w-3 text-tactas-accent" stroke-width={2.2} />
+                                </p>
+                              </div>
+                            </div>
+
+                            <div class="flex gap-2.5">
+                              <span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-[7px] bg-tactas-accent-soft text-tactas-accent ring-1 ring-tactas-accent-line">
+                                <Bot class="h-3.5 w-3.5" stroke-width={2} />
+                              </span>
+                              <div class="flex max-w-[88%] flex-1 flex-col gap-1.5">
+                                <div class="flex items-baseline gap-2">
+                                  <p class="text-[11.5px] font-semibold text-tactas-ink">{op.name}</p>
+                                  <p class="text-[10px] text-tactas-muted-soft">10:24 AM</p>
+                                </div>
+                                <div class="rounded-[12px] rounded-bl-[3px] border border-tactas-line-soft border-l-[3px] border-l-tactas-accent bg-white px-3.5 py-3 text-[14px] leading-relaxed text-tactas-muted shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
+                                  <p>Pulling sales, delivery, support, and project context into one review-ready brief.</p>
+                                  <div class="mt-2.5 flex flex-wrap gap-1.5 border-t border-tactas-line-soft pt-2.5">
+                                    {["Business data", "Project updates", "Support trends", "Team notes"].map((source) => (
+                                      <span class="inline-flex items-center gap-1 rounded-full border border-tactas-accent-line bg-tactas-accent-soft px-2 py-0.5 text-[10.5px] font-semibold text-tactas-accent-strong">
+                                        <Check class="h-2.5 w-2.5" stroke-width={2.8} />
+                                        {source}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="flex items-start gap-2.5 pl-9">
+                              <div class="flex w-full max-w-[92%] items-center gap-2.5 rounded-[8px] border border-dashed border-tactas-line-strong bg-white/90 px-3 py-2 text-[11px] text-tactas-muted-soft shadow-[0_4px_12px_-10px_rgba(15,23,42,0.2)]">
+                                <span class="flex gap-0.5">
+                                  <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-tactas-muted-soft"></span>
+                                  <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-tactas-muted-soft [animation-delay:120ms]"></span>
+                                  <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-tactas-muted-soft [animation-delay:240ms]"></span>
+                                </span>
+                                <span>Finding changes, risks, blockers, and owner-ready next steps</span>
+                              </div>
+                            </div>
+
+                            <div class="flex gap-2.5">
+                              <span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-[7px] bg-tactas-accent-soft text-tactas-accent ring-1 ring-tactas-accent-line">
+                                <Bot class="h-3.5 w-3.5" stroke-width={2} />
+                              </span>
+                              <div class="flex max-w-[92%] flex-1 flex-col gap-1.5">
+                                <div class="flex items-baseline gap-2">
+                                  <p class="text-[11.5px] font-semibold text-tactas-ink">Draft &middot; Change brief</p>
+                                  <p class="text-[10px] text-tactas-muted-soft">10:25 AM</p>
+                                </div>
+                                <div class="rounded-[12px] rounded-bl-[3px] border border-tactas-line-soft border-l-[3px] border-l-tactas-accent bg-white px-4 py-3.5 shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
+                                  <div class="grid gap-2.5">
+                                    {[
+                                      ["Delivery", "Project X is on track, but two handoff tasks still need owners."],
+                                      ["Customer ops", "support volume rose around onboarding and setup questions."],
+                                      ["Revenue", "new demand is trending toward Product A in mid-market accounts."],
+                                    ].map(([label, value]) => (
+                                      <div class="flex gap-2.5">
+                                        <Check class="mt-0.5 h-3.5 w-3.5 shrink-0 text-tactas-accent" stroke-width={2.6} />
+                                        <p class="text-[13.5px] leading-relaxed text-tactas-muted">
+                                          <span class="font-semibold text-tactas-ink">{label}:</span> {value}
+                                        </p>
+                                      </div>
+                                    ))}
+                                  </div>
+                                  <div class="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-tactas-line-soft pt-3">
+                                    <div class="flex items-center gap-1.5 text-[10.5px] text-tactas-muted-soft">
+                                      <Sparkles class="h-3 w-3 text-tactas-accent" stroke-width={2} />
+                                      Generated from 4 sources &middot; risks and next steps attached
+                                    </div>
+                                    <div class="flex gap-2">
+                                      <button type="button" class="rounded-[4px] border border-tactas-line-soft bg-white px-2.5 py-1 text-[11px] font-semibold text-tactas-muted transition hover:border-tactas-accent hover:text-tactas-accent">Edit</button>
+                                      <button type="button" class="inline-flex items-center gap-1 rounded-[4px] bg-tactas-accent px-2.5 py-1 text-[11px] font-semibold text-white transition hover:bg-tactas-accent">
+                                        <Check class="h-3 w-3" stroke-width={2.4} />
+                                        Review brief
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </>
+                        )}
+
+                        {op.id === "client" && (
+                          <>
+                            <div class="flex justify-end">
+                              <div class="flex max-w-[80%] flex-col items-end gap-1">
+                                <div class="rounded-[12px] rounded-br-[3px] bg-tactas-accent px-3.5 py-2.5 text-[14px] leading-relaxed text-white shadow-[0_8px_20px_-16px_rgba(15,23,42,0.5)]">
+                                  A customer asked if Product A supports multiple teams. Draft a sourced reply.
+                                </div>
+                                <p class="flex items-center gap-1 pr-1 text-[10px] text-tactas-muted-soft">
+                                  <span>Team &middot; 11:02 AM</span>
+                                  <CheckCheck class="h-3 w-3 text-tactas-accent" stroke-width={2.2} />
+                                </p>
+                              </div>
+                            </div>
+
+                            <div class="flex gap-2.5">
+                              <span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-[7px] bg-tactas-accent-soft text-tactas-accent ring-1 ring-tactas-accent-line">
+                                <Bot class="h-3.5 w-3.5" stroke-width={2} />
+                              </span>
+                              <div class="flex max-w-[88%] flex-1 flex-col gap-1.5">
+                                <div class="flex items-baseline gap-2">
+                                  <p class="text-[11.5px] font-semibold text-tactas-ink">{op.name}</p>
+                                  <p class="text-[10px] text-tactas-muted-soft">11:02 AM</p>
+                                </div>
+                                <div class="rounded-[12px] rounded-bl-[3px] border border-tactas-line-soft border-l-[3px] border-l-tactas-accent bg-white px-3.5 py-3 text-[14px] leading-relaxed text-tactas-muted shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
+                                  <p>Yes. Product A supports shared workspaces, role-based access, and team invites. Your current plan includes <span class="font-semibold text-tactas-ink">up to 25 members</span>.</p>
+                                  <div class="mt-2.5 flex flex-wrap gap-1.5 border-t border-tactas-line-soft pt-2.5">
+                                    <span class="inline-flex items-center gap-1 rounded-full border border-tactas-accent-line bg-tactas-accent-soft px-2 py-0.5 text-[10.5px] font-semibold text-tactas-accent-strong">
+                                      <Check class="h-2.5 w-2.5" stroke-width={2.8} /> Knowledge base
+                                    </span>
+                                    <span class="inline-flex items-center gap-1 rounded-full border border-tactas-accent-line bg-tactas-accent-soft px-2 py-0.5 text-[10.5px] font-semibold text-tactas-accent-strong">
+                                      <Check class="h-2.5 w-2.5" stroke-width={2.8} /> Product notes
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="flex justify-end">
+                              <div class="flex max-w-[82%] flex-col items-end gap-1">
+                                <div class="rounded-[12px] rounded-br-[3px] bg-tactas-accent px-3.5 py-2.5 text-[14px] leading-relaxed text-white shadow-[0_8px_20px_-16px_rgba(15,23,42,0.5)]">
+                                  Add the source context and create the account-owner follow-up.
+                                </div>
+                                <p class="flex items-center gap-1 pr-1 text-[10px] text-tactas-muted-soft">
+                                  <span>Team &middot; 11:03 AM</span>
+                                  <CheckCheck class="h-3 w-3 text-tactas-accent" stroke-width={2.2} />
+                                </p>
+                              </div>
+                            </div>
+
+                            <div class="flex items-start gap-2.5 pl-9">
+                              <div class="flex w-full max-w-[92%] items-center gap-2.5 rounded-[8px] border border-dashed border-tactas-line-strong bg-white/90 px-3 py-2 text-[11px] text-tactas-muted-soft shadow-[0_4px_12px_-10px_rgba(15,23,42,0.2)]">
+                                <span class="flex gap-0.5">
+                                  <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-tactas-muted-soft"></span>
+                                  <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-tactas-muted-soft [animation-delay:120ms]"></span>
+                                  <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-tactas-muted-soft [animation-delay:240ms]"></span>
+                                </span>
+                                <span>Checking product notes, account context, pricing rules, and prior messages</span>
+                              </div>
+                            </div>
+
+                            <div class="flex gap-2.5">
+                              <span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-[7px] bg-tactas-accent-soft text-tactas-accent ring-1 ring-tactas-accent-line">
+                                <Bot class="h-3.5 w-3.5" stroke-width={2} />
+                              </span>
+                              <div class="flex max-w-[92%] flex-1 flex-col gap-1.5">
+                                <div class="flex items-baseline gap-2">
+                                  <p class="text-[11.5px] font-semibold text-tactas-ink">Prepared reply package</p>
+                                  <p class="text-[10px] text-tactas-muted-soft">11:03 AM</p>
+                                </div>
+                                <div class="rounded-[12px] rounded-bl-[3px] border border-tactas-line-soft border-l-[3px] border-l-tactas-accent bg-white px-4 py-3.5 shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
+                                  <div class="grid gap-2.5">
+                                    {[
+                                      ["Reply", "drafted a source-backed answer using approved product context.", "Knowledge"],
+                                      ["Follow-up", "prepared the account-owner task with customer context attached.", "Task"],
+                                      ["Record", "captured the answer, source notes, and next action in the workspace.", "Record"],
+                                    ].map(([label, value, system]) => (
+                                      <div class="flex items-start gap-2.5">
+                                        <Check class="mt-0.5 h-3.5 w-3.5 shrink-0 text-tactas-accent" stroke-width={2.6} />
+                                        <div class="flex-1">
+                                          <p class="text-[13.5px] leading-relaxed text-tactas-muted">
+                                            <span class="font-semibold text-tactas-ink">{label}:</span> {value}
+                                          </p>
+                                          <span class="mt-0.5 inline-flex items-center gap-1 font-mono text-[9.5px] uppercase tracking-wider text-tactas-muted-soft">
+                                            via {system}
+                                          </span>
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                  <div class="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-tactas-line-soft pt-3">
+                                    <span class="inline-flex items-center gap-1 rounded-full bg-tactas-warning-soft px-2 py-0.5 text-[10.5px] font-semibold text-tactas-warning-strong">
+                                      <ShieldCheck class="h-3 w-3" stroke-width={2} />
+                                      Review-ready
+                                    </span>
+                                    <div class="flex gap-2">
+                                      <button type="button" class="rounded-[4px] border border-tactas-line-soft bg-white px-2.5 py-1 text-[11px] font-semibold text-tactas-muted transition hover:border-tactas-line-strong">Edit</button>
+                                      <button type="button" class="inline-flex items-center gap-1 rounded-[4px] bg-tactas-accent px-2.5 py-1 text-[11px] font-semibold text-white transition hover:bg-tactas-accent">
+                                        <Check class="h-3 w-3" stroke-width={2.4} />
+                                        Use package
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </>
+                        )}
+
+                        {op.id === "employee" && (
+                          <>
+                            <div class="flex gap-2.5">
+                              <span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-[7px] bg-tactas-accent-soft text-tactas-accent ring-1 ring-tactas-accent-line">
+                                <Bot class="h-3.5 w-3.5" stroke-width={2} />
+                              </span>
+                              <div class="flex max-w-[88%] flex-1 flex-col gap-1.5">
+                                <div class="flex items-baseline gap-2">
+                                  <p class="text-[11.5px] font-semibold text-tactas-ink">{op.name}</p>
+                                  <p class="text-[10px] text-tactas-muted-soft">9:48 AM</p>
+                                </div>
+                                <div class="rounded-[12px] rounded-bl-[3px] border border-tactas-line-soft border-l-[3px] border-l-tactas-accent bg-white px-3.5 py-3 text-[14px] leading-relaxed text-tactas-muted shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
+                                  <p>A new project update arrived for <span class="font-semibold text-tactas-ink">Project Z</span>. The next owner, deadline, and missing details are unclear.</p>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="flex justify-end">
+                              <div class="flex max-w-[80%] flex-col items-end gap-1">
+                                <div class="rounded-[12px] rounded-br-[3px] bg-tactas-accent px-3.5 py-2.5 text-[14px] leading-relaxed text-white shadow-[0_8px_20px_-16px_rgba(15,23,42,0.5)]">
+                                  Turn this update into an action plan before tomorrow's standup.
+                                </div>
+                                <p class="flex items-center gap-1 pr-1 text-[10px] text-tactas-muted-soft">
+                                  <span>Team &middot; 9:50 AM</span>
+                                  <CheckCheck class="h-3 w-3 text-tactas-accent" stroke-width={2.2} />
+                                </p>
+                              </div>
+                            </div>
+
+                            <div class="flex items-start gap-2.5 pl-9">
+                              <div class="flex w-full max-w-[92%] items-center gap-2.5 rounded-[8px] border border-dashed border-tactas-line-strong bg-white/90 px-3 py-2 text-[11px] text-tactas-muted-soft shadow-[0_4px_12px_-10px_rgba(15,23,42,0.2)]">
+                                <span class="flex gap-0.5">
+                                  <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-tactas-muted-soft"></span>
+                                  <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-tactas-muted-soft [animation-delay:120ms]"></span>
+                                  <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-tactas-muted-soft [animation-delay:240ms]"></span>
+                                </span>
+                                <span>Reading project notes, SOPs, task status, and manager comments</span>
+                              </div>
+                            </div>
+
+                            <div class="flex gap-2.5">
+                              <span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-[7px] bg-tactas-accent-soft text-tactas-accent ring-1 ring-tactas-accent-line">
+                                <Bot class="h-3.5 w-3.5" stroke-width={2} />
+                              </span>
+                              <div class="flex max-w-[92%] flex-1 flex-col gap-1.5">
+                                <div class="flex items-baseline gap-2">
+                                  <p class="text-[11.5px] font-semibold text-tactas-ink">Next-step plan</p>
+                                  <p class="text-[10px] text-tactas-muted-soft">9:50 AM</p>
+                                </div>
+                                <div class="rounded-[12px] rounded-bl-[3px] border border-tactas-line-soft border-l-[3px] border-l-tactas-accent bg-white px-4 py-3.5 shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
+                                  <div class="grid gap-2.5">
+                                    {[
+                                      ["Change", "Project Z needs the new handoff checklist before the next milestone."],
+                                      ["Owner", "assign the checklist review to the implementation lead by 4 PM."],
+                                      ["Missing info", "confirm the final approval note before updating the project status."],
+                                    ].map(([label, value]) => (
+                                      <div class="flex gap-2.5">
+                                        <Check class="mt-0.5 h-3.5 w-3.5 shrink-0 text-tactas-accent" stroke-width={2.6} />
+                                        <p class="text-[13.5px] leading-relaxed text-tactas-muted">
+                                          <span class="font-semibold text-tactas-ink">{label}:</span> {value}
+                                        </p>
+                                      </div>
+                                    ))}
+                                  </div>
+                                  <div class="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-tactas-line-soft pt-3">
+                                    <div class="flex items-center gap-1.5 text-[10.5px] text-tactas-muted-soft">
+                                      <Sparkles class="h-3 w-3 text-tactas-accent" stroke-width={2} />
+                                      Built from SOPs &middot; project board &middot; manager note
+                                    </div>
+                                    <button type="button" class="inline-flex items-center gap-1 rounded-[4px] border border-tactas-line-soft bg-white px-2.5 py-1 text-[11px] font-semibold text-tactas-muted transition hover:border-tactas-accent hover:text-tactas-accent">
+                                      View sources
+                                      <ArrowUpRight class="h-3 w-3" stroke-width={2} />
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="flex justify-end">
+                              <div class="flex max-w-[78%] flex-col items-end gap-1">
+                                <div class="rounded-[12px] rounded-br-[3px] bg-tactas-accent px-3.5 py-2.5 text-[14px] leading-relaxed text-white shadow-[0_8px_20px_-16px_rgba(15,23,42,0.5)]">
+                                  Assign the owner and create a reminder if the checklist is still open tomorrow.
+                                </div>
+                                <p class="flex items-center gap-1 pr-1 text-[10px] text-tactas-muted-soft">
+                                  <span>You &middot; 9:51 AM</span>
+                                  <CheckCheck class="h-3 w-3 text-tactas-accent" stroke-width={2.2} />
+                                </p>
+                              </div>
+                            </div>
+                          </>
+                        )}
+
+                        {op.id === "research" && (
+                          <>
+                            <div class="flex justify-end">
+                              <div class="flex max-w-[84%] flex-col items-end gap-1">
+                                <div class="rounded-[12px] rounded-br-[3px] bg-tactas-accent px-3.5 py-2.5 text-[14px] leading-relaxed text-white shadow-[0_8px_20px_-16px_rgba(15,23,42,0.5)]">
+                                  Audit our current SEO position, compare tactasai.com against competing AI agent platforms, and recommend which pages we should build or rewrite next.
+                                </div>
+                                <p class="flex items-center gap-1 pr-1 text-[10px] text-tactas-muted-soft">
+                                  <span>Marketing &middot; 2:16 PM</span>
+                                  <CheckCheck class="h-3 w-3 text-tactas-accent" stroke-width={2.2} />
+                                </p>
+                              </div>
+                            </div>
+
+                            <div class="flex gap-2.5">
+                              <span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-[7px] bg-tactas-accent-soft text-tactas-accent ring-1 ring-tactas-accent-line">
+                                <Bot class="h-3.5 w-3.5" stroke-width={2} />
+                              </span>
+                              <div class="flex max-w-[88%] flex-1 flex-col gap-1.5">
+                                <div class="flex items-baseline gap-2">
+                                  <p class="text-[11.5px] font-semibold text-tactas-ink">{op.name}</p>
+                                  <p class="text-[10px] text-tactas-muted-soft">2:16 PM</p>
+                                </div>
+                                <div class="rounded-[12px] rounded-bl-[3px] border border-tactas-line-soft border-l-[3px] border-l-tactas-accent bg-white px-3.5 py-3 text-[14px] leading-relaxed text-tactas-muted shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
+                                  <p>Connecting the current site, search data, SERP patterns, competitor positioning, and review pages into one market intelligence run.</p>
+                                  <div class="mt-2.5 flex flex-wrap gap-1.5 border-t border-tactas-line-soft pt-2.5">
+                                    {["Search Console", "Sitemap", "Keyword clusters", "Google SERPs", "Competitor websites"].map((source) => (
+                                      <span class="inline-flex items-center gap-1 rounded-full border border-tactas-accent-line bg-tactas-accent-soft px-2 py-0.5 text-[10.5px] font-semibold text-tactas-accent-strong">
+                                        <Check class="h-2.5 w-2.5" stroke-width={2.8} />
+                                        {source}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="flex items-start gap-2.5 pl-9">
+                              <div class="flex w-full max-w-[92%] items-center gap-2.5 rounded-[8px] border border-dashed border-tactas-line-strong bg-white/90 px-3 py-2 text-[11px] text-tactas-muted-soft shadow-[0_4px_12px_-10px_rgba(15,23,42,0.2)]">
+                                <span class="flex gap-0.5">
+                                  <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-tactas-muted-soft"></span>
+                                  <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-tactas-muted-soft [animation-delay:120ms]"></span>
+                                  <span class="tactas-dot h-1.5 w-1.5 rounded-full bg-tactas-muted-soft [animation-delay:240ms]"></span>
+                                </span>
+                                <span>Comparing historical keywords, high-ranking pages, competitor categories, and content gaps</span>
+                              </div>
+                            </div>
+
+                            <div class="flex gap-2.5">
+                              <span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-[7px] bg-tactas-accent-soft text-tactas-accent ring-1 ring-tactas-accent-line">
+                                <Bot class="h-3.5 w-3.5" stroke-width={2} />
+                              </span>
+                              <div class="flex max-w-[92%] flex-1 flex-col gap-1.5">
+                                <div class="flex items-baseline gap-2">
+                                  <p class="text-[11.5px] font-semibold text-tactas-ink">Market intelligence run</p>
+                                  <p class="text-[10px] text-tactas-muted-soft">2:17 PM</p>
+                                </div>
+                                <div class="rounded-[12px] rounded-bl-[3px] border border-tactas-line-soft border-l-[3px] border-l-tactas-accent bg-white px-4 py-3.5 shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
+                                  <div class="flex flex-wrap items-start justify-between gap-3 border-b border-tactas-line-soft pb-3">
+                                    <div>
+                                      <p class="text-[16px] font-semibold leading-tight text-tactas-ink">Market intelligence run</p>
+                                      <p class="mt-1 text-[11px] leading-relaxed text-tactas-muted-soft">Marketing operator &middot; tactasai.com &middot; Completed today</p>
+                                    </div>
+                                    <span class="rounded-full border border-tactas-success-line bg-tactas-success-soft px-2 py-0.5 text-[10.5px] font-semibold text-tactas-success-strong">
+                                      Completed
+                                    </span>
+                                  </div>
+
+                                  <div class="mt-3 grid gap-3">
+                                    <section>
+                                      <p class="font-mono text-[9.5px] uppercase tracking-[0.18em] text-tactas-muted-soft">Input</p>
+                                      <p class="mt-1.5 text-[13px] leading-relaxed text-tactas-muted">
+                                        Audit our current SEO position, compare tactasai.com against competing AI agent platforms, and recommend which pages we should build or rewrite next.
+                                      </p>
+                                    </section>
+
+                                    <section>
+                                      <p class="font-mono text-[9.5px] uppercase tracking-[0.18em] text-tactas-muted-soft">Connected</p>
+                                      <p class="mt-1.5 text-[12.5px] leading-relaxed text-tactas-muted">
+                                        Google Search Console &middot; tactasai.com sitemap &middot; Existing pages &middot; Keyword clusters &middot; Google SERPs &middot; Competitor websites &middot; Review pages
+                                      </p>
+                                    </section>
+
+                                    <section>
+                                      <p class="font-mono text-[9.5px] uppercase tracking-[0.18em] text-tactas-muted-soft">Output</p>
+                                      <p class="mt-1.5 text-[13px] leading-relaxed text-tactas-muted">
+                                        Compared current TactasAI keywords with older Search Console data, reviewed high-ranking Google content, and mapped competitor positioning across Glean, Manus, AI workflow automation tools, AI knowledge bases, and managed agent platforms.
+                                      </p>
+                                    </section>
+
+                                    <section>
+                                      <p class="font-mono text-[9.5px] uppercase tracking-[0.18em] text-tactas-muted-soft">Findings</p>
+                                      <div class="mt-1.5 grid gap-2">
+                                        {[
+                                          "Glean is strongest around enterprise knowledge and workplace search.",
+                                          "Manus is shifting toward a sandbox-style AI workspace, competing more directly for open-ended agent execution.",
+                                          "Most competing pages repeat the same \"AI agents automate workflows\" message, leaving room for TactasAI to own a clearer category: managed agent systems for business operations.",
+                                        ].map((finding) => (
+                                          <div class="flex gap-2.5">
+                                            <Check class="mt-0.5 h-3.5 w-3.5 shrink-0 text-tactas-accent" stroke-width={2.6} />
+                                            <p class="text-[13px] leading-relaxed text-tactas-muted">{finding}</p>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </section>
+
+                                    <section>
+                                      <p class="font-mono text-[9.5px] uppercase tracking-[0.18em] text-tactas-muted-soft">Recommended next pages</p>
+                                      <div class="mt-2 grid gap-1.5 sm:grid-cols-2">
+                                        {[
+                                          "Glean alternative",
+                                          "Manus alternative",
+                                          "AI workflow automation",
+                                          "Managed AI agents",
+                                          "AI agents for internal operations",
+                                          "AI customer support automation",
+                                          "Enterprise knowledge agents",
+                                        ].map((page) => (
+                                          <span class="rounded-[5px] border border-tactas-line-soft bg-tactas-bg px-2 py-1 text-[11.5px] font-semibold text-tactas-ink">
+                                            {page}
+                                          </span>
+                                        ))}
+                                      </div>
+                                    </section>
+
+                                    <section class="rounded-[8px] border border-tactas-accent-line bg-tactas-accent-soft p-3">
+                                      <p class="font-mono text-[9.5px] uppercase tracking-[0.18em] text-tactas-accent-strong">Next</p>
+                                      <p class="mt-1.5 text-[12.5px] font-semibold leading-relaxed text-tactas-accent-strong">
+                                        Turn this into content briefs with target keywords, SERP angle, page outline, proof points, and CTA.
+                                      </p>
+                                    </section>
+                                  </div>
+
+                                  <div class="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-tactas-line-soft pt-3">
+                                    <div class="flex items-center gap-1.5 text-[10.5px] text-tactas-muted-soft">
+                                      <Sparkles class="h-3 w-3 text-tactas-accent" stroke-width={2} />
+                                      Search position &middot; competitor map &middot; page backlog
+                                    </div>
+                                    <button type="button" class="inline-flex items-center gap-1 rounded-[4px] border border-tactas-line-soft bg-white px-2.5 py-1 text-[11px] font-semibold text-tactas-muted transition hover:border-tactas-accent hover:text-tactas-accent">
+                                      Create briefs
+                                      <ArrowUpRight class="h-3 w-3" stroke-width={2} />
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="flex justify-end">
+                              <div class="flex max-w-[78%] flex-col items-end gap-1">
+                                <div class="rounded-[12px] rounded-br-[3px] bg-tactas-accent px-3.5 py-2.5 text-[14px] leading-relaxed text-white shadow-[0_8px_20px_-16px_rgba(15,23,42,0.5)]">
+                                  Turn this into content briefs with target keywords, SERP angle, page outline, proof points, and CTA.
+                                </div>
+                                <p class="flex items-center gap-1 pr-1 text-[10px] text-tactas-muted-soft">
+                                  <span>Marketing &middot; 2:18 PM</span>
+                                  <CheckCheck class="h-3 w-3 text-tactas-accent" stroke-width={2.2} />
+                                </p>
+                              </div>
+                            </div>
+                          </>
+                        )}
+
+                        {op.id === "workspace" && (
+                          <>
+                            <div class="flex justify-end">
+                              <div class="flex max-w-[82%] flex-col items-end gap-1">
+                                <div class="rounded-[12px] rounded-br-[3px] bg-tactas-accent px-3.5 py-2.5 text-[14px] leading-relaxed text-white shadow-[0_8px_20px_-16px_rgba(15,23,42,0.5)]">
+                                  Which open requests are likely to stall before Friday?
+                                </div>
+                                <p class="flex items-center gap-1 pr-1 text-[10px] text-tactas-muted-soft">
+                                  <span>Team &middot; 4:18 PM</span>
+                                  <CheckCheck class="h-3 w-3 text-tactas-accent" stroke-width={2.2} />
+                                </p>
+                              </div>
+                            </div>
+
+                            <div class="flex gap-2.5">
+                              <span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-[7px] bg-tactas-accent-soft text-tactas-accent ring-1 ring-tactas-accent-line">
+                                <Bot class="h-3.5 w-3.5" stroke-width={2} />
+                              </span>
+                              <div class="flex max-w-[88%] flex-1 flex-col gap-1.5">
+                                <div class="flex items-baseline gap-2">
+                                  <p class="text-[11.5px] font-semibold text-tactas-ink">{op.name}</p>
+                                  <p class="text-[10px] text-tactas-muted-soft">4:18 PM</p>
+                                </div>
+                                <div class="rounded-[12px] rounded-bl-[3px] border border-tactas-line-soft border-l-[3px] border-l-tactas-accent bg-white px-3.5 py-3 text-[14px] leading-relaxed text-tactas-muted shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
+                                  <p>Reviewing inboxes, task lists, CRM notes, calendar deadlines, and owner assignments.</p>
+                                  <div class="mt-2.5 flex flex-wrap gap-1.5 border-t border-tactas-line-soft pt-2.5">
+                                    {["Inbox", "Tasks", "CRM", "Calendar"].map((source) => (
+                                      <span class="inline-flex items-center gap-1 rounded-full border border-tactas-accent-line bg-tactas-accent-soft px-2 py-0.5 text-[10.5px] font-semibold text-tactas-accent-strong">
+                                        <Check class="h-2.5 w-2.5" stroke-width={2.8} />
+                                        {source}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="flex gap-2.5">
+                              <span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-[7px] bg-tactas-accent-soft text-tactas-accent ring-1 ring-tactas-accent-line">
+                                <Bot class="h-3.5 w-3.5" stroke-width={2} />
+                              </span>
+                              <div class="flex max-w-[92%] flex-1 flex-col gap-1.5">
+                                <div class="flex items-baseline gap-2">
+                                  <p class="text-[11.5px] font-semibold text-tactas-ink">Follow-up queue</p>
+                                  <p class="text-[10px] text-tactas-muted-soft">4:19 PM</p>
+                                </div>
+                                <div class="rounded-[12px] rounded-bl-[3px] border border-tactas-line-soft border-l-[3px] border-l-tactas-accent bg-white px-4 py-3.5 shadow-[0_8px_20px_-18px_rgba(15,23,42,0.25)]">
+                                  <div class="grid gap-2.5">
+                                    {[
+                                      ["Customer reply", "waiting on owner input before the response can be sent.", "High"],
+                                      ["Setup request", "missing one detail before onboarding can continue.", "Med"],
+                                      ["Project handoff", "needs a status update before the end of day.", "High"],
+                                    ].map(([label, value, prio]) => (
+                                      <div class="flex items-start gap-2.5">
+                                        <Check class="mt-0.5 h-3.5 w-3.5 shrink-0 text-tactas-accent" stroke-width={2.6} />
+                                        <div class="flex-1">
+                                          <p class="text-[13.5px] leading-relaxed text-tactas-muted">
+                                            <span class="font-semibold text-tactas-ink">{label}:</span> {value}
+                                          </p>
+                                        </div>
+                                        <span class:list={[
+                                          "shrink-0 rounded-full px-1.5 py-0.5 font-mono text-[9.5px] font-semibold uppercase tracking-wider",
+                                          prio === "High" ? "bg-tactas-danger-soft text-tactas-danger" : "bg-tactas-warning-soft text-tactas-warning-strong",
+                                        ]}>{prio}</span>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="flex justify-end">
+                              <div class="flex max-w-[78%] flex-col items-end gap-1">
+                                <div class="rounded-[12px] rounded-br-[3px] bg-tactas-accent px-3.5 py-2.5 text-[14px] leading-relaxed text-white shadow-[0_8px_20px_-16px_rgba(15,23,42,0.5)]">
+                                  Draft the follow-ups and assign the owners.
+                                </div>
+                                <p class="flex items-center gap-1 pr-1 text-[10px] text-tactas-muted-soft">
+                                  <span>Team &middot; 4:20 PM</span>
+                                  <CheckCheck class="h-3 w-3 text-tactas-accent" stroke-width={2.2} />
+                                </p>
+                              </div>
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div class="border-t border-tactas-line-soft bg-white p-3 sm:px-4 sm:py-3.5">
+                  <div class="rounded-[10px] border border-tactas-line-strong bg-tactas-bg-soft shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition focus-within:border-tactas-accent focus-within:bg-white focus-within:shadow-[0_0_0_3px_rgba(6,182,212,0.2)]">
+                    <div class="flex items-center gap-2 px-3.5 py-2.5">
+                      <p class="flex-1 text-[13.5px] text-tactas-muted-soft">Ask Tactas to handle work&hellip;</p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-tactas-line-soft/80 px-2 py-1.5">
+                      <div class="flex items-center gap-0.5 text-tactas-muted-soft">
+                        <button type="button" class="inline-flex h-7 items-center gap-1 rounded-[5px] px-2 text-[11px] font-medium transition hover:bg-white hover:text-tactas-ink" aria-label="Attach file">
+                          <Paperclip class="h-3.5 w-3.5" stroke-width={1.9} />
+                          <span class="hidden sm:inline">Attach</span>
+                        </button>
+                        <button type="button" class="inline-flex h-7 items-center gap-1 rounded-[5px] px-2 text-[11px] font-medium transition hover:bg-white hover:text-tactas-ink" aria-label="Suggest action">
+                          <Sparkles class="h-3.5 w-3.5" stroke-width={1.9} />
+                          <span class="hidden sm:inline">Suggest</span>
+                        </button>
+                        <span class="ml-1 hidden h-3.5 w-px bg-tactas-line-soft sm:block"></span>
+                        <span class="ml-1.5 hidden items-center gap-1 rounded-full bg-tactas-success-soft px-2 py-0.5 text-[10px] font-medium text-tactas-success-strong sm:flex">
+                          <ShieldCheck class="h-3 w-3" stroke-width={2} />
+                          Automated
+                        </span>
+                      </div>
+                      <button type="button" class="inline-flex h-8 items-center gap-1.5 rounded-[6px] bg-tactas-accent px-3.5 text-[12px] font-semibold text-white transition hover:bg-tactas-accent" aria-label="Send message">
+                        Send
+                        <Send class="h-3.5 w-3.5" stroke-width={2} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <aside class="hidden border-t border-tactas-line-soft bg-tactas-bg-soft lg:block lg:border-t-0 lg:border-l" aria-label="Task context">
+                {exampleOperators.map((op, idx) => (
+                  <div
+                    id={`example-context-${op.id}`}
+                    class:list={[
+                      "example-context flex h-full flex-col px-4 py-4",
+                      idx === 0 ? "" : "hidden",
+                    ]}
+                  >
+                    <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-muted-soft">Task context</p>
+
+                    <div class="mt-4 space-y-3">
+                      <div class="rounded-[8px] border border-tactas-line-soft bg-white p-3">
+                        <p class="font-mono text-[9.5px] uppercase tracking-[0.18em] text-tactas-muted-soft">Intent</p>
+                        <p class="mt-1.5 text-[12.5px] font-semibold leading-snug text-tactas-ink">{op.intent}</p>
+                      </div>
+                      <div class="rounded-[8px] border border-tactas-line-soft bg-white p-3">
+                        <p class="font-mono text-[9.5px] uppercase tracking-[0.18em] text-tactas-muted-soft">Sources</p>
+                        <p class="mt-1.5 text-[12px] leading-relaxed text-tactas-muted">{op.sources}</p>
+                      </div>
+                      <div class="rounded-[8px] border border-tactas-line-soft bg-white p-3">
+                        <p class="font-mono text-[9.5px] uppercase tracking-[0.18em] text-tactas-muted-soft">Suggested next step</p>
+                        <p class="mt-1.5 text-[12.5px] font-semibold text-tactas-accent">{op.nextAction}</p>
+                      </div>
+                    </div>
+
+                    <div class="mt-4 rounded-[8px] border border-tactas-line-soft bg-white p-3">
+                      <div class="flex items-center justify-between">
+                        <p class="font-mono text-[9.5px] uppercase tracking-[0.18em] text-tactas-muted-soft">Connectors</p>
+                        <span class="text-[11px] font-semibold text-tactas-ink">{op.connectors}</span>
+                      </div>
+                      <div class="mt-2 flex flex-wrap gap-1">
+                        {op.sources.split(", ").slice(0, 4).map((source) => (
+                          <span class="rounded-[4px] border border-tactas-line-soft bg-tactas-bg px-1.5 py-0.5 text-[10px] font-medium text-tactas-muted-soft">
+                            {source}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div class="mt-auto pt-4">
+                      <div class="rounded-[8px] border border-tactas-accent-line bg-tactas-accent-soft p-3">
+                        <div class="flex items-center gap-2">
+                          <ShieldCheck class="h-3.5 w-3.5 text-tactas-accent-strong" stroke-width={2} />
+                          <p class="text-[11px] font-semibold text-tactas-accent-strong">Operating flow</p>
+                        </div>
+                        <p class="mt-1.5 text-[11px] leading-relaxed text-tactas-accent-strong">
+                          Each task keeps the request, sources, prepared output, and next action together.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+<style is:global>
+
+  .example-conversation [class*="border-l-tactas-accent"] {
+    background-image: linear-gradient(180deg, var(--bg-raised) 0%, var(--bg) 100%);
+  }
+
+  .example-panel.is-playing .example-conversation > * {
+    animation: tactas-message-in 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--message-index, 0) * 420ms);
+  }
+
+  .example-panel.is-playing .example-conversation > *:first-child {
+    animation-duration: 300ms;
+  }
+
+  .example-panel.is-playing .example-conversation > *:has(.tactas-dot) {
+    animation-duration: 360ms;
+  }
+
+  .tactas-dot {
+    animation: tactas-typing 1.2s ease-in-out infinite;
+  }
+
+  @keyframes tactas-message-in {
+    0% {
+      opacity: 0;
+      transform: translateY(10px) scale(0.985);
+      filter: blur(3px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes tactas-typing {
+    0%, 60%, 100% { opacity: 0.35; transform: translateY(0); }
+    30% { opacity: 1; transform: translateY(-2px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .example-panel.is-playing .example-conversation > *,
+    .tactas-dot {
+      animation: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const ACTIVE_CLASSES = [
+      "border-tactas-accent-line",
+      "bg-white",
+      "shadow-[inset_3px_0_0_0_var(--accent),0_12px_26px_-22px_rgba(8,145,178,0.45)]",
+    ];
+    const INACTIVE_CLASSES = ["border-transparent", "hover:border-tactas-line-soft", "hover:bg-white"];
+
+    const syncExampleTabs = () => {
+      const tabs = Array.from(document.querySelectorAll("[data-example-tab]"));
+      const panels = Array.from(document.querySelectorAll(".example-panel"));
+      const contexts = Array.from(document.querySelectorAll(".example-context"));
+      if (!tabs.length || !panels.length) return;
+
+      const preparePanel = (panel) => {
+        const items = Array.from(panel.querySelectorAll(".example-conversation > *"));
+        items.forEach((item, index) => {
+          item.style.setProperty("--message-index", String(index));
+        });
+      };
+
+      const playPanel = (panel) => {
+        if (!panel) return;
+        panel.classList.remove("is-playing");
+        void panel.offsetWidth;
+        panel.classList.add("is-playing");
+      };
+
+      panels.forEach(preparePanel);
+      playPanel(panels.find((panel) => !panel.classList.contains("hidden")));
+
+      tabs.forEach((tab) => {
+        if (tab.dataset.exampleBound === "true") return;
+        tab.dataset.exampleBound = "true";
+        tab.addEventListener("click", () => {
+          const target = tab.getAttribute("data-example-tab");
+          let activePanel = null;
+          tabs.forEach((item) => {
+            const active = item === tab;
+            item.setAttribute("aria-selected", active ? "true" : "false");
+            ACTIVE_CLASSES.forEach((cls) => item.classList.toggle(cls, active));
+            INACTIVE_CLASSES.forEach((cls) => item.classList.toggle(cls, !active));
+          });
+          panels.forEach((panel) => {
+            const active = panel.id === `example-panel-${target}`;
+            panel.classList.toggle("hidden", !active);
+            panel.classList.toggle("is-playing", false);
+            if (active) activePanel = panel;
+          });
+          contexts.forEach((ctx) => {
+            ctx.classList.toggle("hidden", ctx.id !== `example-context-${target}`);
+          });
+          playPanel(activePanel);
+        });
+      });
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", syncExampleTabs, { once: true });
+    } else {
+      syncExampleTabs();
+    }
+
+    document.addEventListener("astro:page-load", syncExampleTabs);
+  })();
+</script>
