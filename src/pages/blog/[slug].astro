@@ -302,6 +302,18 @@ const jsonLd = {
             })}
           </div>
 
+          {post.useCaseCta && (
+            <a href={post.useCaseCta.href} class="group mt-14 block border border-tactas-accent-line bg-white p-6 shadow-[0_24px_70px_-58px_rgba(7,50,74,0.42)] transition hover:border-tactas-accent-strong">
+              <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-tactas-accent-strong">Related use case</p>
+              <h2 class="mt-3 text-[24px] font-semibold leading-tight tracking-normal text-tactas-ink-strong">{post.useCaseCta.label}</h2>
+              <p class="mt-3 text-[15px] leading-relaxed text-tactas-muted">{post.useCaseCta.description}</p>
+              <span class="mt-5 inline-flex items-center text-[14px] font-semibold text-tactas-ink-strong transition group-hover:text-tactas-accent-strong">
+                Open use case
+                <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-1" stroke-width={2} />
+              </span>
+            </a>
+          )}
+
           <AskAIReviewSection class="mt-14" />
 
           <CTASection

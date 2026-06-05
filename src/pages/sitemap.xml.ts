@@ -40,6 +40,8 @@ export const GET = (() => {
     { path: "/product/deep-research", changefreq: "weekly", priority: "0.9" },
     { path: "/product/ai-knowledge-base", changefreq: "weekly", priority: "0.9" },
     { path: "/use-cases", changefreq: "weekly", priority: "0.85" },
+    { path: "/use-cases/customer-support-ai-agent", changefreq: "weekly", priority: "0.84" },
+    { path: "/use-cases/sales-lead-qualification-agent", changefreq: "weekly", priority: "0.84" },
     { path: "/use-cases/ai-customer-support-automation", changefreq: "weekly", priority: "0.82" },
     { path: "/use-cases/ai-back-office-automation", changefreq: "weekly", priority: "0.82" },
     { path: "/use-cases/ai-crm-workflow-automation", changefreq: "weekly", priority: "0.82" },

@@ -1,0 +1,103 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import UseCaseDetailPage from "../../components/UseCaseDetailPage.astro";
+import { getBrandEmail, getSiteUrl } from "../../lib/site";
+
+const siteUrl = getSiteUrl();
+const pageUrl = `${siteUrl}/use-cases/sales-lead-qualification-agent`;
+const brandEmail = getBrandEmail();
+const title = "Sales Lead Qualification Agent | Tactas AI";
+const description =
+  "A managed sales lead qualification agent that scores inbound leads, enriches account context, routes opportunities, and prepares follow-up with human review.";
+
+const props = {
+  siteUrl,
+  currentPath: "/use-cases/sales-lead-qualification-agent",
+  eyebrow: "Sales lead qualification agent",
+  title: "Sales lead qualification agent for inbound revenue teams.",
+  description:
+    "Tactas AI helps sales and revenue operations teams turn inbound leads, CRM records, account signals, enrichment, and sales playbooks into fit scores, routing recommendations, and reviewed follow-up.",
+  primaryKeyword: "sales lead qualification agent",
+  secondaryKeywords: ["AI lead qualification agent", "inbound lead qualification AI", "AI lead routing", "CRM workflow automation"],
+  fit: [
+    { title: "Inbound leads need fast review", body: "Demo requests, contact forms, trial signups, and pricing inquiries lose value when qualification is slow." },
+    { title: "Context lives across systems", body: "A good next step depends on CRM history, form data, enrichment, account ownership, product usage, and sales playbook rules." },
+    { title: "Routing is inconsistent", body: "Leads get delayed, duplicated, or misrouted when ownership, territory, and fit logic are checked manually." },
+    { title: "Follow-up should be reviewed", body: "Commercial judgment, pricing, account ownership, and customer promises need human approval in the first version." },
+  ],
+  workflow: [
+    { title: "Lead arrives", body: "A demo request, trial signup, form fill, referral, webinar lead, or inbound email starts qualification." },
+    { title: "Enrich account context", body: "The agent checks CRM history, ownership, company profile, source, prior conversations, and product signals." },
+    { title: "Score fit and intent", body: "AI compares the lead against ICP criteria, disqualification rules, segment logic, and intent signals." },
+    { title: "Recommend routing", body: "The agent prepares an owner recommendation, missing data checklist, priority level, and risk flags." },
+    { title: "Draft follow-up", body: "The team receives a CRM note, task, and reviewed outreach draft ready for approval." },
+  ],
+  outcomes: [
+    { title: "Faster speed-to-lead", body: "Move high-intent leads from form fill to reviewed next action with less manual research." },
+    { title: "Cleaner lead routing", body: "Reduce duplicate records, ownership confusion, and delayed handoffs across sales teams." },
+    { title: "Better qualification context", body: "Give reps account briefs, fit reasons, intent signals, and missing data before outreach." },
+    { title: "More consistent CRM updates", body: "Stage notes, tasks, tags, and follow-up context using repeatable revenue operations rules." },
+  ],
+  integrations: ["HubSpot", "Salesforce", "Pipedrive", "Gmail", "Outlook", "Slack", "Clearbit", "Apollo", "Product analytics", "Internal APIs"],
+  faqs: [
+    { title: "Is this the same as lead scoring?", body: "No. Lead scoring is one output. A sales lead qualification agent also gathers context, explains fit, detects routing issues, drafts follow-up, and prepares CRM work." },
+    { title: "Can the agent send sales emails automatically?", body: "The first version should draft follow-up for review. Low-risk internal updates can be automated once the team trusts the workflow." },
+    { title: "What is the best first sales workflow?", body: "Start with high-intent inbound leads such as demo requests or pricing inquiries where CRM data, ICP rules, and routing logic are clear." },
+  ],
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebPage", "@id": `${pageUrl}#webpage`, name: title, url: pageUrl, description, isPartOf: { "@id": `${siteUrl}/#website` }, inLanguage: "en-US" },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
+      name: "Sales Lead Qualification Agent",
+      serviceType: ["Sales lead qualification agent", "AI lead qualification agent", "Inbound lead qualification AI", "AI lead routing"],
+      url: pageUrl,
+      description,
+      provider: { "@id": `${siteUrl}/#organization` },
+      areaServed: "Worldwide",
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: props.faqs.map((item) => ({ "@type": "Question", name: item.title, acceptedAnswer: { "@type": "Answer", text: item.body } })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "Use Cases", item: `${siteUrl}/use-cases` },
+        { "@type": "ListItem", position: 3, name: "Sales Lead Qualification Agent", item: pageUrl },
+      ],
+    },
+    { "@type": "ContactPoint", contactType: "sales", email: brandEmail, areaServed: "Worldwide", availableLanguage: ["en", "vi"] },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="/use-cases/sales-lead-qualification-agent"
+  currentPath="/use-cases/sales-lead-qualification-agent"
+  navbarTheme="light"
+  navbarCtaLabel="Book a review"
+  keywords={[
+    "sales lead qualification agent",
+    "AI lead qualification agent",
+    "inbound lead qualification AI",
+    "AI sales operations automation",
+    "lead scoring AI agent",
+    "AI lead routing",
+    "CRM workflow automation",
+    "AI agent for sales teams",
+  ]}
+  openGraph={{ title, description, url: pageUrl, type: "website", images: [{ url: "/tactas-ai-managed-agent-systems-og.jpg", width: 1734, height: 907, alt: "Sales lead qualification agent for inbound revenue teams" }] }}
+  twitter={{ card: "summary_large_image", title, description, images: ["/tactas-ai-managed-agent-systems-og.jpg"] }}
+  jsonLd={jsonLd}
+>
+  <UseCaseDetailPage {...props} />
+</BaseLayout>

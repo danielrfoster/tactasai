@@ -27,6 +27,10 @@ export interface BlogPost {
   };
   keywords: string[];
   summary: string;
+  useCaseCta?: {
+    label: string;
+    href: string;
+    description: string;
+  };
   sections: BlogPostSection[];
 }
-
