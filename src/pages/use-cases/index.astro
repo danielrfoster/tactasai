@@ -1,25 +1,45 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import UseCasesIndexPage from "../../components/UseCasesIndexPage.astro";
-import { getSiteUrl } from "../../lib/site";
+import { getOrganization, getSiteUrl } from "../../lib/site";
+import { useCases } from "../../lib/useCases";
 
 const siteUrl = getSiteUrl();
+const organization = getOrganization();
 const pageUrl = `${siteUrl}/use-cases`;
-const title = "Business Task Automation Use Cases | Tactas AI";
+const ogImage = "/tactas-ai-use-case-hub-ai-agent-workflows-og.jpg";
+const ogImageUrl = `${siteUrl}${ogImage}`;
+const title = "Enterprise AI Agent Use Case Hub | Tactas AI";
 const description =
-  "Explore how managed AI agents use company knowledge, business context, and connected tools to answer with context, prepare next steps, track open work, and automate repeated business tasks.";
+  "Explore enterprise AI agent use cases for Ops and RevOps teams, including inputs, systems, workflow steps, guardrails, metrics, implementation notes, and structured task review.";
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
+    organization,
     {
       "@type": "CollectionPage",
       "@id": `${pageUrl}#collectionpage`,
-      name: "Business Task Automation Use Cases",
+      name: "Enterprise AI Agent Use Case Hub",
       url: pageUrl,
       description,
       isPartOf: { "@id": `${siteUrl}/#website` },
       inLanguage: "en-US",
+      primaryImageOfPage: ogImageUrl,
+      mainEntity: { "@id": `${pageUrl}#itemlist` },
+    },
+    {
+      "@type": "ItemList",
+      "@id": `${pageUrl}#itemlist`,
+      name: "Tactas AI enterprise use case library",
+      numberOfItems: useCases.length,
+      itemListElement: useCases.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.title,
+        description: item.summary,
+        url: `${siteUrl}/use-cases/${item.slug}`,
+      })),
     },
     {
       "@type": "BreadcrumbList",
@@ -41,6 +61,8 @@ const jsonLd = {
   navbarCtaLabel="Book a review"
   keywords={[
     "business task automation use cases",
+    "enterprise AI agent use cases",
+    "AI agent use case hub",
     "managed AI agents",
     "AI agents for business operations",
     "company knowledge automation",
@@ -56,10 +78,10 @@ const jsonLd = {
     type: "website",
     images: [
       {
-        url: "/tactas-ai-managed-agent-systems-og.jpg",
-        width: 1734,
-        height: 907,
-        alt: "Tactas AI business task automation use cases",
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: "Tactas AI use case hub for AI agent workflows",
       },
     ],
   }}
@@ -67,7 +89,7 @@ const jsonLd = {
     card: "summary_large_image",
     title,
     description,
-    images: ["/tactas-ai-managed-agent-systems-og.jpg"],
+    images: [ogImage],
   }}
   jsonLd={jsonLd}
 >

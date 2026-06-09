@@ -116,8 +116,9 @@ const navGroups: NavGroup[] = [
         title: "Explore",
         links: [
           { label: "Blog", href: "/blog" },
+          { label: "Docs", href: "https://docs.tactasai.com" },
           { label: "AI Agent Prompt Library", href: "/ai-agent-prompt-library" },
-          { label: "Task Examples", href: "/use-cases" },
+          { label: "Use Case Hub", href: "/use-cases" },
           { label: "Automation Guide", href: "/product/ai-workflow-automation" },
           { label: "AI Operating Layer", href: "/#platform" },
           { label: "Connected Tools", href: "/#platform" },
@@ -138,7 +139,7 @@ const navGroups: NavGroup[] = [
         title: "Core Areas",
         links: [
           { label: "Managed AI Agents", href: "/product/ai-workflow-automation" },
-          { label: "Business Task Automation", href: "/use-cases" },
+          { label: "AI Agent Use Cases", href: "/use-cases" },
           { label: "Company Knowledge", href: "/product/ai-knowledge-base" },
           { label: "Connected Business Tools", href: "/#platform" },
           { label: "Work Performance", href: "/#solutions" },
@@ -162,7 +163,7 @@ const navGroups: NavGroup[] = [
       {
         title: "Explore",
         links: [
-          { label: "Task Examples", href: "/use-cases" },
+          { label: "Use Case Hub", href: "/use-cases" },
           { label: "Connected Tools", href: "/#platform" },
           { label: "Company Knowledge", href: "/product/ai-knowledge-base" },
           { label: "Pricing", href: "/pricing" },
@@ -676,11 +677,15 @@ const isActive = (href: string) => {
         </a>
         <a href="/use-cases" class="inline-flex items-center gap-2" data-mobile-link>
           <FileText class="h-4 w-4 text-tactas-accent" stroke-width={1.8} />
-          Task examples
+          Use case hub
         </a>
         <a href="/blog" class="inline-flex items-center gap-2" data-mobile-link>
           <FileText class="h-4 w-4 text-tactas-accent" stroke-width={1.8} />
           Blog
+        </a>
+        <a href="https://docs.tactasai.com" class="inline-flex items-center gap-2" data-mobile-link>
+          <FileText class="h-4 w-4 text-tactas-accent" stroke-width={1.8} />
+          Docs
         </a>
         <a href="/contact" class="inline-flex items-center gap-2" data-mobile-link>
           <Briefcase class="h-4 w-4 text-tactas-accent" stroke-width={1.8} />

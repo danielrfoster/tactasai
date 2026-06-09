@@ -1,138 +1,134 @@
 ---
-import { ArrowRight, Briefcase, FileText, Mail, Send, Sparkles, TrendingUp, Workflow } from "@lucide/astro";
+import { ArrowRight, Bot, Briefcase, Database, FileText, Plus, Search, ShieldCheck, Sparkles, Workflow } from "@lucide/astro";
 import { getBrandEmail } from "../lib/site";
+import {
+  getFeaturedUseCases,
+  outputTypes,
+  useCaseComplexities,
+  useCaseDepartments,
+  useCaseIndustries,
+  useCases,
+  useCaseWorkflowTypes,
+} from "../lib/useCases";
+import UseCaseHubFinder from "./UseCaseHubFinder";
 
 interface Props {
   siteUrl: string;
   currentPath?: string;
 }
 
-const { currentPath = "/use-cases" } = Astro.props;
 const brandEmail = getBrandEmail();
-
-const useCases = [
+const featuredUseCases = getFeaturedUseCases();
+const categoryCards = [
   {
-    title: "Customer Support AI Agent",
-    href: "/use-cases/customer-support-ai-agent",
-    body: "Triage tickets, retrieve support knowledge, draft source-backed replies, and prepare escalations with human review.",
+    label: "Support",
+    href: "#use-case-finder",
+    count: useCases.filter((item) => item.department === "Support").length,
+    body: "Resolution packages, diagnostic assets, escalation workspaces, and reusable support material.",
     icon: FileText,
-    keywords: ["support AI agent", "ticket triage", "source-backed replies"],
   },
   {
-    title: "Sales Lead Qualification Agent",
-    href: "/use-cases/sales-lead-qualification-agent",
-    body: "Score inbound leads, enrich account context, recommend routing, and prepare CRM follow-up for review.",
-    icon: TrendingUp,
-    keywords: ["lead qualification", "CRM workflow", "sales follow-up"],
+    label: "RevOps",
+    href: "#use-case-finder",
+    count: useCases.filter((item) => item.department === "RevOps").length,
+    body: "Account workspaces, scoring workflows, deal packages, and system update proposals.",
+    icon: Briefcase,
   },
   {
-    title: "Answer with Context",
-    href: "/use-cases/ai-customer-support-automation",
-    body: "Use company knowledge, business data, and source context to answer repeated requests with useful next steps.",
-    icon: FileText,
-    keywords: ["company knowledge", "source context", "faster answers"],
-  },
-  {
-    title: "Automate Repeated Updates",
-    href: "/use-cases/ai-back-office-automation",
-    body: "Turn recurring status updates, document summaries, record changes, and routine coordination into managed agent work.",
+    label: "Operations",
+    href: "#use-case-finder",
+    count: useCases.filter((item) => item.department === "Operations").length,
+    body: "Reusable operating workflows, work queues, approval packages, and status assets.",
     icon: Workflow,
-    keywords: ["repeated tasks", "connected tools", "automated updates"],
   },
   {
-    title: "Prepare Next Steps",
-    href: "/use-cases/ai-crm-workflow-automation",
-    body: "Summarize business context, create follow-up drafts, recommend owners, and keep open work moving across tools.",
-    icon: TrendingUp,
-    keywords: ["next steps", "work handoff", "task follow-up"],
+    label: "Security",
+    href: "#use-case-finder",
+    count: useCases.filter((item) => item.department === "Security").length,
+    body: "Evidence workspaces, access review systems, risk packages, and incident assets.",
+    icon: ShieldCheck,
   },
-];
-
-const evaluationPoints = [
-  "Repeated often enough to improve team performance",
-  "Uses knowledge, context, or data your business already has",
-  "Can produce a clear output, update, next step, or action",
-  "Connects naturally to the tools where work already happens",
 ];
 ---
 
-<div class="min-h-screen bg-tactas-bg text-tactas-ink selection:bg-tactas-accent/20">
+<div class="min-h-screen bg-[#fbfaf7] text-tactas-ink selection:bg-tactas-accent/20">
   <main>
-    <section class="relative overflow-hidden border-b border-tactas-line bg-tactas-bg">
-      <div class="pointer-events-none absolute inset-x-0 top-0 h-px tactas-gradient-rule"></div>
-      <div class={`tactas-container grid min-h-[620px] items-center gap-12 py-16 lg:grid-cols-[0.92fr_1.08fr] lg:py-20`}>
-        <div class="reveal">
-          <div class="mb-8 inline-flex items-center rounded-full bg-tactas-accent px-4 py-2 text-[14px] font-medium text-white shadow-[0_14px_32px_-24px_rgba(6,174,234,0.9)]">
-            Business task examples
-          </div>
+    <section class="relative overflow-hidden border-b border-black/10 bg-[#fbfaf7]">
+      <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-tactas-accent/70 to-transparent"></div>
+      <div class="mx-auto flex w-full max-w-[1180px] flex-col items-center px-5 pb-12 pt-14 text-center sm:px-8 lg:px-10 lg:pb-16 lg:pt-18">
+        <a href="/" class="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1.5 text-[13px] font-semibold text-tactas-ink shadow-sm">
+          <Bot class="h-4 w-4 text-tactas-accent-strong" stroke-width={1.9} />
+          Tactas AI use cases
+        </a>
 
-          <h1 class="max-w-[860px] text-[clamp(3.4rem,8vw,6.6rem)] font-semibold leading-[0.94] tracking-normal text-tactas-ink-strong">
-            Where managed AI agents create useful work.
-          </h1>
-          <p class="mt-7 max-w-[42rem] text-[18px] leading-relaxed text-tactas-ink-strong/78">
-            Explore practical ways Tactas AI turns company knowledge, business context, and connected tools into answers, outputs, updates, and automated actions.
-          </p>
+        <h1 class="mt-8 max-w-[960px] text-[clamp(3rem,8vw,6.4rem)] font-semibold leading-[0.95] tracking-normal text-tactas-ink-strong">
+          Discover what teams can build with Tactas AI.
+        </h1>
+        <p class="mt-6 max-w-[720px] text-[17px] leading-relaxed text-tactas-muted sm:text-[19px]">
+          Browse practical workflow examples by team, industry, system, and working surface. See what a team could build around repeated business work.
+        </p>
 
-          <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="#use-cases" class="group inline-flex h-12 items-center justify-center rounded-[8px] bg-tactas-primary px-6 text-[14px] font-semibold text-white shadow-[0_16px_34px_-24px_rgba(47,102,255,0.85)] transition hover:bg-tactas-accent">
-              Explore tasks
-              <ArrowRight class="ml-2 h-4 w-4 transition group-hover:translate-x-0.5" stroke-width={1.9} />
-            </a>
-            <a href="#contact" class="inline-flex h-12 items-center justify-center rounded-[8px] border border-tactas-line-strong bg-white/60 px-6 text-[14px] font-semibold text-tactas-ink-strong transition hover:border-tactas-primary hover:text-tactas-primary">
-              Discuss a task
-            </a>
-          </div>
+        <div class="mt-8 flex w-full max-w-[760px] items-center gap-3 rounded-[20px] border border-black/10 bg-white p-2 shadow-[0_24px_70px_-52px_rgba(15,23,42,0.28)]">
+          <Search class="ml-3 h-5 w-5 shrink-0 text-tactas-muted-soft" stroke-width={1.9} />
+          <a href="#use-case-finder" class="flex min-h-12 flex-1 items-center text-left text-[15px] text-tactas-muted-soft">
+            Search 55 workflow examples by team, system, or output
+          </a>
+          <a href="#use-case-finder" class="inline-flex h-11 shrink-0 items-center justify-center rounded-[14px] bg-tactas-ink-strong px-4 text-[13px] font-semibold text-white transition hover:bg-tactas-primary">
+            Explore
+          </a>
         </div>
 
-        <div class="reveal" data-delay="2">
-          <div class="border border-tactas-line bg-white shadow-[0_34px_100px_-72px_rgba(7,50,74,0.42)]">
-            <div class="flex items-center justify-between border-b border-tactas-line-soft bg-tactas-bg px-5 py-4">
-              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-tactas-muted-soft">Task fit</p>
-              <Briefcase class="h-5 w-5 text-tactas-accent" stroke-width={1.8} />
+        <div class="mt-7 flex flex-wrap justify-center gap-2">
+          {["Featured", "Latest", "Popular", "Support", "RevOps", "Operations", "Security", "Ecommerce"].map((item) => (
+            <a href="#use-case-finder" class="rounded-full border border-black/10 bg-white px-4 py-2 text-[13px] font-semibold text-tactas-muted transition hover:border-tactas-accent-line hover:text-tactas-accent-strong">
+              {item}
+            </a>
+          ))}
+        </div>
+
+        <div class="mt-10 grid w-full gap-3 sm:grid-cols-3">
+          {[
+            ["55", "use cases"],
+            [String(useCaseDepartments.length), "teams"],
+            [String(new Set(useCases.flatMap((item) => item.systems)).size), "systems"],
+          ].map(([value, label]) => (
+            <div class="rounded-[16px] border border-black/10 bg-white/70 px-5 py-4">
+              <p class="text-[28px] font-semibold leading-none text-tactas-ink-strong">{value}</p>
+              <p class="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-tactas-muted-soft">{label}</p>
             </div>
-            <div class="grid gap-3 p-5">
-              {evaluationPoints.map((point, index) => (
-                <div class="flex items-start gap-3 border border-tactas-line-soft bg-tactas-bg p-4">
-                  <span class="font-mono text-[11px] text-tactas-accent-strong">{String(index + 1).padStart(2, "0")}</span>
-                  <p class="text-[14px] leading-relaxed text-tactas-muted">{point}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
 
-    <section id="use-cases" class="border-b border-tactas-line bg-tactas-bg">
-      <div class={`tactas-container py-18 lg:py-24`}>
-        <div class="mx-auto max-w-3xl text-center">
-          <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Use case library</p>
-          <h2 class="mt-4 text-[clamp(2rem,4vw,3.2rem)] font-semibold leading-tight tracking-normal text-tactas-ink-strong">
-            Start with tasks where knowledge becomes action.
-          </h2>
+    <section class="border-b border-black/10 bg-white">
+      <div class="mx-auto w-full max-w-[1180px] px-5 py-10 sm:px-8 lg:px-10 lg:py-14">
+        <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div>
+            <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-tactas-accent-strong">Browse by category</p>
+            <h2 class="mt-3 text-[32px] font-semibold leading-tight tracking-normal text-tactas-ink-strong sm:text-[44px]">
+              Start with a team.
+            </h2>
+          </div>
+          <a href="#use-case-finder" class="inline-flex items-center text-[14px] font-semibold text-tactas-accent-strong transition hover:text-tactas-primary-strong">
+            View all categories
+            <ArrowRight class="ml-1.5 h-3.5 w-3.5" stroke-width={1.9} />
+          </a>
         </div>
 
-        <div class="mt-12 grid gap-4 lg:grid-cols-3">
-          {useCases.map((item) => {
-            const Icon = item.icon;
+        <div class="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {categoryCards.map((category) => {
+            const Icon = category.icon;
             return (
-              <a href={item.href} class="group flex min-h-[330px] flex-col justify-between border border-tactas-line bg-white p-6 shadow-[0_24px_70px_-62px_rgba(7,50,74,0.3)] transition hover:-translate-y-0.5 hover:border-tactas-accent/50">
-                <span>
-                  <span class="flex h-12 w-12 items-center justify-center rounded-[8px] border border-tactas-accent-line bg-tactas-accent-soft text-tactas-accent-strong">
+              <a href={category.href} class="group rounded-[18px] border border-black/10 bg-[#fbfaf7] p-5 transition hover:-translate-y-0.5 hover:border-tactas-accent-line hover:bg-white hover:shadow-[0_24px_70px_-56px_rgba(15,23,42,0.25)]">
+                <div class="flex items-center justify-between gap-3">
+                  <span class="flex h-11 w-11 items-center justify-center rounded-[14px] bg-white text-tactas-accent-strong shadow-sm">
                     <Icon class="h-5 w-5" stroke-width={1.8} />
                   </span>
-                  <span class="mt-7 block text-[22px] font-semibold tracking-tight text-tactas-ink-strong">{item.title}</span>
-                  <span class="mt-3 block text-[14px] leading-relaxed text-tactas-muted">{item.body}</span>
-                  <span class="mt-6 flex flex-wrap gap-2">
-                    {item.keywords.map((keyword) => (
-                      <span class="rounded-full border border-tactas-line bg-tactas-bg px-3 py-1 text-[11px] text-tactas-muted">{keyword}</span>
-                    ))}
-                  </span>
-                </span>
-                <span class="mt-8 inline-flex items-center text-[13px] font-semibold text-tactas-accent-strong">
-                  View task
-                  <ArrowRight class="ml-2 h-3.5 w-3.5 transition group-hover:translate-x-0.5" />
-                </span>
+                  <span class="rounded-full border border-black/10 bg-white px-2.5 py-1 font-mono text-[10px] text-tactas-muted-soft">{category.count} cases</span>
+                </div>
+                <h3 class="mt-5 text-[21px] font-semibold tracking-normal text-tactas-ink-strong group-hover:text-tactas-accent-strong">{category.label}</h3>
+                <p class="mt-2 text-[14px] leading-relaxed text-tactas-muted">{category.body}</p>
               </a>
             );
           })}
@@ -140,83 +136,75 @@ const evaluationPoints = [
       </div>
     </section>
 
-    <section id="contact" class="bg-tactas-bg">
-      <div class={`tactas-container py-18 lg:py-24`}>
-        <div class="grid overflow-hidden border border-tactas-line bg-white shadow-[0_34px_100px_-72px_rgba(7,50,74,0.42)] lg:grid-cols-[0.92fr_1.08fr]">
-          <div class="p-7 sm:p-9 lg:p-10">
-            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-tactas-accent-strong">Find the first use case</p>
-            <h2 class="mt-4 text-[clamp(2rem,4vw,3.2rem)] font-semibold leading-tight tracking-normal text-tactas-ink-strong">
-              Not sure which business task to automate first?
+    <section class="border-b border-black/10 bg-[#fbfaf7]">
+      <div class="mx-auto w-full max-w-[1180px] px-5 py-10 sm:px-8 lg:px-10 lg:py-14">
+        <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div>
+            <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-tactas-accent-strong">Featured</p>
+            <h2 class="mt-3 text-[32px] font-semibold leading-tight tracking-normal text-tactas-ink-strong sm:text-[44px]">
+              Highlighted workflows.
             </h2>
-            <p class="mt-5 max-w-[34rem] text-[16px] leading-relaxed text-tactas-muted">
-              Share the repeated work your team handles today. Tactas AI can help map the knowledge, tools, outputs, and automation steps behind a practical first task.
-            </p>
-
-            <div class="mt-8 flex items-center gap-3 text-[14px] text-tactas-muted">
-              <Mail class="h-4 w-4 text-tactas-accent" stroke-width={1.8} />
-              <a href={`mailto:${brandEmail}`} class="border-b border-tactas-accent/55 pb-0.5 transition hover:border-tactas-accent-strong hover:text-tactas-accent-strong">
-                {brandEmail}
-              </a>
-            </div>
           </div>
+          <a href="#use-case-finder" class="inline-flex items-center text-[14px] font-semibold text-tactas-accent-strong transition hover:text-tactas-primary-strong">
+            Browse all {useCases.length}
+            <ArrowRight class="ml-1.5 h-3.5 w-3.5" stroke-width={1.9} />
+          </a>
+        </div>
 
-          <form id="use-case-form" class="border-t border-tactas-line bg-tactas-bg p-7 sm:p-9 lg:border-l lg:border-t-0">
-            <div class="flex items-center justify-between gap-4 border-b border-tactas-line pb-4">
-              <div>
-                <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-tactas-accent-strong">Task review</p>
-                <h3 class="mt-2 text-[24px] font-semibold tracking-tight text-tactas-ink-strong">Describe the business task.</h3>
+        <div class="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {featuredUseCases.map((item, index) => (
+            <a href={`/use-cases/${item.slug}`} class="group overflow-hidden rounded-[20px] border border-black/10 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-[0_28px_80px_-56px_rgba(15,23,42,0.34)]">
+              <div class:list={[
+                "flex min-h-32 items-start justify-between p-5",
+                index % 3 === 0 ? "bg-[linear-gradient(135deg,#e8fbff_0%,#f4f7ff_100%)]" : index % 3 === 1 ? "bg-[linear-gradient(135deg,#f7f1ff_0%,#eef7ff_100%)]" : "bg-[linear-gradient(135deg,#fff7e6_0%,#eefcff_100%)]",
+              ]}>
+                <span class="rounded-full border border-black/10 bg-white/80 px-3 py-1 text-[12px] font-semibold text-tactas-ink">{item.department}</span>
+                <Sparkles class="h-5 w-5 text-tactas-accent-strong" stroke-width={1.8} />
               </div>
-              <Send class="hidden h-5 w-5 text-tactas-accent sm:block" stroke-width={1.8} />
-            </div>
+              <div class="p-5">
+                <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-tactas-muted-soft">Built with Tactas AI</p>
+                <h3 class="mt-3 text-[22px] font-semibold leading-tight tracking-normal text-tactas-ink-strong group-hover:text-tactas-accent-strong">{item.title}</h3>
+                <p class="mt-3 line-clamp-3 text-[14px] leading-relaxed text-tactas-muted">{item.summary}</p>
+                <div class="mt-5 flex flex-wrap gap-2">
+                  <span class="rounded-full bg-tactas-bg px-3 py-1 text-[11px] font-medium text-tactas-muted">{item.workflowType}</span>
+                  <span class="rounded-full bg-tactas-bg px-3 py-1 text-[11px] font-medium text-tactas-muted">{item.primaryOutput}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
 
-            <div class="mt-5 grid gap-4 sm:grid-cols-2">
-              <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-tactas-muted-soft">
-                First name
-                <input required name="name" class="h-11 rounded-[6px] border border-tactas-line-strong bg-white px-3.5 text-[14px] normal-case tracking-normal text-tactas-ink outline-none transition placeholder:text-tactas-muted-soft focus:border-tactas-accent focus:ring-2 focus:ring-tactas-accent/15" placeholder="Your name" />
-              </label>
-              <label class="grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-tactas-muted-soft">
-                Work email
-                <input required type="email" name="email" class="h-11 rounded-[6px] border border-tactas-line-strong bg-white px-3.5 text-[14px] normal-case tracking-normal text-tactas-ink outline-none transition placeholder:text-tactas-muted-soft focus:border-tactas-accent focus:ring-2 focus:ring-tactas-accent/15" placeholder="you@company.com" />
-              </label>
-            </div>
+    <UseCaseHubFinder
+      client:load
+      useCases={useCases}
+      departments={useCaseDepartments}
+      industries={useCaseIndustries}
+      workflowTypes={useCaseWorkflowTypes}
+      complexities={useCaseComplexities}
+      outputTypes={outputTypes}
+      brandEmail={brandEmail}
+    />
 
-            <label class="mt-4 grid gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-tactas-muted-soft">
-              Business task
-              <textarea required name="workflow" class="min-h-32 rounded-[6px] border border-tactas-line-strong bg-white px-3.5 py-3 text-[14px] normal-case tracking-normal text-tactas-ink outline-none transition placeholder:text-tactas-muted-soft focus:border-tactas-accent focus:ring-2 focus:ring-tactas-accent/15" placeholder="Example: summarize updates, answer repeated requests, prepare next steps, track open work..."></textarea>
-            </label>
-
-            <button type="submit" class="mt-6 inline-flex h-12 w-full items-center justify-center rounded-[8px] bg-tactas-primary px-6 text-[14px] font-semibold text-white transition hover:bg-tactas-accent">
-              Request task review
-            </button>
-            <p id="use-case-status" class="mt-3 text-center text-[12px] text-tactas-muted-soft">
-              Prefer email? {brandEmail}
+    <section class="bg-white">
+      <div class="mx-auto w-full max-w-[1180px] px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
+        <div class="rounded-[20px] border border-black/10 bg-tactas-ink-strong p-6 text-white sm:p-8 lg:flex lg:items-center lg:justify-between lg:gap-10">
+          <div>
+            <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-tactas-accent">Share a workflow</p>
+            <h2 class="mt-3 text-[32px] font-semibold leading-tight tracking-normal sm:text-[44px]">
+              Have a repeated task that should be in the library?
+            </h2>
+            <p class="mt-4 max-w-[620px] text-[15px] leading-relaxed text-white/72">
+              Send the task, systems, and working surface you want. Tactas AI can help shape the workflow around it.
             </p>
-          </form>
+          </div>
+          <a href="#task-fit" class="mt-7 inline-flex h-12 items-center justify-center rounded-[14px] bg-white px-5 text-[14px] font-semibold text-tactas-ink-strong transition hover:bg-tactas-accent hover:text-white lg:mt-0">
+            <Plus class="mr-2 h-4 w-4" stroke-width={2} />
+            Submit use case
+          </a>
         </div>
       </div>
     </section>
   </main>
 </div>
-
-<script define:vars={{ brandEmail }} is:inline>
-  const useCaseForm = document.getElementById("use-case-form");
-  const useCaseStatus = document.getElementById("use-case-status");
-  useCaseForm?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const form = new FormData(useCaseForm);
-    const subject = encodeURIComponent("Business task automation review");
-    const body = encodeURIComponent(
-      [
-        `Name: ${String(form.get("name") || "")}`,
-        `Work email: ${String(form.get("email") || "")}`,
-        "",
-        "Business task:",
-        String(form.get("workflow") || ""),
-      ].join("\n"),
-    );
-    if (useCaseStatus) {
-      useCaseStatus.textContent = "Opening your email client with the task details.";
-    }
-    window.location.href = `mailto:${brandEmail}?subject=${subject}&body=${body}`;
-  });
-</script>

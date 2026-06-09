@@ -1,0 +1,138 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getBrandEmail, getOrganization, getSiteUrl } from "../../lib/site";
+import { getRelatedUseCases, getUseCaseBySlug, useCases } from "../../lib/useCases";
+import UseCaseDetailPage from "../../components/UseCaseDetailPage.astro";
+
+export function getStaticPaths() {
+  return useCases.map((useCase) => ({
+    params: { slug: useCase.slug },
+    props: { slug: useCase.slug },
+  }));
+}
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const useCase = getUseCaseBySlug(slug);
+
+if (!useCase) {
+  throw new Error(`Use case not found: ${slug}`);
+}
+
+const siteUrl = getSiteUrl();
+const pageUrl = `${siteUrl}/use-cases/${useCase.slug}`;
+const ogImage = "/tactas-ai-use-case-hub-ai-agent-workflows-og.jpg";
+const ogImageUrl = `${siteUrl}${ogImage}`;
+const brandEmail = getBrandEmail();
+const organization = getOrganization();
+const relatedUseCases = getRelatedUseCases(useCase, 4);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    organization,
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      name: useCase.metaTitle,
+      url: pageUrl,
+      description: useCase.metaDescription,
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      inLanguage: "en-US",
+      primaryImageOfPage: ogImageUrl,
+      breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+      about: { "@id": `${pageUrl}#service` },
+    },
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
+      name: useCase.title,
+      serviceType: useCase.schemaServiceTypes,
+      url: pageUrl,
+      description: useCase.summary,
+      image: ogImageUrl,
+      provider: { "@id": `${siteUrl}/#organization` },
+      areaServed: "Worldwide",
+      audience: {
+        "@type": "BusinessAudience",
+        audienceType: useCase.buyerRole,
+      },
+      category: [useCase.department, useCase.industry, useCase.workflowType],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: `${useCase.title} operating model`,
+        itemListElement: useCase.usefulThings.map((output, index) => ({
+          "@type": "Offer",
+          position: index + 1,
+          itemOffered: {
+            "@type": "Service",
+            name: output.title,
+            description: output.body,
+          },
+        })),
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: useCase.faqs.map((item) => ({
+        "@type": "Question",
+        name: item.title,
+        acceptedAnswer: { "@type": "Answer", text: item.body },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "Use Case Hub", item: `${siteUrl}/use-cases` },
+        { "@type": "ListItem", position: 3, name: useCase.title, item: pageUrl },
+      ],
+    },
+    {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      email: brandEmail,
+      areaServed: "Worldwide",
+      availableLanguage: ["en", "vi"],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={useCase.metaTitle}
+  description={useCase.metaDescription}
+  canonical={`/use-cases/${useCase.slug}`}
+  currentPath={`/use-cases/${useCase.slug}`}
+  navbarTheme="light"
+  navbarCtaLabel="Book a review"
+  keywords={useCase.keywords}
+  openGraph={{
+    title: useCase.metaTitle,
+    description: useCase.metaDescription,
+    url: pageUrl,
+    type: "article",
+    images: [
+      {
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: useCase.title,
+      },
+    ],
+  }}
+  twitter={{
+    card: "summary_large_image",
+    title: useCase.metaTitle,
+    description: useCase.metaDescription,
+    images: [ogImage],
+  }}
+  jsonLd={jsonLd}
+>
+  <UseCaseDetailPage useCase={useCase} relatedUseCases={relatedUseCases} />
+</BaseLayout>
